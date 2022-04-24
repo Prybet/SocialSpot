@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $recov = new Recovery();
         $user = $recov->getData($user);
         $recov->userId = $user->id;
-        $recov->hash = password_hash($user->username . $user->profile->name, PASSWORD_DEFAULT, ["cost" => 05]);
+        $recov->hash = bin2hex(random_bytes(20));
         $link = "http://localhost/SocialSpot/views/reply.php?token=".$recov->hash;
         if ($recov->setRecovery()) {
             require_once '../mailer/vendor/autoload.php';
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $mail->isHTML(true);
                 $mail->Subject = "Actualizar tu contraseña de SocialSpot";
-                $mail->Body = "Hola <b>" . $user->profile->name . "</b> <br> Has solicitad una nueva contraseña. Para restablecerla pincha <a href=".$link.">acá</a> ";
+                $mail->Body = "Hola <b>" . $user->profile->name . "</b> <br/> Has solicitad una nueva contraseña. Para restablecerla pincha <a href=".$link.">acá</a> ";
                 $mail->send();
                 header("Location: ../views/reply.php");
             } catch (Exception $ex) {
