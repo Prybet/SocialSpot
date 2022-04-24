@@ -1,0 +1,216 @@
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    background-color: var(--darkgray);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/** Globales **/
+body {
+    margin: auto 0;
+    font-family: var(--fuenteParrafos);
+}
+.container {
+    max-width: 85%;
+    width: 120;
+    margin: 0 auto;
+}
+
+span {
+    color: var(--orange);
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/** Index **/
+.a{
+    font-size: 6rem;
+    text-align: center;
+    
+    color: var(--dark);
+}
+.info{
+    text-align:center;
+    font-size: 1.5rem;
+    color: var(--ligthgray);
+}
+hr{
+    margin: 3rem 2rem;
+    border-color: var(--orange);
+    background-color: var(--orange);
+}
+.log{
+    text-align: center;
+    font-size: 2rem;
+    color: var(--orange);
+}
+.field {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.input_field {
+    width: 80%;
+    padding: 1rem;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid var(--orange);
+    background-color: rgba(169, 169, 169, 0);
+    outline: none; 
+    color: var(--white);
+}
+.input_link {
+    text-align: center;
+    text-decoration: none;
+    color: var(--orange);
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+.btn-login {
+    display: block;
+    /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
+    font-family: var(--fuenteParrafos);
+    color: var(--orange);
+    text-align: center;
+    padding: 1rem 9rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto;
+    border-color: var(--orange);
+    border-radius: 0.6rem;
+    background-color: var(--dark);
+    cursor: pointer;
+}
+.btn-singIn {
+    display: block;
+    /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
+    font-family: var(--fuenteParrafos);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 9rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto;
+    border-color: var(--orange);
+    border-radius: 0.6rem;
+    background-color: var(--orange);
+    color: var(--darkgray);
+    cursor: pointer;
+}
+.log-in, .sig-in{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+@media (min-width: 934px) {
+    .a {
+        font-size: 5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .main {
+        display: grid;
+        grid-template-columns: 1fr 0fr 1fr;
+        
+    }
+
+    .contenido-info {
+        text-align: center;
+        font-size: 3rem;
+    }
+
+
+    hr {
+        margin: 0 9rem;
+    }
+
+    .log {
+        
+        font-size: 3rem;
+        text-align: center;
+        font-family: var(--fuenteParrafos);
+    }
+    .login{
+        background-color: var(--black);
+        border-radius: 1rem;
+        margin-top: -3rem;
+    }
+}
+@media (max-width: 934px) {
+    .container {
+        max-width: 60%;
+        width: 120;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 632px) {
+    .container {
+        max-width: 85%;
+        width: 120;
+        margin: 0 auto;
+    }
+}
+
+.btn-login:hover{
+    color: var(--black);
+    background-color: var(--orange);
+    border-color: var(--orange);
+    transition: background-color .8s ease;
+}
+
+.btn-singIn:hover{
+    color: var(--orange);
+    background-color: var(--black);
+    border-color: var(--orange);
+    transition: background-color .8s ease;
+}
+
+
+/** crear cuenta **/
+.field:first-of-type{
+    margin-top: 3rem;
+}
+p{
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--orange);
+}
+.mainn{
+    background-color: var(--black);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 40rem;  /** IMPORTANTE: CTRL+K+U**/
+    margin: 0 2rem;
+}
+.aa{
+    font-size: 6rem;
+    text-align: center;
+    color: var(--ligthgray);
+}
+.link{
+    text-decoration: none;
+    color: var(--orange);
+}
+.p_in{
+    color: var(--ligthgray);
+}
+input[type="date"]{
+    color: var(--ligthgray);
+}
+.u{
+    margin: 1rem 2rem;
+}
+

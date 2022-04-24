@@ -1,0 +1,11 @@
+:root {
+    --fuenteHeading: 'Square Peg', cursive;
+    --fuenteParrafos: 'Roboto', sans-serif;
+
+    --white: #ffffff;
+    --black: #111111;
+    --orange: #fe6f27;
+    --ligthgray: #8C8C8C;
+    --darkgray: #1f1f1f;
+    --darker: #1E1E1E;
+}

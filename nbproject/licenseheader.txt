@@ -1,0 +1,11 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}SocialSpot 2022
+${licensePrefix}Made by: 
+${licensePrefix} jasmet_generico1
+${licensePrefix} soulbroken
+${licensePrefix} Prybet
+<#if licenseLast??>
+${licenseLast}
+</#if>
