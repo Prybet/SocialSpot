@@ -20,7 +20,7 @@ session_start(); ?>
                     <input type="email" name="email" placeholder="Email">
                 </div>
                 <div class="field">
-                    <a disabled class="input_link"><?= $_SESSION["err"] ?></a>
+                    <a disabled class="input_link"></a>
                 </div>
                 <div>
                     <button type="submit" name="submit" value="recover"> Enviar </button>
