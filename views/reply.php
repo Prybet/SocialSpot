@@ -12,24 +12,27 @@ $_SESSION["recov"] = isset($_SESSION["recov"]) ? $_SESSION["recov"] : "";
 if ($_SESSION["recov"] != "") {
     $style = "style.css";
     ?>
-    <html>
-        <?php include_once '../header.php'; ?>
-        <body>
-            <form action="../controllers/RecoveryController.php" method="post" class="log">
-                <main class="container">
-                    <div>
-                        <input type="password" name="pass" placeholder="Nueva Contraseña">
-                    </div>
-                    <div>
-                        <input type="password" name="pass" placeholder="Confirmar Contraseña">
-                    </div>
-                    <div>
-                        <button type="submit" name="submit" value="verify">Cambiar Contraseña</button>
-                    </div>  
-                </main>
-            </form>
-        </body>
-    </html>
+    <!DOCTYPE html>
+<html>
+<?php include_once '../header.php'; ?>
+<body class="sig-in">
+    <main class="container mainn">
+        <h1 class="aa no-margin"><span>Social</span>Spots</h1>
+        <div class="info info_p">
+            Ingrese nueva contraseña
+        </div>
+        <form action="../controllers/RecoveryController.php" method="post" class="createUser">
+            <div class="field">
+                <input type="password" name="pass" class="input_field inp_p" placeholder="Contraseña">
+            </div>
+            <div class="field">
+                <input type="password" name="pass" class="input_field inp_p" placeholder="Contraseña">
+            </div>
+            <button type="submit" value="verify" name="submit" class="btn-login ">Guardar</button>
+        </form>
+    </main>
+</body>
+</html>
 
     <?php
     }

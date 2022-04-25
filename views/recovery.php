@@ -10,22 +10,28 @@ Made by:
 session_start(); ?>
 <html>
         <?php include_once '../header.php'; ?>
-    <body>
-        <?php
-        // put your code here
-        ?>
-        <form action="../controllers/MailerController.php" method="post" class="log">
-            <main class="container">
-                <div>
-                    <input type="email" name="email" placeholder="Email">
-                </div>
-                <div class="field">
-                    <a disabled class="input_link"></a>
-                </div>
-                <div>
-                    <button type="submit" name="submit" value="recover"> Enviar </button>
-                </div>  
-            </main>
+        <body class="sig-in">
+    <main class="container mainn">
+        <h1 class="aa no-margin"><span>Social</span>Spots</h1>
+        <div class="info info-h">
+            ¿Tienes problemas para iniciar sesión?
+        </div> 
+        <div class="info info-r">
+            Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
+
+        </div> 
+        <form action="../controllers/MailerController.php" method="post" class="log" class="createUser">
+            <div class="field">
+                <input type="email" class="input_field input_reco" placeholder="Correo Electronico" name="email">
+            </div>
+            <button type="submit" value="recover" name="submit" class="btn-login">Enviar Enlace</button>  
         </form>
-    </body>
+        <div>
+            <p class="p_in">¿Quieres crear una cuenta?
+                <a href="#" class="link">Crear Cuenta </a>
+            </p>
+            
+        </div>
+    </main>
+</body>
 </html>
