@@ -6,17 +6,21 @@ Made by:
  soulbroken
  Prybet
 -->
-<?php $style = "style.css"; ?>
+<?php $style = "style.css";
+session_start(); ?>
 <html>
-    <?php include_once '../header.php'; ?>
+        <?php include_once '../header.php'; ?>
     <body>
         <?php
         // put your code here
         ?>
-        <form action="../controllers/mailerController.php" method="post" class="log">
+        <form action="../controllers/MailerController.php" method="post" class="log">
             <main class="container">
                 <div>
                     <input type="email" name="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <a disabled class="input_link"><?= $_SESSION["err"] ?></a>
                 </div>
                 <div>
                     <button type="submit" name="submit" value="recover"> Enviar </button>

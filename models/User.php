@@ -89,4 +89,15 @@ class User {
             return password_verify($pass, $rs["password"]);
         }
     }
+
+    public function updatePass($pass, $id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE user SET password = :pass WHERE id = :user");
+        $sen->bindParam(":pass", $this->encriptPass($pass));
+        $sen->bindParam(":user", $id);
+        if ($sen->execute()) {
+            return true;
+        }
+    }
+
 }
