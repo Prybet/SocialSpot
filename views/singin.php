@@ -38,10 +38,10 @@ Made by:
                 <input type="email" name="email" class="input_field" placeholder="Correo Electronico">
             </div>
             <div class="field">
-                <input type="text" name="name" class="input_field" placeholder="Nombre de usuario">
+                <input type="text" name="user" class="input_field" placeholder="Nombre de usuario">
             </div>
             <div class="field">
-                <input type="name" name="user" class="input_field" placeholder="Nombre">
+                <input type="name" name="name" class="input_field" placeholder="Nombre">
             </div>
             <div class="field">
                 <input type="password" name="pass" class="input_field" placeholder="Contraseña">
