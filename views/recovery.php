@@ -20,7 +20,7 @@ session_start(); ?>
             Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
 
         </div> 
-        <form action="../controllers/MailerController.php" method="post" class="log" class="createUser">
+        <form action="../controllers/MailController.php" method="post" class="log" class="createUser">
             <div class="field">
                 <input type="email" class="input_field input_reco" placeholder="Correo Electronico" name="email">
             </div>

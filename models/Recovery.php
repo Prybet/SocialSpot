@@ -83,8 +83,9 @@ class Recovery {
     public function setClose() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE recovery SET status_id = 10 WHERE user_id = :id");
-        $sen->bindParam(":id", $this->user_id);
-        return $sen->execute();
+        $sen->bindParam(":id", $this->userId);
+        if($sen->execute()){
+            return true;
+        }
     }
-
 }
