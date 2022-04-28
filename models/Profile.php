@@ -67,7 +67,7 @@ class Profile {
             $this->imageURL = $rs[6];
             $this->bannerURL = $rs[7];
             $this->city = null;
-            $this->satus = $this->status->getstatu($rs[9]);
+            $this->status = $this->status->getstatu($rs[9]);
             return $this;            
         }
     }

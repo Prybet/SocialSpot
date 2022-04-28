@@ -7,7 +7,8 @@ Made by:
  Prybet
 -->
 <?php $style = "style.css";
-session_start(); ?>
+session_start();
+$_SESSION["err"] = isset($_SESSION["err"]) ? $_SESSION["err"] : "ss" ?>
 <html>
         <?php include_once '../header.php'; ?>
         <body class="sig-in">
@@ -20,6 +21,9 @@ session_start(); ?>
             Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.
 
         </div> 
+        <div class="info info-r">
+            <?php echo $_SESSION["err"]; ?>
+        </div>
         <form action="../controllers/MailController.php" method="post" class="log" class="createUser">
             <div class="field">
                 <input type="email" class="input_field input_reco" placeholder="Correo Electronico" name="email">

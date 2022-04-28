@@ -16,9 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if ($re->getVerify($tkn)) {
             session_start();
             $_SESSION["recov"] = $re;
-            header("Location: ../views/reply.php");
+            header("Location: ../views/change.php");
+        } else {
+            $_SESSION["err"] = "Enlacee invalido, pruebe a enviar otro";
+            header("Location: ../views/recovery.php");
         }
     }
+    header("Location: ../views/index.php");
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = isset($_POST["pass"]) ? $_POST["pass"] : "";

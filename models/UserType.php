@@ -18,17 +18,11 @@ require_once 'Status.php';
 class UserType {
     var $id;
     var $type;
-    var $reply;
-    var $report;
-    var $post;
     var $status;
     
     public function __construct() {
         $this->id = 2;
         $this->type = "Guess";
-        $this->reply = false;
-        $this->report = true;
-        $this->post = false;
         $this->status = new Status();
     }
     
@@ -39,7 +33,7 @@ class UserType {
         if($sen->execute()){
             $rs = $sen->fetch();
             $this->id = $rs[0];
-            $this->name = $rs[1];
+            $this->type = $rs[1];
             return $this;
         }
     }

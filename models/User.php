@@ -86,6 +86,7 @@ class User {
         $sen->bindParam(":user", $user);
         if ($sen->execute()) {
             $rs = $sen->fetch();
+            if(!$rs) return false;
             return password_verify($pass, $rs["password"]);
         }
     }

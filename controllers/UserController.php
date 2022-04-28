@@ -12,6 +12,8 @@ require_once '../models/User.php';
 require_once '../models/UserType.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // New Account
     if ($_POST["submit"] == "create") {
         $email = isset($_POST["email"]) ? $_POST["email"] : "";
         $usern = isset($_POST["user"]) ? $_POST["user"] : "";
@@ -35,6 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             header("Location: ../views/singin.php");
         }
+        
+    // Edit Account
     } elseif ($_POST["submit"] == "edit") {
         $name = isset($_POST["name"]) ? $_POST["name"] : "";
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
@@ -52,6 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             header("Location: ../views/editprofile.php");
         }
+    
+    // Login
     } elseif ($_POST["submit"] == "login") {
         $var1 = isset($_POST["user"]) ? $_POST["user"] : "";
         $var2 = isset($_POST["pass"]) ? $_POST["pass"] : "";
@@ -70,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         header("Location: ../views/index.php");
     }
+    //
 } else {
     header("Location: ../views/index.php");
 }
