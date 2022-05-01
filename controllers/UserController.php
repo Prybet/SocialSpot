@@ -43,7 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = isset($_POST["name"]) ? $_POST["name"] : "";
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
         $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
-
+        
+        
+         
         if ($name != "" && $birth != "") {
             $user = $_SESSION["user"];
             $user->profile->imageURL = uploadImage($user->profile);

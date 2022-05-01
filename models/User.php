@@ -19,7 +19,7 @@ require_once 'Status.php';
 require_once 'UserType.php';
 
 class User {
-
+    
     var $id;
     var $email;
     var $username;
