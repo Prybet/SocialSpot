@@ -12,7 +12,7 @@ require_once '../models/User.php';
 require_once '../models/UserType.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     // New Account
     if ($_POST["submit"] == "create") {
         $email = isset($_POST["email"]) ? $_POST["email"] : "";
@@ -37,29 +37,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             header("Location: ../views/singin.php");
         }
-        
-    // Edit Account
+
+        // Edit Account
     } elseif ($_POST["submit"] == "edit") {
         $name = isset($_POST["name"]) ? $_POST["name"] : "";
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
         $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
-        
-        
-         
+
         if ($name != "" && $birth != "") {
             $user = $_SESSION["user"];
             $user->profile->imageURL = uploadImage($user->profile);
             $user->profile->name = $name;
             $user->profile->description = $desc;
             $user->profile->birthDate = $birth;
-            if($user->profile->update()){
+            if ($user->profile->update()) {
                 header("Location: ../views/editprofile.php");
             }
         } else {
             header("Location: ../views/editprofile.php");
         }
-    
-    // Login
+
+        // Login
     } elseif ($_POST["submit"] == "login") {
         $var1 = isset($_POST["user"]) ? $_POST["user"] : "";
         $var2 = isset($_POST["pass"]) ? $_POST["pass"] : "";
@@ -101,10 +99,10 @@ function uploadImage($prof) {
                 $dot = ".png";
                 break;
         }
-        $_FILES["image"]["name"] = $prof->username."-ProfilePic".$dot;
+        $_FILES["image"]["name"] = $prof->username . "-ProfilePic" . $dot;
         $route = "../../SSpotImages/ProfileImages/" . $_FILES["image"]["name"];
         move_uploaded_file($_FILES["image"]["tmp_name"], $route);
-        return $prof->username."-ProfilePic".$dot;
+        return $prof->username . "-ProfilePic" . $dot;
     } else {
         return false;
     }
