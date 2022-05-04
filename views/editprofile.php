@@ -16,63 +16,128 @@ if ($_SESSION["user"]->userType->id == 2) {
 $user = $_SESSION["user"];
 ?>
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Editar Usuario</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <!-- style con perfomance-->
-        <link rel="preload" href="../css/style.css" as="style">
-        <link rel="stylesheet" href="../css/style.css">
 
-        <link rel="preload" href="../css/normalize.css" as="style">
-        <link rel="stylesheet" href="../css/normalize.css">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Editar Usuario</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- style con perfomance-->
+    <link rel="preload" href="../css/grupe2Style.css" as="style">
+    <link rel="stylesheet" href="../css/grupe2Style.css">
 
-        <link rel="preload" href="../css/fontColor.css" as="style">
-        <link rel="stylesheet" href="../css/fontColor.css">
-    </head>
-    <body>
-        <main class="container main">
-            <form action="../controllers/UserController.php" enctype="multipart/form-data" method="post" class="createUser">
-                <h1>Editar perfil</h1>
-                <div>
-                    <img src="../../SSpotImages/ProfileImages/<?= $user->profile->imageURL?>" >
-                    <input type="file" name="image">
-                </div>
-                <div class="field">
-                    <label class="label_field">Nombre de Usuario</label>
-                    <input type="text" name="user" class="input_field" value="<?= $user->username ?>" disabled>
-                </div>
-                <div class="field">
-                    <label class="label_field">Correo Electronico</label>
-                    <input type="email" name="email" class="input_field" value="<?= $user->email ?>" disabled>
-                </div>
-                <div class="field">
-                    <label class="label_field">Nombre</label>
-                    <input type="text" name="name" class="input_field" value="<?= $user->profile->name ?>">
-                </div>
-                <div class="field">
-                    <label class="label_field">Fecha de Nacimiento</label>
-                    <input type="date" name="birth" class="input_field" value="<?= $user->profile->birthDate ?>">
-                </div>
-                <div>
-                    <label class="label_field">Descripción</label>
-                    <textarea name="desc" value=""><?= $user->profile->description ?></textarea>
-                </div>
+    <link rel="preload" href="normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
 
-                <button type="submit" name="submit" value="edit" class="btn-create">Guardar Cambios</button>
+    <link rel="preload" href="../css/fontColor.css" as="style">
+    <link rel="stylesheet" href="/fontColor.css">
+    <script>
+    function cambiar(){
+        var pdrs = document.getElementById('file-upload').files[0].name;
+        document.getElementById('info').innerHTML = pdrs;
+    }
+    </script>
 
-                <div class="field">
-                    <label class="label_field">Contraseña actual</label>
-                    <input type="password" name="oldPass" class="input_field" placeholder="Antigua contraseña">
+    
+</head>
+
+<body>
+    <main>
+        <div>
+            <div class="im">
+                <div class="img_large">
+                    <img src="../../SSpotImages/BannerImages/<?= $user->profile->bannerURL?>">
                 </div>
-                <div class="field">
+                <div class="circulo">
+                    <img src="../../SSpotImages/ProfileImages/<?= $user->profile->imageURL?>">
+        
+                </div>
+                <div class="con">
+                    <div class="fullscreen">
+                        <label for="file-upload" class="subir">
+                            <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Portada
+                        </label>
+                        <input id="file-upload" onchange='cambiar()' type="file" style='display: none;' />
+                    </div>
+                    
+                    <div class="fullscreen2">
+                        <label for="file-upload" class="subir">
+                            <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Perfil
+                        </label>
+                        <input id="file-upload" onchange='cambiar()' type="file" style='display: none;' />
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="contain main">
+                
+                <h2 class="no-margin">Editar perfil</h2>                
+                <form action="../controllers/UserController.php" enctype="multipart/form-data" method="post">
+                    <div class="createUser">
+                        <div class="field">
+                            <label class="label_field" for="file-upload">Nombre de Usuario</label>
+                            <div></div>
+                            <div class="a">
+                                <input type="text" class="input_field" value="<?= $user->username ?>" disabled>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label_field">Correo Electronico</label>
+                            <div></div>
+                            <div class="a">
+                                <input type="text" class="input_field" value="<?= $user->email ?>" disabled>
+                            </div>
+                            
+                        </div>
+                        <div class="field">
+                            <label class="label_field">Nombre</label>
+                            <div></div>
+                            <div class="a">
+                                <input type="text" name="name" class="input_field" value="<?= $user->profile->name ?>">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label_field">Fecha de Nacimiento</label>
+                            <div></div>
+                            <div class="a">
+                                <input type="date" name="birth" class="input_field" value="<?= $user->profile->birthDate ?>" >
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label_field">Descripción</label>
+                            <div></div>
+                            <div class="a">
+                                <textarea name="desc" class="input_field txtarea"><?= $user->profile->description ?></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" value="#" class="btn-update">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </form>
+            <hr>
+            <form class="changePass">
+                <h2 class="no-margin titleChange">Cambiar Contraseña</h2>
+                <div class="field_pass">
+                    <label class="label_field au">Contraseña actual</label>
+                    <input type="password" class="input_field">
+                </div>
+                <div class="field_pass">
                     <label class="label_field">Contraseña nueva</label>
-                    <input type="password" name="newPass" class="input_field"placeholder="Nueva contraseña">
-                    <input type="password" name="newPass" class="input_field" placeholder="Confirmar contraseña">
+                    <input type="password" class="input_field">
                 </div>
-                <button type="submit" name="submit" value="change" class="btn-create">Cambiar contraseña</button>
+                <div class="field_pass">
+                    <label class="label_field">Confirmar contraseña</label>
+                    <input type="password" class="input_field" placeholder="Confirmar contraseña">
+                </div>
+                <button type="submit" value="#" class="btn-updatePass">Cambiar Contraseña</button>
             </form>
-        </main>
-    </body>
+        </div>
+    </main>
+
+</body>
+
 </html>

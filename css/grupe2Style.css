@@ -1,0 +1,180 @@
+/*
+SocialSpot 2022
+Made by: 
+ jasmet_generico1
+ soulbroken
+ Prybet
+*/
+/* 
+    Created on : 03-05-2022, 14:39:56
+    Author     : Pive
+*/
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    background-color: var(--darkgray);
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin: 0 auto;
+    font-family: var(--fuenteParrafos);
+}
+
+.no-margin {
+    margin: 0 auto;
+}
+
+/* nav */
+.container{
+    background-color: var(--black);
+    border-radius: 0.5rem;
+    width: 90%;
+    height: 105vh;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+h2 {
+    text-align: center;
+    color: var(--orange);
+    padding: 1rem 0;
+    width: bold;
+    padding-top: 2rem;
+}
+hr {
+    
+    border-color: var(--orange);
+    background-color: var(--orange);
+    display: none;
+}
+.img_large{
+    width: 100%;
+    height: 40vh;
+    background-color: aliceblue;
+}
+.circulo{
+    width: 20rem;
+    height: 20rem;
+    background-color: blueviolet;
+    border-radius: 50%;
+    margin-top: -11.5rem;
+}
+.subir{
+    padding: 5px 10px;
+    background: #f55d3e;
+    color:#fff;
+    border-radius: 0.5rem;
+    border:1px solid #fff;
+}
+ 
+.subir:hover{
+    color:#fff;
+    background: #f7cb15;
+}
+.fullscreen2 {
+    text-align: right;
+}
+.fullscreen{
+    text-align: right;
+}
+.con{
+    display: flex;
+    margin-top: -5rem;
+}
+.label_field{
+    color: var(--orange);
+}
+.field{  
+    margin-top: 2rem;
+}
+.input_field {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0 auto;
+    border: none;
+    background-color: rgba(169, 169, 169, 0.589);
+    outline: none;
+    border-radius: 0.3rem;
+    color: var(--white);
+
+}
+.btn-update {
+    display: block;
+    font-family: var(--fuenteParrafos);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 9rem;
+    width: 80%;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto;
+    border-color: var(--orange);
+    border-radius: 0.6rem;
+    background-color: var(--orange);
+    color: var(--darkgray);
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.btn-update:hover, .btn-updatePass:hover{
+    color: var(--orange);
+    background-color: var(--black);
+    border-color: var(--orange);
+    transition: background-color .8s ease;
+}
+.btn-updatePass {
+    display: block;
+    font-family: var(--fuenteParrafos);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 9rem;
+    font-size: 1.2rem;
+    
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto;
+    border-color: var(--orange);
+    border-radius: 0.6rem;
+    background-color: var(--orange);
+    color: var(--darkgray);
+    cursor: pointer;
+    margin-top: 2rem;
+}
+.frm{
+    width: 80%;
+}
+.field_pass{
+    margin-top: 2rem ;
+}
+.changePass{
+    width: 80%;
+}
+.input_field::placeholder{
+    color: var(--white);
+}
+
+@media (min-width: 768px) {
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 0fr 1fr;
+        padding-top: 5rem;
+    }
+    hr{
+        display: flex;
+        margin: 6rem 2rem;
+    }
+    h2{
+        padding-top: 2rem;
+    }
+    .field{
+        width: 100%;
+    }
+    .main{
+        width: 100%;
+    }
+    .titleChange{
+        margin-top: 1rem;
+    }
+}

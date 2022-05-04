@@ -18,11 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $_SESSION["recov"] = $re;
             header("Location: ../views/change.php");
         } else {
-            $_SESSION["err"] = "Enlacee invalido, pruebe a enviar otro";
+            $_SESSION["err"] = "Enlace invalido, pruebe a enviar otro";
             header("Location: ../views/recovery.php");
         }
+    } else {
+        header("Location: ../views/index.php");
     }
-    header("Location: ../views/index.php");
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = isset($_POST["pass"]) ? $_POST["pass"] : "";
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = new User();
     if ($_SESSION["recov"]->setClose()) {
         if ($user->updatePass($pass, $_SESSION["recov"]->userId)) {
-            $_SESSION["recov"]= "";
+            $_SESSION["recov"] = "";
             header("Location: ../views/index.php");
         }
     }
