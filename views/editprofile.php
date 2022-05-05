@@ -10,6 +10,7 @@ Made by:
 require_once '../models/User.php';
 require_once '../models/UserType.php';
 session_start();
+$style = "grupe2Style.css";
 if ($_SESSION["user"]->userType->id == 2) {
     header("location: ../views/index.php");
 }
@@ -36,7 +37,7 @@ $user = $_SESSION["user"];
             <div>
                 <div class="im">
                     <div class="img_large">
-                        <img src="../../SSpotImages/UserImages/BannerImages/<?= $user->profile->bannerURL ?>">
+                        <img class="imgPort" src="../../SSpotImages/UserImages/BannerImages/<?= $user->profile->bannerURL ?>">
                     </div>
                     <div class="circulo">
                         <img src="../../SSpotImages/UserImages/ProfileImages/<?= $user->profile->imageURL ?>">
