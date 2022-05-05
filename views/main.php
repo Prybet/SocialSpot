@@ -4,7 +4,9 @@ session_start();
 $style = "grupe4Style.css";
 ?>
 <html>
-    <?php include '../header.php'; ?>
+    <head>
+        <?php include_once '../header.php'; ?>
+    </head>
     <body class="no-margin">
         <main class="container">
             <div>

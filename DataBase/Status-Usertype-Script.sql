@@ -1,3 +1,4 @@
+/** Status **/
 INSERT INTO status VALUES(null, "Active");
 INSERT INTO status VALUES(null, "On-Line");
 INSERT INTO status VALUES(null, "Away");
@@ -14,12 +15,17 @@ INSERT INTO status VALUES(null, "Banned");
 INSERT INTO status VALUES(null, "Banned");
 
 
-
+/** User types **/
 INSERT INTO usertype VALUES(null, "User",1);
 INSERT INTO usertype VALUES(null, "Guess",1);
 INSERT INTO usertype VALUES(null, "Client",1);
 INSERT INTO usertype VALUES(null, "Modder",1);
 INSERT INTO usertype VALUES(null, "Admin",1);
+
+/** Sports **/
+
+INSERT INTO sport VALUES (null, "Skate", "El skateboarding es un deporte que se basa en la propulsión con un skate –elemento compuesto por una tabla de madera, ejes, rodamientos y ruedas- a la vez que se realizan distintos trucos o maniobras", "Skate-ProfilePic.jpg", "Skate-BannerPic.jpg",1);
+INSERT INTO sport VALUES (null, "Ciclismo", "El ciclismo es un deporte en el que se utiliza una bicicleta​ para recorrer circuitos al aire libre o en pista cubierta y que engloba diferentes especialidades.", "Ciclism-ProfilePic.jpg", "Ciclism-BannerPic.jpg",1);
 
 /** Regions of Chile **/
 INSERT INTO region VALUES(null,"Arica-Parinacota", "Esta región se caracteriza por un clima donde predomina la escasez de precipitaciones." , "Chile", 1);

@@ -25,15 +25,16 @@ class Status {
         $this->name = "Active";
     }
     
-    public function getStatu($id) {
+    public static function getStatu($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM status WHERE id = :id");
         $sen->bindParam(":id", $id);
         if($sen->execute()){
+            $s = new Status();
             $rs = $sen->fetch();
-            $this->id = $rs[0];
-            $this->name = $rs[1];
-            return $this;
+            $s->id = $rs[0];
+            $s->name = $rs[1];
+            return $s;
         }
     }
 }

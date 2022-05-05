@@ -14,7 +14,9 @@ if ($_SESSION["recov"] != "") {
     ?>
     <!DOCTYPE html>
     <html>
-        <?php include_once '../header.php'; ?>
+        <head>
+            <?php include_once '../header.php'; ?>
+        </head>
         <body class="sig-in">
             <main class="container mainn">
                 <h1 class="aa no-margin"><span>Social</span>Spots</h1>

@@ -18,19 +18,9 @@ $user = $_SESSION["user"];
 <html>
 
     <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Editar Usuario</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <!-- style con perfomance-->
-        <link rel="preload" href="../css/grupe2Style.css" as="style">
-        <link rel="stylesheet" href="../css/grupe2Style.css">
 
-        <link rel="preload" href="normalize.css" as="style">
-        <link rel="stylesheet" href="css/normalize.css">
+        <?php include_once '../header.php'; ?>
 
-        <link rel="preload" href="../css/fontColor.css" as="style">
-        <link rel="stylesheet" href="/fontColor.css">
         <script>
             function cambiar() {
                 var pdrs = document.getElementById('file-upload').files[0].name;
@@ -103,7 +93,9 @@ $user = $_SESSION["user"];
                             <div class="field">
                                 <label class="label_field">Mostrar en perfil</label>
                                 <div class="a">
-                                    <input type="checkbox" name="check" class="input_field" value="1" <?php if ($user->profile->check) {echo 'checked="true"';}?>>
+                                    <input type="checkbox" name="check" class="input_field" value="1" <?php if ($user->profile->check) {
+            echo 'checked="true"';
+        } ?>>
                                 </div>
                             </div>
                             <div class="field">
