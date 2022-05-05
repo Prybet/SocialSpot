@@ -15,37 +15,33 @@ html {
 .no-margin {
     margin: 0 auto;
 }
-label{
-    color: var(--white);
-}
-p{
-    color: var(--white);
-}
-.post{
-    background-color: blue;
-}
-.descrip{
-    background-color: blueviolet;
-}
-.b{
-    display: flex;
-}
-.c{
-    background-color: brown;
-}
-.d{
-    background-color: burlywood;
-}
+
 .container{
     display: grid;
     grid-template-columns: 2fr 1fr;
     margin: 0 auto;
 }
-.post{
-    width: 100%;
+.a {
+    background-color: aqua;
 }
-.o{
+
+.b {
+    background-color: blueviolet;
+}
+.c{
+    background-color: brown;
+}
+.descrip{
     background-color: burlywood;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+}
+.e{
+    width: 100%;
+    height: 10vh;
+    background-color: aliceblue;
+}
+.l{
+    background-color: cadetblue;
+}
+.d{
+    background-color: rgb(152, 17, 118);
 }
