@@ -8,7 +8,7 @@ Made by:
 -->
 <?php
 session_start();
-$style = "style.css";
+$style = "grupe1Style.css";
 ?>
 <html>
 <?php include '../header.php'; ?>

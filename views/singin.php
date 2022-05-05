@@ -6,27 +6,12 @@ Made by:
  soulbroken
  Prybet
 -->
+<?php
+session_start();
+$style = "grupe1Style.css";
+?>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Registro de usuario</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- style con perfomance-->
-    <link rel="preload" href="../css/style.css" as="style">
-    <link rel="stylesheet" href="../css/style.css">
-
-    <link rel="preload" href="../css/normalice.css" as="style">
-    <link rel="stylesheet" href="../css/normalize.css">
-
-    <link rel="preload" href="../css/fontColor.css" as="style">
-    <link rel="stylesheet" href="../css/fontColor.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-</head>
+<?php include '../header.php'; ?>
 <body class="sig-in">
     <main class="container mainn">
         <h1 class="aa no-margin"><span>Social</span>Spots</h1>

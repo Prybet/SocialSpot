@@ -4,7 +4,7 @@
     <title>Inicio Sesión</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     
-    <link rel="preload" href="../css/style.css" as="style">
+    <link rel="preload" href="../css/<?=$style?>" as="style">
     <link rel="stylesheet" href="../css/<?=$style?>">
 
     <link rel="preload" href="../css/normalize.css" as="style">
