@@ -13,6 +13,7 @@ require_once '../models/UserType.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $formats = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
     // New Account
     if ($_POST["submit"] == "create") {
         $email = isset($_POST["email"]) ? $_POST["email"] : "";
@@ -38,16 +39,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../views/singin.php");
         }
 
+
         // Edit Account
     } elseif ($_POST["submit"] == "edit") {
         $name = isset($_POST["name"]) ? $_POST["name"] : "";
+        $check = $_POST["check"];
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
         $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
 
         if ($name != "" && $birth != "") {
             $user = $_SESSION["user"];
-            $user->profile->imageURL = uploadImage($user->profile);
             $user->profile->name = $name;
+            $user->profile->check = $check;
             $user->profile->description = $desc;
             $user->profile->birthDate = $birth;
             if ($user->profile->update()) {
@@ -57,6 +60,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../views/editprofile.php");
         }
 
+
+        //Edit Images
+    } elseif ($_POST["submit"] == "img") {
+        $user = $_SESSION["user"];
+        $user->profile->imageURL = uploadProfileImage($user->profile, $formats);
+        $user->profile->bannerURL = uploadBannerImage($user->profile, $formats);
+        if ($user->profile->updateImages()) {
+            header("Location: ../views/editprofile.php");
+        }
+    } elseif (($_POST["submit"] == "change")) {
+
+        $oldPass = isset($_POST["oldPass"]) ? $_POST["oldPass"] : "";
+        $pass = isset($_POST["pass"]) ? $_POST["pass"] : "";
+        if ($oldPass != "" && $pass != "") {
+            $user = $_SESSION["user"];
+            if ($user->verifyPass($user->username, $oldPass)) {
+                if ($user->updatePass($pass, $user->id)) {
+                    header("Location: ../views/editprofile.php");
+                }
+            } else {
+                $_SESSION["err"] = "Contraseña actual INCORREECTA";
+                header("Location: ../views/editprofile.php");
+            }
+        } else {
+            $_SESSION["err"] = "Datos mal ingresados";
+            header("Location: ../views/editprofile.php");
+        }
         // Login
     } elseif ($_POST["submit"] == "login") {
         $var1 = isset($_POST["user"]) ? $_POST["user"] : "";
@@ -81,11 +111,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../views/index.php");
 }
 
-function uploadImage($prof) {
-    $formats = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
-
-    if (in_array($_FILES["image"]["type"], $formats)) {
-        switch ($_FILES["image"]["type"]) {
+function uploadProfileImage($prof, $formats) {
+    if (in_array($_FILES["imgProf"]["type"], $formats)) {
+        switch ($_FILES["imgProf"]["type"]) {
             case "image/jpg":
                 $dot = ".jpg";
                 break;
@@ -99,11 +127,32 @@ function uploadImage($prof) {
                 $dot = ".png";
                 break;
         }
-        $_FILES["image"]["name"] = $prof->username . "-ProfilePic" . $dot;
-        $route = "../../SSpotImages/ProfileImages/" . $_FILES["image"]["name"];
-        move_uploaded_file($_FILES["image"]["tmp_name"], $route);
+        $_FILES["imgProf"]["name"] = $prof->username . "-ProfilePic" . $dot;
+        move_uploaded_file($_FILES["imgProf"]["tmp_name"], "../../SSpotImages/UserImages/ProfileImages/" . $_FILES["imgProf"]["name"]);
         return $prof->username . "-ProfilePic" . $dot;
-    } else {
-        return false;
     }
+    return false;
+}
+
+function uploadBannerImage($prof, $formats) {
+    if (in_array($_FILES["imgBanner"]["type"], $formats)) {
+        switch ($_FILES["imgBanner"]["type"]) {
+            case "image/jpg":
+                $dot = ".jpg";
+                break;
+            case "image/jpeg":
+                $dot = ".jpeg";
+                break;
+            case "image/gif":
+                $dot = ".gif";
+                break;
+            default:
+                $dot = ".png";
+                break;
+        }
+        $_FILES["imgBanner"]["name"] = $prof->username . "-BannerPic" . $dot;
+        move_uploaded_file($_FILES["imgBanner"]["tmp_name"], "../../SSpotImages/UserImages/BannerImages/" . $_FILES["imgBanner"]["name"]);
+        return $prof->username . "-BannerPic" . $dot;
+    }
+    return false;
 }
