@@ -76,12 +76,21 @@ class Profile {
     
     public function update() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("UPDATE profile SET name = :name, check = :check ,profile.Desc = :desc, BirthDate = :birth, ImageURL = :img , BannerURL = :bnr WHERE id = :id");
+        $sen = $conn->mysql->prepare("UPDATE profile SET name = :name, Profile.Check = :check ,profile.Desc = :desc, BirthDate = :birth WHERE id = :id");
         $sen->bindParam(":id", $this->id);
         $sen->bindParam(":name", $this->name);
         $sen->bindParam(":check", $this->check);
         $sen->bindParam(":desc", $this->description);
         $sen->bindParam(":birth", $this->birthDate);
+        if($sen->execute()){
+            return true;
+        }
+    }
+    
+    public function updateImages() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE profile SET ImageURL = :img , BannerURL = :bnr WHERE id = :id");
+        $sen->bindParam(":id", $this->id);
         $sen->bindParam(":img", $this->imageURL);
         $sen->bindParam(":bnr", $this->bannerURL);
         if($sen->execute()){
