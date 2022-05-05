@@ -10,20 +10,34 @@ $sports = Sport::getAllSports();
         <?php include_once '../header.php'; ?>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script type="text/javascript">
-        $(document).ready(function() {
-            
-          $("select[name=cate]").change(function(){
-            $.ajax({
-                url: "../Controllers/AjaxController.php",
-                type: "post",
-                dataType: "json",
-            }).done(function(data){
-                console.log(data);
-            });
+            $(document).ready(function () {
+                $("select[name=cate]").change(function () {
+                    id = $("select[name=cate]").val();
+                    if (id == -1) {
+                        $("#catName").empty();
+                        $("#catDesc").empty();
+                        $("#catImage").empty();
+                    } else {
+                        $.ajax({
+                            url: "../Controllers/AjaxController.php",
+                            type: "post",
+                            data: {"id": id},
+                            dataType: "json",
+                        }).done(function (data) {
+                            $("#catName").empty();
+                            $("#catName").append(data["name"]);
 
-          })
-            
-        });
+                            $("#catDesc").empty();
+                            $("#catDesc").append(data["description"]);
+
+                            $("#catImage").empty();
+                            let url = "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"];
+                            console.log(url);
+                            $("#catImage").attr("src", url);
+                        });
+                    }
+                });
+            });
         </script>
     </head>
     <body>
@@ -34,10 +48,9 @@ $sports = Sport::getAllSports();
                 </div>
                 <select name="cate">
                     <option value="-1">Elige categoria/deporte</option>
-                    <option value="1">kkkkkkk</option>
-                    <?php// foreach ($sports as $sport): ?>
-                       
-                    <?php// endforeach; ?>
+                    <?php foreach ($sports as $sport): ?>
+                        <option value="<?= $sport->id ?>"><?= $sport->name ?></option>
+                    <?php endforeach; ?>
                 </select>
                 <div>
                     <input type="text" placeholder="titilo">
@@ -69,13 +82,12 @@ $sports = Sport::getAllSports();
             <div>
                 <div class="descrip">
                     <div>
-                        <img src=""/> 
-                        <label>X---imagen ---x</label>
-                        <label>/Name</label>
+                        <img id="catImage" src="" style="height: 30px"/>
+                        <label id="catName" >/Name</label>
                     </div>
                     <div>
-                        <label id="catName">Cateforia/Sport Descripcion</label>
-                        <p id="carDesc">ads fs dafd sds dfdsasd ssdf f sdds dsfdsda sfsda sa dssd sfsfs fsfdsasdfd</p>
+                        <label >Categoria/Sport Descripcion</label>
+                        <p id="catDesc">Some description</p>
                     </div>
                     <div class="b">
                         <div>
@@ -102,7 +114,7 @@ $sports = Sport::getAllSports();
                     <div></div>
                     <label>3. Rule 3</label>
                     <div></div>
-                    <label>4. Rule 4</label>
+                    <label>4. Rule 34 </label>
                 </div>
                 <div class="d">
                     <div>
