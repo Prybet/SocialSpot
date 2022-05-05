@@ -9,8 +9,14 @@
  */
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //$body = file_get_contents('php://input');
+   // $params = json_decode($body);
+   // $id = $params->id;
+    
+    $id = $_POST["id"];
+
     require_once '../models/Sport.php';
-    $sports = Sport::getAllSports();
+    $sport = Sport::getSport($id);
     header("Content-Type: application/json; charset=UTF8");
-    echo json_encode($sports, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+    echo json_encode($sport, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
 }
