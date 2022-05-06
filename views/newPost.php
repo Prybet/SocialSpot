@@ -16,12 +16,12 @@ $sports = Sport::getAllSports();
                     if (id == -1) {
                         $("#catName").empty();
                         $("#catDesc").empty();
-                        $("#catImage").empty();
+                        $("#catImage").attr("src", "");
                     } else {
                         $.ajax({
                             url: "../Controllers/AjaxController.php",
                             type: "post",
-                            data: {"id": id},
+                            data: {"id": id,"sub" : "sport"},
                             dataType: "json",
                         }).done(function (data) {
                             $("#catName").empty();
@@ -31,9 +31,7 @@ $sports = Sport::getAllSports();
                             $("#catDesc").append(data["description"]);
 
                             $("#catImage").empty();
-                            let url = "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"];
-                            console.log(url);
-                            $("#catImage").attr("src", url);
+                            $("#catImage").attr("src", "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"]);
                         });
                     }
                 });
@@ -82,8 +80,8 @@ $sports = Sport::getAllSports();
             <div>
                 <div class="descrip">
                     <div>
-                        <img id="catImage" src="" style="height: 30px"/>
-                        <label id="catName" >/Name</label>
+                        <img id="catImage" src="" style="height: 30px" alt="Imagen de Perfil"/>
+                        <h2 id="catName" >/Name</h2>
                     </div>
                     <div>
                         <label >Categoria/Sport Descripcion</label>
@@ -106,7 +104,7 @@ $sports = Sport::getAllSports();
                 </div>
                 <div class="c">
                     <div>
-                        <h2>Reglas de /Name</h2>
+                        <h2>Reglas de</h2><h2 id="catName"></h2>
                     </div>
                     <label>1. Rule 1</label>
                     <div></div>
