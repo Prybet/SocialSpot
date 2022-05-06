@@ -19,7 +19,7 @@ require_once 'Status.php';
 require_once 'UserType.php';
 
 class User {
-    
+
     var $id;
     var $email;
     var $username;
@@ -86,7 +86,8 @@ class User {
         $sen->bindParam(":user", $user);
         if ($sen->execute()) {
             $rs = $sen->fetch();
-            if(!$rs) return false;
+            if (!$rs)
+                return false;
             return password_verify($pass, $rs["password"]);
         }
     }
@@ -98,6 +99,32 @@ class User {
         $sen->bindParam(":user", $id);
         if ($sen->execute()) {
             return true;
+        }
+    }
+
+    public static function checkEmail($email) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT email FROM user WHERE email like :em");
+        $sen->bindParam(":em", $email);
+        if ($sen->execute()) {
+            if ($sen->rowCount() > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+    
+    public static function checkUser($user) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT username FROM user WHERE username like :us");
+        $sen->bindParam(":us", $user);
+        if ($sen->execute()) {
+            if ($sen->rowCount() > 0) {
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 

@@ -10,6 +10,8 @@
             <file>file:/C:/xampp/htdocs/SocialSpot/API/AccountAPI.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Status.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/views/newPost.php</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/controllers/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/views/editprofile.php</file>
         </group>
     </open-files>
 </project-private>
