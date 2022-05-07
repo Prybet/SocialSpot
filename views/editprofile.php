@@ -22,11 +22,12 @@ $user = $_SESSION["user"];
 
         <?php include_once '../header.php'; ?>
 
-        <script>
-            function cambiar() {
-                var pdrs = document.getElementById('file-upload').files[0].name;
-                document.getElementById('info').innerHTML = pdrs;
-            }
+        <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("header").css("background-image", "url('../../SSpotImages/UserImages/ProfileImages/a-ProfilePic.jpeg')");
+                $("div[class=ftprofile]").css("background-image", "url('../../SSpotImages/UserImages/ProfileImages/a-ProfilePic.jpeg')");
+            });
         </script>
 
 
@@ -35,32 +36,27 @@ $user = $_SESSION["user"];
     <body>
         <main>
             <div>
-                <div class="im">
-                    <div class="img_large">
-                        <img class="imgPort" src="../../SSpotImages/UserImages/BannerImages/<?= $user->profile->bannerURL ?>">
-                    </div>
-                    <div class="circulo">
-                        <img src="../../SSpotImages/UserImages/ProfileImages/<?= $user->profile->imageURL ?>">
+                <header>
+        
+                </header>
+                <div class="ftprofile"> </div>
+                <div class="con">
+                    <form action="../controllers/UserController.php" enctype="multipart/form-data" method="post">
+                        <div class="fullscreen">
+                            <label for="prof-upload" class="subir">
+                                <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Portada
+                            </label>
+                            <input id="prof-upload" onchange='' type="file" name="imgBanner" style='display: none;' />
+                        </div>
 
-                    </div>
-                    <div class="con">
-                        <form action="../controllers/UserController.php" enctype="multipart/form-data" method="post">
-                            <div class="fullscreen">
-                                <label for="prof-upload" class="subir">
-                                    <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Portada
-                                </label>
-                                <input id="prof-upload" onchange='' type="file" name="imgBanner" style='display: none;' />
-                            </div>
-
-                            <div class="fullscreen2">
-                                <label for="bann-upload" class="subir">
-                                    <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Perfil
-                                </label>
-                                <input id="bann-upload" onchange='' type="file" name="imgProf" style='display: none;' />
-                            </div>
-                            <button type="submit" name="submit" value="img">Cambiar Imagenes</button>
-                        </form>
-                    </div>
+                        <div class="fullscreen2">
+                            <label for="bann-upload" class="subir">
+                                <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Perfil
+                            </label>
+                            <input id="bann-upload" onchange='' type="file" name="imgProf" style='display: none;' />
+                        </div>
+                        <button type="submit" name="submit" value="img">Cambiar Imagenes</button>
+                    </form>
                 </div>
             </div>
             <div class="container">

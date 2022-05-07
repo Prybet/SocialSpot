@@ -9,10 +9,18 @@ Made by:
 <?php
 session_start();
 $style = "grupe1Style.css";
+
 ?>
 <html>
     <head>
         <?php include_once '../header.php'; ?>
+        <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("label[name=err]").css("display", "flex");
+                $("label[name=err]").css("color", "red");
+            });
+        </script>
     </head>
     <body class="log-in">
         <main class="container main">
@@ -34,7 +42,9 @@ $style = "grupe1Style.css";
                 <div class="field">
                     <input type="password" name="pass" class="input_field" placeholder="Contraseña">
                 </div>
-
+                <div class="error">
+                    <label class="red" name="err">Credenciales incorrectas</label>
+                </div>
                 <div class="field">
                     <a href="recovery.php" class="input_link">¿Olvidaste tu contraseña?</a>
                 </div>

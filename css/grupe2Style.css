@@ -22,11 +22,64 @@ html {
     margin: 0 auto;
     font-family: var(--fuenteParrafos);
 }
+header {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.ftprofile {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 10rem;
+    border: 0.5rem solid white;
+    top: 50%;
+    left: 45%;
+    margin: -25px 0 0 -25px;
+}
+
+@media (max-width: 500px) {
+    .ftprofile {
+        left: 30%;
+    }
+}
+
+.fullscreen2 {
+    text-align: right;
+}
+
+.fullscreen {
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .no-margin {
     margin: 0 auto;
 }
 
+body{
+    margin: 0;
+}
 /* nav */
 .container{
     background-color: var(--black);
@@ -49,15 +102,24 @@ hr {
     background-color: var(--orange);
     display: none;
 }
+img{
+    max-width: 100%;
+}
+.im{
+    position: relative;
+    width: 100%;
+    height: 40vh;
+}
 .img_large{
-    background-color: rgb(0, 0, 0);
+    background-image: url("../../SSpotImages/UserImages/BannerImages/a-BannerPic.jpeg");
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 .imgPort{
     width: 100%;
-    height: 60vh;
     
 }
 .circulo{
@@ -65,7 +127,9 @@ hr {
     height: 20rem;
     background-color: blueviolet;
     border-radius: 50%;
-    margin-top: -11.5rem;
+    
+    position: absolute;
+    top: 50px;
 }
 .subir{
     padding: 5px 10px;
