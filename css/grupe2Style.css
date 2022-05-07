@@ -40,7 +40,7 @@ header {
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 10rem;
-    border: 0.5rem solid white;
+    border: 0.5rem solid var(--darkgray);
     top: 50%;
     left: 45%;
     margin: -25px 0 0 -25px;
@@ -51,26 +51,6 @@ header {
         left: 30%;
     }
 }
-
-.fullscreen2 {
-    text-align: right;
-}
-
-.fullscreen {
-    text-align: right;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .no-margin {
@@ -85,7 +65,7 @@ body{
     background-color: var(--black);
     border-radius: 0.5rem;
     width: 90%;
-    height: 105vh;
+    height: 115vh;
     margin-top: 5rem;
     margin-bottom: 5rem;
 }
@@ -94,88 +74,65 @@ h2 {
     color: var(--orange);
     padding: 1rem 0;
     width: bold;
+    font-size: 2rem;
     padding-top: 2rem;
 }
 hr {
-    
     border-color: var(--orange);
     background-color: var(--orange);
     display: none;
 }
-img{
-    max-width: 100%;
-}
-.im{
-    position: relative;
+.a{
     width: 100%;
-    height: 40vh;
 }
-.img_large{
-    background-image: url("../../SSpotImages/UserImages/BannerImages/a-BannerPic.jpeg");
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-.imgPort{
-    width: 100%;
-    
-}
-.circulo{
-    width: 20rem;
-    height: 20rem;
-    background-color: blueviolet;
-    border-radius: 50%;
-    
-    position: absolute;
-    top: 50px;
-}
-.subir{
-    padding: 5px 10px;
-    background: #f55d3e;
-    color:#fff;
-    border-radius: 0.5rem;
-    border:1px solid #fff;
-}
- 
-.subir:hover{
-    color:#fff;
-    background: #f7cb15;
-}
-.fullscreen2 {
-    text-align: right;
-}
-.fullscreen{
-    text-align: right;
-}
-.con{
+.b{
     display: flex;
-    margin-top: -5rem;
+}
+.check{
+    margin-top: 1rem;
+    width: 100%;
+}
+.check_content{
+    width: 80%;
 }
 .label_field{
     color: var(--orange);
+    font-size: 1.3rem;
 }
 .field{  
-    margin-top: 2rem;
+    margin-top: 1rem;
+    /* font-size: 1.5rem; */
+    width: 100%;
 }
+.asf{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
 .input_field {
     width: 100%;
-    padding: 0.5rem;
+    padding: 1rem;
     margin: 0 auto;
     border: none;
     background-color: rgba(169, 169, 169, 0.589);
     outline: none;
     border-radius: 0.3rem;
     color: var(--white);
+    font-size: 1.1rem;
 
+}
+.txtarea{
+    resize: none;
+    padding-bottom: 3rem;
 }
 .btn-update {
     display: block;
     font-family: var(--fuenteParrafos);
     color: var(--white);
     text-align: center;
-    padding: 1rem 9rem;
+    padding: 1rem 5rem;
     width: 80%;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -199,7 +156,7 @@ img{
     font-family: var(--fuenteParrafos);
     color: var(--white);
     text-align: center;
-    padding: 1rem 9rem;
+    padding: 1rem 5rem;
     font-size: 1.2rem;
     
     text-transform: uppercase;
@@ -212,11 +169,8 @@ img{
     cursor: pointer;
     margin-top: 2rem;
 }
-.frm{
-    width: 80%;
-}
 .field_pass{
-    margin-top: 2rem ;
+    margin-top: 1rem ;
 }
 .changePass{
     width: 80%;

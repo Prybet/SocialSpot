@@ -59,58 +59,69 @@ $user = $_SESSION["user"];
                     </form>
                 </div>
             </div>
-            <div class="container">
-                <div class="contain main">
 
+            <div class="container">
+                <div class="contain">
                     <h2 class="no-margin">Editar perfil</h2>                
-                    <form action="../controllers/UserController.php"  method="post">
-                        <div class="createUser">
+                    <form action="../controllers/UserController.php"  method="post" class="editUser">
+                        <div class="asf">
                             <div class="field">
-                                <label class="label_field" for="file-upload">Nombre de Usuario</label>
-                                <div></div>
+                                <div>
+                                    <label class="label_field" for="file-upload">Nombre de Usuario</label>
+                                </div>
                                 <div class="a">
                                     <input type="text" class="input_field" value="<?= $user->username ?>" disabled>
                                 </div>
                             </div>
+                        </div>
+                        <div class="asf">
                             <div class="field">
-                                <label class="label_field">Correo Electronico</label>
-                                <div></div>
+                                <div>
+                                    <label class="label_field">Correo Electronico</label>
+                                </div>
                                 <div class="a">
                                     <input type="text" class="input_field" value="<?= $user->email ?>" disabled>
                                 </div>
-
                             </div>
+                        </div>
+                        <div class="asf">
                             <div class="field">
-                                <label class="label_field">Nombre</label>
-                                <div></div>
+                                <div>
+                                    <label class="label_field">Nombre</label>
+                                </div>
                                 <div class="a">
                                     <input type="text" name="name" class="input_field" value="<?= $user->profile->name ?>">
                                 </div>
                             </div>
+                        </div>
+                        <div class="asf">
                             <div class="field">
-                                <label class="label_field">Mostrar en perfil</label>
-                                <div class="a">
-                                    <input type="checkbox" name="check" class="input_field" value="1" <?php if ($user->profile->check) {
-            echo 'checked="true"';
-        } ?>>
+                                <div>
+                                    <label class="label_field">Fecha de Nacimiento</label>
                                 </div>
-                            </div>
-                            <div class="field">
-                                <label class="label_field">Fecha de Nacimiento</label>
-                                <div></div>
                                 <div class="a">
                                     <input type="date" name="birth" class="input_field" value="<?= $user->profile->birthDate ?>" >
                                 </div>
                             </div>
+                        </div>
+                        <div class="asf">
                             <div class="field">
-                                <label class="label_field">Descripción</label>
-                                <div></div>
+                                <div>
+                                    <label class="label_field">Descripción</label>
+                                </div>
                                 <div class="a">
                                     <textarea name="desc" class="input_field txtarea"><?= $user->profile->description ?></textarea>
                                 </div>
                             </div>
-                            <button type="submit" name="submit" value="edit" class="btn-update">Guardar Cambios</button>
                         </div>
+                        <div class="check">
+                            <div class="check_content">
+                                <input type="checkbox" name="check" class="check_input" value="1" <?php if ($user->profile->check) {echo 'checked="true"';} ?>>
+                                <label class="label_field">Mostrar en perfil</label>
+                            </div>
+                        </div>
+                        <button type="submit" name="submit" value="edit" class="btn-update">Guardar Cambios</button>
+                        
                     </form>
                 </div>
                 </form>
@@ -127,7 +138,7 @@ $user = $_SESSION["user"];
                     </div>
                     <div class="field_pass">
                         <label class="label_field">Confirmar contraseña</label>
-                        <input type="password" name="pass" class="input_field" placeholder="Confirmar contraseña">
+                        <input type="password" name="pass" class="input_field chan">
                     </div>
                     <button type="submit" name="submit" value="change" class="btn-updatePass">Cambiar Contraseña</button>
                 </form>
