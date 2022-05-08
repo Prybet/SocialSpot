@@ -7,9 +7,6 @@
     <link rel="preload" href="../css/<?=$style?>" as="style">
     <link rel="stylesheet" href="../css/<?=$style?>">
 
-    <link rel="preload" href="../css/normalize.css" as="style">
-    <link rel="stylesheet" href="../css/normalize.css">
-
     <link rel="preload" href="../css/fontColor.css" as="style">
     <link rel="stylesheet" href="../css/fontColor.css">
 

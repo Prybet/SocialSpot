@@ -58,7 +58,7 @@ $user = $_SESSION["user"];
                 <button type="submit" name="submit" value="img">Cambiar Imagenes</button>
             </form>
         </div> -->
-        <main>
+        <main class="kl">
             <div class="container grid">
                 <div class="center">          
                     <form action="../controllers/UserController.php"  method="post" class="editUser">
