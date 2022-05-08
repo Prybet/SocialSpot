@@ -1,14 +1,3 @@
-/*
-SocialSpot 2022
-Made by: 
- jasmet_generico1
- soulbroken
- Prybet
-*/
-/* 
-    Created on : 03-05-2022, 14:39:56
-    Author     : Pive
-*/
 html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -19,14 +8,26 @@ html {
 *:before,
 *:after {
     box-sizing: inherit;
-    margin: 0 auto;
-    font-family: var(--fuenteParrafos);
 }
+
+.no-margin{
+    margin: 0 auto;
+}
+body{
+    margin: 0 auto;
+}
+.fonth2{
+    font-size: 2.2rem;
+    width: bold;
+    padding: 1rem 0;
+    padding-top: 2rem;
+    text-align: center;
+}
+/* edit banner and profile */
 header {
     position: relative;
     width: 100%;
     height: 60vh;
-    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -40,77 +41,54 @@ header {
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 10rem;
-    border: 0.5rem solid var(--darkgray);
+    border: 0.5rem solid var(--white);
     top: 50%;
     left: 45%;
     margin: -25px 0 0 -25px;
 }
 
-@media (max-width: 500px) {
-    .ftprofile {
-        left: 30%;
-    }
-}
 
-
-.no-margin {
-    margin: 0 auto;
+/* edit profile */
+main, .center, .op, .asf, .check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-body{
-    margin: 0;
-}
-/* nav */
 .container{
     background-color: var(--black);
     border-radius: 0.5rem;
-    width: 90%;
-    height: 115vh;
-    margin-top: 5rem;
+    width: 95%;
+    padding-bottom: 2rem;
+    margin-top: 12rem;
     margin-bottom: 5rem;
 }
-h2 {
-    text-align: center;
+.editUser{
+    width: 100%;
+}
+.label_field, h2{
     color: var(--orange);
-    padding: 1rem 0;
-    width: bold;
-    font-size: 2rem;
-    padding-top: 2rem;
 }
-hr {
-    border-color: var(--orange);
-    background-color: var(--orange);
-    display: none;
-}
-.a{
-    width: 100%;
-}
-.b{
-    display: flex;
-}
-.check{
-    margin-top: 1rem;
-    width: 100%;
-}
-.check_content{
-    width: 80%;
-}
-.label_field{
-    color: var(--orange);
-    font-size: 1.3rem;
-}
-.field{  
-    margin-top: 1rem;
-    /* font-size: 1.5rem; */
-    width: 100%;
+.field, .check_content{
+    width: 85%;
 }
 .asf{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
+    margin-top: 1rem;
 }
-
+.label_field{
+    font-size: 1.5rem;
+    
+}
+hr{
+    border-color: var(--orange);
+    visibility: hidden;
+}
+.field_pass{
+    width: 85%;
+    margin-top: 1rem;
+}
+.txtarea{
+    resize: none;
+}
 .input_field {
     width: 100%;
     padding: 1rem;
@@ -122,10 +100,6 @@ hr {
     color: var(--white);
     font-size: 1.1rem;
 
-}
-.txtarea{
-    resize: none;
-    padding-bottom: 3rem;
 }
 .btn-update {
     display: block;
@@ -169,36 +143,17 @@ hr {
     cursor: pointer;
     margin-top: 2rem;
 }
-.field_pass{
-    margin-top: 1rem ;
-}
-.changePass{
-    width: 80%;
-}
-.input_field::placeholder{
-    color: var(--white);
-}
-
 @media (min-width: 768px) {
-    .container{
+    .grid{
         display: grid;
         grid-template-columns: 1fr 0fr 1fr;
-        padding-top: 5rem;
+        width: 70%;
+    }
+    .container{
+        margin-top: 7rem;
     }
     hr{
-        display: flex;
-        margin: 6rem 2rem;
-    }
-    h2{
-        padding-top: 2rem;
-    }
-    .field{
-        width: 100%;
-    }
-    .main{
-        width: 100%;
-    }
-    .titleChange{
-        margin-top: 1rem;
+        visibility: visible;
     }
 }
+

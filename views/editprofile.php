@@ -34,36 +34,17 @@ $user = $_SESSION["user"];
     </head>
 
     <body>
+        <div>
+            <header>
+            
+            </header>
+            <div class="ftprofile"> </div>
+        </div>
         <main>
-            <div>
-                <header>
-        
-                </header>
-                <div class="ftprofile"> </div>
-                <div class="con">
-                    <form action="../controllers/UserController.php" enctype="multipart/form-data" method="post">
-                        <div class="fullscreen">
-                            <label for="prof-upload" class="subir">
-                                <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Portada
-                            </label>
-                            <input id="prof-upload" onchange='' type="file" name="imgBanner" style='display: none;' />
-                        </div>
-
-                        <div class="fullscreen2">
-                            <label for="bann-upload" class="subir">
-                                <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Perfil
-                            </label>
-                            <input id="bann-upload" onchange='' type="file" name="imgProf" style='display: none;' />
-                        </div>
-                        <button type="submit" name="submit" value="img">Cambiar Imagenes</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="contain">
-                    <h2 class="no-margin">Editar perfil</h2>                
+            <div class="container grid">
+                <div class="center">          
                     <form action="../controllers/UserController.php"  method="post" class="editUser">
+                        <h2 class="no-margin fonth2">Editar perfil</h2> 
                         <div class="asf">
                             <div class="field">
                                 <div>
@@ -124,27 +105,33 @@ $user = $_SESSION["user"];
                         
                     </form>
                 </div>
-                </form>
                 <hr>
                 <form class="changePass" action="../controllers/UserController.php" method="post">
-                    <h2 class="no-margin titleChange">Cambiar Contraseña</h2>
-                    <div class="field_pass">
-                        <label class="label_field au">Contraseña actual</label>
-                        <input type="password" name="oldPass" class="input_field">
+                    <div>
+                        <h2 class="no-margin fonth2">Cambiar Contraseña</h2>
+                        <div class="op">
+                            <div class="field_pass">
+                                <label class="label_field">Contraseña actual</label>
+                                <input type="password" name="oldPass" class="input_field">
+                            </div>
+                        </div>
+                        <div class="op">
+                            <div class="field_pass">
+                                <label class="label_field">Contraseña nueva</label>
+                                <input type="password" name="pass" class="input_field">
+                            </div>
+                        </div>
+                        <div class="op">
+                            <div class="field_pass">
+                                <label class="label_field">Confirmar contraseña</label>
+                                <input type="password" name="pass" class="input_field">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" name="submit" value="change" class="btn-updatePass">Cambiar Contraseña</button>
                     </div>
-                    <div class="field_pass">
-                        <label class="label_field">Contraseña nueva</label>
-                        <input type="password" name="pass" class="input_field">
-                    </div>
-                    <div class="field_pass">
-                        <label class="label_field">Confirmar contraseña</label>
-                        <input type="password" name="pass" class="input_field chan">
-                    </div>
-                    <button type="submit" name="submit" value="change" class="btn-updatePass">Cambiar Contraseña</button>
                 </form>
             </div>
         </main>
-
     </body>
-
 </html>
