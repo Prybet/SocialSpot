@@ -34,30 +34,26 @@ $user = $_SESSION["user"];
     </head>
 
     <body>
-        <div>
-            <header>
-            
-            </header>
-            <div class="ftprofile"> </div>
-        </div>
-        <!-- <div class="con">
-            <form action="../controllers/UserController.php" enctype="multipart/form-data" method="post">
-                <div class="fullscreen">
-                    <label for="prof-upload" class="subir">
-                        <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Portada
-                    </label>
-                    <input id="prof-upload" onchange='' type="file" name="imgBanner" style='display: none;' />
+        <div class="con">
+            <form action="../controllers/UserController.php" enctype="multipart/form-data" method="post" class="frm">
+                <header>
+                    <div class="fullscreen">
+                        <label for="prof-upload" class="subir">
+                            <div class="img"></div>                </label>
+                        <input id="prof-upload" onchange='' type="file" name="imgBanner" style='display: none;' />
+                    </div>
+                </header>
+                <div class="ftprofile abc"> 
+                    <div class="fullscreen2">
+                        <label for="bann-upload" class="subir">
+                            <div class="img2"></div>
+                        </label>
+                        <input id="bann-upload" onchange='' type="file" name="imgProf" style='display: none;' />
+                    </div>
                 </div>
-
-                <div class="fullscreen2">
-                    <label for="bann-upload" class="subir">
-                        <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de Perfil
-                    </label>
-                    <input id="bann-upload" onchange='' type="file" name="imgProf" style='display: none;' />
-                </div>
-                <button type="submit" name="submit" value="img">Cambiar Imagenes</button>
+                <button type="submit" name="submit" value="img" class="btnImg">Cambiar Imagenes</button>
             </form>
-        </div> -->
+        </div> 
         <main class="kl">
             <div class="container grid">
                 <div class="center">          
