@@ -25,8 +25,8 @@ $user = $_SESSION["user"];
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $("header").css("background-image", "url('../../SSpotImages/UserImages/ProfileImages/a-ProfilePic.jpeg')");
-                $("div[class=ftprofile]").css("background-image", "url('../../SSpotImages/UserImages/ProfileImages/a-ProfilePic.jpeg')");
+                $("header").css("background-image", "url('../../SSpotImages/UserImages/BannerImages/<?= $user->profile->bannerURL?>')");
+                $("#imgprofile").css("background-image", "url('../../SSpotImages/UserImages/ProfileImages/<?= $user->profile->imageURL?>')");
             });
         </script>
 
@@ -39,11 +39,11 @@ $user = $_SESSION["user"];
                 <header>
                     <div class="fullscreen">
                         <label for="prof-upload" class="subir">
-                            <div class="img"></div>                </label>
+                            <div class="img"></div> </label>
                         <input id="prof-upload" onchange='' type="file" name="imgBanner" style='display: none;' />
                     </div>
                 </header>
-                <div class="ftprofile abc"> 
+                <div class="ftprofile abc" id="imgprofile"> 
                     <div class="fullscreen2">
                         <label for="bann-upload" class="subir">
                             <div class="img2"></div>
