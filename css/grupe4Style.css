@@ -1,71 +1,288 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    background-color: var(--darkgray);
+    background-color: var(--black);
 }
 
 *,
 *:before,
 *:after {
     box-sizing: inherit;
-    margin: 0 auto;
-    font-family: var(--fuenteParrafos);
 }
 
 .no-margin {
     margin: 0 auto;
 }
-label{
-    color: var(--white);
-}
-p{
-    color: var(--white);
-}
-.post{
-    background-color: blue;
-}
-.descrip{
-    background-color: blueviolet;
-}
-.b{
-    display: flex;
-}
-.c{
-    background-color: brown;
-}
-.d{
-    background-color: burlywood;
-}
+
 .container{
     display: grid;
     grid-template-columns: 2fr 1fr;
     margin: 0 auto;
 }
+.container_flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container_sdf{
+    width: 70%;
+}
+/* field upload post */
 .post{
+    background-color: var(--darkgray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+}
+.post__field{
+    display: flex;
+    width: 95%;
+}
+.post__fiel-input{
+    width: 100%;
+    margin: 0 auto;
+    border: none;
+    background-color: var(--black);
+    outline: none;
+    border-radius: 0.3rem;
+    color: var(--white);
+    font-size: 1.3rem;
+    padding-left: 1rem;
+}
+.post__fiel-input::placeholder{
+    color: var(--orange);
+}
+.img{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; 
+}
+.img-user{
+    background-image: url(../img/perfil.webp);
+    width: 4rem;
+    height: 3rem;
+    border-radius: 4rem;
+    margin-right: 1.5rem;
+}
+.img-photo{
+    background-image: url(../img/perfil.webp);
+    width: 4rem;
+    height: 3rem;
+    border-radius: 5rem;
+    margin-left: 1.5rem;
+}
+.img-point{
+    background-image: url(../img/perfil.webp);
+    width: 4rem;
+    height: 3rem;
+    border-radius: 2rem;
+    margin-left: 1.5rem;
+}
+
+/* field option new, salient, most voted */
+.post_most{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    background-color: var(--darkgray);
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+}
+.most-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    
+}
+.most{
+    width: 95%;
+}
+.most_btn{
+    background-color: var(--black);
+    color: var(--orange);
+    border-radius: 0.5rem;
+    border: 1px solid var(--ligthgray);
+    width: 100%;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* post */
+.container_post{
+    margin-top: 1.5rem;
+    background-color: var(--darkgray);
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+}
+.contain{
+    display: flex;
     width: 100%;
 }
-.o{
-    background-color: burlywood;
+.img-post{
+    background-image: url(../img/perfil.webp);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 5rem;
+    margin-left: 1.5rem;
+}
+.container_descr{
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+}
+.who{
+    display: flex;
+}
+.flex{
+    position: relative;
+}
+.label_post{
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.p_post{
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 0.2rem;
+    color: var(--orange);
+}
+.l_one{
+    position: absolute;
+    top: 5%;
+    left: 2%;
+}
+.l_two{
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+.l_three{
+    position: absolute;
+    top: 5%;
+    left: 40%;
+}
+.l_four{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+}
+.l_five{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+}
+.container_info{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--ligthgray);
+}
+.container_info-descrip{
+    width: 95%;
+}
+.container_img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img_post{
+    width: 96%;
+    background-image: url(../img/banner.webp);
+    height: 40vh;
+}
+.flex_option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.container_option{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 95%;
+}
+
+/* descrip */
+.qwe{
+    width: 80%; 
+}
+.container__descrip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.descrip{
+    background-color: var(--darkgray);
+    border-radius: 0.5rem;
+    width: 100%;
+}
+.descrip_h2{
+    background-color: var(--orange);
+    text-align: center;
+    padding: 1.5rem 0;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+.descrip_sport{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 1rem;
 }
-.h{
-    background-color: cadetblue;
+.descrip_label{
+    text-align: center;
+    color: var(--ligthgray);
+    font-weight: bold;
 }
-.j{
-    display: flex;
+.descrip_btn{
+    background-color: var(--black);
+    color: var(--orange);
+    border-radius: 0.5rem;
+    border: 1px solid var(--ligthgray);
+    width: 80%;
+    font-weight: bold;
+    cursor: pointer;
 }
-.i{
-    background-color: rgb(28, 184, 65);
+
+/* footer */
+.container_footer{
+    background-color: var(--darkgray);
+    border-radius: 0.5rem;
+    width: 80%;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
 }
-h2{
-    color: var(--white);
+.footer_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem 1rem;
 }
-.k{
-    background-color: black;
-    width: 100%;
-    height: 20vh;
+.footer_relleno{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem 1rem;
 }
-.p{
-    display: flex;
+a{
+    color: var(--ligthgray);
+    text-decoration: none;
 }
+.rell{
+    padding-top: 0.5rem;
+}
+.esp{
+    padding: 0.5rem 1rem;
+}
+label{
+    color: var(--ligthgray);
+}
+
