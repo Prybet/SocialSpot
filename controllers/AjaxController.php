@@ -13,14 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sub = isset($_POST["sub"]) ? $_POST["sub"] : "";
 
     switch ($sub) {
-        case "sport":
+        case "category":
 
             $id = $_POST["id"];
 
-            require_once '../models/Sport.php';
-            $sport = Sport::getSport($id);
+            require_once '../models/Category.php';
+            $category = Category::getCategoy($id);
             header("Content-Type: application/json; charset=UTF8");
-            echo json_encode($sport, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode($category, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
         case "email":
             $email = $_POST["email"];

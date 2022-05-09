@@ -15,7 +15,7 @@
  */
 class Post {
     var $id;
-    var $userProfile;
+    var $userId;
     var $title;
     var $body;
     var $date;
@@ -31,5 +31,7 @@ class Post {
     //Interactions
     var $likes;
     var $replies;
+    
+    
     
 }

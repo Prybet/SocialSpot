@@ -2,8 +2,10 @@
 <?php
 session_start();
 $style = "grupe5Style.css";
-require_once '../models/Sport.php';
-$sports = Sport::getAllSports();
+require_once '../models/Category.php';
+require_once '../models/City.php';
+$categories = Category::getListAllCategories();
+$cities = City::getAllCities();
 ?>
 <html>
     <head>
@@ -21,9 +23,10 @@ $sports = Sport::getAllSports();
                         $.ajax({
                             url: "../Controllers/AjaxController.php",
                             type: "post",
-                            data: {"id": id,"sub" : "sport"},
+                            data: {"id": id, "sub": "category"},
                             dataType: "json",
                         }).done(function (data) {
+                            console.log(data);
                             $("#catName").empty();
                             $("#catName").append(data["name"]);
 
@@ -32,33 +35,50 @@ $sports = Sport::getAllSports();
 
                             $("#catImage").empty();
                             $("#catImage").attr("src", "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"]);
+
+                            $("#members").empty();
+                            $("#members").append(data["members"]);
+                            $("#online").empty();
+                            $("#online").append(data["onLine"]);
                         });
                     }
                 });
+                var id = 0;
+                $("#row-" + id).click(function () {
+                    id++;
+                    clone = $("input[name=file-0]").clone();
+                    $(clone).attr("name", "file-" + id);
+                    $(clone).attr("id", "row-" + id);
+                    $(clone).appendTo("#container");
+                });
+
             });
         </script>
     </head>
     <body>
         <main class="container no-margin">
-            <form class="post">
+            <form action="../controllers/PostController.php" enctype="multipart/form-data" method="post" class="post">
                 <div>
                     <label>Crear nuevo Post</label>
                 </div>
                 <select name="cate">
                     <option value="-1">Elige categoria/deporte</option>
-                    <?php foreach ($sports as $sport): ?>
-                        <option value="<?= $sport->id ?>"><?= $sport->name ?></option>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
                     <?php endforeach; ?>
                 </select>
                 <div>
-                    <input type="text" placeholder="titilo">
+                    <input type="text" name="title" placeholder="titilo">
                 </div>
-                <textarea placeholder="texto(opcional)">Texto</textarea>
+                <textarea name="body" placeholder="texto(opcional)">Texto</textarea>
                 <div>
                     <label>Hashtags separado por coma","</label>
                     <div>
-                        <select>
-                            <option>Difultad</option>
+                        <select name="city">
+                            <option value="-1">-- Ciudad --</option>
+                            <!-- <php foreach ($cities as $city): ?>
+                                <option value="<= $city->id ?>"><= $city->name ?></option>
+                            <php endforeach; ?> -->
                         </select>
                         <select>
                             <option>Spots</option>
@@ -66,15 +86,16 @@ $sports = Sport::getAllSports();
                     </div>
                 </div>
                 <label>Imagenes y Videos</label>
-                <div>
-                    <input type="file"/>
+                <button type="button" name="plus">Agregar otro archivo</button>
+                <div id="container">
+                    <input id="row-0" name="file-0" type="file"/>
                 </div>
                 <div>
-                    <input type="checkbox"><label>Recibir notificaciones de comentarios y respuestas</label>
+                    <input name="check" type="checkbox"><label>Recibir notificaciones de comentarios y respuestas</label>
                 </div>
                 <div>
-                    <button type="submit">Calcelar</button>
-                    <button type="submit">Publicar</button>
+                    <button type="submit" name="submit" value="back">Calcelar</button>
+                    <button type="submit" name="submit" value="post">Publicar</button>
                 </div> 
             </form>
             <div>
@@ -90,12 +111,12 @@ $sports = Sport::getAllSports();
                     <div class="b">
                         <div>
                             <div>
-                                <label>1.3K</label>
+                                <label id="members">0</label>
                                 <div></div>
-                                <label>mientras</label>
+                                <label>Miembros</label>
                             </div>
                             <div>
-                                <label>93</label>
+                                <label id="online">0</label>
                                 <div></div>
                                 <label>En linea</label>
                             </div>
