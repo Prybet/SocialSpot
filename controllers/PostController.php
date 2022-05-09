@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
             $user = $_SESSION["user"];
             $post = new Post();
-            $post->userId = $user->id;
+            $post->profID = $user->profile->id;
             $post->title = $title;
             $post->body = $body;
             $post->category = $cate;

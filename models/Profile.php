@@ -53,9 +53,31 @@ class Profile {
         }
     }
     
-    public function getProfile($id){
+    public static function getProfile($id){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
+        $sen->bindParam(":id", $id);
+        if($sen->execute()){
+            $rs = $sen->fetch();
+            $p = new Profile();
+            $p->id = $rs[0];
+            $p->name = $rs[1];
+            $p->username = $rs[2];
+            $p->check = $rs[3];   
+            $p->description = $rs[4];
+            $p->birthDate = $rs[5];
+            $p->entryDate = $rs[6];
+            $p->imageURL = $rs[7];
+            $p->bannerURL = $rs[8];
+            $p->city = null;
+            $p->status = $p->status->getstatu($rs[10]);
+            return $p;            
+        }
+    }
+    
+    public static function getProfileForPost($id){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT profile.id, name, username, profile.check, profile.desc, birthdate, entrydate, imageurl, bannerurl, city_id, profile.status_id FROM profile INNER JOIN post ON profile.id = post.profile_id WHERE post.id = :id");
         $sen->bindParam(":id", $id);
         if($sen->execute()){
             $rs = $sen->fetch();

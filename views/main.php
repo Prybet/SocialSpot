@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
+require_once '../models/Post.php';
 session_start();
+$allPosts = Post::getAllPosts();
 $style = "grupe4Style.css";
 ?>
 <html>
@@ -27,43 +29,42 @@ $style = "grupe4Style.css";
                             <button class="most_btn">Mas votado</button>
                         </div>
                     </div>
-
-                    <div class="container_post">
-                        <div class="container_p">
-                            <div class="container_descr">
-                                <div class="img img-post"></div>
-                                <div class="flex">
-                                    <label class="label_post l_one">/MountainBike</label>
-                                    <div class="who l_two">
-                                        <label class="label_post" >Posted by </label>
-                                        <p class="p_post">Username</p>
+                    <?php foreach ($allPosts as $post): ?>
+                        <div class="container_post">
+                            <div class="container_p">
+                                <div class="container_descr">
+                                    <div class="img img-post"> <img style="height: 30px" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>"></div>
+                                    <div class="flex">
+                                        <label class="label_post l_one"><?= $post->category->name ?></label>
+                                        <div class="who l_two">
+                                            <label class="label_post" >Posted by </label>
+                                            <p class="p_post"><?= $post->userProfile->username ?></p>
+                                        </div>
+                                        <label class="label_post  l_three">difil</label>
+                                        <label class="label_post l_four"><?= $post->date ?></label>
+                                        <label class="l_five">hola</label>
                                     </div>
-                                    <label class="label_post  l_three">difil</label>
-                                    <label class="label_post l_four">22m</label>
-                                    <label class="l_five">hola</label>
                                 </div>
                             </div>
-                        </div>
-                        
+                         
                         <div class="container_info">
                             <div class="container_info-descrip">
-                                <h2 class="h2_title">Title</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea commodo consequat. lit anim id est laborum.
-                                </p>
+                                <h2 class="h2_title"><?= $post->title ?></h2>
+                                <p><?= $post->body ?> </p>
                             </div>
                         </div>
+                            <?php foreach ($post->images as $image): ?>
                         <div class="container_img">
-                            <div class="img img_post"></div>
+                            <img src="../../SSpotImages/UserMedia/<?= $post->userProfile->username ?>-Folder/Post-<?= $post->id ?>Folder/<?= $image->URL ?>" class="img img_post">
                         </div>
+                            <?php endforeach; ?>
                         <div class="flex_option">
                             <div class="container_option">
                                 <div>
                                     <img src="" /><label>
                                         <3</label>
-                                            <!--esto se saca-->
-                                            <label>266</label>
+                                    <!--esto se saca-->
+                                    <label>266</label>
                                 </div>
                                 <div>
                                     <img src="" /><label>[ ]</label>
@@ -77,6 +78,7 @@ $style = "grupe4Style.css";
                             </div>
                         </div>             
                     </div>
+                    <?php endforeach; ?>   
                 </div>
             </div>
             <div>
