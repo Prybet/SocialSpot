@@ -7,14 +7,19 @@
  *  soulbroken
  *  Prybet
  */
+require_once '../models/User.php';
+require_once '../models/Post.php';
+require_once '../models/Image.php';
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = isset($_GET["id"]) ? $_GET["id"] : "";
+    $_SESSION["post"] = Post::getPost($id);
+    header("Location: ../views/post.php");
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $formats = ["image/jpg", "image/jpeg", "image/gif", "image/png", "video/mp4", "video/mov"];
-    require_once '../models/User.php';
-    require_once '../models/Post.php';
-    require_once '../models/Image.php';
-    session_start();
+
     if ($_POST["submit"] == "post") {
         $cate = isset($_POST["cate"]) ? $_POST["cate"] : "";
         $title = isset($_POST["title"]) ? $_POST["title"] : "";
@@ -31,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $post->category = $cate;
             $idp = $post->setPost();
             if (uploadFiles($idp)) {
+                $_SESSION["post"] = Post::getPost($idp);
                 header("Location: ../views/post.php");
             } else {
                 header("Location: ../views/index.php");

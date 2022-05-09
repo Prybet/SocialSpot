@@ -31,5 +31,23 @@ class Image {
             return true;
         }
     }
+    
+     public static function getImages($idp) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM image WHERE post_id = :idp ");
+        $sen->bindParam(":idp", $idp);
+        if ($sen->execute()) {
+            $images = $sen->fetchAll();
+            foreach ($images as $image) {
+                $im = new Image();
+                $im->id = $image[0];
+                $im->URL = $image[1];
+                $im->post = $image[2];
+                $im->status = $image[3];
+                $list[] = $im;
+            }
+            return $list;
+        }
+    }
 
 }
