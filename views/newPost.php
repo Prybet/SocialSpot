@@ -58,7 +58,6 @@ $cities = City::getAllCities();
                     
                     $("input[name=file-0]").val(null);
                 });
-
             });
         </script>
     </head>
