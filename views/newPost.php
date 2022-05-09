@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php
+require_once '../models/User.php';
+require_once '../models/UserType.php';
 session_start();
+if ($_SESSION["user"]->userType->id == 2) {
+    header("location: ../views/index.php");
+}
 $style = "grupe5Style.css";
 require_once '../models/Category.php';
 require_once '../models/City.php';
@@ -44,18 +49,20 @@ $cities = City::getAllCities();
                     }
                 });
                 var id = 0;
-                $("#row-" + id).click(function () {
+                $("#row-" + id).change(function () {
                     id++;
                     clone = $("input[name=file-0]").clone();
                     $(clone).attr("name", "file-" + id);
                     $(clone).attr("id", "row-" + id);
                     $(clone).appendTo("#container");
+                    
+                    $("input[name=file-0]").val(null);
                 });
 
             });
         </script>
     </head>
-    <body>
+    <body> 
         <main class="container no-margin">
             <form action="../controllers/PostController.php" enctype="multipart/form-data" method="post" class="post">
                 <div>
@@ -72,6 +79,7 @@ $cities = City::getAllCities();
                 </div>
                 <textarea name="body" placeholder="texto(opcional)">Texto</textarea>
                 <div>
+                    <input type="text" name="hashtags"/>
                     <label>Hashtags separado por coma","</label>
                     <div>
                         <select name="city">
@@ -86,10 +94,12 @@ $cities = City::getAllCities();
                     </div>
                 </div>
                 <label>Imagenes y Videos</label>
-                <button type="button" name="plus">Agregar otro archivo</button>
                 <div id="container">
-                    <input id="row-0" name="file-0" type="file"/>
                 </div>
+                <div>
+                    <input id="row-0" name="file-0" type="file" />
+                </div>
+                
                 <div>
                     <input name="check" type="checkbox"><label>Recibir notificaciones de comentarios y respuestas</label>
                 </div>
@@ -101,7 +111,7 @@ $cities = City::getAllCities();
             <div>
                 <div class="descrip">
                     <div>
-                        <img id="catImage" src="" style="height: 30px" alt="Imagen de Perfil"/>
+                        <img id="catImage" src="" style="height: 100px" alt="Imagen de Perfil"/>
                         <h2 id="catName" >/Name</h2>
                     </div>
                     <div>

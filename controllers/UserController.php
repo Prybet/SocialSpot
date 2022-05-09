@@ -127,8 +127,9 @@ function uploadProfileImage($prof, $formats) {
                 $dot = ".png";
                 break;
         }
+        tryPath($prof);
         $_FILES["imgProf"]["name"] = $prof->username . "-ProfilePic" . $dot;
-        move_uploaded_file($_FILES["imgProf"]["tmp_name"], "../../SSpotImages/UserImages/ProfileImages/" . $_FILES["imgProf"]["name"]);
+        move_uploaded_file($_FILES["imgProf"]["tmp_name"], "../../SSpotImages/UserMedia/".$prof->username."-Folder/ProfileImages/" . $_FILES["imgProf"]["name"]);
         return $prof->username . "-ProfilePic" . $dot;
     }
     return false;
@@ -151,8 +152,23 @@ function uploadBannerImage($prof, $formats) {
                 break;
         }
         $_FILES["imgBanner"]["name"] = $prof->username . "-BannerPic" . $dot;
-        move_uploaded_file($_FILES["imgBanner"]["tmp_name"], "../../SSpotImages/UserImages/BannerImages/" . $_FILES["imgBanner"]["name"]);
+        move_uploaded_file($_FILES["imgBanner"]["tmp_name"], "../../SSpotImages/UserMedia/".$prof->username."-Folder/BannerImages/" . $_FILES["imgBanner"]["name"]);
         return $prof->username . "-BannerPic" . $dot;
     }
     return false;
+}
+
+function tryPath($prof) {
+    $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder";
+    if (!is_dir($path)) {
+        mkdir($path);
+    }
+    $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/BannerImages";
+    if (!is_dir($path)) {
+        mkdir($path);
+    }
+    $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/ProfileImages";
+    if (!is_dir($path)) {
+        mkdir($path);
+    }
 }

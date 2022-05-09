@@ -25,8 +25,8 @@ $user = $_SESSION["user"];
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $("header").css("background-image", "url('../../SSpotImages/UserImages/BannerImages/<?= $user->profile->bannerURL?>')");
-                $("#imgprofile").css("background-image", "url('../../SSpotImages/UserImages/ProfileImages/<?= $user->profile->imageURL?>')");
+                $("header").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/BannerImages/<?= $user->profile->bannerURL?>')");
+                $("#imgprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/ProfileImages/<?= $user->profile->imageURL?>')");
             });
         </script>
 
