@@ -16,6 +16,7 @@
 require_once 'Category.php';
 require_once 'Status.php';
 require_once 'Image.php';
+require_once 'Video.php';
 require_once 'Profile.php';
 
 class Post {
@@ -91,6 +92,7 @@ class Post {
                 $p->category = Category::getCategoy($post[5]);
                 $p->status = Status::getStatu($post[6]);
                 $p->images = Image::getImages($post[0]);
+                $p->videos = Video::getVideos($post[0]);
                 $list[] = $p;
             }
         }

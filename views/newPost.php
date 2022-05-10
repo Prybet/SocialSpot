@@ -83,9 +83,10 @@ $cities = City::getAllCities();
                     <div>
                         <select name="city">
                             <option value="-1">-- Ciudad --</option>
-                            <!-- <php foreach ($cities as $city): ?>
-                                <option value="<= $city->id ?>"><= $city->name ?></option>
-                            <php endforeach; ?> -->
+                            
+                            <?php foreach ($cities as $city): ?>
+                                <option value="<?= $city->id ?>"><?= $city->name ?></option>
+                            <?php endforeach; ?>
                         </select>
                         <select>
                             <option>Spots</option>

@@ -31,8 +31,8 @@ class Image {
             return true;
         }
     }
-    
-     public static function getImages($idp) {
+
+    public static function getImages($idp) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM image WHERE post_id = :idp ");
         $sen->bindParam(":idp", $idp);

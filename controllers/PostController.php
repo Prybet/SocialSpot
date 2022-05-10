@@ -57,11 +57,19 @@ function uploadFiles($idp) {
             $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/Post-" . $idp . "Folder";
             $file["name"] = $prof->username . "-Post-" . $idp . "File-" . $id . $dot;
             move_uploaded_file($file["tmp_name"], $path . "/" . $file["name"]);
-            Image::setImage($idp, $file["name"]);
+            insertMedia($dot, $idp, $file["name"]);
             $id++;
         }
     }
     return true;
+}
+
+function insertMedia($dot, $idp, $name) {
+    if ($dot == ".mp4" || $dot == ".mov") {
+        Video::setVideo($idp, $name);
+    } else {
+        Image::setImage($idp, $name);
+    }
 }
 
 function tryPath($prof, $idp) {
