@@ -45,7 +45,7 @@ INSERT INTO region VALUES(null, "Los Ríos", "La región de Los Ríos se desarro
 INSERT INTO region VALUES(null,"Arica-Parinacota", "Esta región se caracteriza por un clima donde predomina la escasez de precipitaciones." , "Chile", 1);
 INSERT INTO region VALUES(null, "Ñuble", "La Región del Ñuble se localiza cercana al límite sur de la zona central, específicamente entre los 36º00' y los 37º12' de latitud sur. Limita al norte con la Región del Maule, al sur con la Región del Biobío, al oeste con el Océano Pacífico y al este con la República Argentina.", "Chile", 1);
 
-/** Provinces of Chile **/
+/** Provinces of chile*/
 
 INSERT INTO province VALUES (NULL, "Iquique", "limita al norte y al este con la provincia del Tamarugal; al sur con la provincia de Tocopilla (región de Antofagasta); y al oeste con el océano Pacífico. La provincia de Iquique está integrada por las comunas de Iquique y Alto Hospicio.",1,1),
 (NULL, "Tamarugal", "El origen de esta provincia de Chile se encuentra en la Ley N°20175, que también crea la región de Arica y Parinacota, mediante la división de la antigua I Región de Tarapacá en 2 provincias, provincia de Iquique y Provincia del Tamarugal.",1,1);
@@ -83,9 +83,9 @@ INSERT INTO province VALUES (NULL, "Arauco", "Limita al norte con la provincia d
 INSERT INTO province VALUES (NULL, "Cautín", "Su población es de 668 560 habitantes. Las ciudades más importantes son Temuco, Villarrica, Lautaro y Nueva Imperial. Dentro de sus economías principales se puede encontrar la forestal, agrícola y ganadera. Su clima es húmedo, lluvioso en invierno y generalmente cálido en verano.",9,1),
 (NULL, "Malleco", "Es una provincia de la República de Chile situada entre los 37º33'S y los 38º55'S, al norte de la Provincia de Cautín, conformando ambas la Región de la Araucanía. La población estimada al 30 de junio de 2005 es de 223 184 habitantes",9,1);
 
-INSERT INTO province VALUES (NULL, "Osorno", "Tiene una superficie de 9223,7 km², y posee una población, al año 2017, de 234 122 habitantes",10,1),
-(NULL, "Chiloé", "está compuesto por la isla Grande de Chiloé y una serie de otras más pequeñas, con una extensión de 9181 km². Está situada en la Región de Los Lagos y su capital es la ciudad de Castro",10,1),
+INSERT INTO province VALUES (NULL, "Chiloé", "está compuesto por la isla Grande de Chiloé y una serie de otras más pequeñas, con una extensión de 9181 km². Está situada en la Región de Los Lagos y su capital es la ciudad de Castro",10,1),
 (NULL, "Llanquihue", "La provincia de Llanquihue se ubica en el centro de la Región de Los Lagos, tiene una superficie de 14 876,4 km² y posee una población de 321 493 habitantes.",10,1),
+(NULL, "Osorno", "Tiene una superficie de 9223,7 km², y posee una población, al año 2017, de 234 122 habitantes",10,1),
 (NULL, "Palena", "Tiene una superficie de 15 301,9 km² y posee una población de 18 349 habitantes según el censo de 2017.",10,1);
 
 INSERT INTO province VALUES (NULL, "Aysén", "Las cumbres de las montañas incluyen el cerro Castillo, de 2,675 m de altura y terreno serrado, ubicado dentro de una reserva natural del mismo nombre.",11,1),
@@ -114,50 +114,84 @@ INSERT INTO province VALUES (NULL, "Diguillín", "Tiene una superficie de 5229,5
 (NULL, "Punilla", "Tiene una superficie de 5202,5 km². Su capital es la ciudad de San Carlos",16,1);
 
 
+/**City**/
 
-/**Cities of Chile**/
-
-INSERT INTO City VALUES (NULL, "Iquique", "es una ciudad-puerto y comuna ubicada en el norte grande de Chile, capital de la provincia homónima y de la Región de Tarapacá.",1,1),
+INSERT INTO city VALUES (NULL, "Iquique", "es una ciudad-puerto y comuna ubicada en el norte grande de Chile, capital de la provincia homónima y de la Región de Tarapacá.",1,1),
 (NULL, "Alto Hospicio", "Es una comuna chilena situada en la Provincia de Iquique, en la Región de Tarapacá, en el Norte Grande de Chile.",1,1),
 (NULL, "Pozo Almonte", "Se dice que el origen del topónimo Pozo Almonte es colonial, aunque también existen ciertos mitos. Era un pueblo de parada por ciertas razones ya que junto a él se encontraban pueblos mineros aledaños.",2,1),
 (NULL, "Camiña", "La comuna de Camiña se encuentra ubicada en la región de Tarapacá, en la precordillera también llamada «la sierra», a lo largo de la quebrada de Tana en la provincia del Tamarugal.",2,1);
 
-INSERT INTO City VALUES (NULL, "Antofagasta", "Antofagasta, también conocida como La Perla del norte, es una ciudad, puerto y comuna del Norte Grande de Chile y es la capital de la provincia y de la región homónima.",3,1),
+INSERT INTO city VALUES (NULL, "Antofagasta", "Antofagasta, también conocida como La Perla del norte, es una ciudad, puerto y comuna del Norte Grande de Chile y es la capital de la provincia y de la región homónima.",3,1),
 (NULL, "Mejillones", "Mejillones es una comuna y ciudad del Norte Grande de Chile, situada a 65 kilómetros al norte de la ciudad de Antofagasta, en la provincia y región del mismo nombre.",3,1),
 (NULL, "Calama", "Se ubica en un área minera y es conocida como una vía de acceso al desierto de Atacama. Justo al norte, está la extensa mina de cobre a tajo abierto de Chuquicamata.",4,1),
 (NULL, "Tocopilla", "Tocopilla se encuentra a 180 km al norte de la ciudad de  Antofagasta, situado en la Región de antofagasta y tiene 24.574 habitantes. se ubica en una estrecha plataforma rodeada por la cordillera de la Costa.",5,1);
 
-INSERT INTO City VALUES (NULL, "Chañaral", "La comuna fue fundada el 26 de octubre de 1833 como Chañaral de las Animas. Está ubicada a 167 Km. de Copiapó en la, Provincia de Chañaral, Región de Atacama.",6,1),
+INSERT INTO city VALUES (NULL, "Chañaral", "La comuna fue fundada el 26 de octubre de 1833 como Chañaral de las Animas. Está ubicada a 167 Km. de Copiapó en la, Provincia de Chañaral, Región de Atacama.",6,1),
 (NULL, "Copiapó", "Es conocida por ser un oasis donde florece el desierto y además, por poseer en su valle la primera exportación de uvas del país, lo que aporta grandes beneficios a este.",7,1),
 (NULL, "Caldera", "Es puerto minero, pesquero y agrícola, ubicado a 75 kilómetros de la ciudad de Copiapó (capital regional). Además Caldera está situada en una zona de interés turístico.",7,1),
 (NULL, "Vallenar", "Es una ciudad y comuna del Norte Chico de Chile, capital de la Provincia de Huasco en la Región de Atacama, ubicada a 147 kilómetros (91 mi) de Copiapó, la capital regional. Se encuentra en el fondo del cajón del Río Huasco y tiene una población aproximada de 51 917 habitantes.",8,1);
 
-INSERT INTO City VALUES (NULL, "Illapel", "Illapel es una comuna de la Provincia de Choapa y se emplaza en la ribera norte y valle del río Illapel, el principal tributario del río Choapa.",9,1),
+INSERT INTO city VALUES (NULL, "Illapel", "Illapel es una comuna de la Provincia de Choapa y se emplaza en la ribera norte y valle del río Illapel, el principal tributario del río Choapa.",9,1),
 (NULL, "Coquimbo", "Limita al oeste con el océano Pacífico, al norte con la comuna de La Serena, al este con la comuna de Andacollo, y al sur con la comuna de Ovalle. Forma parte de una conurbación con la vecina ciudad de La Serena.",10,1),
 (NULL, "Andacollo", "Andacollo es una ciudad y comuna del Norte Chico de Chile ubicada en la provincia de Elqui, en la región de Coquimbo.",10,1),
 (NULL, "Ovalle", "Se encuentra a 412 kilómetros al norte de Santiago y a 86 kilómetros de La Serena, la capital regional.",11,1);
 
-INSERT INTO City VALUES (NULL, "Isla de Pascua", "Es la única comuna que pertenece a la provincia de Isla de Pascua y agrupa a Isla de Pascua y la Isla Salas y Gómez.",12,1),
+INSERT INTO city VALUES (NULL, "Isla de Pascua", "Es la única comuna que pertenece a la provincia de Isla de Pascua y agrupa a Isla de Pascua y la Isla Salas y Gómez.",12,1),
 (NULL, "Los Andes", "La comuna es capital de la provincia homónima y fue fundada como Santa Rosa de Los Andes el 31 de julio de 1791. Tiene una superficie de 1248,3 km² y una población de 66.708 habitantes",13,1),
 (NULL, "Quilpué", "La Comuna de Quilpué tiene una poblacion aproximada de 150 mil habitantes, y es capital de la provincia de Marga-Marga. Con 536,90 km², la comuna de Quilpué es la suma de las unidades territoriales de Quilpué y El Belloto.",14,1),
 (NULL, "La Ligua", "La Ligua es una comuna y ciudad ubicada en la Región de Valparaíso, en la zona central de Chile, capital de la provincia de Petorca. Se ubica 154 km al norte de Santiago, capital del país, y 110 km al norte de Valparaíso, capital regional.",15,1);
 
-INSERT INTO City VALUES (NULL, "Rancagua", "Debido a la gran expansión de la ciudad durante los últimos años, ha llegado a formar junto a Machalí y Gultro la llamada Conurbación Rancagua, que es la octava aglomeración urbana más poblada del país.",16,1),
+INSERT INTO city VALUES (NULL, "Rancagua", "Debido a la gran expansión de la ciudad durante los últimos años, ha llegado a formar junto a Machalí y Gultro la llamada Conurbación Rancagua, que es la octava aglomeración urbana más poblada del país.",16,1),
 (NULL, "La Estrella", "La comuna de La Estrella abarca una superficie de 435 km² y una población de 3.041 habitantes (Censo INE Año 2017), correspondientes a un 0,54 % de la población total de la región y una densidad de 9,70 hab/km². Del total de la población, 1.537 son mujeres y 3.007 son hombres. Un 51,09 % corresponde a población rural y un 48,91 % a población urbana.",17,1),
 (NULL, "Pichilemu", "La playa de Pichilemu es una zona de práctica de surf, específicamente el sector de Punta de Lobos, donde por sus break points se han desarrollado campeonatos con participación y relevancia internacional que han provocado que Pichilemu sea conocida como la capital chilena del surf.",17,1),
 (NULL, "San Fernando", "Es capital de la actual provincia de Colchagua. Entre 1826 y 1976 fue capital de la Provincia de Colchagua y del departamento de San Fernando.",18,1);
 
-INSERT INTO City VALUES (NULL, "Cauquenes", "Se ubica a 355 kilómetros (221 mi) de Santiago y limita al norte con las comunas de Empedrado y San Javier al sur con Cobquecura, Quirihue, Ninhue y San Carlos, al oeste con Chanco y Pelluhue, y al este con Parral y Retiro.",18,1),
+INSERT INTO city VALUES (NULL, "Cauquenes", "Se ubica a 355 kilómetros (221 mi) de Santiago y limita al norte con las comunas de Empedrado y San Javier al sur con Cobquecura, Quirihue, Ninhue y San Carlos, al oeste con Chanco y Pelluhue, y al este con Parral y Retiro.",18,1),
 (NULL, "Curicó", "El área de la ciudad de Curicó alcanza a 1.000 km². Son productos característicos de la ciudad las tortas, frutas, cemento, azúcar, salsa de tomates y vinos de exportación de calidad internacional. Es uno de los centros de servicios más importantes de la zona central y está considerada como la capital agroindustrial de Chile debido a su constante crecimiento económico.",19,1),
 (NULL, "Linares", "La ciudad de Linares recibe su nombre de don Francisco Espinoza Muñoz de la Mata Linares, quien se desempeñaba como Intendente de Concepción al momento de fundarse la villa.",20,1),
 (NULL, "Talca", "Se encuentra 255 kilómetros al sur de la capital Santiago. La ciudad es el corazón de la zona agrícola chilena por excelencia.",21,1);
 
-INSERT INTO City VALUES (NULL, "Arauco", "Es una ciudad y comuna de la zona sur de Chile, ubicada en la provincia homónima en la región del Biobío, a 70 km al sur de Concepción. Su geografía se caracteriza por emplazarse sobre la cuenca del río Carampangue hasta su desembocadura con el océano Pacífico, al costado norponiente de la cordillera de Nahuelbuta.",22,1),
+INSERT INTO city VALUES (NULL, "Arauco", "Es una ciudad y comuna de la zona sur de Chile, ubicada en la provincia homónima en la región del Biobío, a 70 km al sur de Concepción. Su geografía se caracteriza por emplazarse sobre la cuenca del río Carampangue hasta su desembocadura con el océano Pacífico, al costado norponiente de la cordillera de Nahuelbuta.",22,1),
 (NULL, "Los Ángeles", "Los Ángeles es una comuna y ciudad de la zona central de Chile, capital de la provincia de Biobío, en la región homónima. Se encuentra ubicada a 510 kilómetros de Santiago, la capital del país, y a 127 kilómetros de Concepción, la capital regional.",23,1),
 (NULL, "Concepción", "El núcleo urbano de Concepción ejerce un significativo impacto en el comercio nacional al ser parte de la región con más industrialización del país.",24,1),
 (NULL, "Chiguayante", "Su nombre proviene de la toponimia del lugar, conocida por los mapuches como Chiwayantü, palabra en lengua mapuche o mapudungun compuesta de las palabras chiway y antü, cuyo significado es sol entre neblina.",24,1);
 
-INSERT INTO City VALUES (NULL, "Temuco", "La comuna de Temuco cuenta, según el censo de 2017, con una población de 282 415 habitantes, la cual forma junto a Padre Las Casas la conurbación llamada Gran Temuco, conformada en total por 358 541 habitantes, siendo el área metropolitana más poblada del sur del país.",25,1),
+INSERT INTO city VALUES (NULL, "Temuco", "La comuna de Temuco cuenta, según el censo de 2017, con una población de 282 415 habitantes, la cual forma junto a Padre Las Casas la conurbación llamada Gran Temuco, conformada en total por 358 541 habitantes, siendo el área metropolitana más poblada del sur del país.",25,1),
 (NULL, "Villarrica", "Fundada en el año 1552, por el Adelantado Gerónimo de Alderete, esta localidad no ha mantenido una continuidad histórica, debido a que ha sido destruida en varias oportunidades por los conflictos territoriales entre el Estado y el Pueblo Mapuche , fue refundada en dos ocasiones , siendo la última el año 1883 y la definitiva.",25,1),
 (NULL, "Angol", "Se ubica 569 kilómetros al sur de Santiago, capital del país, 148 kilómetros al sureste de Concepción, capital de la Región del Biobío, y 142 kilómetros al norte de Temuco, capital de la Región de La Araucanía.",26,1),
 (NULL, "Purén", "Purén es una ciudad y comuna de la zona sur de Chile ubicada al noroeste de la Provincia de Malleco, en la Región de la Araucanía.",26,1);
+
+INSERT INTO city VALUES (NULL,"Castro","La superficie comunal es de 473 km² y la población total, según el censo de 2017, es de 43 807 habitantes, de los cuales el 77,7 % vive en la ciudad de Castro.",27,1),
+(NULL,"Puerto Montt","Capital de la provincia de Llanquihue y de la Región de Los Lagos. Se encuentra en frente al seno de Reloncaví y posee una población urbana y rural de 245 902 habitantes.",28,1),
+(NULL,"Osorno","Tiene una superficie de 951,3 km² y, según el censo del año 2017, una población de 161 460 habitantes; siendo la decimosexta ciudad más poblada del país, y la segunda ciudad más importante de la Región de Los Lagos, tras la capital regional de Puerto Montt.",29,1),
+(NULL,"Chaitén","Tiene una superficie de 8470,5 km², lo que la convierte en la comuna más grande de la región, de similar tamaño a la Isla Grande de Chiloé. Su población, al año 2017, es de 5071 habitantes.",30,1);
+
+INSERT INTO city VALUES (NULL,"Aysén","Se ubica a orillas del río Aysén, 3 km al interior del fiordo de Aysén. Solo en la ciudad tiene una población estimada de 27 000 habitantes en 2017, transformándola en la segunda ciudad de importancia en la región después de la Capital Regional: Coyhaique.",31,1),
+(NULL,"Cochrane","Tiene una superficie aproximada de 8500 km² y una población estimada de 3.490 habitantes (1.588 mujeres y 1.902 varones), la cual representa el 3% de la población regional.",32,1),
+(NULL,"Coyhaique","Se ubica al oriente de la cordillera de los Andes, en la Patagonia chilena, a una altura media de 310 m s. n. m., en el lugar donde confluyen los ríos Simpson y Coyhaique.",33,1),
+(NULL,"Chile Chico","es una ciudad y comuna de la zona austral de Chile ubicada en la Provincia General Carrera, Región de Aysén del General Carlos Ibáñez del Campo, Chile. La localidad de Chile Chico, que tiene 4865 habitantes (2017), es la capital de la comuna homónima y de la Provincia General Carrera.",34,1);
+
+INSERT INTO city VALUES (NULL,"Cabo de Hornos","creada en 1927, denominada Navarino hasta el año 2001. Pertenece a la provincia Antártica Chilena, la que a su vez forma parte de la Región de Magallanes y de la Antártica Chilena. La comuna debe su nombre al punto geográfico situado dentro de su jurisdicción, denominado de igual forma cabo de Hornos.",35,1),
+(NULL,"Punta Arenas","Es una comuna, ciudad y puerto interoceánico de la Zona Austral de Chile. Es la capital de la Provincia de Magallanes, de la Región de Magallanes y de la Antártica Chilena y, en forma no oficial, de la llamada Patagonia chilena.",36,1),
+(NULL,"Porvenir","Es una ciudad y comuna de la zona austral de Chile, situada en la Provincia de Tierra del Fuego, una de las provincias que componen la Región de Magallanes y de la Antártica Chilena. La ciudad de Porvenir es la capital de la provincia chilena de Tierra del Fuego, y es la ciudad más habitada de la porción chilena de la Isla Grande de Tierra del Fuego.",37,1),
+(NULL,"Puerto Natales"," Es una ciudad y puerto chileno situado en el extremo austral del país, a orillas del Canal Señoret, entre el Golfo Almirante Montt y el Seno Última Esperanza, en la Región de Magallanes y de la Antártica Chilena. Es la capital de la comuna de Natales y de la provincia de Última Esperanza.",38,1);
+
+INSERT INTO city VALUES (NULL,"Colina ","Es una comuna y ciudad chilena ubicada al norte de la Región Metropolitana de Santiago, en la zona central de Chile. Es la capital de la Provincia de Chacabuco. Dentro de la comuna se encuentran localidades como la ciudad de Colina (capital comunal), Chicureo, Las Canteras y Esmeralda.",39,1),
+(NULL,"Puente Alto","Es una comuna y ciudad de Chile, capital de la provincia de Cordillera, perteneciente a la región Metropolitana de Santiago. Además, forma parte de la conurbación urbana del Gran Santiago, ubicándose en el sector suroriente del área urbana.",40,1),
+(NULL,"San Bernardo","Es una comuna y ciudad chilena, ubicada en la zona sur de la conurbación de Santiago. Administrativamente, es capital de la Provincia de Maipo, en la Región Metropolitana de Santiago.",41,1),
+(NULL,"Melipilla"," Es una comuna y ciudad capital de la provincia de Melipilla. Forma parte de la Región Metropolitana de Santiago siendo una importante ciudad satélite de la capital nacional chilena, está situada al suroeste de Santiago de Chile y de la Cordillera de la Costa.",42,1);
+
+INSERT INTO city VALUES (NULL,"La Unión","es una pequeña ciudad de 26 000 habitantes que es parte de la Comuna de La Unión y Capital de la Provincia del Ranco en el territorio sur de la Región de Los Ríos. Está ubicada a 40 km al norte de Osorno y a 80 km al sureste de su Capital Regional —Valdivia.",43,1),
+(NULL,"Río Bueno","Es una comuna chilena de la provincia del Ranco, en la Región de Los Ríos, en la zona sur de Chile. Integra junto con las comunas de Futrono, Lago Ranco, Los Lagos, Paillaco, Panguipulli y La Unión.",43,1),
+(NULL,"Valdivia","Es una comuna y ciudad de la zona sur de Chile, capital de la provincia homónima y de la Región de Los Ríos. Se encuentra a 847,6 km al sur de Santiago, la capital de Chile. Está emplazada en la confluencia de los ríos Calle-Calle, Cau-cau y el río Cruces, y se encuentra a 15 km de la bahía de Corral. Según el censo nacional realizado en 2017 por el Instituto Nacional de Estadísticas de Chile, Valdivia tiene una población de 166 080 habitantes.",44,1),
+(NULL,"Corral ","es una comuna y ciudad de la zona sur de Chile, ubicada en la Región de los Ríos. Su capital, la ciudad y puerto del mismo nombre se ubica entre la bahía de Corral y la desembocadura del río Valdivia, a 15 km de Valdivia, capital regional, comuna de la cual se separó por ley de municipios del 22 de diciembre de 1891.[cita requerida] Es el puerto más antiguo del sur de Chile y el más importante del periodo colonial del país.",44,1);
+
+INSERT INTO city VALUES (NULL,"Arica","es una ciudad, comuna y puerto del Norte Grande de Chile, capital de la provincia homónima y de la región de Arica y Parinacota, ubicada en la frontera septentrional de Chile, a solo 18 kilómetros (11 millas) al sur de la frontera con Perú. Se encuentra en el recodo de la costa occidental de América del Sur conocida como la Curva de Arica, la cual se considera un punto de inflexión del Cono Sur, siendo Arica un punto clave de este último.",45,1),
+(NULL,"Camarones","Es una comuna perteneciente a la Provincia de Arica, en la Región de Arica y Parinacota, en el Norte Grande de Chile. Su municipalidad tiene asiento en el caserío de Cuya, en la ribera sur del río Camarones.",45,1),
+(NULL,"Putre","Está ubicada a 145 km de Arica, en el altiplano andino, siendo una de las localidades más altas de Chile. Tiene una superficie de 5902,5 km² y una población total de 2765 habitantes.",46,1),
+(NULL,"General Lagos","Ubicada en el extremo norte del altiplano chileno, es la comuna más septentrional y la octava menos poblada del país, con una población de 684 habitantes. Su municipalidad tiene asiento en Visviri. Su nombre indígena es Takura.",46,1);
+
+INSERT INTO city VALUES (NULL,"Bulnes","Es una comuna ubicada en la provincia de Diguillín, perteneciente a la Región de Ñuble, en la zona central de Chile. Su capital, al igual que de la provincia, es la ciudad de Bulnes. Se ubica a 25 km de Chillán, capital regional. Limita al norte con la comuna de Chillán Viejo, al sur con la comuna de Pemuco, al este con San Ignacio y al oeste con Quillón.",47,1),
+(NULL,"Chillán","Es una comuna de la zona central de Chile, capital de la Región de Ñuble, ubicada a 403 Km al sur de Santiago. Su área urbana, en conjunto a la de la comuna de Chillán Viejo, conforman la Conurbación Chillán.",47,1),
+(NULL,"Quirihue","Es una ciudad y comuna, capital de la provincia de Itata, Región de Ñuble, en la zona central de Chile. Está situada a unos 72 kilómetros al noroeste de Chillán, a 82 kilómetros al norte de Concepción y a 398 kilómetros al sur de Santiago. Limita al norte con Cauquenes, al oeste con Cobquecura, al sur con Trehuaco y al este con Ninhue.",48,1),
+(NULL,"San Carlos","Es una ciudad y comuna, capital de la provincia de Punilla, Región de Ñuble en Chile. Según el censo de 2017, la comuna de San Carlos posee una población total de 53 024 habitantes. lo que corresponde tanto al área urbana de la ciudad, como a los sectores rurales y semirurales de la misma.",49,1);
