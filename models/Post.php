@@ -27,6 +27,7 @@ class Post {
     var $title;
     var $body;
     var $date;
+    var $time;
     var $category;
     var $status;
     var $hashtags;
@@ -40,15 +41,17 @@ class Post {
 
     public function setPost() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO post VALUES (null, :prof, :title , :body, :time, :cate, 1, null)");
+        $sen = $conn->mysql->prepare("INSERT INTO post VALUES (null, :prof, :title , :body, :date, :time, :cate, 1, null)");
         $sen->bindParam(":prof", $this->profID);
         $sen->bindParam(":title", $this->title);
         $sen->bindParam(":body", $this->body);
-        $time = date("Y-m-d H:i:s");
+        $date = date("Y-m-d",$timestamp = time());
+        $time = date("H:i:s",$timestamp = time());
+        $sen->bindParam(":date", $date);
         $sen->bindParam(":time", $time);
         $sen->bindParam(":cate", $this->category);
         if ($sen->execute()) {
-            $sen = $conn->mysql->prepare("SELECT id FROM post WHERE date = :time");
+            $sen = $conn->mysql->prepare("SELECT id FROM post WHERE time = :time");
             $sen->bindParam(":time", $time);
             if ($sen->execute()) {
                 $res = $sen->fetch();
@@ -69,8 +72,9 @@ class Post {
             $p->title = $res[2];
             $p->body = $res[3];
             $p->date = $res[4];
-            $p->category = Category::getCategoy($res[5]);
-            $p->status = Status::getStatu($res[6]);
+            $p->time = $res[5];
+            $p->category = Category::getCategoy($res[6]);
+            $p->status = Status::getStatu($res[7]);
             $p->images = Image::getImages($res[0]);
         }
         return $p;
@@ -81,6 +85,7 @@ class Post {
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 ");
         if ($sen->execute()) {
             $posts = $sen->fetchAll();
+            $list = array();
             foreach ($posts as $post) {
                 $p = new Post();
                 $p->id = $post[0];
@@ -89,14 +94,40 @@ class Post {
                 $p->title = $post[2];
                 $p->body = $post[3];
                 $p->date = $post[4];
-                $p->category = Category::getCategoy($post[5]);
-                $p->status = Status::getStatu($post[6]);
+                $p->time = $post[5];
+                $p->category = Category::getCategoy($post[6]);
+                $p->status = Status::getStatu($post[7]);
                 $p->images = Image::getImages($post[0]);
                 $p->videos = Video::getVideos($post[0]);
                 $list[] = $p;
             }
         }
         return $list;
+    }
+
+    public static function getPostsForProfile($id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id ");
+        $sen->bindParam(":id", $id);
+        if ($sen->execute()) {
+            $res = $sen->fetchAll();
+            $list = array();
+            foreach ($res as $post) {
+                $p = new Post();
+                $p->id = $post[0];
+                $p->profID = $post[1];
+                $p->title = $post[2];
+                $p->body = $post[3];
+                $p->date = $post[4];
+                $p->time = $post[5];
+                $p->category = Category::getCategoy($post[6]);
+                $p->status = Status::getStatu($post[7]);
+                $p->images = Image::getImages($post[0]);
+                $list[] = $p;
+            }
+            return $list;
+        }
+        
     }
 
 }

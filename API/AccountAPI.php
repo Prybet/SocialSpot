@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user->profile->status = new Status();
             if ($user->setSingIn()) {
                 header("Content-Type: application/json; charset=UTF8");
-                echo json_encode($user->getLogin(), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                echo json_encode($params, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
         default:

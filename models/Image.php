@@ -38,6 +38,7 @@ class Image {
         $sen->bindParam(":idp", $idp);
         if ($sen->execute()) {
             $images = $sen->fetchAll();
+            $list = array();
             foreach ($images as $image) {
                 $im = new Image();
                 $im->id = $image[0];

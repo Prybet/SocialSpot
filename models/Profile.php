@@ -17,6 +17,7 @@
 require_once '../PDO/Connection.php';
 require_once 'User.php';
 require_once 'Status.php';
+require_once 'Post.php';
 
 
 class Profile {
@@ -31,6 +32,8 @@ class Profile {
     var $bannerURL;
     var $city;
     var $status;
+    
+    var $myPosts;
     
     public function __construct() {
         $this->status = new Status();
@@ -71,6 +74,7 @@ class Profile {
             $p->bannerURL = $rs[8];
             $p->city = null;
             $p->status = $p->status->getstatu($rs[10]);
+            $p->myPosts = Post::getPostsForProfile($rs[0]);
             return $p;            
         }
     }

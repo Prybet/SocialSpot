@@ -39,6 +39,7 @@ class Video {
         $sen->bindParam(":idp", $idp);
         if ($sen->execute()) {
             $videos = $sen->fetchAll();
+            $list = array();
             foreach ($videos as $video) {
                 $vid = new Video();
                 $vid->id = $video[0];

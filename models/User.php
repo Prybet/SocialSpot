@@ -65,8 +65,10 @@ class User {
         $sen = $conn->mysql->prepare("INSERT INTO user VALUES (null, :email, :uname, :pass, :prof, 1, 1)");
         $sen->bindParam(":email", $this->email);
         $sen->bindParam(":uname", $this->username);
-        $sen->bindParam(":pass", $this->encriptPass($this->password));
-        $sen->bindParam(":prof", $this->profile->setProfile());
+        $hash = $this->encriptPass($this->password);
+        $sen->bindParam(":pass", $hash);
+        $prof = $this->profile->setProfile();
+        $sen->bindParam(":prof", $prof);
         if ($sen->execute()) {
             return true;
         }
@@ -86,8 +88,9 @@ class User {
         $sen->bindParam(":user", $user);
         if ($sen->execute()) {
             $rs = $sen->fetch();
-            if (!$rs)
+            if (!$rs) {
                 return false;
+            }
             return password_verify($pass, $rs["password"]);
         }
     }
@@ -109,12 +112,12 @@ class User {
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
     }
-    
+
     public static function checkUser($user) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT username FROM user WHERE username like :us");
@@ -122,7 +125,7 @@ class User {
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         }
