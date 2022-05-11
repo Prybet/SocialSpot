@@ -46,17 +46,18 @@ class Recovery {
         }
     }
 
-    public function getData($user) {
+    public static function getData($email) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT user.id, email, user.username, name FROM user inner join profile on user.profile_id = profile.id WHERE email like :email");
-        $sen->bindParam(":email", $user->email);
+        $sen->bindParam(":email", $email);
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
+                $u = new User();
                 $rs = $sen->fetch();
-                $user->id = $rs[0];
-                $user->email = $rs[1];
-                $user->profile->name = $rs[2];
-                return $user;
+                $u->id = $rs[0];
+                $u->email = $rs[1];
+                $u->profile->name = $rs[2];
+                return $u;
             } else {
                 return false;
             }
@@ -64,6 +65,19 @@ class Recovery {
         }
     }
 
+    public static function verifyEmail($email) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT id FROM user WHERE email like :em  AND status_id = 1");
+        $sen->bindParam(":em", $email);
+        if ($sen->execute()) {
+            if ($sen->rowCount() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
     public function getVerify($tkn) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT id, user_id FROM recovery WHERE hash like :tkn AND status_id = 9");

@@ -19,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_POST["submit"] == "recover") {
         $user = $_SESSION["user"];
         $user->email = isset($_POST["email"]) ? $_POST["email"] : "";
-        $recov = new Recovery();
-        if($recov->getData($user)){
-            $user = $recov->getData($user);
+        if(Recovery::verifyEmail($email)){
+            $user = Recovery::getData($user);
         }else{
             $_SESSION["err"] = "El correo electronico no se encuenta en nuestros registros";
             header("Location: ../views/recovery.php");
         }
+        $recov = new Recovery();
         $recov->userId = $user->id;
         $recov->hash = bin2hex(random_bytes(20));
         $link = "http://localhost/SocialSpot/Controllers/RecoveryController.php?token=".$recov->hash;
