@@ -57,7 +57,7 @@ function uploadFiles($idp) {
             $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/Post-" . $idp . "Folder";
             $file["name"] = $prof->username . "-Post-" . $idp . "File-" . $id . $dot;
             move_uploaded_file($file["tmp_name"], $path . "/" . $file["name"]);
-            insertMedia($dot, $idp, $file["name"]);
+            insertMedia($dot, $idp, $prof->username."-Folder/Post-".$idp."Folder/". $file["name"]);
             $id++;
         }
     }

@@ -56,13 +56,13 @@ $style = "grupe4Style.css";
                             <?php foreach ($post->images as $image): ?>
                             
                         <div class="container_img">
-                            <img src="../../SSpotImages/UserMedia/<?= $post->userProfile->username ?>-Folder/Post-<?= $post->id ?>Folder/<?= $image->URL ?>" class="img img_post">
+                            <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img img_post">
                         </div>
                             <?php endforeach; ?>
                             <?php foreach ($post->videos as $video): ?>
                             
                         <div class="container_img">
-                            <img src="../../SSpotImages/UserMedia/<?= $post->userProfile->username ?>-Folder/Post-<?= $post->id ?>Folder/<?= $video->URL ?>" class="img img_post">
+                            <img src="../../SSpotImages/UserMedia/<?= $video->URL ?>" class="img img_post">
                         </div>
                             <?php endforeach; ?>
                         <div class="flex_option">

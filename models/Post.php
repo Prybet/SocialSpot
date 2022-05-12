@@ -126,8 +126,6 @@ class Post {
                 $list[] = $p;
             }
             return $list;
-        }
-        
+        } 
     }
-
 }

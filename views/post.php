@@ -34,7 +34,7 @@ $post = $_SESSION["post"];
                         <?php foreach ($post->images as $image) : ?>
                             <div>
 
-                                <img style="height: 300px" src="../../SSpotImages/UserMedia/<?= $user->username ?>-Folder/Post-<?= $post->id ?>Folder/<?= $image->URL ?>"/><label><3</label><!--esto se saca-->
+                                <img style="height: 300px" src="../../SSpotImages/UserMedia/<?= $image->URL ?>"/><label><3</label><!--esto se saca-->
                                 <label>266</label>
                             </div>
                         <?php endforeach; ?>
