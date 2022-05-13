@@ -128,4 +128,29 @@ class Post {
             return $list;
         } 
     }
+    
+    public static function getTopPosts() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 7 ");
+        if ($sen->execute()) {
+            $posts = $sen->fetchAll();
+            $list = array();
+            foreach ($posts as $post) {
+                $p = new Post();
+                $p->id = $post[0];
+                $p->profID = $post[1];
+                $p->userProfile = Profile::getProfile($post[1]);
+                $p->title = $post[2];
+                $p->body = $post[3];
+                $p->date = $post[4];
+                $p->time = $post[5];
+                $p->category = Category::getCategoy($post[6]);
+                $p->status = Status::getStatu($post[7]);
+                $p->images = Image::getImages($post[0]);
+                $p->videos = Video::getVideos($post[0]);
+                $list[] = $p;
+            }
+        }
+        return $list;
+    }
 }

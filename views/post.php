@@ -33,7 +33,6 @@ $post = $_SESSION["post"];
                     <div class="p">
                         <?php foreach ($post->images as $image) : ?>
                             <div>
-
                                 <img style="height: 300px" src="../../SSpotImages/UserMedia/<?= $image->URL ?>"/><label><3</label><!--esto se saca-->
                                 <label>266</label>
                             </div>
