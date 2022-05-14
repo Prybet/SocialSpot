@@ -33,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $post->profID = $user->profile->id;
             $post->title = $title;
             $post->body = $body;
-            $post->category = $cate;
+            $post->category = new Category();
+            $post->category->id = $cate;
             $idp = $post->setPost();
             if (uploadFiles($idp)) {
                 $_SESSION["post"] = Post::getPost($idp);

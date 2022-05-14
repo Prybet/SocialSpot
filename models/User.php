@@ -82,7 +82,7 @@ class User {
         return password_hash($pass, PASSWORD_DEFAULT, ["cost" => 07]);
     }
 
-    public function verifyPass($user, $pass) {
+    public static function verifyPass($user, $pass) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT password FROM user WHERE username like :user OR email like :user");
         $sen->bindParam(":user", $user);

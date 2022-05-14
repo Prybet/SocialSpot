@@ -7,6 +7,7 @@
  *  soulbroken
  *  Prybet
  */
+$method = $_SERVER["REQUEST_METHOD"];
 require_once '../models/Category.php';
 require_once '../models/Status.php';
 require_once '../models/Image.php';
@@ -18,17 +19,36 @@ $params = json_decode($body);
 
 $list[] = array();
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+if ($method == "GET") {
 
 
     $list = Post::getAllPosts();
 
     header("Content-Type: application/json; charset=UTF8");
     echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-} elseif ($_SERVER["REQUEST_METHOD"] == "PUT") {
-    $list = Post::getTopPosts();
+} elseif ($method == "PUT") {
+    $action = json_decode($body);
 
-    header("Content-Type: application/json; charset=UTF8");
-    echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+    switch ($action) {
+        case "top":
+            $list = Post::getTopPosts();
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
+        case "all":
+            $list = Category::getAllCategories();
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
+        case is_numeric($action):
+            $cate = Category::getCategoy($action);
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode($cate, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
+        default:
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
+    }
 }
 

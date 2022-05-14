@@ -49,7 +49,8 @@ class Post {
         $time = date("H:i:s",$timestamp = time());
         $sen->bindParam(":date", $date);
         $sen->bindParam(":time", $time);
-        $sen->bindParam(":cate", $this->category);
+        $catID = $this->category->id;
+        $sen->bindParam(":cate", $catID);
         if ($sen->execute()) {
             $sen = $conn->mysql->prepare("SELECT id FROM post WHERE time = :time");
             $sen->bindParam(":time", $time);
