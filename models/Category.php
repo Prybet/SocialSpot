@@ -32,7 +32,6 @@ class Category {
         $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 1");
         if ($sen->execute()) {
             $res = $sen->fetchAll();
-            $list[] = array();
             foreach ($res as $cate) {
                 $c = new Category();
                 $c->id = $cate[0];

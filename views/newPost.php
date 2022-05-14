@@ -31,20 +31,22 @@ $cities = City::getAllCities();
                             data: {"id": id, "sub": "category"},
                             dataType: "json",
                         }).done(function (data) {
-                            console.log(data);
-                            $("#catName").empty();
-                            $("#catName").append(data["name"]);
+                            if (data !== null) {
+                                console.log(data);
+                                $("#catName").empty();
+                                $("#catName").append(data["name"]);
 
-                            $("#catDesc").empty();
-                            $("#catDesc").append(data["description"]);
+                                $("#catDesc").empty();
+                                $("#catDesc").append(data["description"]);
 
-                            $("#catImage").empty();
-                            $("#catImage").attr("src", "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"]);
+                                $("#catImage").empty();
+                                $("#catImage").attr("src", "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"]);
 
-                            $("#members").empty();
-                            $("#members").append(data["members"]);
-                            $("#online").empty();
-                            $("#online").append(data["onLine"]);
+                                $("#members").empty();
+                                $("#members").append(data["members"]);
+                                $("#online").empty();
+                                $("#online").append(data["onLine"]);
+                            }
                         });
                     }
                 });
@@ -55,7 +57,7 @@ $cities = City::getAllCities();
                     $(clone).attr("name", "file-" + id);
                     $(clone).attr("id", "row-" + id);
                     $(clone).appendTo("#container");
-                    
+
                     $("input[name=file-0]").val(null);
                 });
             });
@@ -83,7 +85,7 @@ $cities = City::getAllCities();
                     <div>
                         <select name="city">
                             <option value="-1">-- Ciudad --</option>
-                            
+
                             <?php foreach ($cities as $city): ?>
                                 <option value="<?= $city->id ?>"><?= $city->name ?></option>
                             <?php endforeach; ?>
@@ -99,7 +101,7 @@ $cities = City::getAllCities();
                 <div>
                     <input id="row-0" name="file-0" type="file" />
                 </div>
-                
+
                 <div>
                     <input name="check" type="checkbox"><label>Recibir notificaciones de comentarios y respuestas</label>
                 </div>

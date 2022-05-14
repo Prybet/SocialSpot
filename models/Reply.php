@@ -18,6 +18,6 @@ class Reply {
     var $body;
     var $date;
     var $reply;
-    var $user;
+    var $profile;
     var $status;
 }
