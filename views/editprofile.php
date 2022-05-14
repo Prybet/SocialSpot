@@ -50,8 +50,8 @@ $user = $_SESSION["user"];
                         </label>
                         <input id="bann-upload" onchange='' type="file" name="imgProf" style='display: none;' />
                     </div>
+                    <button type="submit" name="submit" value="img" class="btnImg">Cambiar Imagenes</button>
                 </div>
-                <button type="submit" name="submit" value="img" class="btnImg">Cambiar Imagenes</button>
             </form>
         </div> 
         <main class="kl">
@@ -89,6 +89,12 @@ $user = $_SESSION["user"];
                                 </div>
                             </div>
                         </div>
+                        <div class="check">
+                            <div class="check_content">
+                                <input type="checkbox" name="check" class="check_input" value="1" <?php if ($user->profile->check) {echo 'checked="true"';} ?>>
+                                <label class="label_field">Mostrar en perfil</label>
+                            </div>
+                        </div>
                         <div class="asf">
                             <div class="field">
                                 <div>
@@ -109,14 +115,49 @@ $user = $_SESSION["user"];
                                 </div>
                             </div>
                         </div>
-                        <div class="check">
-                            <div class="check_content">
-                                <input type="checkbox" name="check" class="check_input" value="1" <?php if ($user->profile->check) {echo 'checked="true"';} ?>>
-                                <label class="label_field">Mostrar en perfil</label>
+                        <div class="asf">
+                            <div class="asf-conta">
+                                <div>
+                                    <label class="label_field">
+                                        Region
+                                    </label>
+                                </div>
+                                <select class="select">
+                                    <option value="" class="opt">Seleccione una opcion</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="asf">
+                            <div class="asf-conta">
+                                <div>
+                                    <label class="label_field">
+                                        Comuna
+                                    </label>
+                                </div>
+                                <select class="select">
+                                    <option value="" class="opt">Seleccione una opcion</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="asf">
+                            <div class="asf-conta">
+                                <div>
+                                    <label class="label_field">
+                                        Region
+                                    </label>
+                                </div>
+                                <select class="select">
+                                    <option value="" class="opt">Seleccione una opcion</option>
+                                </select>
                             </div>
                         </div>
                         <button type="submit" name="submit" value="edit" class="btn-update">Guardar Cambios</button>
-                        
+                        <div>
+                            <di>
+                                gola
+                            </div>
+
+                        </div>
                     </form>
                 </div>
                 <hr>
@@ -141,7 +182,6 @@ $user = $_SESSION["user"];
                                 <input type="password" name="pass" class="input_field">
                             </div>
                         </div>
-                        
                         <button type="submit" name="submit" value="change" class="btn-updatePass">Cambiar Contraseña</button>
                     </div>
                 </form>

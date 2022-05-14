@@ -1,0 +1,244 @@
+html {
+box-sizing: border-box;
+font-size: 62.5%;
+background-color: var(--darkgraymodern);
+}
+
+body {
+margin: 0 auto;
+}
+
+*,
+*:before,
+*:after {
+box-sizing: inherit;
+}
+
+/* Globales */
+body {
+margin: 0 auto;
+
+}
+
+.pointer {
+cursor: pointer;
+}
+
+.flex {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.size-img {
+width: 2.5rem;
+height: 2.5rem;
+}
+
+.btn-show {
+background-color: var(--black_nav);
+border: none;
+}
+
+label {
+color: var(--orange);
+}
+
+/*---nav--- */
+.qwe {
+width: 100%;
+background-color: red;
+}
+
+nav {
+background-color: var(--black_nav);
+position: fixed;
+top: 0;
+width: 100%;
+display: grid;
+grid-template-columns: 1fr 2fr 1fr;
+height: 6rem;
+padding: 0 18rem;
+}
+
+/* logo */
+.contain_logo {
+width: 100%;
+}
+
+.img_logo {
+height: 5.5em;
+}
+
+/* search */
+.contain_search {
+border-radius: 0.1rem;
+width: 100%;
+}
+
+.conta {
+border: 0.5px solid var(--ligthgray);
+position: relative;
+width: 50rem;
+}
+
+.input_search {
+width: 100%;
+background-color: var(--black);
+border: none;
+padding: 1rem 1rem;
+color: var(--white);
+}
+
+.btn_find {
+background-color: var(--black_nav);
+border: none;
+position: absolute;
+right: 0%;
+margin-top: 0.2rem;
+}
+
+.img_search {
+margin-top: 0.2rem;
+}
+
+scroll-container {
+display: block;
+width: 50rem;
+height: 200px;
+overflow-y: scroll;
+scroll-behavior: smooth;
+background-color: var(--black);
+color: var(--white);
+position: absolute;
+border-radius: 0.1rem;
+visibility: hidden;
+}
+
+/* noti */
+.contain_ico {
+width: 100%;
+/* position: relative; */
+
+}
+
+.contain_noti {
+display: flex;
+justify-content: right;
+width: 100%;
+/* margin-left: 13rem; */
+
+}
+
+.img_noti {
+background-color: var(--black_nav);
+border: none;
+position: relative;
+margin-top: 0.5rem;
+}
+
+.decorate_noti {
+height: 2rem;
+width: 2rem;
+position: absolute;
+transform: rotate(45deg);
+background-color: var(--black);
+margin-top: 0.4rem;
+margin-left: 0.3rem;
+visibility: hidden;
+}
+
+scroll-container-noti {
+display: block;
+width: 35rem;
+height: 200px;
+overflow-y: scroll;
+scroll-behavior: smooth;
+background-color: var(--black);
+color: var(--white);
+position: absolute;
+margin-top: 25rem;
+border-radius: 0.3rem;
+visibility: hidden;
+}
+
+
+.contain_user {
+display: block;
+display: flex;
+justify-content: right;
+width: 100%;
+position: relative;
+font-size: 1.3rem;
+}
+
+.img_user {
+background-color: var(--black_nav);
+border: none;
+position: relative;
+margin-top: 0.5rem;
+}
+
+.lbluser {
+padding-top: 0.5rem;
+padding-left: 0.3rem;
+}
+
+.decorate_user {
+height: 2rem;
+width: 2rem;
+position: absolute;
+transform: rotate(45deg);
+background-color: var(--black);
+margin-top: 5.5rem;
+
+visibility: hidden;
+}
+
+.contain_option {
+width: 15rem;
+height: 170px;
+margin-top: 22rem;
+background-color: var(--black);
+color: var(--white);
+position: absolute;
+visibility: hidden;
+border-radius: 0.5rem;
+
+}
+
+.option {
+margin-top: 0.5rem;
+width: 100%;
+}
+
+.op {
+width: 100%;
+margin: 0.5rem 0;
+}
+
+.line {
+height: 0;
+margin: 0.5rem 0;
+overflow: hidden;
+width: 100%;
+
+border-top: 1px solid var(--orange);
+}
+
+.lbl_c {
+font-size: 1.3rem;
+}
+
+.separation {
+margin-right: 0.5rem;
+}
+
+
+
+.container_spot {
+margin-top: 7rem;
+padding: 0 18rem;
+}
+  
+  

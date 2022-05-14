@@ -1,3 +1,7 @@
+@font-face{
+    font-family: fontTitle;
+    src: url(Satisfy-Regular.ttf);
+}
 html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -30,7 +34,6 @@ span {
     margin: 0;
 }
 
-/** Index **/
 .a {
     font-size: 6rem;
     text-align: center;
@@ -49,7 +52,9 @@ hr {
     border-color: var(--orange);
     background-color: var(--orange);
 }
-
+.error{
+    padding-left: 5rem;
+}
 .log {
     text-align: center;
     font-size: 2rem;
@@ -215,6 +220,7 @@ p {
 .aa {
     font-size: 6rem;
     text-align: center;
+    font-family: fontTitle;
     color: var(--ligthgray);
 }
 

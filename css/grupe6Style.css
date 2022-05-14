@@ -1,0 +1,169 @@
+@font-face{
+    font-family: fontTitle;
+    src: url(Satisfy-Regular.ttf);
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    background-color: var(--darker);
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.no-margin {
+    margin: 0 auto;
+}
+
+/* ------- body ------ */
+.container-grid{
+    display: grid;
+    grid-template-columns: 1.5fr 0fr 1fr;
+}
+.container-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.cont{
+    width: 80%;
+}
+h1{
+    font-size: 6.5rem;
+    color: var(--orange);
+    font-family: fontTitle;
+    text-align: center;
+}
+span{
+    color: var(--ligthgray);
+}
+p{
+    color: var(--ligthgray);
+    font-size: 2rem;
+    text-align: center;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-login{
+    background-color: #ffffff;
+    width: 50%;
+    height: 40vh;
+}
+
+
+hr {
+    margin: 12rem 1rem;
+    border-color: var(--orange);
+    background-color: var(--orange);
+}
+
+
+.container-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login{
+    background-color: var(--black);
+    width: 60%;
+    border-radius: 0.5rem;
+}
+.log {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--orange);
+}
+.field {
+    display: flex;
+    margin-bottom: 2rem;
+}
+.input_field {
+    width: 80%;
+    padding: 1rem;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid var(--orange);
+    background-color: rgba(169, 169, 169, 0);
+    outline: none;
+    padding-bottom: 0.3rem;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+.error{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    display: none;
+}
+.red{
+    color: var(--red);
+    font-size: 1.5rem;
+    width: 80%;
+    margin-bottom: 1rem;
+}
+.input_link {
+    text-align: center;
+    text-decoration: none;
+    color: var(--orange);
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+.btn-login {
+    display: block;
+    /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
+    font-family: var(--fuenteParrafos);
+    color: var(--orange);
+    text-align: center;
+    padding: 1rem 9rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto;
+    border-color: var(--orange);
+    border-radius: 0.6rem;
+    background-color: var(--dark);
+    cursor: pointer;
+}
+
+.btn-singIn {
+    display: block;
+    /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
+    font-family: var(--fuenteParrafos);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 9rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto;
+    border-color: var(--orange);
+    border-radius: 0.6rem;
+    background-color: var(--orange);
+    color: var(--darkgray);
+    cursor: pointer;
+}
+.btn-login:hover {
+    color: var(--black);
+    background-color: var(--orange);
+    border-color: var(--orange);
+    transition: background-color .8s ease;
+}
+
+.btn-singIn:hover {
+    color: var(--orange);
+    background-color: var(--black);
+    border-color: var(--orange);
+    transition: background-color .8s ease;
+}
+
+
+

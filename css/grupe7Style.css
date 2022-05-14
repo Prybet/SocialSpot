@@ -1,0 +1,39 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    background-color: var(--darkgray);
+}
+
+body{
+    margin: 0 auto;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+/* edit banner and profile */
+header {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    /* background-image: url(../img/banner.webp); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.ftprofile {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    background-size: cover;
+    /* background-image: url(../img/perfil.webp); */
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 10rem;
+    border: 0.5rem solid var(--white);
+    
+    left: 30%;
+    margin: -100px 0 0 -100px;
+}

@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($_POST["submit"] == "singin") {
         header("Location: ../views/singin.php");
     } else {
-        header("Location: ../views/index.php");
+        header("Location: ../views/profile.php");//ERA INDEX
     }
     //
 } else {
