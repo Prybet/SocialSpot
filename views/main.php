@@ -12,7 +12,9 @@ $style = "grupe4Style.css";
     <script src="../js/nav.js"></script>
 </head>
 <body>
-    <?php include_once '../nav.php'; ?>
+    <div class="a">
+        <?php include_once '../nav.php'; ?>
+    </div>
     <div class="contain">
         <div class="contain_grid">
             <main>
