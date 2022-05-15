@@ -2,21 +2,32 @@
 <?php
 require_once '../models/User.php';
 require_once '../models/Post.php';
+require_once '../models/Reply.php';
 require_once '../models/Category.php';
 session_start();
 $style = "grupe4Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"];
+
+if ($post == null) {
+    $id = isset($_GET["id"]) ? $_GET["id"] : "";
+    header("Location: ../controllers/postController.php?id=" . $id);
+}
 ?>
 <html>
-    <?php include '../header.php'; ?>
+    <head>
+        <?php include '../header.php'; ?>
+
+        <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/nav.js"></script>
+    </head>
     <body class="no-margin">
         <main class="container">
             <div class="a">
                 <div class="i">
                     <div class="j">
-                        <img height="30px" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL?>"><label>imagen</label>
-                        <label>/<?= $post->category->name?></label>
+                        <img height="30px" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>"><label>imagen</label>
+                        <label>/<?= $post->category->name ?></label>
                         <label class="j">Posted by <p> /<?= $user->username ?></p></label>
                         <label><?= $post->date ?></label>
                         <label>difil</label>
@@ -39,26 +50,39 @@ $post = $_SESSION["post"];
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <form class="b">
+                <form action="../controllers/PostController.php" method="post" class="b">
                     <div>
                         <label>Comentar como <span><?= $user->username ?></span></label>
                     </div>
                     <div>
-                        <textarea placeholder="¿En que estas pensando?"></textarea>
+                        <textarea name="comm" placeholder="¿En que estas pensando?"></textarea>
                     </div>
-                    <button>Comentar</button>
+                    <button type="submit" name="submit" value="comm" >Comentar</button>
                 </form>
                 <hr/>
-                <div class="c">
-                    <div>
+                <?php foreach ($post->replies as $comm) : ?>
+                    <div class="c">
+                        <div>
+                            <img src="../../SSpotImages/UserMedia/<?= $comm->profile->username ?>-Folder/ProfileImages/<?= $comm->profile->imageURL ?>">
+                            <label><?= $comm->profile->username ?></label>
+                            <label><?= $comm->date ?></label>
+                        </div> 
+                        <p><?= $comm->body ?></p>
                         <img src="">
-                        <label>imagen</label>
-                        <label>User123</label>
-                        <label>Hacer 4 h</label>
-                    </div> 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                    <img src="">
-                </div>
+                        <?php foreach ($comm->replies as $reply) : ?>
+                        <p>Respuesta de <?= $reply->profile->username ?> al comentario de <?= $comm->profile->username ?></p>
+                        <div class="c">
+                            <div>
+                                <img src="../../SSpotImages/UserMedia/<?= $reply->profile->username ?>-Folder/ProfileImages/<?= $reply->profile->imageURL ?>">
+                                <label><?= $reply->profile->username ?></label>
+                                <label><?= $reply->date ?></label>
+                            </div> 
+                            <p><?= $reply->body ?></p>
+                            <img src="">
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <div>
                 <form class="descrip">

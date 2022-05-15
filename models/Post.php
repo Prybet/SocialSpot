@@ -18,7 +18,7 @@ require_once 'Status.php';
 require_once 'Image.php';
 require_once 'Video.php';
 require_once 'Profile.php';
-
+require_once 'Reply.php';
 class Post {
 
     var $id;
@@ -77,6 +77,7 @@ class Post {
             $p->category = Category::getCategoy($res[6]);
             $p->status = Status::getStatu($res[7]);
             $p->images = Image::getImages($res[0]);
+            $p->replies = Reply::getRepliesByPostId($res[0]);
         }
         return $p;
     }

@@ -32,8 +32,6 @@ $style = "grupe4Style.css";
                     </div>
                 </div>
                 <?php include_once '../pst.php'; ?>
-                
-                
             </main>
             <div class="conten">
                 <section>

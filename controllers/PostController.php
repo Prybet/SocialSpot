@@ -11,12 +11,17 @@ require_once '../models/User.php';
 require_once '../models/Post.php';
 require_once '../models/Image.php';
 session_start();
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+$method = $_SERVER["REQUEST_METHOD"];
+if ($method == "GET") {
 
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
-    $_SESSION["post"] = Post::getPost($id);
-    header("Location: ../views/post.php");
-} elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($id > 0) {
+        $_SESSION["post"] = Post::getPost($id);
+        header("Location: ../views/post.php");
+    } else {
+        header("Location: ../views/index.php");
+    }
+} elseif ($method == "POST") {
 
     $formats = ["image/jpg", "image/jpeg", "image/gif", "image/png", "video/mp4", "video/mov"];
 
@@ -43,6 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 header("Location: ../views/index.php");
             }
         }
+    } elseif ($_POST["submit"] == "comm") {
+        $user = $_SESSION["user"];
+        if ($user != null) {
+            $comm = isset($_POST["comm"]) ? $_POST["comm"] : "";
+        }
     }
 }
 
@@ -58,7 +68,7 @@ function uploadFiles($idp) {
             $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/Post-" . $idp . "Folder";
             $file["name"] = $prof->username . "-Post-" . $idp . "File-" . $id . $dot;
             move_uploaded_file($file["tmp_name"], $path . "/" . $file["name"]);
-            insertMedia($dot, $idp, $prof->username."-Folder/Post-".$idp."Folder/". $file["name"]);
+            insertMedia($dot, $idp, $prof->username . "-Folder/Post-" . $idp . "Folder/" . $file["name"]);
             $id++;
         }
     }
