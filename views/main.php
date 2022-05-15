@@ -8,9 +8,10 @@ $style = "grupe4Style.css";
 <html>
 <head>
     <?php include_once '../header.php'; ?>
+    <script src="js/nav.js"></script>
 </head>
 <body class="no-margin">
-    <?php include_once '../views/nav.php'; ?>
+    <?php include_once '../nav.php'; ?>
         <main class="container">
             <div class="container_flex">
                 <div class="container_sdf">

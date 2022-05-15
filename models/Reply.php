@@ -20,4 +20,6 @@ class Reply {
     var $reply;
     var $profile;
     var $status;
+    
+    
 }
