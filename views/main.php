@@ -8,11 +8,12 @@ $style = "grupe4Style.css";
 <html>
 <head>
     <?php include_once '../header.php'; ?>
-    <script src="js/nav.js"></script>
+    <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/nav.js"></script>
 </head>
 <body class="no-margin">
     <?php include_once '../nav.php'; ?>
-        <main class="container">
+        <!-- <main class="container">
             <div class="container_flex">
                 <div class="container_sdf">
                     <div class="post">
@@ -132,7 +133,7 @@ $style = "grupe4Style.css";
                     </div>
                 </div>
             </div>
-        </main>
+        </main> -->
     </body>
 
 </html>
