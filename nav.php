@@ -40,7 +40,7 @@
 
             <div class="contain_option" id="conteiner_option">
                 <div class="option flex">
-                    <div class="op flex">
+                    <div class="op flex" id="btn_userr">
                         <img src="../img/user.png" class="separation size-img pointer">
                         <label class="pointer">Ver Perfil</label>
                     </div>

@@ -59,5 +59,8 @@ $(document).ready(function () {
         });
     });
 
-
+    $("#btn_userr").click(function() {
+        $(location).attr('href','profile.php');
+      });
+    
 });

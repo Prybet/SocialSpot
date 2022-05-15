@@ -3,7 +3,8 @@
         <div class="container_p">
             <div class="container_descr">
                 <div class="flex_desc">
-                <div class="img img-post"> <img style="height: 30px" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>"></div>
+                <div class="img img-post"> 
+                    <img style="height: 30px" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>"></div>
                     <label class="label_post l_one"><?= $post->category->name ?></label>
                     <div class="l_two">
                         <label class="label_post_by" >Posted by </label>

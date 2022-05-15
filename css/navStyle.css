@@ -50,6 +50,7 @@ html {
     grid-template-columns: 1fr 2fr 1fr;
     height: 6rem;
     padding: 0 18rem;
+    border-bottom: 1px solid var(--ligthgray);
   }
   
   /* logo */
