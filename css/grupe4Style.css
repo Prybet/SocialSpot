@@ -1,7 +1,8 @@
+
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    background-color: var(--black);
+    background-color: var(--darkgraymodern);
 }
 
 *,
@@ -9,39 +10,53 @@ html {
 *:after {
     box-sizing: inherit;
 }
+body{
+    margin: 0 auto;
+}
 
+/* Globales */
 .no-margin {
     margin: 0 auto;
 }
-
-.container{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    margin: 0 auto;
-}
-.container_flex{
+.flex{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container_sdf{
-    width: 70%;
+
+/* contain */
+.contain{
+    display: flex;
+    justify-content: center;
+    margin-top: 7rem;
+    width: 100%;
+    height: auto;
 }
-/* field upload post */
-.post{
+.contain_grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    margin: 0 18rem;
+    position: relative;
+}
+
+/* upload post  */
+main{
+    margin: 0 3rem;
+}
+.upload{
     background-color: var(--darkgray);
     display: flex;
     justify-content: center;
-    align-items: center;
     border-radius: 0.5rem;
     width: 100%;
     padding: 1rem;
 }
-.post__field{
+.upload__field{
     display: flex;
     width: 95%;
 }
-.post__fiel-input{
+.upload__fiel-input{
     width: 100%;
     margin: 0 auto;
     border: none;
@@ -68,18 +83,20 @@ html {
     margin-right: 1.5rem;
 }
 .img-photo{
-    background-image: url(../img/perfil.webp);
+    background-image: url(../img/PostImage.png);
     width: 4rem;
     height: 3rem;
-    border-radius: 5rem;
+    border-radius: 0.5rem;
     margin-left: 1.5rem;
+    border: 1px solid var(--black);
 }
-.img-point{
-    background-image: url(../img/perfil.webp);
+.img-maps{
+    background-image: url(../img/PostMap.png);
     width: 4rem;
     height: 3rem;
-    border-radius: 2rem;
+    border-radius: 0.5rem;
     margin-left: 1.5rem;
+    border: 1px solid var(--black);
 }
 
 /* field option new, salient, most voted */
@@ -112,108 +129,22 @@ html {
     font-weight: bold;
     cursor: pointer;
 }
-
-
-/* post */
-.container_post{
-    margin-top: 1.5rem;
-    background-color: var(--darkgray);
-    border-radius: 0.5rem;
-    width: 100%;
-    padding: 1rem;
-}
-.contain{
-    display: flex;
-    width: 100%;
-}
-.img-post{
-    background-image: url(../img/perfil.webp);
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 5rem;
-    margin-left: 1.5rem;
-}
-.container_descr{
-    display: grid;
-    grid-template-columns: 0fr 1fr;
-}
-.who{
-    display: flex;
-}
-.flex{
-    position: relative;
-}
-.label_post{
-    margin-top: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-.p_post{
-    margin-top: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-left: 0.2rem;
-    color: var(--orange);
-}
-.l_one{
-    position: absolute;
-    top: 5%;
-    left: 2%;
-}
-.l_two{
-    position: absolute;
-    top: 5%;
-    left: 17%;
-}
-.l_three{
-    position: absolute;
-    top: 5%;
-    left: 40%;
-}
-.l_four{
-    position: absolute;
-    top: 5%;
-    left: 50%;
-}
-.l_five{
-    position: absolute;
-    top: 5%;
-    right: 10%;
-}
-.container_info{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--ligthgray);
-}
-.container_info-descrip{
-    width: 95%;
-}
-.container_img{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.img_post{
-    width: 96%;
-    background-image: url(../img/banner.webp);
-    height: 40vh;
-}
-.flex_option{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-.container_option{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 95%;
+.most_btn:first-of-type{
+    background-color: var(--orange);
+    color: var(--black);
+    border: 1px solid var(--black);
 }
 
 /* descrip */
+.conten{
+    height: 100vh;
+    
+    position: fixed;
+    width: 35rem;
+    right: 0%;
+    margin: 0 18rem;
+}
+
 .qwe{
     width: 80%; 
 }
@@ -285,4 +216,5 @@ a{
 label{
     color: var(--ligthgray);
 }
+
 
