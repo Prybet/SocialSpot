@@ -39,7 +39,10 @@ body{
     margin: 0 18rem;
     position: relative;
 }
-
+.a{
+    position: fixed;
+    z-index: 100;
+}
 /* upload post  */
 main{
     margin: 0 3rem;
