@@ -13,168 +13,199 @@ $categories = Category::getListAllCategories();
 $cities = City::getAllCities();
 ?>
 <html>
-    <head>
-        <?php include_once '../header.php'; ?>
-        <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("select[name=cate]").change(function () {
-                    id = $("select[name=cate]").val();
-                    if (id == -1) {
-                        $("#catName").empty();
-                        $("#catDesc").empty();
-                        $("#catImage").attr("src", "");
-                    } else {
-                        $.ajax({
-                            url: "../Controllers/AjaxController.php",
-                            type: "post",
-                            data: {"id": id, "sub": "category"},
-                            dataType: "json",
-                        }).done(function (data) {
-                            if (data !== null) {
-                                console.log(data);
-                                $("#catName").empty();
-                                $("#catName").append(data["name"]);
+<head>
+    <?php include_once '../header.php'; ?>
+    <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("select[name=cate]").change(function () {
+                id = $("select[name=cate]").val();
+                if (id == -1) {
+                    $("#catName").empty();
+                    $("#catDesc").empty();
+                    $("#catImage").attr("src", "");
+                } else {
+                    $.ajax({
+                        url: "../Controllers/AjaxController.php",
+                        type: "post",
+                        data: {"id": id, "sub": "category"},
+                        dataType: "json",
+                    }).done(function (data) {
+                        if (data !== null) {
+                            console.log(data);
+                            $("#catName").empty();
+                            $("#catName").append(data["name"]);
 
-                                $("#catDesc").empty();
-                                $("#catDesc").append(data["description"]);
+                            $("#catDesc").empty();
+                            $("#catDesc").append(data["description"]);
 
-                                $("#catImage").empty();
-                                $("#catImage").attr("src", "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"]);
+                            $("#catImage").empty();
+                            $("#catImage").attr("src", "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"]);
 
-                                $("#members").empty();
-                                $("#members").append(data["members"]);
-                                $("#online").empty();
-                                $("#online").append(data["onLine"]);
-                            }
-                        });
-                    }
-                });
-                var id = 0;
-                $("#row-" + id).change(function () {
-                    id++;
-                    clone = $("input[name=file-0]").clone();
-                    $(clone).attr("name", "file-" + id);
-                    $(clone).attr("id", "row-" + id);
-                    $(clone).appendTo("#container");
-
-                    $("input[name=file-0]").val(null);
-                });
+                            $("#members").empty();
+                            $("#members").append(data["members"]);
+                            $("#online").empty();
+                            $("#online").append(data["onLine"]);
+                        }
+                    });
+                }
             });
-        </script>
-    </head>
-    <body> 
-        <main class="container no-margin">
-            <form action="../controllers/PostController.php" enctype="multipart/form-data" method="post" class="post">
-                <div>
-                    <label>Crear nuevo Post</label>
-                </div>
-                <select name="cate">
-                    <option value="-1">Elige categoria/deporte</option>
-                    <?php foreach ($categories as $category): ?>
-                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <div>
-                    <input type="text" name="title" placeholder="titilo">
-                </div>
-                <textarea name="body" placeholder="texto(opcional)">Texto</textarea>
-                <div>
-                    <input type="text" name="hashtags"/>
-                    <label>Hashtags separado por coma","</label>
-                    <div>
-                        <select name="city">
-                            <option value="-1">-- Ciudad --</option>
+            var id = 0;
+            $("#row-" + id).change(function () {
+                id++;
+                clone = $("input[name=file-0]").clone();
+                $(clone).attr("name", "file-" + id);
+                $(clone).attr("id", "row-" + id);
+                $(clone).appendTo("#container");
 
-                            <?php foreach ($cities as $city): ?>
-                                <option value="<?= $city->id ?>"><?= $city->name ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <select>
-                            <option>Spots</option>
-                        </select>
+                $("input[name=file-0]").val(null);
+            });
+        });
+    </script>
+    <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/nav.js"></script>
+</head>
+<body> 
+    <div class="a"> 
+        <?php include_once '../nav.php'; ?>
+    </div>
+    <main>
+        
+        <form>
+            <div class="lbl_create">
+                <label>Crear nuevo Post</label>
+            </div>
+            <select name="cate" class="option_cate">
+                <option value="-1">Elige categoria/deporte</option>
+                <?php foreach ($sports as $sport): ?>
+                    <option value="<?= $sport->id ?>"><?= $sport->name ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="contain_post">
+                <div class="contain_post-input">
+                    <div class="contain_input-title">
+                        <input type="text" placeholder="Titulo" class="input_title">
                     </div>
-                </div>
-                <label>Imagenes y Videos</label>
-                <div id="container">
-                </div>
-                <div>
-                    <input id="row-0" name="file-0" type="file" />
-                </div>
-
-                <div>
-                    <input name="check" type="checkbox"><label>Recibir notificaciones de comentarios y respuestas</label>
-                </div>
-                <div>
-                    <button type="submit" name="submit" value="back">Calcelar</button>
-                    <button type="submit" name="submit" value="post">Publicar</button>
-                </div> 
-            </form>
-            <div>
-                <div class="descrip">
-                    <div>
-                        <img id="catImage" src="" style="height: 100px" alt="Imagen de Perfil"/>
-                        <h2 id="catName" >/Name</h2>
+                    <div class="top">
+                        <textarea placeholder="Texto(opcional)" class="textarea"></textarea>
                     </div>
-                    <div>
-                        <label >Categoria/Sport Descripcion</label>
-                        <p id="catDesc">Some description</p>
-                    </div>
-                    <div class="b">
+                    <div class="top">
+                        <div class="contain_lbl-hash">
+                            <label class="lbl-hash">Hashtags separado por coma","</label>
+                        </div>
                         <div>
-                            <div>
-                                <label id="members">0</label>
-                                <div></div>
-                                <label>Miembros</label>
-                            </div>
-                            <div>
-                                <label id="online">0</label>
-                                <div></div>
-                                <label>En linea</label>
-                            </div>
+                            <input type="text" class="input_hash" placeholder="#vidaExtrema, #skate..."/>
                         </div>
                     </div>
-                </div>
-                <div class="c">
-                    <div>
-                        <h2>Reglas de</h2><h2 id="catName"></h2>
-                    </div>
-                    <label>1. Rule 1</label>
-                    <div></div>
-                    <label>2. Rule 2</label>
-                    <div></div>
-                    <label>3. Rule 3</label>
-                    <div></div>
-                    <label>4. Rule 34 </label>
-                </div>
-                <div class="d">
-                    <div>
-                        <label>Ayuda</label>
-                        <a href="#">Acerca De</a>
-                    </div>
-                    <div>
-                        <label>Comunidades</label>
-                        <a href="#">Empleo</a>
-                    </div>
-                    <div class="o">
-                        <label>Temas</label>
-                        <div>                        
-                            <div><a href="#">Blog</a></div>                        
-                            <div><a href="#">Anunciarse</a></div>                        
-                            <div><a href="#">Politica de Privacidad</a></div>        
-                            <div>
-                                <a href="#">Politica de Moderación</a>
-                            </div>
+                    <div class="top">
+                        <div class="contain_dif">
+                            <select class="select">
+                                <option>Difultad</option>
+                            </select>
+                            <select class="select">
+                                <option>Spots</option>
+                            </select>
                         </div>
                     </div>
-                    <div>
-                        <label>SocialStreme Inc 2022</label>
+                    <div class="top">
+                        <label class="lbl_img">Imagenes y Videos</label>
                     </div>
-                    <div>
-                        <label>Todos los derechos Reservados.</label>
+                    <div class="contain_photo">
+                        <input type="file" class="input_file"/>
                     </div>
+                    <div class="contain_noti top">
+                        <input type="checkbox"><label class="lbl_noti">Recibir notificaciones de comentarios y respuestas</label>
+                    </div>
+                    <div class="contain_btn top">
+                        <button type="submit" class="btn_public">Publicar</button>
+                        <button type="submit" class="btn_cancel">Calcelar</button>
+                    </div> 
                 </div>
             </div>
-        </main>
-    </body>
+        </form>
+
+        <div class="container_section">
+            <section class="details_cate">
+                <div class="contain_cate">
+                    <div class="contai">
+                        <div class="contain_img">
+                            <img id="catImage" src="../img/perfil.png" class="img_cate" alt="Imagen de Perfil"/>
+                        </div>
+                        <h2 id="catName" class="cate_name">/Name</h2>
+                    </div>
+                    <div class="contain_descrip">
+                        <label >Categoria/Sport Descripcion</label>
+                        <p id="catDesc">Some description</p>
+                        <div class="contain_follow">
+                            <div class="grid_follow">
+                                <div>
+                                    <div class="flex">
+                                        <label class="lbl_cont">1.3K</label>
+                                    </div>
+                                    <div>
+                                        <label>Miembros</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex">
+                                        <label class="lbl_cont">93</label>
+                                    </div>
+                                    <div>
+                                        <label>En linea</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section_rules">
+                <div class="c">
+                    <div class="h2_rule">
+                        <h2>Reglas de</h2><h2 id="catName"></h2>
+                    </div>
+                    <div class="lbl_rule">
+                        <label>1. Rule 1</label>
+                    </div>
+                    <div class="lbl_rule">
+                        <label>2. Rule 2</label>
+                    </div>
+                    <div class="lbl_rule">
+                        <label>3. Rule 3</label>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="flex-footer flex">
+                    <div class="container_footer">
+                        <div class="footer_grid">
+                            <label>Ayuda</label>
+                            <a href="#">Acerca De</a>
+                        </div>
+                        <div class="footer_grid">
+                            <label>Comunidades</label>
+                            <a href="#">Empleo</a>
+                        </div>
+                        <div class="footer_relleno">
+                            <label>Temas</label>
+                            <div>
+                                <div class="rell"><a href="#" >Blog</a></div>
+                                <div class="rell"><a href="#" >Anunciarse</a></div>
+                                <div class="rell"><a href="#" >Politica de Privacidad</a></div>
+                                <div class="rell"><a href="#" >Politica de Moderación</a></div>
+                            </div>
+                        </div>
+                        <div class="esp">
+                            <label>Naxhinternational Inc 2022</label>
+                        </div>
+                        <div class="esp">
+                            <label>Todos los derechos Reservados.</label>
+                        </div>
+                    </div>
+                </div>
+            </fotter>
+        </div>
+    </main>
+</body>
 </html>

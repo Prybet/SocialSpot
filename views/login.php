@@ -26,13 +26,10 @@ $style = "grupe6Style.css";
         <div class="container-grid">
             <div class="container-flex">
                 <div class="cont">
-                    <h1 class="no-margin">Social<span>Spot</span></h1>
+                <img src="../img/logo.png" class="img_logo pointer" />
                     <p>SocialSpot es más que una red social, te ayuda a compartir
                         todos esos momento de adrenalina con todo el mundo
                     </p>
-                    <div class="flex">
-                        <img src="" class="img-login">        
-                    </div>
                 </div>
             </div>
             <hr>

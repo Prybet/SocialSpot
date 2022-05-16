@@ -73,7 +73,7 @@ $style = "grupe4Style.css";
                                 </div>
                             </div>
                             <div class="esp">
-                                <label>SocialStreme Inc 2022</label>
+                                <label>Naxhinternational Inc 2022</label>
                             </div>
                             <div class="esp">
                                 <label>Todos los derechos Reservados.</label>
