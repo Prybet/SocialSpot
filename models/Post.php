@@ -101,6 +101,7 @@ class Post {
                 $p->status = Status::getStatu($post[7]);
                 $p->images = Image::getImages($post[0]);
                 $p->videos = Video::getVideos($post[0]);
+                $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
             }
         }
