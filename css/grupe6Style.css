@@ -14,9 +14,9 @@ html {
     box-sizing: inherit;
 }
 body{
-    background-image: url(../img/logo.jpg);
+    background-image: url(../img/wallpaperLogin.jpg);
     background-repeat: no-repeat;
-    /* background-position: center center; */
+    background-position: center center;
     background-size: cover; 
 }
 .no-margin {

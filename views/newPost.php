@@ -140,15 +140,15 @@ $cities = City::getAllCities();
                             <div class="grid_follow">
                                 <div>
                                     <div class="flex">
-                                        <label class="lbl_cont">1.3K</label>
+                                        <label class="lbl_cont" id="members">1.3K</label>
                                     </div>
                                     <div>
-                                        <label>Miembros</label>
+                                        <label >Miembros</label>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex">
-                                        <label class="lbl_cont">93</label>
+                                        <label class="lbl_cont" id="online">93</label>
                                     </div>
                                     <div>
                                         <label>En linea</label>

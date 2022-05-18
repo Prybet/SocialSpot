@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
 SocialSpot 2022
 Made by: 
