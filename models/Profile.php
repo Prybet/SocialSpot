@@ -55,7 +55,7 @@ class Profile {
             }
         }
     }
-    
+            
     public static function getProfile($id){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
@@ -66,7 +66,7 @@ class Profile {
             $p->id = $rs[0];
             $p->name = $rs[1];
             $p->username = $rs[2];
-            $p->check = $rs[3];   
+            $p->check = isset($rs[3])==1?true:false;   
             $p->description = $rs[4];
             $p->birthDate = $rs[5];
             $p->entryDate = $rs[6];
@@ -97,6 +97,29 @@ class Profile {
             $this->city = null;
             $this->status = $this->status->getstatu($rs[10]);
             return $this;            
+        }
+    }
+    
+    public static function getProfileForMain($id){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
+        $sen->bindParam(":id", $id);
+        if($sen->execute()){
+            $rs = $sen->fetch();
+            $p = new Profile();
+            $p->id = $rs[0];
+            $p->name = $rs[1];
+            $p->username = $rs[2];
+            $p->check = isset($rs[3])==1?true:false;   
+            $p->description = $rs[4];
+            $p->birthDate = $rs[5];
+            $p->entryDate = $rs[6];
+            $p->imageURL = $rs[7];
+            $p->bannerURL = $rs[8];
+            $p->city = null;
+            $p->status = $p->status->getstatu($rs[10]);
+            $p->myPosts = Post::getPostsForProfile($rs[0]);
+            return $p;            
         }
     }
     

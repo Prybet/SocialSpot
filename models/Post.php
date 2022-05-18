@@ -81,7 +81,7 @@ class Post {
         }
         return $p;
     }
-
+        //Main Posts
     public static function getAllPosts() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 ");
@@ -101,6 +101,7 @@ class Post {
                 $p->status = Status::getStatu($post[7]);
                 $p->images = Image::getImages($post[0]);
                 $p->videos = Video::getVideos($post[0]);
+                $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
             }
         }
@@ -125,6 +126,7 @@ class Post {
                 $p->category = Category::getCategoy($post[6]);
                 $p->status = Status::getStatu($post[7]);
                 $p->images = Image::getImages($post[0]);
+                $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
             }
             return $list;
