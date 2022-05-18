@@ -9,7 +9,6 @@
     
     <link rel="stylesheet" href="../css/navStyle.css">
 
-    <link rel="stylesheet" href="../css/pst.css">
 
     <link rel="preload" href="../css/fontColor.css" as="style">
     <link rel="stylesheet" href="../css/fontColor.css">

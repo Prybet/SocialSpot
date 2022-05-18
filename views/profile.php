@@ -30,6 +30,23 @@ $user = $_SESSION["user"];
     </script>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/nav.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $("#btn_post-profile").click(function(){
+                    $(".contain_modal-profile").css({
+                    "pointer-events": "auto",
+                    "opacity" : "1"
+                    });
+                });
+                $("#btn_cancel").click(function(){
+                    $(".contain_modal-profile").css({
+                    "pointer-events": "none",
+                    "opacity" : "0"
+                    });
+                });
+
+            })
+        </script>
 </head>
 
 <body>
@@ -40,7 +57,7 @@ $user = $_SESSION["user"];
         <div class="ftprofile">
 
         </div>
-        <button class="btn_editar">Editar Perfil</button>
+        <button class="btn_editar" id="btn_editar">Editar Perfil</button>
     </header>
     <div class="contain-info-profile">
        <div class="name_user">
@@ -100,7 +117,7 @@ $user = $_SESSION["user"];
                                 </div>
                                 <label>difil</label>
                                 <label class="l_four">hora</label>
-                                <div class="l_five img"></div>
+                                <div class="l_five img" id="btn_post-profile"></div>
                             </div>
                         </div>
                     </div>
@@ -108,7 +125,7 @@ $user = $_SESSION["user"];
                     <div class="container_info">
                         <div class="container_info-descrip">
                             <h2>Mi primer Post</h2>
-                            <p>Aca se escribe una wea?</p>
+                            <p>Aca se escribe</p>
                         </div>
                     </div>
 
@@ -172,6 +189,21 @@ $user = $_SESSION["user"];
             </div>
         </div> 
     </div>
-        
+    <div class="contain_modal-profile">
+        <div class="contain_report">
+            <div>       
+                <div class="contain_btn-profile">
+                    <button class="btn" id="btn_report">Eliminar Publicación</button>
+                </div>
+                <div class="contain_btn-profile">
+                    <button class="btn" id="btn_report">Editar Publicacion</button>
+                </div>
+                <div class="contain_btn-profile">
+                    <button class="btn" id="btn_report">Cancelar</button>
+                </div>
+            </div> 
+        </div>
+    </div> 
+    
 </body>
 </html>

@@ -180,7 +180,6 @@ html {
     transform: rotate(45deg);
     background-color: var(--black);
     margin-top: 5.5rem;
-  
     visibility: hidden;
   }
   
@@ -191,11 +190,13 @@ html {
     background-color: var(--black);
     color: var(--white);
     position: absolute;
-    visibility: hidden;
     border-radius: 0.5rem;
-  
+    visibility: hidden;
   }
-  
+
+  #checkbox_menu:checked ~ .contain_option{
+    visibility: visible;
+  }
   .option {
     margin-top: 0.5rem;
     width: 100%;

@@ -31,14 +31,15 @@
              <p>1Some text some text some text some text..</p>
         </scroll-container-noti>
 
+        
         <div class="contain_user btn-show flex">
-            <button class="img_user flex" id="btn_user">
+            <div class="img_user flex" id="btn_user" for="checkbox_menu">
                 <img src="../img/person.png" class="size-img img-user pointer" />
-                <label class="lbluser pointer">Usuario</label>
-                <div class="decorate_user"></div>
-            </button>
-
-            <div class="contain_option" id="conteiner_option">
+                <div class="lbluser pointer">Usuario</div>
+                <div class="decorate_user "></div>
+            </div>
+            
+            <div class="contain_option " id="conteiner_option">
                 <div class="option flex">
                     <div class="op flex" id="btn_userr">
                         <img src="../img/user.png" class="separation size-img pointer">

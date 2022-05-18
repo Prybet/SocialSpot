@@ -95,8 +95,8 @@ $user = $_SESSION["user"];
                         </div>
                         <div class="check">
                             <div class="check_content">
-                                <input type="checkbox" name="check" class="check_input" value="1" ><!-- a la derecha de value -->
-                                <label class="label_field">Mostrar en perfil</label>
+                                <input type="checkbox" name="check" class="check_input" value="1" id="check"><!-- a la derecha de value -->
+                                <label class="label_field" for="check">Mostrar en perfil</label>
                             </div>
                         </div>
                         <div class="asf">
@@ -157,7 +157,7 @@ $user = $_SESSION["user"];
                         </div>
                         <button type="submit" name="submit" value="edit" class="btn-update">Guardar Cambios</button>
                         <div class="contain_drop">
-                            <button type="submit" id="" name="submit" value="edit" class="btn-drop">Eliminar Cuenta</button>                        
+                            <div id="btn_delete" name="submit" value="edit" class="btn-drop">Eliminar Cuenta</div>                        
                         </div>
                     </form>
                 </div>
@@ -188,6 +188,20 @@ $user = $_SESSION["user"];
                 </form>
             </div>
         </main>
+        <div class="contain_modal-profile">
+            <div class="contain_mod">
+               <div>
+                    <h2 class="lbl_h2">¿Esta seguro de eliminar su cuenta?</h2>
+                    
+                    <div class="contain_btn-profile" onclick="">
+                        <button class="btn">Aceptar</button>
+                    </div>
+                    <div class="contain_btn-profile">
+                        <button class="btn" id="btn_cancel">Cancelar</button>
+                    </div>
+               </div> 
+            </div>
+        </div>
         <?php include_once '../footer.php'; ?>
     </body>
 </html>
