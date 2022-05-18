@@ -54,7 +54,7 @@ INSERT INTO region VALUES(null, "Magallanes y Antártica Chilena", "La Región d
 INSERT INTO region VALUES(null,"Metropolitana", "La Región Metropolitana (RM) es la única región mediterránea y la segunda más pequeña del país." , "Chile", 1);
 INSERT INTO region VALUES(null, "Los Ríos", "La región de Los Ríos se desarrolla entre los 39°16' y los 40°41' de latitud Sur, y desde 71°35' de longitud Oeste, hasta el Océano Pacífico. Comprende una superficie total de 18.429 kilómetros cuadrados, dividida administrativamente en dos grandes provincias; Valdivia y la provincia del Ranco.", "Chile", 1);
 INSERT INTO region VALUES(null,"Arica-Parinacota", "Esta región se caracteriza por un clima donde predomina la escasez de precipitaciones." , "Chile", 1);
-INSERT INTO region VALUES(null, "Ñuble", "La Región del Ñuble se localiza cercana al límite sur de la zona central, específicamente entre los 36º00' y los 37º12' de latitud sur. Limita al norte con la Región del Maule, al sur con la Región del Biobío, al oeste con el Océano Pacífico y al este con la República Argentina.", "Chile", 1);
+INSERT INTO region VALUES(null, "Ñuble", "La Región del Ñuble se localiza cercana al límite sur de la zona central, específicamente entre los 36º00 y los 37º12' de latitud sur. Limita al norte con la Región del Maule, al sur con la Región del Biobío, al oeste con el Océano Pacífico y al este con la República Argentina.", "Chile", 1);
 
 /** Provinces of chile*/
 
