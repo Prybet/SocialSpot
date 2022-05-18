@@ -10,11 +10,32 @@ $style = "grupe4Style.css";
         <?php include_once '../header.php'; ?>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/nav.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#btn_report").click(function(){
+                    $(".contain_modal-profile").css({
+                    "pointer-events": "none",
+                    "opacity" : "0"
+                    });
+                    $(".contain_modal-report").css({
+                    "pointer-events": "auto",
+                    "opacity" : "1"
+                    });
+                });
+                $("#btn_cancel").click(function(){
+                    $(".contain_modal-profile").css({
+                    "pointer-events": "none",
+                    "opacity" : "0"
+                    });
+                });
+
+            })
+        </script>
     </head>
     <body>
         <div class="a">
             <?php include_once '../nav.php'; ?>
-        </div>
+        </div>  
         <div class="contain">
             <div class="contain_grid">
                 <main>
@@ -84,10 +105,54 @@ $style = "grupe4Style.css";
                                 </div>
                             </div>
                         </div>
-                        </fotter>
+                    </fotter>
                 </div>
             </div> 
         </div>
+        
+        <div class="contain_modal-profile">
+            <div class="contain_mod">
+                <div>            
+                    <div class="contain_btn-profile">
+                        <button class="btn" id="btn_report">Reportar</button>
+                    </div>
+                    <div class="contain_btn-profile">
+                        <button class="btn">Dejar de seguir</button>
+                    </div>
+                    <div class="contain_btn-profile">
+                        <button class="btn">Ir a la publicacion</button>
+                    </div>
+                    <div class="contain_btn-profile">
+                        <button class="btn" id="btn_cancel">Cancelar</button>
+                    </div>
+                </div> 
+            </div>
+        </div> 
+
+        <div class="contain_modal-report">
+            <div class="contain_report">
+                <div>
+                    <div class="center">
+                        <label >
+                            ¿Por que quieres reportar esta publicacion?
+                        </label>
+                    </div>
+                    <div class="center">
+                        <input type="checkbox">
+                        <label>Contenido molestoso<label>
+                    </div>  
+                    <div class="center">
+                        <label>Escriba su molestia de la publicacion<label>
+                        <div class>
+                            <input type="text" placeholder="(opcional)" class="upload__fiel-input input_report">
+                        </div>
+                    </div>          
+                    <div class="contain_btn-profile">
+                        <button class="btn" id="btn_report">Reportar</button>
+                    </div>
+                </div> 
+            </div>
+        </div> 
     </body>
 
 </html>

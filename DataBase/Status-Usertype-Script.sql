@@ -24,8 +24,18 @@ INSERT INTO usertype VALUES(null, "Admin",1);
 
 /** Categories **/
 
-INSERT INTO category VALUES (null, "Skate", "El skateboarding es un deporte que se basa en la propulsión con un skate –elemento compuesto por una tabla de madera, ejes, rodamientos y ruedas- a la vez que se realizan distintos trucos o maniobras", "Skate-ProfilePic.jpg", "Skate-BannerPic.jpg",1);
+INSERT INTO category VALUES (null, "Skateboarding", "El skateboarding es un deporte que se basa en la propulsión con un skate –elemento compuesto por una tabla de madera, ejes, rodamientos y ruedas- a la vez que se realizan distintos trucos o maniobras", "Skate-ProfilePic.jpg", "Skate-BannerPic.jpg",1);
 INSERT INTO category VALUES (null, "Ciclismo", "El ciclismo es un deporte en el que se utiliza una bicicleta​ para recorrer circuitos al aire libre o en pista cubierta y que engloba diferentes especialidades.", "Ciclism-ProfilePic.jpg", "Ciclism-BannerPic.jpg",1);
+INSERT INTO category VALUES (null, "Mountain Bike", "La bicicleta de montaña es un tipo de bicicleta diseñada para viajes por la montaña o el campo. Se caracteriza por componentes más resistentes a los impactos del terreno ", "mountainbikeP.jpg", "mountainbikeB.jpg");
+INSERT INTO category VALUES (null, "Downhill Longboard", "El downhill es la modalidad más peligrosa de longboard. Consiste en bajar una cuesta, normalmente una carretera de curvas, a toda velocidad con tu tabla de longboard", "downhilllongboardP.jpg", "downhilllongboardB.jpg");
+INSERT INTO category VALUES (null, "Inline Downhill", "Esta categoría es una  prueba de patinaje en descenso, se caracteriza por patines de velocidad, bajando en línea recta a toda velocidad", "inlinedownhillP.jpg", "inlinedownhillB.jpg");
+INSERT INTO category VALUES (null, "Bmx", "La categoría se hace a travez de una bicicleta ligera, que permite sostenerlas en el aire, haciendo diferentes trucos o freestyle", "bmxP.jpg", "bmxB.jpg");
+INSERT INTO category VALUES (null, "Scooter", "Scooter tambien llamado monopatín, consiste en una plataforma alargada sobre dos ruedas en línea y una barra de dirección, con la que se deslizan los patinadores tras impulsarse con un pie contra el suelo", "scooterP.jpg", "scooterB.jpg"); 
+INSERT INTO category VALUES (null, "Skate Cruiser", "Estás suelen ser de ruedas anchas y más suaves, permitiendo ser más practica, ágiles, rápidas y de gran agarre", "cruiseP.jpg", "cruiseB.jpg");
+INSERT INTO category VALUES (null, "Longboard"," Se utilizan comúnmente para bajar cuestas, en carreras que se llevan a cabo en todo el mundo. La forma de la tabla es larga, tiene ruedas anchas y largas", "longboardP.jpg", "longboardB.jpg");
+INSERT INTO category VALUES (null, "Patines", "Son unos paratos deportivos o de entretenimiento que  consiste en una plataforma ajustable a la suela del calzado o una bota con esta plataforma adherida, permitiendo hacer trucos en el aire", "patinesP.png", "patinesB.png");
+INSERT INTO category VALUES (null, "Bike Thriathlon", "Estas son similares a una bicicleta de carretera, pero en ella se busca una posición muy aerodinámica, la cual gana potencia o velocidad, reduciendo el esfuerzo.", "thriathlonP.jpg", "thriathlonB.jpg");
+INSERT INTO category VALUES (null, "Cross Country", "Esta categoría son especialidad más común del ciclismo de montaña, aunque menos difundido que el descenso de montaña ya que es más difícil de televisar. Es la modalidad más extendida y popular.", "crosscountryP.jpg", "crosscountryB.jpg");
 
 /** Regions of Chile **/
 INSERT INTO region VALUES(null,"Tarapacá", "se ubica en el norte del país, a una distancia superior a 1.800 kilómetros de la capital de Chile." , "Chile", 1);

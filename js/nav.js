@@ -5,7 +5,10 @@
  *  soulbroken
  *  Prybet
  */
+
 $(document).ready(function () {
+    const containUser = document.querySelector("#btn_user");
+
     $("#search").click(function () {
         $("scroll-container").css({
             "visibility": "visible"
@@ -41,6 +44,7 @@ $(document).ready(function () {
         });
     });
 
+
     $("#btn_user").click(function () {
         $(".contain_option").css({
             "visibility": "visible"
@@ -51,6 +55,7 @@ $(document).ready(function () {
     });
 
     $("#btn_user").focusout(function () {
+        
         $(".contain_option").css({
             "visibility": "hidden"
         });
@@ -59,8 +64,33 @@ $(document).ready(function () {
         });
     });
 
-    $("#btn_userr").click(function() {
-        $(location).attr('href','profile.php');
-      });
+
+
+    $("#btn_delete").click(function () {
+        $(".contain_modal-profile").css({
+            "pointer-events": "auto",
+            "opacity": "1"
+        });
+    });
+
+
+    $("#btn_editar").click(function () {
+        window.location.href = "http://localhost/SocialSpot/views/editProfile.php";
+    });
+
+    $("#btn_more").click(function () {
+        $(".contain_modal-profile").css({
+            "pointer-events": "auto",
+            "opacity": "1"
+        });
+    });
+
+    $("#btn_user").click(function (e) {
+        e.stopPropagation();
+        $(".contain_option").toggleClass("ocultarContainOption")
+
+    });
     
+
+     
 });

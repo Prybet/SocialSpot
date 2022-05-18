@@ -12,7 +12,7 @@
                     </div>
                     <label>difil</label>
                     <label class="l_four"><?= $post->date ?></label>
-                    <div class="l_five img"></div>
+                    <div class="l_five img" id="btn_more"></div>
                 </div>
             </div>
         </div>
@@ -49,4 +49,4 @@
             </div>
         </div>             
     </div>
-<?php endforeach; ?>  
+<?php endforeach; ?> 

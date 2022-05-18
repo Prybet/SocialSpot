@@ -77,9 +77,9 @@ $cities = City::getAllCities();
             </div>
             <select name="cate" class="option_cate">
                 <option value="-1">Elige categoria/deporte</option>
-                <?php foreach ($sports as $sport): ?>
-                    <option value="<?= $sport->id ?>"><?= $sport->name ?></option>
-                <?php endforeach; ?>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
+                    <?php endforeach; ?>
             </select>
             <div class="contain_post">
                 <div class="contain_post-input">
