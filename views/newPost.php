@@ -40,7 +40,7 @@ $cities = City::getAllCities();
                             $("#catDesc").append(data["description"]);
 
                             $("#catImage").empty();
-                            $("#catImage").attr("src", "../../SSpotImages/CategoryImages/SportImages/ProfileImages/" + data["imageURL"]);
+                            $("#catImage").attr("src", "../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/" + data["imageURL"]);
 
                             $("#members").empty();
                             $("#members").append(data["members"]);
