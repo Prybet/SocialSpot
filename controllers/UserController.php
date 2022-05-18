@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Edit Account
     } elseif ($_POST["submit"] == "edit") {
         $name = isset($_POST["name"]) ? $_POST["name"] : "";
-        $check = $_POST["check"];
+        $check = isset($_POST["check"]) ? $_POST["check"] : false;
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
         $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
 

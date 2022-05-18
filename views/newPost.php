@@ -71,30 +71,30 @@ $cities = City::getAllCities();
     </div>
     <main>
         
-        <form>
+        <form action="../controllers/PostController.php" enctype="multipart/form-data" method="post">
             <div class="lbl_create">
                 <label>Crear nuevo Post</label>
             </div>
             <select name="cate" class="option_cate">
                 <option value="-1">Elige categoria/deporte</option>
-                <?php foreach ($sports as $sport): ?>
-                    <option value="<?= $sport->id ?>"><?= $sport->name ?></option>
-                <?php endforeach; ?>
+                <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
+                    <?php endforeach; ?>
             </select>
             <div class="contain_post">
                 <div class="contain_post-input">
                     <div class="contain_input-title">
-                        <input type="text" placeholder="Titulo" class="input_title">
+                        <input type="text" name="title" placeholder="Titulo" class="input_title">
                     </div>
                     <div class="top">
-                        <textarea placeholder="Texto(opcional)" class="textarea"></textarea>
+                        <textarea name="body" placeholder="Texto(opcional)" class="textarea"></textarea>
                     </div>
                     <div class="top">
                         <div class="contain_lbl-hash">
                             <label class="lbl-hash">Hashtags separado por coma","</label>
                         </div>
                         <div>
-                            <input type="text" class="input_hash" placeholder="#vidaExtrema, #skate..."/>
+                            <input type="text" name="hashtags" class="input_hash" placeholder="#vidaExtrema, #skate..."/>
                         </div>
                     </div>
                     <div class="top">
@@ -110,15 +110,18 @@ $cities = City::getAllCities();
                     <div class="top">
                         <label class="lbl_img">Imagenes y Videos</label>
                     </div>
+                    <div id="container" class="contain_photo">
+                        
+                    </div>
                     <div class="contain_photo">
-                        <input type="file" class="input_file"/>
+                        <input id="row-0" name="file-0" type="file" class="input_file"/>
                     </div>
                     <div class="contain_noti top">
                         <input type="checkbox"><label class="lbl_noti">Recibir notificaciones de comentarios y respuestas</label>
                     </div>
                     <div class="contain_btn top">
-                        <button type="submit" class="btn_public">Publicar</button>
-                        <button type="submit" class="btn_cancel">Calcelar</button>
+                        <button type="submit" name="submit" value="post" class="btn_public">Publicar</button>
+                        <button type="submit" name="submit" value="back" class="btn_cancel">Calcelar</button>
                     </div> 
                 </div>
             </div>

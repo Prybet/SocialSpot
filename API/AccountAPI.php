@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             break;
         case $sub > 0:
+            //Edit user
             if ($user->verifyPass($params->username, $params->password)) {
                 $user->id = $params->id;
                 $user->username = $params->username;
