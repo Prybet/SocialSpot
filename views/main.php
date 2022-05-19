@@ -29,7 +29,7 @@ $style = "grupe4Style.css";
                     });
                 });
 
-            });
+            })
         </script>
     </head>
     <body>
@@ -50,7 +50,6 @@ $style = "grupe4Style.css";
                     <div class="post_most">
                         <div class="most most-grid">
                             <button class="most_btn">Mas nuevos</button>
-                            <button class="most_btn">Destacado</button>
                             <button class="most_btn">Mas votado</button>
                         </div>
                     </div>
@@ -61,63 +60,22 @@ $style = "grupe4Style.css";
                     ?>
                 </main>
                 <div class="contain_popular">
-                    <section class="contain_popular-fixed">
-                        <div class="contain_pupular-content">
-                            <h2 class="descrip_h2 no-margin">Deportes populares:</h2>
-                            <div class="descrip_sport">
-                                <div class="contain_lbl-pupular">
-                                    <label class="descrip_label"><span>1. </span>Skate</label>
-                                </div>
-                                <div class="flex">
-                                    <button class="btn_popular-cate">Unirse</button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-        
-        <!-- <div class="contain">
-            <div class="contain_grid">
-                <main>
-                    <div class="post_most">
-                        <div class="most most-grid">
-                            <button class="most_btn">Mas nuevos</button>
-                            <button class="most_btn">Destacado</button>
-                            <button class="most_btn">Mas votado</button>
-                        </div>
-                    </div>
-                    <?php
-                    foreach ($allPosts as $post):
-                        include '../item.php';
-                    endforeach;
-                    ?>  
-                </main>
-                <div class="conten">
-                    <section>
-                        <div class="flex">
-                            <div class="qwe">
-                                <div class="container__descrip">
-                                    <div class="descrip">
-                                        <h2 class="descrip_h2 no-margin">Deportes populares:</h2>
-                                        <div class="descrip_sport">
-                                            <label class="descrip_label">1. Skate</label>
-                                            <button class="descrip_btn">Unirse</button>
-                                        </div>
+                    <div class="t">
+                        <section class="contain_popular-fixed">
+                            <div class="contain_pupular-content">
+                                <h2 class="descrip_h2 no-margin">Deportes populares:</h2>
+                                <div class="descrip_sport">
+                                    <div class="contain_lbl-pupular">
+                                        <label class="descrip_label"><span>1. </span>Skate</label>
                                     </div>
-
+                                    <div class="flex">
+                                        <button class="btn_popular-cate">Unirse</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <footer>
-                        <div class="flex-footer flex">
+                            
+                        </section>
+                        <footer class="flex-footer">
                             <div class="container_footer">
                                 <div class="footer_grid">
                                     <label>Ayuda</label>
@@ -143,13 +101,16 @@ $style = "grupe4Style.css";
                                     <label>Todos los derechos Reservados.</label>
                                 </div>
                             </div>
-                        </div>
-                    </fotter>
+                        </fotter>
+                    </div>
                 </div>
-            </div> 
-        </div> -->
+            </div>
+        </div>
+
+
+
         
-        <div class="contain_modal-profile">
+        <!-- <div class="contain_modal-profile">
             <div class="contain_mod">
                 <div>            
                     <div class="contain_btn-profile">
@@ -190,7 +151,7 @@ $style = "grupe4Style.css";
                         <button class="btn" id="btn_report">Reportar</button>
                     </div>
                 </div> 
-            </div>
+            </div> -->
         </div> 
     </body>
 
