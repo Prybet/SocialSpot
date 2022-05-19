@@ -7,24 +7,33 @@
  */
 
 $(document).ready(function () {
-    const containUser = document.querySelector("#btn_user");
+    const containUser = document.querySelector("#haa");
 
     $("#search").click(function () {
+        $("#scroll").removeClass("ocultar");
+    });
+    $("#aa").click(function(){
         $("scroll-container").css({
-            "visibility": "visible"
+            "visibility": "hidden"
         });
         $(".decorate_found").css({
-            "visibility": "visible"
+            "visibility": "hidden"
         });
     });
+    
     $("#search").focusout(function () {
-        $("scroll-container").css({
-            "visibility": "hidden"
-        });
-        $(".decorate_found").css({
-            "visibility": "hidden"
-        });
+        if($("#btn").focus()){
+            console.log("btn clikiado");
+        }else{
+            $("#scroll").addClass("ocultar");
+        }
+        
+        
     });
+
+
+
+
 
     $("#btn_noti").click(function () {
         $("scroll-container-noti").css({

@@ -49,7 +49,7 @@ html {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     height: 6rem;
-    padding: 0 18rem;
+    padding: 0 30rem;
     border-bottom: 1px solid var(--ligthgray);
   }
   
@@ -57,10 +57,13 @@ html {
   .contain_logo {
     width: 100%;
   }
-  
+  .a_logo{
+    margin: 0 auto;
+  }
   .img_logo {
     height: 5.5em;
   }
+  
   
   /* search */
   .contain_search {
@@ -104,8 +107,12 @@ html {
     color: var(--white);
     position: absolute;
     border-radius: 0.1rem;
+    
+  }
+  .ocultar{
     visibility: hidden;
   }
+
   
   /* noti */
   .contain_ico {
@@ -117,7 +124,7 @@ html {
     display: flex;
     justify-content: right;
     width: 100%;
-  
+    margin-left: 8rem;
   }
   
   .img_noti {
@@ -160,17 +167,17 @@ html {
     width: 100%;
     position: relative;
     font-size: 1.3rem;
+    padding-top: 0.3rem;
   }
   
   .img_user {
-    background-color: var(--black_nav);
     border: none;
     position: relative;
-    margin-top: 0.5rem;
   }
   .lbluser {
     padding-top: 0.5rem;
     margin: 0;
+    color: var(--orange);
   }
   
   .decorate_user {

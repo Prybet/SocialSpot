@@ -23,29 +23,34 @@ body{
     justify-content: center;
     align-items: center;
 }
-
-/* contain */
-.contain{
-    display: flex;
-    justify-content: center;
-    margin-top: 7rem;
-    width: 100%;
-    height: auto;
-}
-.contain_grid{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    width: 100%;
-    margin: 0 18rem;
-    position: relative;
-}
 .a{
     position: fixed;
     z-index: 100;
 }
-/* upload post  */
-main{
-    margin: 0 3rem;
+
+p{
+    font-size: 5rem;
+}
+/* contain */
+.container_post{
+    margin-top: 7rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.contain_post-grid{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    width: 65%;
+    height: 5rem;
+}
+
+
+/* UPLOAD FIELD */
+.contain_main{
+    width: 100%;
+    background-color: blueviolet;
 }
 .upload{
     background-color: var(--darkgray);
@@ -70,8 +75,10 @@ main{
     font-size: 1.3rem;
     padding-left: 1rem;
 }
-.post__fiel-input::placeholder{
+.upload__fiel-input::placeholder{
     color: var(--orange);
+    text-decoration: none;
+    font-size: 1.5rem;
 }
 .img{
     background-repeat: no-repeat;
@@ -101,8 +108,123 @@ main{
     border: 1px solid var(--black);
 }
 
-/* field option new, salient, most voted */
+/* MOST BTN */
 .post_most{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    background-color: var(--darkgray);
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 1.5rem;
+}
+.most-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    
+}
+.most{
+    width: 95%;
+}
+.most_btn{
+    background-color: var(--black);
+    color: var(--orange);
+    border-radius: 0.5rem;
+    border: 1px solid var(--ligthgray);
+    width: 100%;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+.most_btn:first-of-type{
+    background-color: var(--orange);
+    color: var(--black);
+    border: 1px solid var(--black);
+} 
+
+/* CATEGORY POPULAR */
+.contain_popular{
+    width: 85%;
+    margin-left: 7.5rem;
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.contain_popular-fixed{
+    height: 100vh;
+    position: fixed;
+}
+.contain_pupular-content{
+    background-color: var(--darker);
+    width: 41rem;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+}
+.descrip_h2{
+    background-color: var(--orange);
+    text-align: center;
+    padding: 1.5rem 0;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    margin-top: -0.5rem;
+}
+.descrip_sport{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1.5rem;
+    font-size: 1.5rem;
+    
+}
+.contain_lbl-pupular{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 5rem;
+}
+.descrip_label{
+    text-align: center;
+    color: var(--ligthgray);
+    font-weight: bold;
+}
+span{
+    color: var(--orange);
+}
+.btn_popular-cate{
+    background-color: var(--black);
+    color: var(--orange);
+    border-radius: 0.5rem;
+    border: 1px solid var(--ligthgray);
+    width: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+.btn_popular-cate:hover{
+    background-color: var(--orange);
+    color: var(--black);
+    transition: 0.5s;
+    border: 1px solid var(--black);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+/* field option new, salient, most voted */
+/* .post_most{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,9 +257,9 @@ main{
     background-color: var(--orange);
     color: var(--black);
     border: 1px solid var(--black);
-}
+} */
 /* post */
-.container_post{
+/* .container_post{
     margin-top: 1.5rem;
     background-color: var(--darkgray);
     border-radius: 0.5rem;
@@ -253,9 +375,9 @@ main{
     background-image: url(../img/Spot.png);
     width: 2rem;
     height: 2rem;
-}
+} */
 /* descrip */
-.conten{
+/* .conten{
     height: 100vh;
     
     position: fixed;
@@ -302,10 +424,10 @@ main{
     width: 80%;
     font-weight: bold;
     cursor: pointer;
-}
+} */
 
 /* footer */
-.container_footer{
+/* .container_footer{
     background-color: var(--darkgray);
     border-radius: 0.5rem;
     width: 80%;
@@ -334,7 +456,7 @@ a{
 }
 label{
     color: var(--ligthgray);
-}
+} */
 
 /* MODAL */
 .contain_modal-profile{
