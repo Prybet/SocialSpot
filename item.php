@@ -1,50 +1,56 @@
-<div class="container_post">
+
+<div class="contain_post">
     <div class="container_p">
-        <div class="container_descr">
-            <div class="flex_desc">
-                <div class="img img-post"> 
-                    <img style="height: 30px" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>"></div>
-                <label class="label_post l_one"><?= $post->category->name ?></label>
-                <div class="l_two">
-                    <label class="label_post_by" >Posted by </label>
-                    <p class="p_post"><?= $post->userProfile->username ?></p>
-                </div>
-                <label>difil</label>
-                <label class="l_four"><?= $post->date ?></label>
-                <div class="l_five img" id="btn_more"></div>
-            </div>
+        <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
+        <div class="name-prim">
+            <label class="color-lig"><?= $post->category->name ?></label>
+        </div>
+        <div class="name-cate">
+            <label class="color-lig">Publicado Por <span><?= $post->userProfile->username ?></span></label>
+        </div>
+        <div class="name-cate">
+            <label class="color-lig"><?= $post->date ?></label>
+        </div>
+        <div class="name-cate">
+            <label>Dificil</label>
+        </div>
+        <div class="more-post">
+            <img src="../img/MenuPoints.png" class="pointer">
         </div>
     </div>
 
     <div class="container_info">
         <div class="container_info-descrip">
-            <h2><?= $post->title ?></h2>
-            <p><?= $post->body ?></p>
+            <h2 class="color-ora"><?= $post->title ?></h2>
+            <p class="color-lig cont-p"><?= $post->body ?></p>
         </div>
     </div>
 
     <?php foreach ($post->images as $image): ?>
-        <div class="container_img">
-            <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img img_post">
-        </div>
+    <div class="container_img">
+        <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img_post">
+    </div>
     <?php endforeach; ?>
 
     <?php foreach ($post->videos as $video): ?>
-        <div class="container_img">
-            <img src="../../SSpotImages/UserMedia/<?= $video->URL ?>" class="img img_post">
-        </div>
+    <div class="container_img">
+        <img src="../../SSpotImages/UserMedia/<?= $video->URL ?>" class="img_post">
+    </div>
     <?php endforeach; ?>
+
     <div class="flex_option">
-        <div class="container_option">
-            <div class="flex_img">
-                <img class="img_like img">
+        <div class="container_option-post">
+            <div class="flex_option">
+                <img src="../img/Like.png" class="img_option-post pointer">
+                <label class="cont-pst">1</label>
             </div>
-            <div class="flex_img">
-                <img class="img_comen img">
+            <div class="flex_option">
+                <img src="../img/Replys.png" class="img_option-post pointer">
+                <label class="cont-pst">1</label>
             </div>
-            <div class="flex_img">
-                <img class="img_pointer img">
+            <div class="flex_option">
+                <img src="../img/Spot.png" class="img_option-post pointer">
             </div>
         </div>
-    </div>             
+    </div> 
 </div>

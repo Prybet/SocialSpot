@@ -31,6 +31,9 @@ body{
 p{
     font-size: 5rem;
 }
+.pointer{
+    cursor: pointer;
+}
 /* contain */
 .container_post{
     margin-top: 7rem;
@@ -141,6 +144,92 @@ p{
     color: var(--black);
     border: 1px solid var(--black);
 } 
+/* ITEM */
+.contain_post{
+    width: 100%;
+    background-color: var(--darker);
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    padding: 1.5rem 0;
+}
+.container_p{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5rem;
+    position: relative;
+}
+.img-cate{
+    border-radius: 5rem;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 3rem;
+}
+.name-cate{
+    margin-left: 2rem;
+}
+.name-prim{
+    margin-left: 0.5rem;
+}
+.more-post{
+    position: absolute;
+    right: 0;
+    margin-right: 3rem;
+}
+.color-lig{
+    color: var(--ligthgray);
+}
+.container_info{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.container_info-descrip{
+    width: 90%;
+}
+.color-ora{
+    color: var(--orange);
+    font-size: 2rem;
+    font-weight: bold;
+}
+.cont-p{
+    font-size: 1.5rem;
+}
+.container_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    width: 100%;
+}
+.img_post{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.flex_option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.container_option-post{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+.img_option-post{
+    width: 3rem;
+    height: 3rem;
+}
+.cont-pst{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ligthgray);
+}
+
 
 /* CATEGORY POPULAR */
 .contain_popular{
