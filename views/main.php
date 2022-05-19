@@ -36,17 +36,56 @@ $style = "grupe4Style.css";
         <div class="a">
             <?php include_once '../nav.php'; ?>
         </div>  
-        <div class="contain">
-            <div class="contain_grid">
-                <main>
-                    <div class="upload">
+        <div class="container_post">
+            <div class="contain_post-grid">
+                <main class="contain_main">
+                    <a href="" class="upload">
                         <div class="upload__field">
-                            <div class="img img-user"></div>
-                            <input type="text" class="upload__fiel-input" placeholder="Publicar" />
+                            <img src="../img/perfil.png" class="img img-user"></img>
+                            <input type="text" class="upload__fiel-input" placeholder="Publicar" disabled />
                             <div class="img img-photo"></div>
                             <div class="img img-maps"></div>
                         </div>
+                    </a>
+                    <div class="post_most">
+                        <div class="most most-grid">
+                            <button class="most_btn">Mas nuevos</button>
+                            <button class="most_btn">Destacado</button>
+                            <button class="most_btn">Mas votado</button>
+                        </div>
                     </div>
+                    <?php
+                    foreach ($allPosts as $post):
+                        include '../pst.php';
+                    endforeach;
+                    ?>
+                </main>
+                <div class="contain_popular">
+                    <section class="contain_popular-fixed">
+                        <div class="contain_pupular-content">
+                            <h2 class="descrip_h2 no-margin">Deportes populares:</h2>
+                            <div class="descrip_sport">
+                                <div class="contain_lbl-pupular">
+                                    <label class="descrip_label"><span>1. </span>Skate</label>
+                                </div>
+                                <div class="flex">
+                                    <button class="btn_popular-cate">Unirse</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        
+        <!-- <div class="contain">
+            <div class="contain_grid">
+                <main>
                     <div class="post_most">
                         <div class="most most-grid">
                             <button class="most_btn">Mas nuevos</button>
@@ -108,7 +147,7 @@ $style = "grupe4Style.css";
                     </fotter>
                 </div>
             </div> 
-        </div>
+        </div> -->
         
         <div class="contain_modal-profile">
             <div class="contain_mod">

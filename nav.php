@@ -1,19 +1,20 @@
 <nav>
     <div class="contain_logo flex">
-        <div class="contain_logo no-margin">
+        <a class="a_logo" href="http://localhost/SocialSpot/views/main.php">
             <img src="../img/logo.png" class="img_logo pointer" />
-        </div>
+        </a>
     </div>
 
     <div class="contain_search flex">
         <form class="no-margin flex" id="frm">
-            <div class="conta">
+            <div class="conta" id="contain_search">
                 <input type="text" id="search" class="input_search no-margin" placeholder="Buscar" />
                 <button class="btn_find">
                     <img src="../img/find.png" class="img_search size-img no-margin pointer" />
                 </button>
-                <scroll-container>
+                <scroll-container class="ocultar" id="scroll">
                     <p>1Some text some text some text some text..</p>
+                    <button id="btn" type="button">ACEPTAR</button>
                 </scroll-container>
             </div>
         </form>
