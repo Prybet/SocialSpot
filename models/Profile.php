@@ -78,28 +78,22 @@ class Profile {
             return $p;            
         }
     }
-    
-    public static function getProfileForPost($id){
+        // Profile for Replies
+    public static function getProfileForReplies($id){
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT profile.id, name, username, profile.check, profile.desc, birthdate, entrydate, imageurl, bannerurl, city_id, profile.status_id FROM profile INNER JOIN post ON profile.id = post.profile_id WHERE post.id = :id");
+        $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
         $sen->bindParam(":id", $id);
         if($sen->execute()){
             $rs = $sen->fetch();
-            $this->id = $rs[0];
-            $this->name = $rs[1];
-            $this->username = $rs[2];
-            $this->check = $rs[3];   
-            $this->description = $rs[4];
-            $this->birthDate = $rs[5];
-            $this->entryDate = $rs[6];
-            $this->imageURL = $rs[7];
-            $this->bannerURL = $rs[8];
-            $this->city = null;
-            $this->status = $this->status->getstatu($rs[10]);
-            return $this;            
+            $p = new Profile();
+            $p->id = $rs[0];
+            $p->username = $rs[2];
+            $p->imageURL = $rs[7];
+            return $p;            
         }
     }
     
+        // Profile for main
     public static function getProfileForMain($id){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
@@ -108,17 +102,7 @@ class Profile {
             $rs = $sen->fetch();
             $p = new Profile();
             $p->id = $rs[0];
-            $p->name = $rs[1];
             $p->username = $rs[2];
-            $p->check = isset($rs[3])==1?true:false;   
-            $p->description = $rs[4];
-            $p->birthDate = $rs[5];
-            $p->entryDate = $rs[6];
-            $p->imageURL = $rs[7];
-            $p->bannerURL = $rs[8];
-            $p->city = null;
-            $p->status = $p->status->getstatu($rs[10]);
-            $p->myPosts = Post::getPostsForProfile($rs[0]);
             return $p;            
         }
     }

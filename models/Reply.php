@@ -27,7 +27,7 @@ class Reply {
 
     public static function getRepliesByPostId($id) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE post_id = :id AND status_id = 8");
+        $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE post_id = :id AND status_id = 14");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
             $res = $sen->fetchAll();
@@ -38,7 +38,7 @@ class Reply {
                 $r->body = $com[1];
                 $r->date = $com[2];
                 $r->replies = self::getRepliesByReplyId($com[0]);
-                $r->profile = Profile::getProfile($com[5]);
+                $r->profile = Profile::getProfileForReplies($com[5]);
                 $r->status = Status::getStatu($com[6]);
                 $list[] = $r;
             }
@@ -48,7 +48,7 @@ class Reply {
     
     public static function getRepliesByReplyId($id) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE reply_id = :id AND status_id = 12");
+        $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE reply_id = :id AND status_id = 15");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
             $res = $sen->fetchAll();
@@ -59,7 +59,7 @@ class Reply {
                 $r->body = $com[1];
                 $r->date = $com[2];
                 $r->reply = $com[3];
-                $r->profile = Profile::getProfile($com[5]);
+                $r->profile = Profile::getProfileForReplies($com[5]);
                 $r->status = Status::getStatu($com[6]);
                 $list[] = $r;
             }

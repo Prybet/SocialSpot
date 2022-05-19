@@ -29,7 +29,7 @@ $style = "grupe4Style.css";
                     });
                 });
 
-            })
+            });
         </script>
     </head>
     <body>
@@ -56,7 +56,7 @@ $style = "grupe4Style.css";
                     </div>
                     <?php
                     foreach ($allPosts as $post):
-                        include '../pst.php';
+                        include '../item.php';
                     endforeach;
                     ?>  
                 </main>

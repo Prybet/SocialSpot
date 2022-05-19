@@ -12,7 +12,8 @@ INSERT INTO status VALUES(null, "Closed");
 INSERT INTO status VALUES(null, "Resolved");
 INSERT INTO status VALUES(null, "Given");
 INSERT INTO status VALUES(null, "Banned");
-INSERT INTO status VALUES(null, "Banned");
+INSERT INTO status VALUES(null, "Comment");
+INSERT INTO status VALUES(null, "Reply");
 
 
 /** User types **/
