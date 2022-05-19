@@ -124,8 +124,8 @@ $cities = City::getAllCities();
 
                                 </div>
                                 <div class="contain_btn-grid">
-                                    <button type="submit" name="submit" class="btn_public" value="back">Publicar</button>
-                                    <button type="submit" name="submit" class="btn_cancel" value="post">Calcelar</button>
+                                    <button type="submit" name="submit" class="btn_cancel" value="back">Cancelar</button>
+                                    <button type="submit" name="submit" class="btn_public" value="post">Postear</button>
                                 </div>
                             </div> 
                         </div>
