@@ -21,6 +21,7 @@ class Reply {
     var $id;
     var $body;
     var $date;
+    var $time;
     var $replies;
     var $profile;
     var $status;
@@ -37,9 +38,10 @@ class Reply {
                 $r->id = $com[0];
                 $r->body = $com[1];
                 $r->date = $com[2];
+                $r->time = $com[3];
                 $r->replies = self::getRepliesByReplyId($com[0]);
-                $r->profile = Profile::getProfileForReplies($com[5]);
-                $r->status = Status::getStatu($com[6]);
+                $r->profile = Profile::getProfileForReplies($com[6]);
+                $r->status = Status::getStatu($com[7]);
                 $list[] = $r;
             }
             return $list;
@@ -59,8 +61,8 @@ class Reply {
                 $r->body = $com[1];
                 $r->date = $com[2];
                 $r->reply = $com[3];
-                $r->profile = Profile::getProfileForReplies($com[5]);
-                $r->status = Status::getStatu($com[6]);
+                $r->profile = Profile::getProfileForReplies($com[6]);
+                $r->status = Status::getStatu($com[7]);
                 $list[] = $r;
             }
             return $list;

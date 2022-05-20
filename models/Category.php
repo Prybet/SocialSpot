@@ -126,7 +126,7 @@ class Category {
 
     private function getOnline() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT profile.status_id FROM interests INNER JOIN user ON interests.user_id = user.id INNER JOIN profile ON user.profile_id = profile.id WHERE category_id = :id  AND profile.status_id = 2");
+        $sen = $conn->mysql->prepare("SELECT * FROM interests INNER JOIN profile ON interests.profile_id = profile.id WHERE category_id = :id  AND profile.status_id = 2");
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
             return $sen->rowCount();

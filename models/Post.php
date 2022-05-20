@@ -19,6 +19,7 @@ require_once 'Image.php';
 require_once 'Video.php';
 require_once 'Profile.php';
 require_once 'Reply.php';
+require_once 'Like.php';
 class Post {
 
     var $id;
@@ -45,6 +46,7 @@ class Post {
         $sen->bindParam(":prof", $this->profID);
         $sen->bindParam(":title", $this->title);
         $sen->bindParam(":body", $this->body);
+        date_default_timezone_set("America/Santiago");
         $date = date("Y-m-d",$timestamp = time());
         $time = date("H:i:s",$timestamp = time());
         $sen->bindParam(":date", $date);
@@ -77,6 +79,7 @@ class Post {
             $p->category = Category::getCategoy($res[6]);
             $p->status = Status::getStatu($res[7]);
             $p->images = Image::getImages($res[0]);
+            $p->likes = Like::getLikes($res[0]);
             $p->replies = Reply::getRepliesByPostId($res[0]);
         }
         return $p;
@@ -101,6 +104,7 @@ class Post {
                 $p->status = Status::getStatu($post[7]);
                 $p->images = Image::getImages($post[0]);
                 $p->videos = Video::getVideos($post[0]);
+                $p->likes = Like::getLikes($post[0]);
                 $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
             }
@@ -126,6 +130,7 @@ class Post {
                 $p->category = Category::getCategoy($post[6]);
                 $p->status = Status::getStatu($post[7]);
                 $p->images = Image::getImages($post[0]);
+                $p->likes = Like::getLikes($post[0]);
                 $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
             }
@@ -152,6 +157,7 @@ class Post {
                 $p->category = Category::getCategoy($post[6]);
                 $p->status = Status::getStatu($post[7]);
                 $p->images = Image::getImages($post[0]);
+                $p->likes = Like::getLikes($post[0]);
                 $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
             }
