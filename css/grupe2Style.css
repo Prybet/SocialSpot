@@ -28,7 +28,7 @@ header {
     position: relative;
     width: 100%;
     height: 60vh;
-    background-image: url(../img/banner.jpg);
+    background-image: url(../img/gatito.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -122,7 +122,6 @@ header {
     padding-top: 2rem;
     text-align: center;
 }
-
 .fonth2{
     font-size: 2.2rem;
     width: bold;
@@ -138,7 +137,6 @@ main, .center, .op, .asf{
 .container{
     background-color: var(--black);
     border-radius: 0.5rem;
-    width: 95%;
     padding-bottom: 2rem;
     margin-top: 6rem;
     margin-bottom: 5rem;
@@ -246,7 +244,7 @@ hr{
     .grid{
         display: grid;
         grid-template-columns: 1fr 0fr 1fr;
-        width: 70%;
+        width: 65%;
     }
     .container{
         margin-top: 3rem;
@@ -282,6 +280,10 @@ hr{
 }
 
 /* FOOTER */
+.contain_img-logo{
+    height: 5.5rem;
+    margin-top: 0.5rem;
+}
 footer{
     background-color: var(--darker);
     width: 100%;
@@ -301,11 +303,11 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 .contain_a:last-of-type{
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 .lbl{
     margin-right: 1rem;
@@ -317,7 +319,7 @@ a{
 .footer_rel{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 .lbl_tem{
     text-align: right;
@@ -332,7 +334,7 @@ a{
     margin-top: 1rem;
 }
 
-
+/* MODAL */
 .contain_modal-profile{
     position: fixed;
     top: 0;

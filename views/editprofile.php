@@ -27,6 +27,22 @@ $user = $_SESSION["user"];
         $(document).ready(function(){
             $("header").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/BannerImages/<?= $user->profile->bannerURL?>')");
             $("#imgprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/ProfileImages/<?= $user->profile->imageURL?>')");
+
+            $("#btn_delete").click(function () {
+                $(".contain_modal-profile").css({
+                    "pointer-events": "auto",
+                    "opacity": "1"
+                });
+            });
+            $("#btn_cancel").click(function () {
+                $(".contain_modal-profile").css({
+                    "pointer-events": "none",
+                    "opacity": "0"
+                });
+            });
+
+
+            
         });
     </script>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
@@ -69,7 +85,7 @@ $user = $_SESSION["user"];
                                     <label class="label_field" for="file-upload">Nombre de Usuario</label>
                                 </div>
                                 <div class="a">
-                                    <input type="text" class="input_field"  disabled><!-- value="<?= $user->username ?>"  -->
+                                    <input type="text" class="input_field"  disabled value="<?= $user->username ?>">
                                 </div>
                             </div>
                         </div>
@@ -79,7 +95,7 @@ $user = $_SESSION["user"];
                                     <label class="label_field">Correo Electronico</label>
                                 </div>
                                 <div class="a">
-                                    <input type="text" class="input_field"  disabled><!-- value="<?= $user->email ?>"  -->
+                                    <input type="text" class="input_field"  disabled value="<?= $user->email ?>">
                                 </div>
                             </div>
                         </div>
@@ -89,13 +105,13 @@ $user = $_SESSION["user"];
                                     <label class="label_field">Nombre</label>
                                 </div>
                                 <div class="a">
-                                    <input type="text" name="name" class="input_field" > <!--  value="<?= $user->profile->name ?>" -->
+                                    <input type="text" name="name" class="input_field" value="<?= $user->profile->name ?>">
                                 </div>
                             </div>
                         </div>
                         <div class="check">
                             <div class="check_content">
-                                <input type="checkbox" name="check" class="check_input" value="1" id="check"><!-- a la derecha de value -->
+                                <input type="checkbox" name="check" class="check_input" value="1" id="check">
                                 <label class="label_field" for="check">Mostrar en perfil</label>
                             </div>
                         </div>
@@ -105,7 +121,7 @@ $user = $_SESSION["user"];
                                     <label class="label_field">Fecha de Nacimiento</label>
                                 </div>
                                 <div class="a">
-                                    <input type="date" name="birth" class="input_field"  ><!-- value="<?= $user->profile->birthDate ?>" -->
+                                    <input type="date" name="birth" class="input_field" value="<?= $user->profile->birthDate ?>">
                                 </div>
                             </div>
                         </div>
@@ -115,7 +131,7 @@ $user = $_SESSION["user"];
                                     <label class="label_field">Descripción</label>
                                 </div>
                                 <div class="a">
-                                    <textarea name="desc" class="input_field txtarea"> </textarea><!-- <?= $user->profile->description ?>  -->
+                                    <textarea name="desc" class="input_field txtarea"><?= $user->profile->description ?></textarea>
                                 </div>
                             </div>
                         </div>

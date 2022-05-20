@@ -12,6 +12,9 @@ body{
 *:after {
     box-sizing: inherit;
 }
+.pointer{
+    cursor: pointer;
+}
 /* NAV */
 .a{
     position: fixed;
@@ -21,12 +24,27 @@ body{
 header {
     position: relative;
     width: 100%;
-    height: 60vh;
+    height: 35vh;
+    margin-top: 6rem;
+}
+.contain_bann{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.5rem;
+    position: relative;
+    width: 100%;
+    height: 35vh;
+}
+.ftbanner{
+    position: absolute;
     background-image: url(../img/banner.jpg);
-    background-size: cover;
+    width: 70%;
+    height: 35rem;
     background-repeat: no-repeat;
     background-position: center center;
-    margin-top: 6rem;
+    box-shadow: 0px 0px 30px var(--darker);
+    background-color: var(--black);
 }
 
 .ftprofile {
@@ -62,6 +80,12 @@ header {
     margin-top: 3.5rem;
     z-index: 50;
 }
+.btn_editar:hover{
+    background-color: var(--orange);
+    color: var(--black);
+    transition: 0.5s;
+    border-color: var(--black);
+}
 
 .contain-info-profile{
     width: 100%;
@@ -70,13 +94,13 @@ header {
     position: relative;
 }
 .name_user{
-    color: var(--orange);
     font-size: 2.2rem;
     text-align: center;
-    padding-top: 1.5rem;
+    padding-top: 2rem;
     font-weight: bold;
     position: absolute;
-    left: 38%;
+    left: 55%;
+    margin-left: -20rem;
 }
 /* FOLLOW */
 .follow{
@@ -85,18 +109,37 @@ header {
     font-size: 1.8rem;
     color: var(--ligthgray);
     position: absolute;
-    left: 35%;
+    left: 50%;
+    margin-left: -20rem;
     top: 60%;
 }
+
 .cont{
     color: var(--orange);
 }
 .lbl-ligthgray{
     color: var(--ligthgray);
 }
-/* upload post  */
-main{
-    margin: 0 3rem;
+.contain-cont{
+    margin-left: 2rem;
+}
+/* POST  */
+.contain_main{
+    display: flex;
+    justify-content: center;
+    
+}
+.container-post-field{
+    width: 65%;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    
+    
+}
+/* UPLOAD FIELD */
+.contain_public{
+    width: 100%;
 }
 .upload{
     background-color: var(--darkgray);
@@ -104,7 +147,7 @@ main{
     justify-content: center;
     border-radius: 0.5rem;
     width: 100%;
-    padding: 1rem;
+    padding: 2rem;
 }
 .upload__field{
     display: flex;
@@ -121,8 +164,10 @@ main{
     font-size: 1.3rem;
     padding-left: 1rem;
 }
-.post__fiel-input::placeholder{
+.upload__fiel-input::placeholder{
     color: var(--orange);
+    text-decoration: none;
+    font-size: 1.5rem;
 }
 .img{
     background-repeat: no-repeat;
@@ -130,7 +175,6 @@ main{
     background-size: cover; 
 }
 .img-user{
-    background-image: url(../img/perfil.webp);
     width: 4rem;
     height: 3rem;
     border-radius: 4rem;
@@ -153,7 +197,7 @@ main{
     border: 1px solid var(--black);
 }
 
-/* field option new, salient, most voted */
+/* MOST BTN */
 .post_most{
     display: flex;
     justify-content: center;
@@ -162,13 +206,12 @@ main{
     background-color: var(--darkgray);
     border-radius: 0.5rem;
     width: 100%;
-    padding: 1rem;
+    padding: 1.5rem;
 }
 .most-grid{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-    
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem; 
 }
 .most{
     width: 95%;
@@ -179,7 +222,7 @@ main{
     border-radius: 0.5rem;
     border: 1px solid var(--ligthgray);
     width: 100%;
-    padding: 0.5rem 0;
+    padding: 1rem;
     font-weight: bold;
     cursor: pointer;
 }
@@ -187,176 +230,140 @@ main{
     background-color: var(--orange);
     color: var(--black);
     border: 1px solid var(--black);
-}
-/* contain */
-main{
-    margin: 0 5rem;
-}
-.contain{
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+} 
+/* ITEM */
+.contain_post{
     width: 100%;
-    height: auto;
-}
-.contain_grid{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    width: 100%;
-    margin: 0 18rem;
-    position: relative;
-}
-/* post */
-.container_post{
-    margin-top: 1.5rem;
-    background-color: var(--darkgray);
+    background-color: var(--darker);
+    margin: 2rem 0;
     border-radius: 0.5rem;
-    width: 100%;
-    padding: 1rem;
+    padding: 1.5rem 0;
 }
 .container_p{
-    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-}
-.container_descr{
-    display: flex;
     width: 100%;
+    font-size: 1.5rem;
+    position: relative;
 }
-.flex_desc{
-    display: grid;
-    grid-template-columns: 0fr 1fr 1fr 1fr 1fr 0fr;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-.img-post{
-    width: 2.5rem;
-    height: 2.5rem;
+.img-cate{
     border-radius: 5rem;
-    margin-left: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 3rem;
 }
-.l_one{
+.name-cate{
+    margin-left: 2rem;
+}
+.name-prim{
     margin-left: 0.5rem;
 }
-.l_two{
-    display: flex;
-    
+.more-post{
+    position: absolute;
+    right: 0;
+    margin-right: 3rem;
 }
-.label_post_by{
-    margin-top: 1rem;
-    
-}
-.p_post{
-    margin-left: 0.2rem;
-    color: var(--orange);
-}
-.l_four{
-    text-align: right;
-    margin-right: 1rem;
-}
-.l_five{
-    margin-right: 1rem;
-    background-image: url(../img/MenuPoints.png);
-    width: 1.5rem;
-    height: 2.5rem;
-    align-items: center;
-    justify-content: right;
-}
-.container_info{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.color-lig{
     color: var(--ligthgray);
 }
+.container_info{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 .container_info-descrip{
-    width: 95%;
+    width: 90%;
+}
+.color-ora{
+    color: var(--orange);
+    font-size: 2rem;
+    font-weight: bold;
+}
+.cont-p{
+    font-size: 1.5rem;
 }
 .container_img{
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--black);
+    width: 100%;
 }
 .img_post{
-    width: 96%;
-    height: 40vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .flex_option{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    margin-top: 1rem;
 }
-
-.container_option{
+.container_option-post{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    width: 95%;
+    width: 100%;
 }
-.flex_img{
+.img_option-post{
+    width: 3rem;
+    height: 3rem;
+}
+.cont-pst{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ligthgray);
+}
+/* DESCRIPTION */
+.descrip_user{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    position: sticky;
+    top: 0;
+}
+.descrip_user-contain{
+    width: 85%;  
+}
+.contain_descrip-fixed{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
 }
-.img_like{
-    background-image: url(../img/Like.png);
-    width: 2rem;
-    height: 2rem;
-    border: none;
-}
-.img_comen{
-    background-image: url(../img/Replys.png);
-    width: 2rem;
-    height: 2rem;
-}
-.img_pointer{
-    background-image: url(../img/Spot.png);
-    width: 2rem;
-    height: 2rem;
-}
-/* descrip */
-.conten{
-    width: 100%;
-}
-section{
+.contain_descrip-content{
     background-color: var(--darker);
+    width: 41rem;
+    padding: 2rem 0;
     border-radius: 0.5rem;
-    margin: 0 2rem;
-    margin-top: -1.6rem;
-    
 }
 .h2_descrip{
     color: var(--orange);
-    font-size: 2rem;
     text-align: center;
+    margin: 0 auto;
 }
 .contain_descrip{
     display: flex;
     justify-content: center;
-    margin: 0;    
 }
 .p_descrip{
     color: var(--ligthgray);
-    width: 80%;
     font-size: 1.5rem;
-    margin: 0; 
-    padding-bottom: 1rem;
+    width: 85%;
 }
-
-/* footer */
-footer{
-    margin-top: 2rem;
+/* FOOTER */
+.flex-footer{
+    width: 100%; 
+    margin-top: 1rem;
 }
 .container_footer{
     background-color: var(--darkgray);
     border-radius: 0.5rem;
     width: 100%;
     border-radius: 0.5rem;
-    margin: 0 2rem;
+    font-size: 1.5rem;
 }
 .footer_grid{
     display: grid;
@@ -380,7 +387,15 @@ a{
 }
 label{
     color: var(--ligthgray);
+} 
+
+.l{
+    font-size: 10rem;
 }
+
+
+
+
 
 
 .contain_modal-profile{

@@ -1,6 +1,6 @@
 <footer>
     <div class="contain_footer">
-        <img src="../img/logo.png" > 
+        <img src="../img/logo.png" class="contain_img-logo"> 
         
         <div class="contain_others">
             <div>

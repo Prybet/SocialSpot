@@ -54,7 +54,13 @@ $user = $_SESSION["user"];
         <?php include_once '../nav.php'; ?>
     </div>
     <header>
-        <div class="ftprofile">
+        <div class="contain_bann " >
+            <div class="ftbanner">
+
+            </div>
+        </div>
+        
+        <div class="ftprofile pointer">
 
         </div>
         <button class="btn_editar" id="btn_editar">Editar Perfil</button>
@@ -66,99 +72,62 @@ $user = $_SESSION["user"];
            <label>Name</label>
        </div> 
        <div class="follow">
-            <div>
-                <label class="cont">2</label>
-                <label class="lbl-ligthgray">-</label>
-                <label class="lbl-ligthgray">Publicaciones</label>
+            <div class="pointer contain-cont-prym">
+                <label class="cont pointer">2</label>
+                <label class="lbl-ligthgray pointer">-</label>
+                <label class="lbl-ligthgray pointer">Publicaciones</label>
             </div>
-            <div>
-                <label class="cont">30</label>
-                <label class="lbl-ligthgray">-</label>
-                <label class="lbl-ligthgray">Seguidores</label>
+            <div class="contain-cont">
+                <label class="cont pointer">30</label>
+                <label class="lbl-ligthgray pointer">-</label>
+                <label class="lbl-ligthgray pointer">Seguidores</label>
             </div>
-            <div>
-                <label class="cont">127</label>
-                <label class="lbl-ligthgray">-</label>
-                <label class="lbl-ligthgray">Seguidos</label>
+            <div class="contain-cont">
+                <label class="cont pointer">127</label>
+                <label class="lbl-ligthgray pointer">-</label>
+                <label class="lbl-ligthgray ">Seguidos</label>
             </div>
        </div>
     </div>
-    
-    <div class="contain">
-        <div class="contain_grid">
-            <main>
-                <div class="upload">
+    <main class="contain_main">
+        <div class="container-post-field">
+            <div class="contain_public">
+                <a href="" class="upload">
                     <div class="upload__field">
-                        <div class="img img-user"></div>
-                        <input type="text" class="upload__fiel-input" placeholder="Publicar" />
+                        <img src="../img/perfil.png" class="img img-user"></img>
+                        <input type="text" class="upload__fiel-input" placeholder="Publicar" disabled />
                         <div class="img img-photo"></div>
                         <div class="img img-maps"></div>
                     </div>
-                </div>
-
+                </a>
                 <div class="post_most">
                     <div class="most most-grid">
                         <button class="most_btn">Mas nuevos</button>
-                        <button class="most_btn">Destacado</button>
                         <button class="most_btn">Mas votado</button>
                     </div>
                 </div>
-                
-                <div class="container_post">
-                    <div class="container_p">
-                        <div class="container_descr">
-                            <div class="flex_desc">
-                            <div class="img img-post"> 
-                                <img></div>
-                                <label class="label_post l_one">Skate</label>
-                                <div class="l_two">
-                                    <label class="label_post_by" >Posted by </label>
-                                    <p class="p_post">Juan pepe moco</p>
-                                </div>
-                                <label>difil</label>
-                                <label class="l_four">hora</label>
-                                <div class="l_five img" id="btn_post-profile"></div>
+                <?php
+                    foreach ($allPosts as $post):
+                        include '../item.php';
+                    endforeach;
+                ?>
+            </div>
+            <div class="descrip_user">
+                <div class="descrip_user-contain">
+                    <section class="contain_descrip-fixed">
+                        <div class="contain_descrip-content">
+                            <h2 class="h2_descrip">Descripción</h2>
+                            <div class="contain_descrip">
+                                <p class="p_descrip">Lorem ipsum dolor sit amet consectetur adipisicing 
+                                    elit. Delectus repellendus laborum corporis veritatis
+                                    odit animi officiis blanditiis necessitatibus 
+                                    commodi incidunt ad facilis fuga asperiores, 
+                                    doloribus iste quo nam sint nesciunt.
+                                </p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="container_info">
-                        <div class="container_info-descrip">
-                            <h2>Mi primer Post</h2>
-                            <p>Aca se escribe</p>
-                        </div>
-                    </div>
-
-                    <div class="container_img">
-                        <img src="../img/banner.jpg" class="img img_post">
-                    </div>
-                   
-                    <div class="flex_option">
-                        <div class="container_option">
-                            <div class="flex_img">
-                                <img class="img_like img">
-                            </div>
-                            <div class="flex_img">
-                                <img class="img_comen img">
-                            </div>
-                            <div class="flex_img">
-                                <img class="img_pointer img">
-                            </div>
-                        </div>
-                    </div>             
-                </div> 
-            </main>
-
-            <div class="conten">
-                <section>
-                    <h2 class="h2_descrip">Descripcion</h2>
-                    <div class="contain_descrip">
-                        <p class="p_descrip">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed facilis qui fugit totam sint earum dolor molestiae neque, ad nesciunt facere. Dicta obcaecati cupiditate at, dolorem soluta iusto laudantium sint?</p>
-                    </div>
-                </section>
-                
-                <footer>
-                    <div class="flex-footer flex">
+                    </section>
+                    <footer class="flex-footer">
                         <div class="container_footer">
                             <div class="footer_grid">
                                 <label>Ayuda</label>
@@ -184,12 +153,13 @@ $user = $_SESSION["user"];
                                 <label>Todos los derechos Reservados.</label>
                             </div>
                         </div>
-                    </div>
-                </footer>
+                    </fotter>
+                </div>  
             </div>
-        </div> 
-    </div>
-    <div class="contain_modal-profile">
+        </div>
+    </main>
+    
+    <!-- <div class="contain_modal-profile">
         <div class="contain_report">
             <div>       
                 <div class="contain_btn-profile">
@@ -203,7 +173,7 @@ $user = $_SESSION["user"];
                 </div>
             </div> 
         </div>
-    </div> 
+    </div>  -->
     
 </body>
 </html>

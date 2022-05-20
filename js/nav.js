@@ -75,12 +75,7 @@ $(document).ready(function () {
 
 
 
-    $("#btn_delete").click(function () {
-        $(".contain_modal-profile").css({
-            "pointer-events": "auto",
-            "opacity": "1"
-        });
-    });
+    
 
 
     $("#btn_editar").click(function () {
