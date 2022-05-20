@@ -135,7 +135,7 @@ class Post {
     
     public static function getPostsForCategory($id) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id ");
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE category_id = :id ");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
             $res = $sen->fetchAll();
@@ -144,6 +144,7 @@ class Post {
                 $p = new Post();
                 $p->id = $post[0];
                 $p->profID = $post[1];
+                $p->userProfile = Profile::getProfileForMain($post[1]);
                 $p->title = $post[2];
                 $p->body = $post[3];
                 $p->date = $post[4];

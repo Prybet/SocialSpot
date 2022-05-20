@@ -41,7 +41,7 @@ if ($method == "GET") {
             echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
         case is_numeric($action):
-            $cate = Category::getCategoy($action);
+            $cate = Category::getFullCategoy($action);
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($cate, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;

@@ -10,6 +10,9 @@
 require_once '../models/User.php';
 require_once '../models/Profile.php';
 $method = $_SERVER["REQUEST_METHOD"];
+$body = file_get_contents('php://input');
+$params = json_decode($body);
+
 if ($method == "POST") {
     $body = file_get_contents('php://input');
     $params = json_decode($body);
@@ -33,6 +36,18 @@ if ($method == "POST") {
     } else {
         header("Content-Type: application/json; charset=UTF8");
         echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+    }
+}elseif ($method == "PUT") {
+    $action = json_decode($body);
+    
+    switch ($action) {
+        case is_numeric($action):
+            $comms = Reply::getRepliesByPostId($action);
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode($comms, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
+        default :
+            break;
     }
 }
 
