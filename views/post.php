@@ -8,7 +8,6 @@ session_start();
 $style = "grupe3Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"];
-$post->userProfile = $user->profile;
 if ($post == null) {
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
     header("Location: ../controllers/postController.php?id=" . $id);
@@ -77,15 +76,17 @@ if ($post == null) {
                             </div>
                         </form>
                         <hr />
+                        <?php foreach ($post->replies as $comm) : ?>
                         <div class="contain_reply">
+                            
                             <div class="contain_reply-profile">
-                                <img src="../img/perfil.png" class="img_profile-reply">
+                                <img src="../../SSpotImages/UserMedia/<?= $comm->profile->username ?>-Folder/ProfileImages/<?= $comm->profile->imageURL ?>" class="img_profile-reply">
                                 <div class="contain_reply_details">
                                     <div class="nom_time">
-                                        <label class="lbl_nom-repl">Usuario</label>
+                                        <label class="lbl_nom-repl"><?= $comm->profile->username ?></label>
                                         <label>Hace 1 min</label>
                                     </div>
-                                    <p class="reply_comm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum quam pariatur nostrum nobis doloremque eveniet facere in repellat id accusamus possimus ratione, quod delectus itaque, officiis voluptates aliquid fuga quas?</p>
+                                    <p class="reply_comm"><?= $comm->body ?></p>
                                     <label class="lbl_reply" id="btn_reply-show">Responder</label>
                                     <form action="">
                                         <textarea class="input_textarea textarea_reply"></textarea>
@@ -93,43 +94,23 @@ if ($post == null) {
                                             <button type="submit" name="submit" value="comm" class="btn_reply-right" id="btn_com">Comentar</button>
                                         </div>
                                     </form>
-                                    
+                                    <?php foreach ($comm->replies as $reply) : ?>
                                     <div class="contan_rep">
-                                        <img src="../img/perfil.png" class="img_profile-reply">
+                                        <img src="../../SSpotImages/UserMedia/<?= $reply->profile->username ?>-Folder/ProfileImages/<?= $reply->profile->imageURL ?>" class="img_profile-reply">
                                         <div class="contain_rep">
                                             <div class="nom_time">
-                                                <label class="lbl_nom-repl">Usuario</label>
+                                                <label class="lbl_nom-repl"><?= $reply->profile->username ?></label>
                                                 <label>Hace 1 min</label>
                                             </div>
-                                            <p class="reply_comm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum quam pariatur nostrum nobis doloremque eveniet facere in repellat id accusamus possimus ratione, quod delectus itaque, officiis voluptates aliquid fuga quas?</p>
+                                            <p class="reply_comm"><?= $reply->body ?></p>
                                         </div>
                                     </div>
-                                    
+                                    <?php endforeach; ?>
                                 </div>  
                             </div>
+                            
                         </div>
-                        <!-- <?php foreach ($post->replies as $comm) : ?>
-                            <div class="c">
-                                <div>
-                                    <img src="../../SSpotImages/UserMedia/<?= $comm->profile->username ?>-Folder/ProfileImages/<?= $comm->profile->imageURL ?>">
-                                    <label><?= $comm->profile->username ?></label>
-                                    <label><?= $comm->date ?></label>
-                                </div> 
-                                <p><?= $comm->body ?></p>
-                                
-                                <?php foreach ($comm->replies as $reply) : ?>
-                                <div class="c">
-                                    <div>
-                                        <img src="../../SSpotImages/UserMedia/<?= $reply->profile->username ?>-Folder/ProfileImages/<?= $reply->profile->imageURL ?>">
-                                        <label><?= $reply->profile->username ?></label>
-                                        <label><?= $reply->date ?></label>
-                                    </div> 
-                                    <p><?= $reply->body ?></p>
-                                    
-                                </div>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 

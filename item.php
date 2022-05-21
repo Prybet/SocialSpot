@@ -31,12 +31,12 @@
         <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img_post">
     </div>
     <?php endforeach; ?>
-
-    <?php foreach ($post->videos as $video): ?>
+    
+    <?php if($post->videos !=null):foreach ($post->videos as $video): ?>
     <div class="container_img">
         <img src="../../SSpotImages/UserMedia/<?= $video->URL ?>" class="img_post">
     </div>
-    <?php endforeach; ?>
+    <?php endforeach;endif; ?>
 
     <div class="flex_option">
         <div class="container_option-post">

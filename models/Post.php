@@ -62,7 +62,7 @@ class Post {
             }
         }
     }
-
+        // For views/post.php
     public static function getPost($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE id = :id ");
@@ -72,6 +72,7 @@ class Post {
             $p = new Post();
             $p->id = $res[0];
             $p->profID = $res[1];
+            $p->userProfile = Profile::getProfileForMain($res[1]);
             $p->title = $res[2];
             $p->body = $res[3];
             $p->date = $res[4];
