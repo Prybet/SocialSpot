@@ -15,7 +15,7 @@
             <label>Dificil</label>
         </div>
         <div class="more-post">
-            <img src="../img/MenuPoints.png" class="pointer">
+            <img src="../img/MenuPoints.png" class="pointer" id="btn_menu">
         </div>
     </div>
 

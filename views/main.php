@@ -12,6 +12,12 @@ $style = "grupe4Style.css";
         <script src="../js/nav.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
+                $("#btn_menu").click(function(){
+                    $(".contain_modal-profile").css({
+                    "pointer-events": "auto",
+                    "opacity" : "1"
+                    });
+                });
                 $("#btn_report").click(function(){
                     $(".contain_modal-profile").css({
                     "pointer-events": "none",
@@ -28,6 +34,12 @@ $style = "grupe4Style.css";
                     "opacity" : "0"
                     });
                 });
+                $("#btn_post").click(function(){
+                    window.location.href = "http://localhost/SocialSpot/views/post.php?";
+                });
+                
+
+                
 
             })
         </script>
@@ -110,7 +122,7 @@ $style = "grupe4Style.css";
 
 
         
-        <!-- <div class="contain_modal-profile">
+        <div class="contain_modal-profile">
             <div class="contain_mod">
                 <div>            
                     <div class="contain_btn-profile">
@@ -120,7 +132,7 @@ $style = "grupe4Style.css";
                         <button class="btn">Dejar de seguir</button>
                     </div>
                     <div class="contain_btn-profile">
-                        <button class="btn">Ir a la publicacion</button>
+                        <button class="btn" id="btn_post">Ir a la publicacion</button>
                     </div>
                     <div class="contain_btn-profile">
                         <button class="btn" id="btn_cancel">Cancelar</button>
@@ -151,7 +163,7 @@ $style = "grupe4Style.css";
                         <button class="btn" id="btn_report">Reportar</button>
                     </div>
                 </div> 
-            </div> -->
+            </div> 
         </div> 
     </body>
 
