@@ -251,10 +251,6 @@ main{
     display: flex;
     justify-content: center;
 }
-/* .contain_rules{
-    display: flex;
-    justify-content: center;
-} */
 .contain_rules{
    width: 100%;
 }
