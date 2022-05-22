@@ -34,9 +34,6 @@ $style = "grupe4Style.css";
                     "opacity" : "0"
                     });
                 });
-                $("#btn_post").click(function(){
-                    window.location.href = "http://localhost/SocialSpot/views/post.php?";
-                });
                 
 
                 
@@ -51,7 +48,7 @@ $style = "grupe4Style.css";
         <div class="container_post">
             <div class="contain_post-grid">
                 <main class="contain_main">
-                    <a href="" class="upload">
+                    <a href="http://localhost/SocialSpot/views/newpost.php" class="upload">
                         <div class="upload__field">
                             <img src="../img/perfil.png" class="img img-user"></img>
                             <input type="text" class="upload__fiel-input" placeholder="Publicar" disabled />

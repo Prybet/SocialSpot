@@ -10,7 +10,6 @@ $style = "grupe5Style.css";
 require_once '../models/Category.php';
 require_once '../models/City.php';
 $categories = Category::getListAllCategories();
-$cities = City::getAllCities();
 ?>
 <html>
 <head>
@@ -60,10 +59,14 @@ $cities = City::getAllCities();
 
                 $("input[name=file-0]").val(null);
             });
+
+            
+            
         });
     </script>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/nav.js"></script>
+    <script src="../js/newpost.js"></script>
 </head>
 <body> 
     <div class="a"> 
@@ -111,11 +114,19 @@ $cities = City::getAllCities();
                             <div class="top">
                                 <label class="lbl_img">Imagenes y Videos</label>
                             </div>
-                            <div class="contain_photo">
-                                <div  id="container">
+
+                            <div class="drop-area">
+                                <h2>Arrastra y suelta imágenes</h2>
+                                <span>o</span>
+                                <button type="button">Seleccione tus archivos</button>
+                                <input type="file" name="file-0" id="row-0" hidden multiple>
+
+                                <!-- <div  id="container">
                                     <input type="file" class="input_file" id="row-0" name="file-0"/>
-                                </div>
+                                </div> -->
                             </div>
+                            <div id="preview"></div>
+
                             <div class="top">
                                 <input type="checkbox" name="check"><label class="lbl_noti">Recibir notificaciones de comentarios y respuestas</label>
                             </div>
