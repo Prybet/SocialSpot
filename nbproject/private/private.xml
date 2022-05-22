@@ -6,6 +6,7 @@
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Reply.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Interests.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Profile.php</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/controllers/PostController.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/API/AccountAPI.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/views/main.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Category.php</file>
@@ -15,6 +16,7 @@
             <file>file:/C:/xampp/htdocs/SocialSpot/API/PostAPI.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/API/SocialApi.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Province.php</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/views/post.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Like.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/item.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/User.php</file>

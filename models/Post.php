@@ -124,6 +124,7 @@ class Post {
                 $p = new Post();
                 $p->id = $post[0];
                 $p->profID = $post[1];
+                $p->userProfile = Profile::getProfileForMain($post[1]);
                 $p->title = $post[2];
                 $p->body = $post[3];
                 $p->date = $post[4];

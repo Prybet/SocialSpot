@@ -30,6 +30,11 @@ if ($method == "GET") {
     $action = json_decode($body);
 
     switch ($action) {
+        case "last":
+            $list = Post::getAllPosts();
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
         case "top":
             $list = Post::getTopPosts();
             header("Content-Type: application/json; charset=UTF8");
