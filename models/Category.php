@@ -15,6 +15,7 @@
  */
 require_once '../PDO/Connection.php';
 require_once 'Status.php';
+require_once 'Norm.php';
 
 class Category {
 
@@ -27,6 +28,7 @@ class Category {
     var $members;
     var $onLine;
     var $posts;
+    var $norms;
 
     public static function getListAllCategories() {
         $conn = new Connection();
@@ -59,6 +61,7 @@ class Category {
                 $c->status = Status::getStatu($cate[5]);
                 $c->members = $c->getMembers();
                 $c->onLine = $c->getOnline();
+                $c->norms = Norm::getAll();
                 $list[] = $c;
             }
 
@@ -82,6 +85,7 @@ class Category {
                 $c->status = Status::getStatu($res[5]);
                 $c->members = $c->getMembers();
                 $c->onLine = $c->getOnline();
+                  $c->norms = Norm::getAll();
                 $conn = null;
                 return $c;
             } else {

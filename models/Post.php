@@ -88,7 +88,7 @@ class Post {
         //Main Posts
     public static function getAllPosts() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 ");
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 OR status_id = 7 ORDER BY id DESC");
         if ($sen->execute()) {
             $posts = $sen->fetchAll();
             $list = array();

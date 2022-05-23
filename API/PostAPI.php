@@ -9,6 +9,7 @@
  */
 require_once '../models/User.php';
 require_once '../models/Profile.php';
+require_once '../models/Report.php';
 $method = $_SERVER["REQUEST_METHOD"];
 $body = file_get_contents('php://input');
 $params = json_decode($body);
@@ -16,7 +17,7 @@ $params = json_decode($body);
 if ($method == "POST") {
     $body = file_get_contents('php://input');
     $params = json_decode($body);
-
+    // Insert new Post
     if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
         $post = new Post();
         $post->profID = $params->profID;
@@ -37,16 +38,25 @@ if ($method == "POST") {
         header("Content-Type: application/json; charset=UTF8");
         echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
     }
-}elseif ($method == "PUT") {
-    $action = json_decode($body);
-    
+} elseif ($method == "PUT") {
+    $params = json_decode($body);
+    $action = $params->action;
     switch ($action) {
-        case is_numeric($action):
+        case "reply":
             $comms = Reply::getRepliesByPostId($action);
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($comms, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
+        case "report":
+            if (Report::setReport($params)) {
+                echo json_encode("si", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            } else {
+                echo json_encode("no", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }
+            break;
         default :
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode("Poto", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
     }
 }
