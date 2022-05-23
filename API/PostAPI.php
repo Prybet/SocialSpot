@@ -40,7 +40,7 @@ if ($method == "POST") {
     }
 } elseif ($method == "PUT") {
     $params = json_decode($body);
-    $action = $params->action;
+    $action = isset($params->action)? $params->action : "error";
     switch ($action) {
         case "reply":
             $comms = Reply::getRepliesByPostId($action);
@@ -54,9 +54,13 @@ if ($method == "POST") {
                 echo json_encode("no", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
+            case "error":
+                header("Content-Type: application/json; charset=UTF8");
+            echo json_encode("Callo en error", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                break;
         default :
             header("Content-Type: application/json; charset=UTF8");
-            echo json_encode("Poto", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode("Default no fue ningun caso", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
     }
 }

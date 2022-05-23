@@ -121,9 +121,9 @@ $categories = Category::getListAllCategories();
                                 <button type="button">Seleccione tus archivos</button>
                                 <input type="file" name="file-0" id="row-0" hidden multiple>
 
-                                <!-- <div  id="container">
+                                <div  id="container">
                                     <input type="file" class="input_file" id="row-0" name="file-0"/>
-                                </div> -->
+                                </div>
                             </div>
                             <div id="preview"></div>
 
