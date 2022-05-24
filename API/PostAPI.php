@@ -17,6 +17,16 @@ $params = json_decode($body);
 if ($method == "POST") {
     $body = file_get_contents('php://input');
     $params = json_decode($body);
+    $id = isset($post->id)? $post->id : 0;
+    switch ($post) {
+        case $value:
+
+
+            break;
+
+        default:
+            break;
+    }
     // Insert new Post
     if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
         $post = new Post();
