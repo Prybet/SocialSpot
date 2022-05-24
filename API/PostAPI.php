@@ -59,18 +59,18 @@ if ($method == "POST") {
             break;
         case "report":
             if (Report::setReport($params)) {
-                echo json_encode("si", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             } else {
-                echo json_encode("no", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
             case "error":
                 header("Content-Type: application/json; charset=UTF8");
-            echo json_encode("Callo en error", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                 break;
         default :
             header("Content-Type: application/json; charset=UTF8");
-            echo json_encode("Default no fue ningun caso", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode("Default", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
     }
 }
