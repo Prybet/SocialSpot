@@ -115,7 +115,7 @@ class Post {
 
     public static function getPostsForProfile($id) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id ");
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id AND status_id = 1");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
             $res = $sen->fetchAll();
@@ -190,5 +190,17 @@ class Post {
             }
         }
         return $list;
+    }
+    
+    public static function delete($post){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE date = :date AND time = :time " );
+        $sen->bindParam(":date", $post->date);
+        $sen->bindParam(":time", $post->time);
+        if ($sen->execute()) {
+            return true;
+        }else{
+            return false;
+        }
     }
 }
