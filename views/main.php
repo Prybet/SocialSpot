@@ -36,6 +36,7 @@ $style = "grupe4Style.css";
                     <?php
                     foreach ($allPosts as $post):
                         include '../item.php';
+                       
                     endforeach;
                     ?>
                 </main>
@@ -88,6 +89,11 @@ $style = "grupe4Style.css";
         </div>
 
         
+        
+
+
+
+
         <div class="contain_modal-profile">
             <div class="contain_mod">
                 <div>            
@@ -131,6 +137,16 @@ $style = "grupe4Style.css";
                 </div> 
             </div> 
         </div> 
+        
+        <div class="modal-container" id="openModal">
+            <div class="modal modal-close">
+                <div>
+                    <p>reportar</p>
+                    <p class='close'>cancelar</p>
+                </div>
+            </div>
+        </div>
+        <script lang="javascript" src="../js/model.js"></script>
     </body>
     
 </html>
