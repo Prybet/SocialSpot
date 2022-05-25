@@ -99,9 +99,9 @@ header {
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.2rem;
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--darkgray);
     cursor: pointer;
     position: absolute;
@@ -109,9 +109,9 @@ header {
     right: 120%;
 }
 .btnImg:hover{
-    color: var(--orange);
+    color: var(--primary);
     background-color: var(--black);
-    border-color: var(--orange);
+    border-color: var(--primary);
     transition: background-color .8s ease;
 }
 
@@ -145,7 +145,7 @@ main, .center, .op, .asf{
     width: 100%;
 }
 .label_field, h2{
-    color: var(--orange);
+    color: var(--primary);
 }
 .field{
     width: 70%;
@@ -164,7 +164,7 @@ main, .center, .op, .asf{
     
 }
 hr{
-    border-color: var(--orange);
+    border-color: var(--primary);
     visibility: hidden;
 }
 .field_pass{
@@ -208,17 +208,17 @@ hr{
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--darkgray);
     cursor: pointer;
     margin-top: 2rem;
 }
 .btn-update:hover, .btn-updatePass:hover{
-    color: var(--orange);
+    color: var(--primary);
     background-color: var(--black);
-    border-color: var(--orange);
+    border-color: var(--primary);
     transition: background-color .8s ease;
 }
 .btn-updatePass {
@@ -232,9 +232,9 @@ hr{
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--darkgray);
     cursor: pointer;
     margin-top: 2rem;
@@ -267,9 +267,9 @@ hr{
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--darkgray);
     cursor: pointer;
     margin-top: 2rem;
@@ -311,6 +311,7 @@ footer{
 }
 .lbl{
     margin-right: 1rem;
+    color: var(--primary);
 }
 a{
     color: var(--ligthgray);
@@ -324,11 +325,16 @@ a{
 .lbl_tem{
     text-align: right;
     margin-right: 1rem;
+    color: var(--primary);
 }
 .owern{
     display: flex;
     justify-content: right;
     align-items: center;
+    color: var(--primary);
+}
+.owern label{
+    font-size: 1.5rem;
 }
 .esp{
     margin-top: 1rem;
@@ -376,13 +382,13 @@ a{
 }
 .btn{
     width: 60%;
-    background-color: var(--orange);
+    background-color: var(--primary);
     border: none;
     border-radius: 0.5rem;
     padding: 1rem;
     color: var(--black);
     font-weight: bold;
-    border: 1px solid var(--orange);
+    border: 1px solid var(--primary);
 }
 .btn:last-of-type{
     margin-top: 2rem;
@@ -390,7 +396,7 @@ a{
 .btn:hover{
     background-color: var(--black);
     transition: 0.5s;
-    color: var(--orange);
+    color: var(--primary);
     border: 1px solid var(--ligthgray);
 }
 .contain_btn-profile{

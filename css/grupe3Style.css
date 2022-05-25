@@ -53,7 +53,7 @@ html {
     position: relative;
 }
 span{
-    color: var(--orange);
+    color: var(--primary);
 }
 .img-cate{
     border-radius: 5rem;
@@ -84,7 +84,7 @@ span{
     width: 90%;
 }
 .color-ora{
-    color: var(--orange);
+    color: var(--primary);
     font-size: 2rem;
     font-weight: bold;
 }
@@ -143,7 +143,7 @@ span{
     font-size: 1.5rem;
 }
 span{
-    color: var(--orange);
+    color: var(--primary);
     font-weight: bold;
 }
 .input_textarea{
@@ -187,11 +187,11 @@ span{
     cursor: pointer;
 }
 .btn_reply:hover{
-    color: var(--orange);
+    color: var(--primary);
 }
 hr{
     margin: 1rem;
-    border: 1px solid var(--orange);
+    border: 1px solid var(--primary);
     width: 90%;
 }
 .contain_reply{
@@ -282,7 +282,7 @@ hr{
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
-    background-color: var(--orange);
+    background-color: var(--primary);
     border-radius: 0.5rem;
     display: grid;
     grid-template-columns: 1fr 1.8fr;
@@ -319,7 +319,7 @@ hr{
     align-items: center;
 }
 .btn_foll{
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--black);
     border: 1px solid var(--black);
     padding: 1rem 3rem;
@@ -335,7 +335,7 @@ hr{
     margin-top: 1.5rem;
 }
 .h2_dif{
-    color: var(--orange);
+    color: var(--primary);
     text-align: center;
     font-size: 1.7rem;
     padding: 1rem 0;
@@ -358,7 +358,7 @@ hr{
     text-align: center;
 }
 .who_vote{
-    color: var(--orange);
+    color: var(--primary);
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -422,7 +422,7 @@ hr{
     padding-top: 1rem;
 }
 .lbl_mode-email{
-    color: var(--orange);
+    color: var(--primary);
     font-size: 1.5rem;
     margin-left: 3.2rem;
     cursor: pointer;
@@ -435,11 +435,14 @@ hr{
     margin: 2rem 0;
 }
 .container_footer{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     border-radius: 0.5rem;
     width: 100%;
     border-radius: 0.5rem;
     font-size: 1.5rem;
+}
+.container_footer label{
+    color: var(--primary);
 }
 .footer_grid{
     display: grid;

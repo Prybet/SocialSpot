@@ -141,17 +141,17 @@ main{
 }
 .drop-area.active{
     background-color: var(--black);
-    color: var(--orange);
+    color: var(--primary);
 }
 .drop-area h2{
     font-size: 1.5rem;
-    color: var(--orange);
+    color: var(--primary);
     margin: 0;
     font-weight: bold;
 }
 .drop-area span{
     font-size: 1.5rem;
-    color: var(--orange);
+    color: var(--primary);
     margin: 1rem 0;
     font-weight: bold;
 }
@@ -161,8 +161,8 @@ main{
     border-radius: 0.5rem;
     outline: none;
     border: none;
-    color: var(--orange);
-    border: 1px solid var(--orange);
+    color: var(--primary);
+    border: 1px solid var(--primary);
     cursor: pointer;
 }
 .file-container{
@@ -170,8 +170,8 @@ main{
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    border: solid 1px var(--orange);
-    color: var(--orange);
+    border: solid 1px var(--primary);
+    color: var(--primary);
 }
 #preview{
     margin-top: 1rem;
@@ -180,12 +180,14 @@ main{
     padding: 0 1rem;
 }
 .success{
-    color: var(--orange);
+    color: var(--primary);
 }
 .failure{
     color: var(--red);
 }
-
+.file_inpu{
+    height: 20rem;
+}
 
 .lbl_noti{
     color: var(--ligthgray);
@@ -213,7 +215,7 @@ main{
 }
 .btn_public:hover, 
 .btn_cancel:hover{
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--white);
 }
 .btn_cancel{
@@ -244,7 +246,7 @@ main{
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
-    background-color: var(--orange);
+    background-color: var(--primary);
     border-radius: 0.5rem;
     display: grid;
     grid-template-columns: 1fr 1.8fr;
@@ -268,7 +270,7 @@ main{
     margin-left: 1rem;
 }
 .contain_descrip{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     color: var(--ligthgray);
     font-size: 1.5rem;
     width: 100%;
@@ -287,12 +289,12 @@ main{
     gap: 5rem;
 }
 .lbl_cont{
-    color: var(--orange);
+    color: var(--primary);
 }
 
 /* RULES */
 .section_rules{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     width: 100%;
     margin-top: 2rem;
     border-radius: 0.5rem;
@@ -304,7 +306,7 @@ main{
    width: 100%;
 }
 .h2_rule{
-    color: var(--orange);
+    color: var(--primary);
     margin: 0;
     font-size: 2rem;
 }
@@ -316,12 +318,15 @@ main{
 
 /* FOOTER */
  .container_footer{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     border-radius: 0.5rem;
     width: 100%;
     margin-top: 2rem;
     border-radius: 0.5rem;
     font-size: 1.5rem;
+}
+.container_footer label{
+    color: var(--primary);
 }
 .footer_grid{
     display: grid;

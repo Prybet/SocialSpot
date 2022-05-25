@@ -51,6 +51,7 @@ html {
     height: 6rem;
     padding: 0 30rem;
     border-bottom: 1px solid var(--ligthgray);
+    padding-right: 1.7rem;
   }
   
   /* logo */

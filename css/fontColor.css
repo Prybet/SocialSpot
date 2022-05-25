@@ -2,13 +2,15 @@
     --fuenteHeading: 'Square Peg', cursive;
     --fuenteParrafos: 'Roboto', sans-serif;
 
+    --primary: #bd93f9;
     --white: #ffffff;
     --black: #111111;
-    --orange: #fe6f27;
+    /* --orange: #fe6f27; */
+    --primaryDark: #734aab;
     --ligthgray: #8C8C8C;
     --darkgray: #1f1f1f;
-    --darker: #202020;
+    --darker: #282936;
     --red: #FF0000;
-    --darkgraymodern: rgba(169, 169, 169, 0.589);
+    --darkgraymodern: rgba(133, 133, 133, 0.589);
 }
 

@@ -10,36 +10,7 @@ $style = "grupe4Style.css";
         <?php include_once '../header.php'; ?>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/nav.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $("#btn_menu").click(function(){
-                    $(".contain_modal-profile").css({
-                    "pointer-events": "auto",
-                    "opacity" : "1"
-                    });
-                });
-                $("#btn_report").click(function(){
-                    $(".contain_modal-profile").css({
-                    "pointer-events": "none",
-                    "opacity" : "0"
-                    });
-                    $(".contain_modal-report").css({
-                    "pointer-events": "auto",
-                    "opacity" : "1"
-                    });
-                });
-                $("#btn_cancel").click(function(){
-                    $(".contain_modal-profile").css({
-                    "pointer-events": "none",
-                    "opacity" : "0"
-                    });
-                });
-                
-
-                
-
-            })
-        </script>
+        
     </head>
     <body>
         <div class="a">
@@ -116,8 +87,6 @@ $style = "grupe4Style.css";
             </div>
         </div>
 
-
-
         
         <div class="contain_modal-profile">
             <div class="contain_mod">
@@ -163,5 +132,5 @@ $style = "grupe4Style.css";
             </div> 
         </div> 
     </body>
-
+    
 </html>

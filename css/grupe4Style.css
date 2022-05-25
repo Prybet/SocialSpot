@@ -55,7 +55,7 @@ p{
     width: 100%;
 }
 .upload{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     display: flex;
     justify-content: center;
     border-radius: 0.5rem;
@@ -78,7 +78,7 @@ p{
     padding-left: 1rem;
 }
 .upload__fiel-input::placeholder{
-    color: var(--orange);
+    color: var(--primary);
     text-decoration: none;
     font-size: 1.5rem;
 }
@@ -116,7 +116,7 @@ p{
     justify-content: center;
     align-items: center;
     margin-top: 1.5rem;
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     border-radius: 0.5rem;
     width: 100%;
     padding: 1.5rem;
@@ -131,7 +131,7 @@ p{
 }
 .most_btn{
     background-color: var(--black);
-    color: var(--orange);
+    color: var(--primary);
     border-radius: 0.5rem;
     border: 1px solid var(--ligthgray);
     width: 100%;
@@ -140,7 +140,7 @@ p{
     cursor: pointer;
 }
 .most_btn:first-of-type{
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--black);
     border: 1px solid var(--black);
 } 
@@ -168,6 +168,7 @@ p{
 }
 .name-cate{
     margin-left: 2rem;
+    color: var(--primary);
 }
 .name-prim{
     margin-left: 0.5rem;
@@ -189,7 +190,7 @@ p{
     width: 90%;
 }
 .color-ora{
-    color: var(--orange);
+    color: var(--primary);
     font-size: 2rem;
     font-weight: bold;
 }
@@ -251,7 +252,7 @@ p{
     border-radius: 0.5rem;
 }
 .descrip_h2{
-    background-color: var(--orange);
+    background-color: var(--primary);
     text-align: center;
     padding: 1.5rem 0;
     border-radius: 0.5rem;
@@ -277,11 +278,11 @@ p{
     font-weight: bold;
 }
 span{
-    color: var(--orange);
+    color: var(--primary);
 }
 .btn_popular-cate{
     background-color: var(--black);
-    color: var(--orange);
+    color: var(--primary);
     border-radius: 0.5rem;
     border: 1px solid var(--ligthgray);
     width: 50%;
@@ -290,7 +291,7 @@ span{
     padding: 0.5rem;
 }
 .btn_popular-cate:hover{
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--black);
     transition: 0.5s;
     border: 1px solid var(--black);
@@ -302,11 +303,15 @@ span{
     margin-top: 1rem;
 }
 .container_footer{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     border-radius: 0.5rem;
     width: 100%;
     border-radius: 0.5rem;
     font-size: 1.5rem;
+}
+.container_footer label{
+    color: var(--primary);
+
 }
 .footer_grid{
     display: grid;
@@ -338,6 +343,59 @@ label{
 
 
 /* MODAL */
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(173, 173, 173, 0.8);
+	z-index: 100;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+.modalDialog > div {
+	width: 30%;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+}
+.close {
+	background: #606061;
+	color: #cfcfcf;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+.close:hover { background: #00d9ff; }
+
+
+
+
 .contain_modal-profile{
     position: fixed;
     top: 0;
@@ -370,13 +428,13 @@ label{
 }
 .btn{
     width: 60%;
-    background-color: var(--orange);
+    background-color: var(--primary);
     border: none;
     border-radius: 0.5rem;
     padding: 1rem;
     color: var(--black);
     font-weight: bold;
-    border: 1px solid var(--orange);
+    border: 1px solid var(--primary);
 }
 .btn:last-of-type{
     margin-top: 2rem;
@@ -384,7 +442,7 @@ label{
 .btn:hover{
     background-color: var(--black);
     transition: 0.5s;
-    color: var(--orange);
+    color: var(--primary);
     border: 1px solid var(--ligthgray);
 }
 .contain_btn-profile{
@@ -432,18 +490,18 @@ label{
 }
 .btn{
     width: 60%;
-    background-color: var(--orange);
+    background-color: var(--primary);
     border: none;
     border-radius: 0.5rem;
     padding: 1rem;
     color: var(--black);
     font-weight: bold;
-    border: 1px solid var(--orange);
+    border: 1px solid var(--primary);
 }
 .btn:hover{
     background-color: var(--black);
     transition: 0.5s;
-    color: var(--orange);
+    color: var(--primary);
     border: 1px solid var(--ligthgray);
 }
 .contain_btn-profile{

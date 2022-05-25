@@ -23,23 +23,26 @@ $style = "grupe1Style.css";
             </div> 
             <form action="../controllers/UserController.php" method="post" class="createUser">
                 <div class="field">
-                    <input type="email" name="email" class="input_field" placeholder="Correo Electronico">
+                    <input type="email" name="email" class="input_field " placeholder="Correo Electronico" required>
+                    <label class="lbl_email" hidden>*Correo Existente</label>
                 </div>
                 <div class="field">
-                    <input type="text" name="user" class="input_field" placeholder="Nombre de usuario">
+                    <input type="text" name="user" class="input_field " placeholder="Nombre de usuario" required>
+                    <label class="lbl_user" hidden>*Nombre Usuario Existente</label>
                 </div>
                 <div class="field">
-                    <input type="name" name="name" class="input_field" placeholder="Nombre">
+                    <input type="name" name="name" class="input_field" placeholder="Nombre" required>
                 </div>
                 <div class="field">
-                    <input type="password" name="pass" class="input_field" placeholder="Contraseña">
+                    <input type="password" name="pass" class="input_field" placeholder="Contraseña" required>
                 </div>
                 <div class="field">
-                    <input type="date" name="birth" class="input_field" placeholder="Fecha Nacimiento">
+                    <input type="date" name="birth" class="input_field" placeholder="Fecha Nacimiento" required>
                 </div>
                 <p class="u">
                     Al registrarte Aceptas nuesta condiciones, la Politica de Moderacion y Politica de Privacidad      
                 </p>
+                <label></label>
                 <button type="submit" value="create" name="submit" class="btn-login">Registrarse</button>  
             </form>
             <div>

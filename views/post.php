@@ -209,3 +209,6 @@ if ($post == null) {
         
     </body>
 </html>
+<?php 
+$_SESSION["post"] = null;
+?>

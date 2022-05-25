@@ -17,8 +17,12 @@ $(document).ready(function () {
 
             if (data) {
                 $("button[name=submit]").prop("disabled", true);
+                $(".lbl_email").prop("hidden", false);
+                $("input[name=email]").addClass("input_field_danger");
             } else {
                 $("button[name=submit]").prop("disabled", false);
+                $(".lbl_email").prop("hidden", true);
+                $("input[name=email]").removeClass("input_field_danger");
             }
 
         });
@@ -34,8 +38,13 @@ $(document).ready(function () {
 
             if (data) {
                 $("button[name=submit]").prop("disabled", true);
+                $(".lbl_user").prop("hidden", false);
+                $("input[name=user]").addClass("input_field_danger");
+                
             } else {
                 $("button[name=submit]").prop("disabled", false);
+                $(".lbl_user").prop("hidden", true);
+                $("input[name=user]").removeClass("input_field_danger");
             }
 
         });

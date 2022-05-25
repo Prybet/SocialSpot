@@ -24,10 +24,11 @@ body {
     max-width: 85%;
     width: 120;
     margin: 0 auto;
+    box-shadow: 0px 0px 30px var(--darker);
 }
 
 span {
-    color: var(--orange);
+    color: var(--primary);
 }
 
 .no-margin {
@@ -49,8 +50,8 @@ span {
 
 hr {
     margin: 3rem 2rem;
-    border-color: var(--orange);
-    background-color: var(--orange);
+    border-color: var(--primary);
+    background-color: var(--primary);
 }
 .error{
     padding-left: 5rem;
@@ -58,29 +59,41 @@ hr {
 .log {
     text-align: center;
     font-size: 2rem;
-    color: var(--orange);
+    color: var(--primary);
 }
 
 .field {
     display: flex;
     margin-bottom: 2rem;
+    flex-direction: column;
 }
-
+.field label{
+    color: var(--red);
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
 .input_field {
     width: 80%;
     padding: 1rem;
     margin: 0 auto;
     border: none;
-    border-bottom: 1px solid var(--orange);
+    border-bottom: 1px solid var(--primary);
     background-color: rgba(169, 169, 169, 0);
     outline: none;
     color: var(--white);
 }
 
+.input_field_danger{
+    border: 1px dashed var(--red);
+    border-radius: 0.2rem;
+}
+
 .input_link {
     text-align: center;
     text-decoration: none;
-    color: var(--orange);
+    color: var(--primary);
     margin: 0 auto;
     font-size: 1.5rem;
 }
@@ -89,14 +102,14 @@ hr {
     display: block;
     /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
     font-family: var(--fuenteParrafos);
-    color: var(--orange);
+    color: var(--primary);
     text-align: center;
     padding: 1rem 9rem;
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
     background-color: var(--dark);
     cursor: pointer;
@@ -113,9 +126,9 @@ hr {
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--darkgray);
     cursor: pointer;
 }
@@ -184,15 +197,15 @@ hr {
 
 .btn-login:hover {
     color: var(--black);
-    background-color: var(--orange);
-    border-color: var(--orange);
+    background-color: var(--primary);
+    border-color: var(--primary);
     transition: background-color .8s ease;
 }
 
 .btn-singIn:hover {
-    color: var(--orange);
+    color: var(--primary);
     background-color: var(--black);
-    border-color: var(--orange);
+    border-color: var(--primary);
     transition: background-color .8s ease;
 }
 
@@ -205,7 +218,7 @@ hr {
 p {
     font-size: 1.4rem;
     text-align: center;
-    color: var(--orange);
+    color: var(--primary);
 }
 
 .mainn {
@@ -226,7 +239,7 @@ p {
 
 .link {
     text-decoration: none;
-    color: var(--orange);
+    color: var(--primary);
 }
 
 .p_in {
@@ -247,7 +260,7 @@ input[type="date"] {
     padding: 1rem;
     margin: 0 auto;
     border: none;
-    border-bottom: 1px solid var(--orange);
+    border-bottom: 1px solid var(--primary);
     background-color: rgba(169, 169, 169, 0);
     outline: none;
     color: var(--white);
@@ -262,17 +275,17 @@ input[type="date"] {
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--darkgray);
     cursor: pointer;
     margin-top: 2rem;
 }
 .btn-pass:hover{
-    color: var(--orange);
+    color: var(--primary);
     background-color: var(--black);
-    border-color: var(--orange);
+    border-color: var(--primary);
     transition: background-color .8s ease;
 }
 .b{
@@ -291,7 +304,7 @@ input[type="date"] {
 }
 /* recovery */
 .info-h{
-    color: var(--orange);
+    color: var(--primary);
     padding-top: 0.7rem;
 }
 .info-r{
@@ -302,7 +315,7 @@ input[type="date"] {
 }
 /* pass */
 .info_p{
-    color: var(--orange);
+    color: var(--primary);
     margin-top: 0.5rem;
 }
 .inp_p{

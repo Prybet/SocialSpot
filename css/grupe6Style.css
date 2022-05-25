@@ -6,7 +6,6 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    background-color: var(--darker);
 }
 *,
 *:before,
@@ -14,10 +13,7 @@ html {
     box-sizing: inherit;
 }
 body{
-    background-image: url(../img/wallpaperLogin.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover; 
+    background-color: var(--darkgraymodern);
 }
 .no-margin {
     margin: 0 auto;
@@ -39,7 +35,7 @@ body{
 }
 h1{
     font-size: 6.5rem;
-    color: var(--orange);
+    color: var(--primary);
     font-family: fontTitle;
     text-align: center;
 }
@@ -47,26 +43,28 @@ span{
     color: var(--ligthgray);
 }
 p{
-    color: var(--ligthgray);
-    font-size: 2rem;
+    color: var(--darker);
+    font-size: 2.5rem;
     text-align: center;
+    font-weight: bold;
 }
 .flex{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.img-login{
-    background-color: #ffffff;
-    width: 50%;
-    height: 40vh;
+.img_logoo{
+    width: 60rem;
+    height: 16.5em;
 }
-
 
 hr {
     margin: 12rem 1rem;
-    border-color: var(--orange);
-    background-color: var(--orange);
+    padding: 0.1rem;
+    border-color: var(--primary);
+    background-color: var(--primary);
+    border: 1px solid var(--black);
+    border-radius: 5rem;
 }
 
 
@@ -80,11 +78,12 @@ hr {
     background-color: var(--black);
     width: 60%;
     border-radius: 0.5rem;
+    box-shadow: 0px 0px 30px var(--darker);
 }
 .log {
     text-align: center;
     font-size: 2.2rem;
-    color: var(--orange);
+    color: var(--primary);
 }
 .field {
     display: flex;
@@ -95,7 +94,7 @@ hr {
     padding: 1rem;
     margin: 0 auto;
     border: none;
-    border-bottom: 1px solid var(--orange);
+    border-bottom: 1px solid var(--primary);
     background-color: rgba(169, 169, 169, 0);
     outline: none;
     padding-bottom: 0.3rem;
@@ -106,6 +105,9 @@ hr {
     display: flex;
     justify-content: center;
     width: 100%;
+    
+}
+.hidden{
     display: none;
 }
 .red{
@@ -117,28 +119,26 @@ hr {
 .input_link {
     text-align: center;
     text-decoration: none;
-    color: var(--orange);
+    color: var(--primary);
     margin: 0 auto;
     font-size: 1.5rem;
 }
-
 .btn-login {
     display: block;
     /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
     font-family: var(--fuenteParrafos);
-    color: var(--orange);
+    color: var(--primary);
     text-align: center;
     padding: 1rem 9rem;
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
     background-color: var(--dark);
     cursor: pointer;
 }
-
 .btn-singIn {
     display: block;
     /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
@@ -150,24 +150,122 @@ hr {
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--orange);
+    border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--orange);
+    background-color: var(--primary);
     color: var(--darkgray);
     cursor: pointer;
 }
 .btn-login:hover {
     color: var(--black);
-    background-color: var(--orange);
-    border-color: var(--orange);
+    background-color: var(--primary);
+    border-color: var(--primary);
+    transition: background-color .8s ease;
+}
+.btn-singIn:hover {
+    color: var(--primary);
+    background-color: var(--black);
+    border-color: var(--primary);
     transition: background-color .8s ease;
 }
 
-.btn-singIn:hover {
-    color: var(--orange);
-    background-color: var(--black);
-    border-color: var(--orange);
-    transition: background-color .8s ease;
+
+/* slider */
+.contain_slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.slider{
+    width: 80rem;
+    height: 40rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 0.3rem solid var(--primary);
+    box-shadow: 0px 0px 30px var(--darker);
+}
+.slides{
+    width: 500%;
+    height: 50rem;
+    display: flex;
+}
+.slides input{
+    display: none;
+}
+.slide{
+    width: 20%;
+    transition: 2s;
+}
+.slide img{
+    background-position: center center;
+    background-size: cover;
+    width: 80rem;
+    height: 40rem;
+}
+
+.navigation-manual{
+    position: absolute;
+    width: 80rem;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.manual-btn{
+    border: 2px solid var(--primary);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual-btn:not(:last-child){
+    margin-right: 3rem;
+}
+.manual-btn:hover{
+    background-color: var(--dark);
+}
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+
+.navigation-auto{
+    position: absolute;   
+    display: flex;
+    width: 80rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+    bottom: 0;
+}
+.navigation-auto div{
+    border: 2px solid var(--primary);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    transition: 1s;
+}
+.navigation-auto div:not(:last-child){
+    margin-right: 3rem;
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background-color: var(--primary);
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background-color: var(--primary);
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background-color: var(--primary);
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background-color: var(--primary);
 }
 
 

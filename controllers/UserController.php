@@ -96,15 +96,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user->username = $var1;
             $_SESSION["user"] = $user->getLogin();
             $_SESSION["err"] = "";
-            header("Location: ../views/editprofile.php");
+            header("Location: ../views/index.php");
         } else {
-            $_SESSION["err"] = "Credenciales incorrectas";
+            $_SESSION["err"] = true;
             header("Location: ../views/login.php");
         }
     } elseif ($_POST["submit"] == "singin") {
         header("Location: ../views/singin.php");
     } else {
-        header("Location: ../views/profile.php");//ERA INDEX
+        header("Location: ../views/index.php");
     }
     //
 } else {

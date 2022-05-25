@@ -1,5 +1,6 @@
 
 <div class="contain_post">
+    <?= $post->id?>
     <div class="container_p">
         <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
         <div class="name-prim">
@@ -14,8 +15,8 @@
         <div class="name-cate">
             <label>Dificil</label>
         </div>
-        <div class="more-post">
-            <img src="../img/MenuPoints.png" class="pointer" id="btn_menu">
+        <div class="more-post" id="btn_option">
+            <img src="../img/MenuPoints.png" class="pointer">
         </div>
     </div>
 
