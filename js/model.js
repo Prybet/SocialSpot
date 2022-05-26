@@ -1,5 +1,6 @@
 let close =  document.querySelectorAll(".close")[0];
-//let open =  document.querySelectorAll("#btn_optionnn")[0];
+      
+let open =  document.querySelector(".more-post");  
 let modal =  document.querySelectorAll(".modal")[0];
 let modalC =  document.querySelectorAll(".modal-container")[0];
 
@@ -11,6 +12,8 @@ open.addEventListener("click", function(e){
     modalC.style.opacity = "1";
     modalC.style.visibility = "visible";
     modal.classList.toggle("modal-close");
+
+    
 });
 close.addEventListener("click", function(){
     modal.classList.toggle("modal-close");

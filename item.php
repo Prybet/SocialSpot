@@ -15,9 +15,9 @@
         <div class="name-cate">
             <label>Dificil</label>
         </div>
-        <a href="#openModal" class="more-post" id="btn_optionnn">
+        <button class="more-post" value="<?= $post->id?>">
             <img src="../img/MenuPoints.png" class="pointer">
-        </a>
+        </button>
     </div>
 
     <div class="container_info">
