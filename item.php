@@ -1,31 +1,34 @@
 
-<div class="contain_post">
+<div class="contain_post" div="post">
     <?= $post->id?>
-    <div class="container_p">
-        <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
-        <div class="name-prim">
-            <label class="color-lig"><?= $post->category->name ?></label>
+    <div class="contain_post-top">
+        <div class="container_p">
+            <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
+            <div class="name-prim">
+                <label class="color-lig"><?= $post->category->name ?></label>
+            </div>
+            <div class="name-cate">
+                <label class="color-lig">Publicado Por <span><?= $post->userProfile->username ?></span></label>
+            </div>
+            <div class="name-cate">
+                <label class="color-lig"><?= $post->date ?></label>
+            </div>
+            <div class="name-cate">
+                <label>Dificil</label>
+            </div>
+            <button class="more-post" value="<?= $post->id?>">
+                <img src="../img/MenuPoints.png" class="pointer">
+            </button>
         </div>
-        <div class="name-cate">
-            <label class="color-lig">Publicado Por <span><?= $post->userProfile->username ?></span></label>
-        </div>
-        <div class="name-cate">
-            <label class="color-lig"><?= $post->date ?></label>
-        </div>
-        <div class="name-cate">
-            <label>Dificil</label>
-        </div>
-        <button class="more-post" value="<?= $post->id?>">
-            <img src="../img/MenuPoints.png" class="pointer">
-        </button>
-    </div>
 
-    <div class="container_info">
-        <div class="container_info-descrip">
-            <h2 class="color-ora"><?= $post->title ?></h2>
-            <p class="color-lig cont-p"><?= $post->body ?></p>
+        <div class="container_info">
+            <div class="container_info-descrip">
+                <h2 class="color-ora"><?= $post->title ?></h2>
+                <p class="color-lig cont-p"><?= $post->body ?></p>
+            </div>
         </div>
     </div>
+    
 
     <?php foreach ($post->images as $image): ?>
     <div class="container_img">

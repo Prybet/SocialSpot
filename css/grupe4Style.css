@@ -150,7 +150,7 @@ p{
     background-color: var(--darker);
     margin: 2rem 0;
     border-radius: 0.5rem;
-    padding: 1.5rem 0;
+    padding: 1.5rem 0;    
 }
 .container_p{
     display: flex;
@@ -232,7 +232,6 @@ p{
     font-weight: bold;
     color: var(--ligthgray);
 }
-
 
 /* CATEGORY POPULAR */
 .contain_popular{

@@ -12,12 +12,18 @@ $style = "grupe4Style.css";
         <script src="../js/nav.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $(".more-post").click(function(){
+                $(".btn-gotospot").click(function () {
+                    let id = $(this).val();
+                    window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
+                });
 
+
+
+                $(".more-post").click(function(){
                     let id = $(this).val();
                     console.log(id);
-                    
                     $("button[name=btn_report]").val(id);
+                    $("button[name=btn-gopost]").val(id);
 
 
                     $(".contain_modal-profile").css({
@@ -66,6 +72,7 @@ $style = "grupe4Style.css";
                         "padding-right" : "0"
                     });
                 });
+                
                 $(".btn-gotospot").click(function(){
                     
                 });
@@ -156,10 +163,10 @@ $style = "grupe4Style.css";
             <div class="contain_mod">
                 <div>         
                     <div class="contain_btn-profile">
-                        <button class="btn btn-gotospot" id="btn_post">Ir a la publicacion</button>
+                        <button class="btn btn-gotospot" id="" name="btn-gopost">Ir a la publicacion</button>
                     </div> 
                     <div class="contain_btn-profile">
-                        <button class="btn">Dejar de seguir</button>
+                        <button class="btn">Dejar de seguir/seguir</button>
                     </div>
                     <div class="contain_btn-profile">
                         <button class="btn" id="btn_report" value="">Reportar</button>
