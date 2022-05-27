@@ -33,6 +33,7 @@ if ($method == "POST") {
                 $post->title = $params->title;
                 $post->body = $params->body;
                 $post->category = $params->category;
+                $post->hashtags = $params->hashtags;
                 if ($post->setPost() > 0) {
                     $user = new User();
                     $user->username = $params->userProfile->username;
@@ -49,10 +50,23 @@ if ($method == "POST") {
             break;
         case $id > 0:
             //edit Post
+            if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
+                $post = new Post();
+                $post->profID = $params->profID;
+                $post->userProfile = $params->userProfile;
+                $post->title = $params->title;
+                $post->body = $params->body;
+                $post->category = $params->category;
+                
+                
+            } else {
+                header("Content-Type: application/json; charset=UTF8");
+                echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }
             break;
         case -1:
-             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
-                 if (Post::delete($params)) {
+            if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
+                if (Post::delete($params)) {
                     header("Content-Type: application/json; charset=UTF8");
                     echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                 } else {
@@ -60,7 +74,7 @@ if ($method == "POST") {
                     echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                 }
             }
-            
+
             break;
         default:
             break;

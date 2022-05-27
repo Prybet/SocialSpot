@@ -20,6 +20,8 @@ require_once 'Video.php';
 require_once 'Profile.php';
 require_once 'Reply.php';
 require_once 'Like.php';
+require_once 'Hashtag.php';
+
 class Post {
 
     var $id;
@@ -40,6 +42,17 @@ class Post {
     var $likes;
     var $replies;
 
+    private function insertHashtags($pos) {
+        foreach ($this->hashtags as $hash) {
+            if ($hash->id == 0) {
+                $id = Hashtag::setNewHashtag($hash->name);
+                Hashtag::setHashtag($pos, $id);
+            } else {
+                Hashtag::setHashtag($pos, $hash->id);
+            }
+        }
+    }
+
     public function setPost() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO post VALUES (null, :prof, :title , :body, :date, :time, :cate, 1, null)");
@@ -47,8 +60,8 @@ class Post {
         $sen->bindParam(":title", $this->title);
         $sen->bindParam(":body", $this->body);
         date_default_timezone_set("America/Santiago");
-        $date = date("Y-m-d",$timestamp = time());
-        $time = date("H:i:s",$timestamp = time());
+        $date = date("Y-m-d", $timestamp = time());
+        $time = date("H:i:s", $timestamp = time());
         $sen->bindParam(":date", $date);
         $sen->bindParam(":time", $time);
         $catID = $this->category->id;
@@ -58,11 +71,32 @@ class Post {
             $sen->bindParam(":time", $time);
             if ($sen->execute()) {
                 $res = $sen->fetch();
+                $this->insertHashtags($res[0]);
                 return $res[0];
             }
         }
     }
-        // For views/post.php
+
+    public function editPost() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE post SET title = :tit, body = :body, status_id = 7 WHERE id = :id");
+        $title = $post->title;
+        $sen->bindParam(":tit", $title);
+        $body = $post->body;
+        $sen->bindParam(":body", $body);
+        $id = $post->id;
+        $sen->bindParam(":id", $id);
+        if ($sen->execute()) {
+            $sen = $conn->mysql->prepare("SELECT id FROM post WHERE time = :time");
+            $sen->bindParam(":time", $time);
+            if ($sen->execute()) {
+                $res = $sen->fetch();
+                return $res[0];
+            }
+        }
+    }
+
+    // For views/post.php
     public static function getPost($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE id = :id ");
@@ -79,13 +113,15 @@ class Post {
             $p->time = $res[5];
             $p->category = Category::getCategoy($res[6]);
             $p->status = Status::getStatu($res[7]);
+            $p->hashtags = Hashtag::getHashTags($res[0]);
             $p->images = Image::getImages($res[0]);
             $p->likes = Like::getLikes($res[0]);
             $p->replies = Reply::getRepliesByPostId($res[0]);
         }
         return $p;
     }
-        //Main Posts
+
+    //Main Posts
     public static function getAllPosts() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 OR status_id = 7 ORDER BY id DESC");
@@ -131,15 +167,16 @@ class Post {
                 $p->time = $post[5];
                 $p->category = Category::getCategoy($post[6]);
                 $p->status = Status::getStatu($post[7]);
+                $p->hashtags = Hashtag::getHashTags($post[0]);
                 $p->images = Image::getImages($post[0]);
                 $p->likes = Like::getLikes($post[0]);
                 $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
             }
             return $list;
-        } 
+        }
     }
-    
+
     public static function getPostsForCategory($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE category_id = :id ");
@@ -164,9 +201,9 @@ class Post {
                 $list[] = $p;
             }
             return $list;
-        } 
+        }
     }
-    
+
     public static function getTopPosts() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 7 ");
@@ -191,16 +228,17 @@ class Post {
         }
         return $list;
     }
-    
-    public static function delete($post){
+
+    public static function delete($post) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE date = :date AND time = :time " );
+        $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE date = :date AND time = :time ");
         $sen->bindParam(":date", $post->date);
         $sen->bindParam(":time", $post->time);
         if ($sen->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
 }
