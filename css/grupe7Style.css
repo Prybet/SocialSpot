@@ -330,7 +330,7 @@ header {
     display: flex;
     justify-content: right;
     position: sticky;
-    top: 0;
+    top: 7%;
 }
 .descrip_user-contain{
     width: 85%;  
