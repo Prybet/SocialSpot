@@ -65,7 +65,7 @@ if ($post == null) {
                     <?php include '../item.php'; ?>
                     <div class="container_reply">
                         <form action="../controllers/PostController.php" method="post" class="container_reply_field">
-                            <label>Comentar como <span><?= $user->username ?></span></label>
+                            <label class="com">Comentar como <span><?= $user->username ?></span></label>
                             <div class="container_color">
                                 <div>
                                     <textarea name="comm" class="input_textarea" placeholder="¿En que estas pensando?"></textarea>
@@ -88,7 +88,7 @@ if ($post == null) {
                                     </div>
                                     <p class="reply_comm"><?= $comm->body ?></p>
                                     <label class="lbl_reply" id="btn_reply-show">Responder</label>
-                                    <form action="">
+                                    <form action="" class="frm-reply">
                                         <textarea class="input_textarea textarea_reply"></textarea>
                                         <div class="flexrigth">
                                             <button type="submit" name="submit" value="comm" class="btn_reply-right" id="btn_com">Comentar</button>

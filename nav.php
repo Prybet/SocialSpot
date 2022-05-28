@@ -1,6 +1,6 @@
 <nav>
     <div class="contain_logo flex">
-        <a class="a_logo" href="http://localhost/SocialSpot/views/main.php">
+        <a class="a_logo" href="http://localhost/SocialSpot/views/index.php">
             <img src="../img/logo.png" class="img_logo pointer" />
         </a>
     </div>

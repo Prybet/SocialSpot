@@ -71,6 +71,8 @@ span{
     position: absolute;
     right: 0;
     margin-right: 3rem;
+    background-color: var(--darker);
+    border: none;
 }
 .color-lig{
     color: var(--ligthgray);
@@ -127,9 +129,14 @@ span{
 .contain_right{
     width: 100%;
 } 
+.divcom{
+    background-color: var(--darker);
+    border: none;
+}
+
 /* REPLY */
 .container_reply{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     margin: 2rem 0;
     display: flex;
     justify-content: center;
@@ -215,6 +222,7 @@ hr{
     display: flex;
     flex-direction: column;
     margin-left: 0.5rem;
+    width: 100%;
 }
 .nom_time{
     display: flex;
@@ -232,14 +240,22 @@ hr{
     cursor: pointer;
 }
 .textarea_reply{
-    margin-top: 1rem;
     visibility: hidden;
     display: none;
+    width: 100%;
 }
 .flexrigth{
     display: flex;
     justify-content: right;
     width: 100%;
+    background-color: var(--ligthgray);
+    border-radius: 0.5rem;
+}
+.frm-reply{
+    width: 100%;
+    background-color: var(--ligthgray);
+    border-radius: 0.5rem;
+    margin-top: 1rem;
 }
 .btn_reply-right{
     background-color: var(--ligthgray);
@@ -248,11 +264,14 @@ hr{
     font-weight: bold;
     width: 13%;
     margin-bottom: 0.5rem;
-    padding: 0.5rem;
     cursor: pointer;
     text-align: right;
     visibility: hidden;
     display: none;
+    padding-top: 0.5rem;
+}
+.btn_reply-right:hover{
+    color: var(--primary);
 }
 .contan_rep{
     display: flex;
@@ -306,7 +325,7 @@ hr{
     margin-left: 1rem;
 }
 .contain_descrip{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     color: var(--ligthgray);
     font-size: 1.5rem;
     width: 100%;
@@ -375,7 +394,7 @@ hr{
 } 
 /* MODE */
 .container_mode{
-    background-color: var(--darkgray);
+    background-color: var(--darker);
     border-radius: 0.5rem;
     width: 100%;
     margin-top: 2rem;
@@ -385,7 +404,7 @@ hr{
 .h2_mode{
     margin: 0.5rem 0;
     font-size: 1.8rem;
-    color: var(--ligthgray);
+    color: var(--primary);
     text-align: center;
 }
 .mode_contain{
@@ -465,9 +484,12 @@ a{
     padding: 0.5rem 1rem;
 }
 label{
-    color: var(--ligthgray);
+    color: var(--primary);
 } 
 
 .l{
     font-size: 10rem;
 } 
+.com{
+    color: var(--white);
+}

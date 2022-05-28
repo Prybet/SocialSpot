@@ -61,6 +61,10 @@ p{
     border-radius: 0.5rem;
     width: 100%;
     padding: 2rem;
+    border: 2px solid var(--darker  );
+}
+.upload:hover{
+    border: 2px solid var(--white);
 }
 .upload__field{
     display: flex;
@@ -150,7 +154,11 @@ p{
     background-color: var(--darker);
     margin: 2rem 0;
     border-radius: 0.5rem;
-    padding: 1.5rem 0;    
+    padding: 1.5rem 0;
+    border: 2px solid var(--darker);
+}
+.contain_post:hover{
+    border: 2px solid var(--white);
 }
 .container_p{
     display: flex;
@@ -231,6 +239,13 @@ p{
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--ligthgray);
+}
+.divcom{
+    background-color: var(--darker);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* CATEGORY POPULAR */
@@ -326,7 +341,7 @@ span{
 }
 a{
     color: var(--ligthgray);
-    text-decoration: none;
+    background-color: var(--darker);
 }
 .rell{
     padding-top: 0.5rem;

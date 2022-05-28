@@ -10,6 +10,7 @@ Made by:
 require_once '../models/User.php';
 require_once '../models/UserType.php';
 session_start();
+$allPosts = Post::getAllPosts();
 $style = "grupe7Style.css";
 if ($_SESSION["user"]->userType->id == 2) {
     header("location: ../views/index.php");

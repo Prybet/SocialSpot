@@ -226,6 +226,17 @@ main{
     color: var(--ligthgray);
     font-weight: bold;
 } 
+.divcom{
+    background-color: var(--darker);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.more-post{
+    background-color: var(--primary);
+    border: none;
+}
 /* CATEGORY */
 .contain_detail{
     width: 100%;

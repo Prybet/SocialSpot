@@ -12,16 +12,23 @@ $style = "grupe4Style.css";
         <script src="../js/nav.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $(".btn-gotospot").click(function () {
+                //item
+                $(".contain_post").click(function(){
+                    let id = $(this).prop("id");
+                    if($("#id_" + id).is(":focus")){
+                        console.log($("#id_" + id));
+                    }else{
+                        window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
+                    }
+                });
+                $(".divcom").click(function () {
                     let id = $(this).val();
                     window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
                 });
 
-
-
+                //modal
                 $(".more-post").click(function(){
                     let id = $(this).val();
-                    console.log(id);
                     $("button[name=btn_report]").val(id);
                     $("button[name=btn-gopost]").val(id);
 
@@ -60,7 +67,10 @@ $style = "grupe4Style.css";
                     });
                     
                 });
-                
+                $(".btn-gotospot").click(function () {
+                    let id = $(this).val();
+                    window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
+                });
                 $(".btn_cancel-report").click(function(){
                     $(".contain_modal-report").css({
                     "pointer-events": "none",
@@ -72,13 +82,6 @@ $style = "grupe4Style.css";
                         "padding-right" : "0"
                     });
                 });
-                
-                $(".btn-gotospot").click(function(){
-                    
-                });
-
-                
-                
             })
         </script>
     </head>
@@ -104,10 +107,10 @@ $style = "grupe4Style.css";
                         </div>
                     </div>
                     <?php
-                    foreach ($allPosts as $post):
-                        include '../item.php';
-                       
-                    endforeach;
+                        foreach ($allPosts as $post):
+                            include '../item.php';
+                        
+                        endforeach;
                     ?>
                 </main>
                 <div class="contain_popular">

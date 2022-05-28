@@ -37,7 +37,7 @@ html {
   }
   
   label {
-    color: var(--orange);
+    color: var(--primary);
   }
   
   /*---nav--- */
@@ -51,7 +51,6 @@ html {
     height: 6rem;
     padding: 0 30rem;
     border-bottom: 1px solid var(--ligthgray);
-    padding-right: 1.7rem;
   }
   
   /* logo */
@@ -178,7 +177,7 @@ html {
   .lbluser {
     padding-top: 0.5rem;
     margin: 0;
-    color: var(--orange);
+    color: var(--primary);
   }
   
   .decorate_user {

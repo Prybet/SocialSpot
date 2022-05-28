@@ -1,5 +1,5 @@
 
-<div class="contain_post" div="post">
+<div class="contain_post" div="post" id="<?= $post->id?>">
     <?= $post->id?>
     <div class="contain_post-top">
         <div class="container_p">
@@ -16,7 +16,7 @@
             <div class="name-cate">
                 <label>Dificil</label>
             </div>
-            <button class="more-post" value="<?= $post->id?>">
+            <button class="more-post" value="<?= $post->id?>" id="id_<?= $post->id?>">
                 <img src="../img/MenuPoints.png" class="pointer">
             </button>
         </div>
@@ -49,8 +49,10 @@
                 <label class="cont-pst">1</label>
             </div>
             <div class="flex_option">
-                <img src="../img/Replys.png" class="img_option-post pointer">
-                <label class="cont-pst">1</label>
+                <button class="divcom" value="<?= $post->id?>">
+                    <img src="../img/Replys.png" class="img_option-post pointer">
+                    <label class="cont-pst">1</label>
+                </button> 
             </div>
             <div class="flex_option">
                 <img src="../img/Spot.png" class="img_option-post pointer">
