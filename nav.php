@@ -35,7 +35,7 @@
         
         <div class="contain_user btn-show flex">
             <div class="img_user flex" id="btn_user" for="checkbox_menu">
-                <img src="../img/person.png" class="size-img img-user pointer" />
+                <img src="../img/perfil.png" class="size-img img-user pointer" />
                 <div class="lbluser pointer">Usuario</div>
                 <div class="decorate_user "></div>
             </div>

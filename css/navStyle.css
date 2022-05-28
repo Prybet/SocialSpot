@@ -98,8 +98,8 @@ html {
   }
   
   scroll-container {
-    display: block;
-    width: 50rem;
+    display: none;
+    width: 51rem;
     height: 200px;
     overflow-y: scroll;
     scroll-behavior: smooth;
@@ -107,11 +107,11 @@ html {
     color: var(--white);
     position: absolute;
     border-radius: 0.1rem;
-    
+    border-left: 1px solid var(--ligthgray);
   }
-  .ocultar{
+  /* .ocultar{
     visibility: hidden;
-  }
+  } */
 
   
   /* noti */
@@ -161,18 +161,19 @@ html {
   
   
   .contain_user {
-    display: block;
     display: flex;
     justify-content: right;
     width: 100%;
     position: relative;
     font-size: 1.3rem;
     padding-top: 0.3rem;
+    
   }
   
   .img_user {
     border: none;
     position: relative;
+    background-color: red;
   }
   .lbluser {
     padding-top: 0.5rem;
@@ -188,6 +189,7 @@ html {
     background-color: var(--black);
     margin-top: 5.5rem;
     visibility: hidden;
+    display: none;
   }
   
   .contain_option {
@@ -201,9 +203,7 @@ html {
     visibility: hidden;
   }
 
-  #checkbox_menu:checked ~ .contain_option{
-    visibility: visible;
-  }
+  
   .option {
     margin-top: 0.5rem;
     width: 100%;

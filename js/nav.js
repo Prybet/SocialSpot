@@ -6,34 +6,23 @@
  *  Prybet
  */
 
-let close =  document.querySelectorAll(".close")[0];
-      
-let open =  document.querySelector(".more-post");  
-let modal =  document.querySelectorAll(".modal")[0];
-let modalC =  document.querySelectorAll(".modal-container")[0];
+
+var btnUser = document.querySelector("#btn_user")
+var modalU = document.querySelector(".contain_option");
+var decoU = document.querySelector(".decorate_user");
 
 
-
-open.addEventListener("click", function(e){
-    //para quitar la almuadilla de la etiqueta a 
-    e.preventDefault();
-    modalC.style.opacity = "1";
-    modalC.style.visibility = "visible";
-    modal.classList.toggle("modal-close");
-
-    
-});
-close.addEventListener("click", function(){
-    modal.classList.toggle("modal-close");
-    
-    setTimeout(function(){
-        modalC.style.opacity = "0";
-        modalC.style.visibility = "hidden";
-    },850);
-});
-window.addEventListener("click", function(e){
-    x
+btnUser.addEventListener("click", function(){
+    modalU.style.visibility = "visible";
+    decoU.style.visibility = "visible";
 });
 
 
-
+$(document).on("click",function(e) {
+    var btnU = $("#btn_user");  
+    var container = $(".contain_option");            
+    if (container.is(e.target)) { 
+        
+        modalU.style.visibility = "hidden";
+    }
+});

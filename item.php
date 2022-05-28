@@ -1,6 +1,5 @@
 
 <div class="contain_post" div="post" id="<?= $post->id?>">
-    <?= $post->id?>
     <div class="contain_post-top">
         <div class="container_p">
             <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">

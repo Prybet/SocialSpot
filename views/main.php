@@ -9,7 +9,7 @@ $style = "grupe4Style.css";
     <head>
         <?php include_once '../header.php'; ?>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-        <script src="../js/nav.js"></script>
+        
         <script type="text/javascript">
             $(document).ready(function(){
                 //item
@@ -220,6 +220,7 @@ $style = "grupe4Style.css";
             </div>
         </div> -->
         <!-- <script lang="javascript" src="../js/model.js"></script> -->
+        
     </body>
-    
+    <script src="../js/nav.js"></script>
 </html>

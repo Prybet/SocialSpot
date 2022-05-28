@@ -45,7 +45,9 @@ $user = $_SESSION["user"];
                     "opacity" : "0"
                     });
                 });
-
+                $(".btn_editar").click(function(){
+                    window.location.href = "http://localhost/SocialSpot/views/editprofile.php"
+                });
             })
         </script>
 </head>
