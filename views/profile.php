@@ -160,21 +160,5 @@ $user = $_SESSION["user"];
         </div>
     </main>
     
-    <!-- <div class="contain_modal-profile">
-        <div class="contain_report">
-            <div>       
-                <div class="contain_btn-profile">
-                    <button class="btn" id="btn_report">Eliminar Publicación</button>
-                </div>
-                <div class="contain_btn-profile">
-                    <button class="btn" id="btn_report">Editar Publicacion</button>
-                </div>
-                <div class="contain_btn-profile">
-                    <button class="btn" id="btn_report">Cancelar</button>
-                </div>
-            </div> 
-        </div>
-    </div>  -->
-    
 </body>
 </html>

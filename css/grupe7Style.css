@@ -264,6 +264,8 @@ header {
     position: absolute;
     right: 0;
     margin-right: 3rem;
+    background-color: var(--darker);
+    border: none;
 }
 .color-lig{
     color: var(--ligthgray);
@@ -316,6 +318,10 @@ header {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--ligthgray);
+}
+.divcom{
+    background-color: var(--darker);
+    border: none;
 }
 /* DESCRIPTION */
 .descrip_user{
