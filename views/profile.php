@@ -29,27 +29,26 @@ $user = $_SESSION["user"];
             $("#imgprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/ProfileImages/<?= $user->profile->imageURL?>')");
         });
     </script>
-    <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-    <script src="../js/nav.js"></script>
+    <script src="../js/model.js"></script>
     <script type="text/javascript">
-            $(document).ready(function(){
-                $("#btn_post-profile").click(function(){
-                    $(".contain_modal-profile").css({
-                    "pointer-events": "auto",
-                    "opacity" : "1"
-                    });
+        $(document).ready(function(){
+            $("#btn_post-profile").click(function(){
+                $(".contain_modal-profile").css({
+                "pointer-events": "auto",
+                "opacity" : "1"
                 });
-                $("#btn_cancel").click(function(){
-                    $(".contain_modal-profile").css({
-                    "pointer-events": "none",
-                    "opacity" : "0"
-                    });
+            });
+            $("#btn_cancel").click(function(){
+                $(".contain_modal-profile").css({
+                "pointer-events": "none",
+                "opacity" : "0"
                 });
-                $(".btn_editar").click(function(){
-                    window.location.href = "http://localhost/SocialSpot/views/editprofile.php"
-                });
-            })
-        </script>
+            });
+            $(".btn_editar").click(function(){
+                window.location.href = "http://localhost/SocialSpot/views/editprofile.php"
+            });
+        })
+    </script>
 </head>
 
 <body>
@@ -161,6 +160,7 @@ $user = $_SESSION["user"];
             </div>
         </div>
     </main>
-    
+    <?php include_once '../modal.php'; ?>
 </body>
+<script src="../js/nav.js"></script>
 </html>

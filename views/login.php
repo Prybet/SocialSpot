@@ -46,16 +46,16 @@ $style = "grupe6Style.css";
                                 <input type="radio" name="radio-btn" id="radio4">
 
                                 <div class="slide first">
-                                    <img src="../img/img1.png" alt="">
+                                    <img src="../../SSpotImages/LoginImages/img1.png" alt="">
                                 </div>
                                 <div class="slide ">
-                                    <img src="../img/img2.png" alt="">
+                                    <img src="../../SSpotImages/LoginImages/img2.png" alt="">
                                 </div>
                                 <div class="slide ">
-                                    <img src="../img/img3.jpg" alt="">
+                                    <img src="../../SSpotImages/LoginImages/img3.jpg" alt="">
                                 </div>
                                 <div class="slide ">
-                                    <img src="../img/img4.jpg" alt="">
+                                    <img src="../../SSpotImages/LoginImages/img4.jpg" alt="">
                                 </div>
 
                                 <div class="navigation-auto">

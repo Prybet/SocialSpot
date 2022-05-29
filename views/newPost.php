@@ -229,4 +229,5 @@ $categories = Category::getListAllCategories();
         </div>
     </main>
 </body>
+<script src="../js/nav.js"></script>
 </html>

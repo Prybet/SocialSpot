@@ -9,81 +9,7 @@ $style = "grupe4Style.css";
     <head>
         <?php include_once '../header.php'; ?>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-        
-        <script type="text/javascript">
-            $(document).ready(function(){
-                //item
-                $(".contain_post").click(function(){
-                    let id = $(this).prop("id");
-                    if($("#id_" + id).is(":focus")){
-                        console.log($("#id_" + id));
-                    }else{
-                        window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
-                    }
-                });
-                $(".divcom").click(function () {
-                    let id = $(this).val();
-                    window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
-                });
-
-                //modal
-                $(".more-post").click(function(){
-                    let id = $(this).val();
-                    $("button[name=btn_report]").val(id);
-                    $("button[name=btn-gopost]").val(id);
-
-
-                    $(".contain_modal-profile").css({
-                        "pointer-events": "auto",
-                        "opacity" : "1"
-                    });
-                    $("body").css({
-                        "overflow" : "hidden",
-                        "height" : "100vh",
-                        "padding-right" : "17px"
-                        
-                    });
-                    
-                });
-                $(".btn_cancel").click(function(){
-                    $(".contain_modal-profile").css({
-                        "pointer-events": "none",
-                        "opacity" : "0"
-                    });
-                    $("body").css({
-                        "overflow" : "auto",
-                        "height" : "auto",
-                        "padding-right" : "0"
-                    });
-                });
-                $("#btn_report").click(function(){
-                    $(".contain_modal-profile").css({
-                    "pointer-events": "none",
-                    "opacity" : "0"
-                    });
-                    $(".contain_modal-report").css({
-                    "pointer-events": "auto",
-                    "opacity" : "1"
-                    });
-                    
-                });
-                $(".btn-gotospot").click(function () {
-                    let id = $(this).val();
-                    window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
-                });
-                $(".btn_cancel-report").click(function(){
-                    $(".contain_modal-report").css({
-                    "pointer-events": "none",
-                    "opacity" : "0"
-                    });
-                    $("body").css({
-                        "overflow" : "auto",
-                        "height" : "auto",
-                        "padding-right" : "0"
-                    });
-                });
-            })
-        </script>
+        <script src="../js/model.js"></script>
     </head>
     <body>
         <div class="a">
@@ -161,66 +87,8 @@ $style = "grupe4Style.css";
             </div>
         </div>
 
+        <?php include_once '../modal.php'; ?>
         
-        <div class="contain_modal-profile">
-            <div class="contain_mod">
-                <div>         
-                    <div class="contain_btn-profile">
-                        <button class="btn btn-gotospot" id="" name="btn-gopost">Ir a la publicacion</button>
-                    </div> 
-                    <div class="contain_btn-profile">
-                        <button class="btn">Dejar de seguir/seguir</button>
-                    </div>
-                    <div class="contain_btn-profile">
-                        <button class="btn" id="btn_report" value="">Reportar</button>
-                    </div>
-                    <div class="contain_btn-profile">
-                        <button class="btn_cancel btn" id="btn_cancel">Cancelar</button>
-                    </div>
-                </div> 
-            </div>
-        </div> 
-
-        <div class="contain_modal-report">
-            <div class="contain_report">
-                <div>
-                    <div class="center">
-                        <label class="question">
-                            ¿Por que quieres reportar esta publicacion?
-                        </label>
-                    </div>
-                    <form action="PostController" method="get" class="contain-form">
-                        <div class="conta_rep">
-                            <input type="checkbox">
-                            <label>Contenido molestoso<label>
-                        </div>  
-                        <div class="second-div">
-                            <label class="lbl-ques">Escriba su molestia de la publicacion<label>
-                            <div class>
-                                <input type="text" name="comm" placeholder="(Opcional)" class="upload__fiel-input input_report">
-                            </div>
-                        </div>          
-                        <div class="contain_btn-profile">
-                            <button type="submit" class="btn" id="btn_report" value="" name="btn_report">Reportar</button>
-                        </div>
-                        <div class="contain_btn-profile">
-                            <button type="button" class="btn_cancel-report btn" id="btn_cancel" value="" name="cancel-report">Cancelar</button>
-                        </div>
-                    </form>
-                </div> 
-            </div> 
-        </div> 
-        
-        <!-- <div class="modal-container">
-            <div class="modal modal-close">
-                <div>
-                    <p>reportar</p>
-                    <p class="close">cancelar</p>
-                </div>
-            </div>
-        </div> -->
-        <!-- <script lang="javascript" src="../js/model.js"></script> -->
-        
-    </body>
+    </body>    
     <script src="../js/nav.js"></script>
 </html>

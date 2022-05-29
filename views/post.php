@@ -18,7 +18,7 @@ if ($post == null) {
     <?php include '../header.php'; ?>
 
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-    <script src="../js/nav.js"></script>
+    <script src="../js/model.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $("#btn_reply-show").click(function () {
@@ -140,7 +140,7 @@ if ($post == null) {
                     </section> 
                     <div class="contain_spot">
                         <h2 class="h2_dif">/Dificil</h2>
-                        <div class="contain_map">
+                        <div class="contain-map">
                             <!-- FALTA MAPA -->
                         </div>
                         <div class="contain_vote">
@@ -206,8 +206,9 @@ if ($post == null) {
             </div>
         </div>
     </main>
-        
-    </body>
+    <?php include_once '../modal.php'; ?>
+</body>
+<script src="../js/nav.js"></script>
 </html>
 <?php 
 $_SESSION["post"] = null;

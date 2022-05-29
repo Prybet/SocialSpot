@@ -403,11 +403,7 @@ label{
     font-size: 10rem;
 }
 
-
-
-
-
-
+/* MODAL */
 .contain_modal-profile{
     position: fixed;
     top: 0;
@@ -420,7 +416,7 @@ label{
     background-color: rgba(0, 0, 0, 0.329);
     z-index: 200;
 }
-.contain_report{
+.contain_mod{
     width: 40rem;
     height: 40rem;
     font-size: 2rem;
@@ -434,16 +430,9 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border: 1px solid var(--primary);
     display: grid;
     grid-template-columns: 1fr;
-}
-.center{
-    text-align: center;
-}
-.input_report{
-    width: 50%;
-    padding: 1rem;
 }
 .btn{
     width: 60%;
@@ -455,6 +444,9 @@ label{
     font-weight: bold;
     border: 1px solid var(--primary);
 }
+.btn:last-of-type{
+    margin-top: 2rem;
+}
 .btn:hover{
     background-color: var(--black);
     transition: 0.5s;
@@ -464,5 +456,9 @@ label{
 .contain_btn-profile{
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+
 }
+
+
+
+

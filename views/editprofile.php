@@ -220,4 +220,5 @@ $user = $_SESSION["user"];
         </div>
         <?php include_once '../footer.php'; ?>
     </body>
+    <script src="../js/nav.js"></script>
 </html>

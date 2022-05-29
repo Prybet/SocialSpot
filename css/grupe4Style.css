@@ -28,9 +28,9 @@ body{
     z-index: 100;
 }
 
-p{
+/* p{
     font-size: 5rem;
-}
+} */
 .pointer{
     cursor: pointer;
 }
@@ -61,7 +61,8 @@ p{
     border-radius: 0.5rem;
     width: 100%;
     padding: 2rem;
-    border: 2px solid var(--darker  );
+    border: 2px solid var(--darker);
+    text-decoration: none;
 }
 .upload:hover{
     border: 2px solid var(--white);
@@ -325,6 +326,9 @@ span{
     border-radius: 0.5rem;
     font-size: 1.5rem;
 }
+.container_footer a{
+    text-decoration: none;
+}
 .container_footer label{
     color: var(--primary);
 
@@ -498,45 +502,3 @@ label{
 
 }
 
-
-/* .modal-container{
-    opacity: 0;
-    visibility: hidden;
-    position: fixed;
-    z-index: 100;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: rgb(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.close{
-    position: top;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
-    cursor: pointer;
-}
-.modal{
-    width: 40%;
-    height: 50%;
-    background-color: black;
-    color: aliceblue;
-    text-align: center;
-    font-size: 2rem;
-    display: flex;
-    
-    flex-direction: column;
-    justify-content: space-evenly;
-    transition: transform 1s;    
-    transition: transform 0.8s;
-    transform: translateY(0%);
-}
-
-.modal-close{
-    transform: translateY(-200%);
-} */
