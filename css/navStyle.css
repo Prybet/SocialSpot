@@ -167,13 +167,14 @@ html {
     position: relative;
     font-size: 1.3rem;
     padding-top: 0.3rem;
-    
   }
-  
+  .btn_user-nav{
+    background-color: var(--darker);
+    border: none;
+  }
   .img_user {
     border: none;
     position: relative;
-    background-color: red;
   }
   .lbluser {
     padding-top: 0.5rem;
@@ -189,7 +190,6 @@ html {
     background-color: var(--black);
     margin-top: 5.5rem;
     visibility: hidden;
-    display: none;
   }
   
   .contain_option {
@@ -202,7 +202,10 @@ html {
     border-radius: 0.5rem;
     visibility: hidden;
   }
-
+.contain_option button{
+  background-color: var(--black);
+  border: none;
+}
   
   .option {
     margin-top: 0.5rem;
@@ -220,7 +223,7 @@ html {
     overflow: hidden;
     width: 100%;
   
-    border-top: 1px solid var(--orange);
+    border-top: 1px solid var(--primary);
   }
   
   .lbl_c {
