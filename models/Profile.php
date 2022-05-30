@@ -34,6 +34,8 @@ class Profile {
     var $status;
     
     var $myPosts;
+    var $followers;
+    var $follows;
     
     public function __construct() {
         $this->status = new Status();
@@ -129,5 +131,23 @@ class Profile {
         if($sen->execute()){
             return true;
         }
+    }
+    
+     public function getNumFollowers(){
+        if($this->followers!=null){
+            return count($this->followers);
+        } else {
+            return 0;
+        }
+       
+    }
+    
+    public function getNumFollows(){
+        if($this->follows!=null){
+            return count($this->follows);
+        } else {
+            return 0;
+        }
+       
     }
 }

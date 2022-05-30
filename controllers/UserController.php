@@ -12,15 +12,16 @@ require_once '../models/User.php';
 require_once '../models/UserType.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $POST = $_POST;
 
     $formats = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
     // New Account
-    if ($_POST["submit"] == "create") {
-        $email = isset($_POST["email"]) ? $_POST["email"] : "";
-        $usern = isset($_POST["user"]) ? $_POST["user"] : "";
-        $pass = isset($_POST["pass"]) ? $_POST["pass"] : "";
-        $name = isset($_POST["name"]) ? $_POST["name"] : "";
-        $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
+    if ($POST["submit"] == "create") {
+        $email = isset($POST["email"]) ? $POST["email"] : "";
+        $usern = isset($POST["user"]) ? $POST["user"] : "";
+        $pass = isset($POST["pass"]) ? $POST["pass"] : "";
+        $name = isset($POST["name"]) ? $POST["name"] : "";
+        $birth = isset($POST["birth"]) ? $POST["birth"] : "";
 
         if ($email != "" && $name != "" && $usern != "" && $pass != "" && $birth != "") {
             $user = new User();
@@ -41,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         // Edit Account
-    } elseif ($_POST["submit"] == "edit") {
+    } elseif ($POST["submit"] == "edit") {
         $name = isset($_POST["name"]) ? $_POST["name"] : "";
         $check = isset($_POST["check"]) ? $_POST["check"] : false;
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
@@ -62,14 +63,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         //Edit Images
-    } elseif ($_POST["submit"] == "img") {
+    } elseif ($POST["submit"] == "img") {
         $user = $_SESSION["user"];
         $user->profile->imageURL = uploadProfileImage($user->profile, $formats);
         $user->profile->bannerURL = uploadBannerImage($user->profile, $formats);
         if ($user->profile->updateImages()) {
             header("Location: ../views/editprofile.php");
         }
-    } elseif (($_POST["submit"] == "change")) {
+    } elseif (($POST["submit"] == "change")) {
 
         $oldPass = isset($_POST["oldPass"]) ? $_POST["oldPass"] : "";
         $pass = isset($_POST["pass"]) ? $_POST["pass"] : "";
@@ -88,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../views/editprofile.php");
         }
         // Login
-    } elseif ($_POST["submit"] == "login") {
+    } elseif ($POST["submit"] == "login") {
         $var1 = isset($_POST["user"]) ? $_POST["user"] : "";
         $var2 = isset($_POST["pass"]) ? $_POST["pass"] : "";
         $user = $_SESSION["user"];
@@ -101,8 +102,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["err"] = true;
             header("Location: ../views/login.php");
         }
-    } elseif ($_POST["submit"] == "singin") {
+    } elseif ($POST["submit"] == "singin") {
         header("Location: ../views/singin.php");
+    } elseif ($POST["submit"] == "goUser") {
+        header("Location: ../views/profile.php");
+    } elseif ($POST["submit"] == "goEdit") {
+        header("Location: ../views/editprofile.php");
+    } elseif ($POST["submit"] == "close") {
+        $_SESSION["user"] = null;
+        header("Location: ../views/index.php");
+    } elseif ($POST["submit"] == "goLogin") {
+        header("Location: ../views/login.php");
     } else {
         header("Location: ../views/index.php");
     }

@@ -1,4 +1,10 @@
 <nav>
+    <?php
+    $user = $_SESSION["user"];
+    $profile = $user->profile;
+    $imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/person.png";
+    $username = isset($profile->username) ? $profile->username : "Usuario";
+    ?>
     <div class="contain_logo flex">
         <a class="a_logo" href="http://localhost/SocialSpot/views/index.php">
             <img src="../img/logo.png" class="img_logo pointer" />
@@ -54,46 +60,56 @@
 
         </scroll-container-noti>
 
-        
-        <div class="contain_user btn-show flex">
-            <button class="btn_user-nav">
-                <div class="img_user flex" id="btn_user" for="checkbox_menu">
-                    <img src="../img/perfil.png" class="size-img img-user pointer" />
-                    <div class="lbluser pointer">Usuario</div>
-                    <div class="decorate_user "></div>
-                </div>
-            </button>
-            
-            
-            <div class="contain_option " id="conteiner_option">
-                <button class="option flex">
-                    <div class="op flex" id="btn_userr">
-                        <img src="../img/user.png" class="separation size-img pointer">
-                        <label class="pointer">Ver Perfil</label>
-                    </div>
-                </button>
-                <button class="option flex">
-                    <label class="content-input">
-                        <div class="op flex">
-                            <input type="checkbox">Conectado<i></i>
+        <form action="../controllers/UserController.php" method="post">
+            <div class="contain_user btn-show flex">
+                <?php if ($_SESSION["user"]->userType->id != 2): ?>
+                    <button type="button" class="btn_user-nav">
+                        <div class="img_user flex" id="btn_user" for="checkbox_menu">
+                            <img src="<?= $imgUser ?>" class="size-img img-user pointer" />
+                            <div class="lbluser pointer"><?= $username ?></div>
+                            <div class="decorate_user "></div>
                         </div>
-                    </label>
-                </button>
-                <button class="option flex">
-                    <div class="xx op flex">
-                        <img src="../img/configuration.png" class="separation size-img pointer">
-                        <label class="pointer">Editar Perfil</label>
+                    </button>
+
+                    <div class="contain_option " id="conteiner_option">
+                        <button type="submit" name="submit" value="goUser" class="option flex">
+                            <div class="op flex" id="btn_userr">
+                                <img src="<?= $imgUser ?>" class="separation size-img ">
+                                <label >Ver Perfil</label>
+                            </div>
+                        </button>
+                        <button  class="option flex">
+                            <label class="content-input">
+                                <div class="op flex">
+                                    <input type="checkbox">Conectado<i></i>
+                                </div>
+                            </label>
+                        </button>
+                        <button type="submit" name="submit" value="goEdit" class="option flex">
+                            <div class="xx op flex">
+                                <img src="../img/configuration.png" class="separation size-img pointer">
+                                <label class="pointer">Editar Perfil</label>
+                            </div>
+                        </button>
+                        <div class="line"></div>
+                        <button type="submit" name="submit" value="close" class="option flex">
+                            <div class="op flex">
+                                <img src="../img/exit.png" class="separation size-img pointer">
+                                <label class="lbl_c pointer">Cerrar Sesion</label>
+                            </div>
+                        </button>
                     </div>
-                </button>
-                <div class="line"></div>
-                <button class="option flex">
-                    <div class="op flex">
-                        <img src="../img/exit.png" class="separation size-img pointer">
-                        <label class="lbl_c pointer">Cerrar Sesion</label>
-                    </div>
-                </button>
+                <?php else: ?>
+                    <button type="submit" name="submit" value="goLogin" class="btn_user-nav">
+                        <div class="img_user flex" id="btn_user" for="checkbox_menu">
+                            <img src="<?= $imgUser ?>" class="size-img img-user pointer" />
+                            <div class="lbluser pointer"><?= $username ?></div>
+                            <div class="decorate_user "></div>
+                        </div>
+                    </button>
+                <?php endif; ?>
             </div>
-        </div>
+        </form>
     </div>
-    
+
 </nav>

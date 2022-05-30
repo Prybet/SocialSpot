@@ -39,10 +39,7 @@ $user = $_SESSION["user"];
                     "pointer-events": "none",
                     "opacity": "0"
                 });
-            });
-
-
-            
+            });   
         });
     </script>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
