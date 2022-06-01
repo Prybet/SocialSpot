@@ -67,7 +67,7 @@ if ($method == "POST") {
                 }
             } else {
                 header("Content-Type: application/json; charset=UTF8");
-                echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                echo json_encode("null", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
         case -1:

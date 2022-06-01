@@ -31,7 +31,7 @@ class Hashtag {
     
     public static function deleteHashtag($hash){
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("UPDATE hashtag SET status_id = 6 WHERE id = :hash");
+        $sen = $conn->mysql->prepare("UPDATE hashtagpost SET status_id = 6 WHERE id = :hash");
         $sen->bindParam(":hash", $hash);
          if($sen->execute()){
             return true;
@@ -62,7 +62,7 @@ class Hashtag {
             $list =  array();
             foreach ($res as $ha){
                 $h = new Hashtag();
-                $h->id = $ha[4];
+                $h->id = $ha[0];
                 $h->name = $ha[5];
                 $h->post_id = $ha[1];
                 $h->status = $ha[3];
