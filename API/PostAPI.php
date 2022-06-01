@@ -52,16 +52,22 @@ if ($method == "POST") {
             //edit Post
             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
                 $post = new Post();
+                $post->id = $id;
                 $post->profID = $params->profID;
                 $post->userProfile = $params->userProfile;
                 $post->title = $params->title;
                 $post->body = $params->body;
-                $post->category = $params->category;
-                
-                
+                $post->hashtags = $params->hashtags;
+                if ($post->editPost()) {
+                    header("Content-Type: application/json; charset=UTF8");
+                    echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                } else {
+                    header("Content-Type: application/json; charset=UTF8");
+                    echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                }
             } else {
                 header("Content-Type: application/json; charset=UTF8");
-                echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
         case -1:

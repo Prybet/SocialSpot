@@ -80,19 +80,22 @@ class Post {
     public function editPost() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET title = :tit, body = :body, status_id = 7 WHERE id = :id");
-        $title = $post->title;
+        $title = $this->title;
         $sen->bindParam(":tit", $title);
-        $body = $post->body;
+        $body = $this->body;
         $sen->bindParam(":body", $body);
-        $id = $post->id;
+        $id = $this->id;
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
-            $sen = $conn->mysql->prepare("SELECT id FROM post WHERE time = :time");
-            $sen->bindParam(":time", $time);
-            if ($sen->execute()) {
-                $res = $sen->fetch();
-                return $res[0];
+            foreach ($this->hashtags as $hash) {
+                if($hash->status == 6){
+                    Hashtag::deleteHashtag($hash->id);
+                }elseif($hash->status == 0){
+                    $id = Hashtag::setNewHashtag($hash->name);
+                    Hashtag::setHashtag($this->id,$id);
+                }
             }
+           return true;
         }
     }
 
@@ -151,7 +154,7 @@ class Post {
 
     public static function getPostsForProfile($id) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id AND status_id = 1");
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id AND status_id = 1 OR status_id = 7");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
             $res = $sen->fetchAll();

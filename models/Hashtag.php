@@ -17,12 +17,21 @@ class Hashtag {
     var $id;
     var $name;
     var $post_id;    
-    
+    var $status;
     
     public static function setHashtag($pos,$hash){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO hashtagpost VALUES(null, :post, :hash, 1)");
         $sen->bindParam(":post", $pos);
+        $sen->bindParam(":hash", $hash);
+         if($sen->execute()){
+            return true;
+         }
+    }
+    
+    public static function deleteHashtag($hash){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE hashtag SET status_id = 6 WHERE id = :hash");
         $sen->bindParam(":hash", $hash);
          if($sen->execute()){
             return true;
@@ -46,7 +55,7 @@ class Hashtag {
     
     public static function getHashTags($idp) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost INNER JOIN hashtag ON hashtag_id = hashtag.id WHERE post_id = :idp");
+        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost INNER JOIN hashtag ON hashtag_id = hashtag.id WHERE post_id = :idp AND hashtagpost.status_id = 1");
         $sen->bindParam(":idp", $idp);
         if($sen->execute()){
             $res =$sen->fetchAll();
@@ -56,6 +65,7 @@ class Hashtag {
                 $h->id = $ha[4];
                 $h->name = $ha[5];
                 $h->post_id = $ha[1];
+                $h->status = $ha[3];
                 $list[] = $h;
             }
             return $list;
