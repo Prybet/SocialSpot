@@ -1,13 +1,84 @@
 $(document).ready(function () {
     //item
-    $(".contain_post").click(function () {
+    $(".containpost").click(function () {
         let id = $(this).prop("id");
-        if ($("#id_" + id).is(":focus")) {
+        if ($("#id" + id).is(":focus")) {
             console.log($("#id_" + id));
         } else {
             window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
         }
     });
+
+
+    var a = $(".contain-img");
+
+    for (var i=0; i < a.length; i++) {
+        var id = a[i].getAttribute('id')
+        var contI = $(".container_img_" + id);
+        if(contI.length>2){
+            $(".img-left_" + id).css({
+                "visibility" : "visible"
+            });
+            $(".img-right_" + id).css({
+                "visibility" : "visible"
+            });
+            $(".img_ico_" + id).css({
+                "visibility" : "visible"
+            });
+        }
+    }
+    
+    $(".cont-right").click(function () {
+        var position = 0;
+        var sum = 0;
+        let idP = $(this).prop("id");
+        var idI = $(".contain-img_" + idP);
+        var img = idI.attr("data-val");
+        var conI = $(".container_img_" + idP);
+
+        for (var i=0; i <= img; i++) {
+            if(conI.length-1 == img){
+
+            }else{
+                position++;
+                sum+= 150;
+                idI.attr("data-val", position);
+                $(".group_" + idP).css({
+                    "margin-right" : sum +"rem"
+                }); 
+            }
+        }
+    });
+    $(".cont-left").click(function () {
+        var position = 0;
+        var sum = 0;
+        let idP = $(this).prop("id");
+        var idI = $(".contain-img_" + idP);
+        var img = idI.attr("data-val");
+        
+        if(img == 0){
+
+        }else{
+            for (var i=0; i < img-1; i++){
+                position++;
+                idI.attr("data-val", position);
+                sum+= 150;
+                $(".group_" + idP).css({
+                    "margin-right" : sum +"rem"
+                });
+            }
+            if(img==1){
+                idI.attr("data-val", 0);
+                sum= 0;
+                $(".group_" + idP).css({
+                    "margin-right" : sum +"rem"
+                });
+            }
+        }
+    });
+
+    
+
     $(".divcom").click(function () {
         let id = $(this).val();
         window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;

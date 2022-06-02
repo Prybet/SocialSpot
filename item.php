@@ -1,5 +1,5 @@
 
-<div class="contain_post" div="post" id="<?= $post->id?>">
+<div class="contain_post" id="<?= $post->id?>"  data-val="<?= $post->id?>">
     <div class="contain_post-top">
         <div class="container_p">
             <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
@@ -28,12 +28,22 @@
         </div>
     </div>
     
+    <div class="contain-img contain-img_<?= $post->id?>" id="<?= $post->id?>" data-val="0">
+        <input type="text" value="1" id="input" hidden>
+        <div class="img_images-ico cont-left img_ico_<?= $post->id?>" id="<?= $post->id?>">
+            <img src="../img/left.png" class="img-left img-left_<?= $post->id?>">
+        </div>
+        <div class="img_images-ico cont-right img_ico_<?= $post->id?>" id="<?= $post->id?>">
+            <img src="../img/right.png" class="img-right img-right_<?= $post->id?>">
+        </div>
 
-    <?php foreach ($post->images as $image): ?>
-    <div class="container_img">
-        <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img_post">
+        <?php foreach ($post->images as $i => $image): ?>
+        <div class="container_img container_img_<?= $post->id?>">          
+            <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img_post group_<?= $post->id ?>">
+        </div>
+        <?php endforeach; ?>
     </div>
-    <?php endforeach; ?>
+    
     
     <?php if($post->videos !=null):foreach ($post->videos as $video): ?>
     <div class="container_img">

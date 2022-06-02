@@ -2,7 +2,7 @@
     <?php
     $user = $_SESSION["user"];
     $profile = $user->profile;
-    $imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/person.png";
+    $imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/perfil.png";
     $username = isset($profile->username) ? $profile->username : "Usuario";
     ?>
     <div class="contain_logo flex">

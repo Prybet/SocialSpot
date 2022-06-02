@@ -115,17 +115,23 @@ $categories = Category::getListAllCategories();
                                 <label class="lbl_img">Imagenes y Videos</label>
                             </div>
 
-                            <div class="drop-area">
+                            <!-- ----------- -->
+
+                            <!-- <div class="drop-area">
                                 <h2>Arrastra y suelta imágenes</h2>
                                 <span>o</span>
                                 <button type="button">Seleccione tus archivos</button>
                                 <input type="file" name="file-0" id="row-0" hidden multiple>
 
-                                <div  id="container">
+                                
+                            </div>
+                            <div id="preview"></div> -->
+                            <div  id="container">
                                     <input type="file" class="input_file" id="row-0" name="file-0"/>
                                 </div>
-                            </div>
-                            <div id="preview"></div>
+
+                            <!-- ----------- -->
+
 
                             <div class="top">
                                 <input type="checkbox" name="check"><label class="lbl_noti">Recibir notificaciones de comentarios y respuestas</label>

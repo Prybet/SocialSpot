@@ -234,11 +234,16 @@ header {
 } 
 /* ITEM */
 .contain_post{
-    width: 100%;
+    width: 75rem;
     background-color: var(--darker);
     margin: 2rem 0;
     border-radius: 0.5rem;
     padding: 1.5rem 0;
+    border: 2px solid var(--darker);
+    overflow: hidden;
+}
+.contain_post:hover{
+    border: 2px solid var(--white);
 }
 .container_p{
     display: flex;
@@ -256,6 +261,7 @@ header {
 }
 .name-cate{
     margin-left: 2rem;
+    color: var(--primary);
 }
 .name-prim{
     margin-left: 0.5rem;
@@ -286,19 +292,58 @@ header {
 .cont-p{
     font-size: 1.5rem;
 }
+.contain-img{
+    display: flex;
+    position: relative;
+    max-height: 100vh;
+    width: 75rem;
+    
+}
 .container_img{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--black);
-    width: 100%;
+    background-color: var(--niga);
+    width: 75rem;
+    max-height: 50vh;
 }
 .img_post{
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    min-width: 75rem;
+    height: 100%;
+    object-fit: contain;
 }
+.img_images-ico{
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+.img_images-ico:hover{
+    background-color: rgba(202, 202, 202, 0.486);
+    border-radius: 5rem;
+    
+}
+.cont-left{
+    left: 3%;
+    top: 40%;
+}
+.cont-right{
+    right: 3%;
+    top: 40%;
+}
+.img-left{
+    margin-right: 1.5rem;
+    visibility: hidden;
+}
+.img-right{
+    margin-left: 1.5rem;
+    visibility: hidden;
+}
+
 .flex_option{
     display: flex;
     justify-content: center;
@@ -322,6 +367,9 @@ header {
 .divcom{
     background-color: var(--darker);
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* DESCRIPTION */
 .descrip_user{

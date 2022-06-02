@@ -10,6 +10,12 @@
             <div class="contain_btn-profile">
                 <button class="btn" id="btn_report" value="">Reportar</button>
             </div>
+            <!-- <div class="contain_btn-profile">
+                <button class="btn" id="btn_report" value="">Editar Post</button>
+            </div>
+            <div class="contain_btn-profile">
+                <button class="btn" id="btn_report" value="">Eliminar Post</button>
+            </div> -->
             <div class="contain_btn-profile">
                 <button class="btn_cancel btn" id="btn_cancel">Cancelar</button>
             </div>

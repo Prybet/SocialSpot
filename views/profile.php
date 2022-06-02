@@ -24,14 +24,13 @@ $profile = $user->profile;
         <?php include_once '../header.php'; ?>
 
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/model.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $(".ftbanner").css("background-image", "url('../../SSpotImages/UserMedia/<?= $profile->username ?>-Folder/BannerImages/<?= $profile->bannerURL ?>')");
                 $(".ftprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $profile->username ?>-Folder/ProfileImages/<?= $profile->imageURL ?>')");
             });
         </script>
-        <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-        <script src="../js/nav.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#btn_post-profile").click(function () {
