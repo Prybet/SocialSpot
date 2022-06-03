@@ -51,5 +51,11 @@ $(document).on("click",function(e) {
             decoU.style.visibility = "hidden";
         }
     } 
+
+    
+    $("#img_map").click(() =>{
+        window.location.href = "http://localhost/SocialSpot/views/map.php";
+    });
+
 });
 

@@ -33,7 +33,7 @@
     <div class="contain_ico flex">
         <div class="contain_map">
             <button>
-                <img src="../img/map.png" class="size-img" />
+                <img src="../img/map.png" class="size-img" id="img_map"/>
             </button>
         </div>
 
