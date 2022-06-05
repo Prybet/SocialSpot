@@ -29,7 +29,6 @@ class City {
         $sen = $conn->mysql->prepare("SELECT * FROM city WHERE status_id = 1");
         if ($sen->execute()) {
             $res = $sen->fetchAll();
-
             foreach ($res as $city) {
                 $c = new City();
                 $c->id = $city[0];

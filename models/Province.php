@@ -40,6 +40,24 @@ class Province {
             return $p;
         }
     }
+    public static function getAllProvince(){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM province WHERE status_id = 1");
+        if($sen->execute()){
+            $res = $sen->fetchAll();
+            foreach($res as $provi){
+                $p = new Province();
+                $p->id = $provi[0];
+                $p->name = $provi[1];
+                $p->description = $provi[2];
+                $p->region = Region::getRegion($provi[3]);
+                $p->status = Status::getStatu($provi[4]);
+                $list[] = $p;
+            }
+            
+            return $list;
+        }
+    }
 
    
 

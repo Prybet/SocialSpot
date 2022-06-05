@@ -8,6 +8,7 @@ session_start();
 $style = "grupe3Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"];
+$category = $post->category;
 if ($post == null) {
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
     header("Location: ../controllers/postController.php?id=" . $id);
@@ -118,20 +119,15 @@ if ($post == null) {
                     <section class="details_cate">
                         <div class="contai">
                             <div class="contain_img">
-                                <img id="catImage" src="../img/perfil.png" class="img_cate" alt="Imagen de Perfil"/>
+                                <img id="catImage" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img_cate" alt="Imagen de Perfil"/>
                             </div>
                             <div>
-                                <h2 id="catName" class="cate_name">/Name</h2>
+                                <h2 id="catName" class="cate_name"><?= $post->category->name ?></h2>
                             </div>
                         </div>
                         <div class="contain_descrip">
                             <div class="contain_descrip">
-                                <p class="p_descrip">Lorem ipsum dolor sit amet consectetur adipisicing 
-                                    elit. Delectus repellendus laborum corporis veritatis
-                                    odit animi officiis blanditiis necessitatibus 
-                                    commodi incidunt ad facilis fuga asperiores, 
-                                    doloribus iste quo nam sint nesciunt.
-                                </p>
+                                <p class="p_descrip"> <?= $post->category->description ?> </p>
                                 <div class="contain_btn-foll">
                                     <button class="btn_foll">Seguir</button>
                                 </div>

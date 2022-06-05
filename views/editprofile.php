@@ -9,12 +9,18 @@ Made by:
 <?php
 require_once '../models/User.php';
 require_once '../models/UserType.php';
+require_once '../models/Region.php';
+require_once '../models/Province.php';
+require_once '../models/City.php';
 session_start();
 $style = "grupe2Style.css";
 if ($_SESSION["user"]->userType->id == 2) {
     header("location: ../views/index.php");
 }
 $user = $_SESSION["user"];
+$regions = Region::getAllRegion();
+$provinces = Province::getAllProvince();
+$cities = City::getAllCities();
 ?>
 <html>
 
@@ -139,8 +145,11 @@ $user = $_SESSION["user"];
                                         Region
                                     </label>
                                 </div>
-                                <select class="select">
-                                    <option value="" class="opt">Seleccione una opcion</option>
+                                <select class="select" name="regi">
+                                    <option value="-1" class="opt">Seleccione una opcion</option>
+                                    <?php foreach ($regions as $region): ?>
+                                    <option value="<?= $region->id?>"><?= $region->name?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>
@@ -151,8 +160,11 @@ $user = $_SESSION["user"];
                                         Comuna
                                     </label>
                                 </div>
-                                <select class="select">
-                                    <option value="" class="opt">Seleccione una opcion</option>
+                                <select class="select" name="provi">
+                                    <option value="-1" class="opt">Seleccione una opcion</option>
+                                    <?php foreach ($provinces as $province): ?>
+                                    <option value="<?= $province->id?>"><?= $province->name?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>
@@ -160,11 +172,14 @@ $user = $_SESSION["user"];
                             <div class="asf-conta">
                                 <div>
                                     <label class="label_field">
-                                        Region
+                                        Cuidad
                                     </label>
                                 </div>
-                                <select class="select">
-                                    <option value="" class="opt">Seleccione una opcion</option>
+                                <select class="select" name="city">
+                                    <option value="-1" class="opt">Seleccione una opcion</option>
+                                    <?php foreach ($cities as $city): ?>
+                                    <option value="<?= $city->id?>"><?= $city->name?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>

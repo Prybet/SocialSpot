@@ -47,6 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $check = isset($_POST["check"]) ? $_POST["check"] : false;
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
         $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
+        
+        $regi = isset($_POST["regi"]) ? $_POST["regi"] : "";
+        $provi = isset($_POST["provi"]) ? $_POST["provi"] : "";
+        $city = isset($_POST["city"]) ? $_POST["city"] : "";
 
         if ($name != "" && $birth != "") {
             $user = $_SESSION["user"];

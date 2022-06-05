@@ -1,13 +1,13 @@
 $(document).ready(function () {
     //item
-    $(".containpost").click(function () {
+    $(".contain_post").click(function () {
         let id = $(this).prop("id");
         if ($("#id" + id).is(":focus")) {
             console.log($("#id_" + id));
         } else {
             window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
         }
-    });
+    }); 
 
 
     var a = $(".contain-img");

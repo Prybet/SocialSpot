@@ -39,4 +39,25 @@ class Region {
             return $r;
         }
     }
+
+    public static function getAllRegion(){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM region WHERE status_id = 1");
+        if($sen->execute()){
+            $res = $sen->fetchAll();
+            foreach($res as $regi){
+                $r = new Region();
+                $r->id = $regi[0];
+                $r->name = $regi[1];
+                $r->description = $regi[2];
+                $r->country = $regi[3];
+                $r->status = Status::getStatu($regi[4]);
+                $list[] = $r;
+            }
+            
+            return $list;
+        }else{
+            return null;
+        }
+    }
 }

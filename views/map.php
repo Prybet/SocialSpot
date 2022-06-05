@@ -16,7 +16,7 @@
      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
     -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAa0GBZ9DBHSK2oeuf2v6Dk4R5eRgaDMs8&callback=initMap&v=weekly"
       defer
     ></script>
   </body>
