@@ -66,7 +66,9 @@ nav {
   height: 5.5em;
 }
 
-
+span{
+    color: var(--primary)
+}
 /* search */
 .contain_search {
   border-radius: 0.1rem;

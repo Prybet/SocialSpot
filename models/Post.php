@@ -80,21 +80,18 @@ class Post {
     public function editPost() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET title = :tit, body = :body, status_id = 7 WHERE id = :id");
-        $title = $this->title;
-        $sen->bindParam(":tit", $title);
-        $body = $this->body;
-        $sen->bindParam(":body", $body);
-        $id = $this->id;
-        $sen->bindParam(":id", $id);
+        $sen->bindParam(":tit", $this->title);
+        $sen->bindParam(":body", $this->body);
+        $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
-            foreach ($this->hashtags as $hash) {
-                if($hash->status == 6){
-                    Hashtag::deleteHashtag($hash->id);
-                }elseif($hash->status == 0){
-                    $id = Hashtag::setNewHashtag($hash->name);
-                    Hashtag::setHashtag($this->id,$id);
-                }
-            }
+            //foreach ($this->hashtags as $hash) {
+            //    if($hash->status == 6){
+            //        Hashtag::deleteHashtag($hash->id);
+            //    }elseif($hash->status ===0){
+            //        $id = Hashtag::setNewHashtag($hash->name);
+            //        Hashtag::setHashtag($this->id,$id);
+            //    }
+            //}
            return true;
         }
     }
@@ -172,6 +169,7 @@ class Post {
                 $p->status = Status::getStatu($post[7]);
                 $p->hashtags = Hashtag::getHashTags($post[0]);
                 $p->images = Image::getImages($post[0]);
+                $p->videos = Video::getVideos($post[0]);
                 $p->likes = Like::getLikes($post[0]);
                 $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
@@ -232,12 +230,30 @@ class Post {
         return $list;
     }
 
-    public static function delete($post) {
+    public  function delete() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE date = :date AND time = :time ");
-        $sen->bindParam(":date", $post->date);
-        $sen->bindParam(":time", $post->time);
+        $sen->bindParam(":date", $this->date);
+        $sen->bindParam(":time", $this->time);
         if ($sen->execute()) {
+            foreach ($this->images as $i){
+                if($i->delete()){
+                    return true;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+    
+    public  function deleteThis() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE id = :id ");
+        $sen->bindParam(":id", $this->id);
+        if ($sen->execute()) {
+            foreach ($this->images as $i){
+                $i->delete();
+            }
             return true;
         } else {
             return false;

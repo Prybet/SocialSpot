@@ -18,7 +18,7 @@ require_once '../PDO/Connection.php';
 require_once 'User.php';
 require_once 'Status.php';
 require_once 'Post.php';
-
+require_once 'City.php';
 
 class Profile {
     var $id;
@@ -68,13 +68,14 @@ class Profile {
             $p->id = $rs[0];
             $p->name = $rs[1];
             $p->username = $rs[2];
-            $p->check = isset($rs[3])==1?true:false;   
+            //$p->check = isset($rs[3])==1?true:false;
+            $p->check = $rs[3];
             $p->description = $rs[4];
             $p->birthDate = $rs[5];
             $p->entryDate = $rs[6];
             $p->imageURL = $rs[7];
             $p->bannerURL = $rs[8];
-            $p->city = null;
+            $p->city = City::getCity($rs[9]);
             $p->status = $p->status->getstatu($rs[10]);
             $p->myPosts = Post::getPostsForProfile($rs[0]);
             return $p;            
@@ -111,12 +112,13 @@ class Profile {
     
     public function update() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("UPDATE profile SET name = :name, Profile.Check = :check ,profile.Desc = :desc, BirthDate = :birth WHERE id = :id");
+        $sen = $conn->mysql->prepare("UPDATE profile SET name = :name, Profile.Check = :check ,profile.Desc = :desc, BirthDate = :birth, City_ID = :city  WHERE id = :id");
         $sen->bindParam(":id", $this->id);
         $sen->bindParam(":name", $this->name);
         $sen->bindParam(":check", $this->check);
         $sen->bindParam(":desc", $this->description);
         $sen->bindParam(":birth", $this->birthDate);
+        $sen->bindParam(":city", $this->city);
         if($sen->execute()){
             return true;
         }
@@ -148,6 +150,26 @@ class Profile {
         } else {
             return 0;
         }
-       
+    }
+    
+    public function delete() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE profile SET  Status_ID = 6  WHERE id = :id");
+        $sen->bindParam(":id", $this->id);
+        if($sen->execute()){
+            foreach ($this->myPosts as $p){
+                $p->deleteThis();
+            }
+            return true;
+        }
+    }
+    
+    
+    public function getThisPost($id) {
+        foreach ($this->myPosts as $post){
+            if($id == $post->id ){
+                return $post;
+            }
+        }
     }
 }

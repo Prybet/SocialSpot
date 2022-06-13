@@ -16,6 +16,7 @@ if ($_SESSION["recov"] != "") {
     <html>
         <head>
             <?php include_once '../header.php'; ?>
+            <title>Cambiar Contraseña</title>
         </head>
         <body class="sig-in">
             <main class="container mainn">

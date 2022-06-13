@@ -13,6 +13,7 @@ $style = "grupe1Style.css";
 <html>
     <head>
         <?php include_once '../header.php'; ?>
+        <title>Sing-In</title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
     </head>
     <body class="sig-in">

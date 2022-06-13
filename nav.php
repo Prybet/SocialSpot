@@ -64,7 +64,7 @@
             <div class="contain_user btn-show flex">
                 <?php if ($_SESSION["user"]->userType->id != 2): ?>
                     <button type="button" class="btn_user-nav">
-                        <div class="img_user flex" id="btn_user" for="checkbox_menu">
+                        <div class="img_user flex pointer" id="btn_user" for="checkbox_menu">
                             <img src="<?= $imgUser ?>" class="size-img img-user pointer" />
                             <div class="lbluser pointer"><?= $username ?></div>
                             <div class="decorate_user "></div>
@@ -72,11 +72,12 @@
                     </button>
 
                     <div class="contain_option " id="conteiner_option">
-                        <button type="submit" name="submit" value="goUser" class="option flex">
+                        <button type="submit" name="submit" value="goUser" class="option flex pointer">
                             <div class="op flex" id="btn_userr">
                                 <img src="<?= $imgUser ?>" class="separation size-img ">
-                                <label >Ver Perfil</label>
+                                <span>Ver Perfil</span>
                             </div>
+                            
                         </button>
                         <button  class="option flex">
                             <label class="content-input">
@@ -85,22 +86,22 @@
                                 </div>
                             </label>
                         </button>
-                        <button type="submit" name="submit" value="goEdit" class="option flex">
+                        <button type="submit" name="submit" value="goEdit" class="option flex pointer">
                             <div class="xx op flex">
                                 <img src="../img/configuration.png" class="separation size-img pointer">
-                                <label class="pointer">Editar Perfil</label>
+                                <span class="pointer">Editar Perfil</span>
                             </div>
                         </button>
                         <div class="line"></div>
-                        <button type="submit" name="submit" value="close" class="option flex">
+                        <button type="submit" name="submit" value="close" class="option flex pointer">
                             <div class="op flex">
                                 <img src="../img/exit.png" class="separation size-img pointer">
-                                <label class="lbl_c pointer">Cerrar Sesion</label>
+                                <span class="lbl_c pointer">Cerrar Sesion</span>
                             </div>
                         </button>
                     </div>
                 <?php else: ?>
-                    <button type="submit" name="submit" value="goLogin" class="btn_user-nav">
+                    <button type="submit" name="submit" value="goLogin" class="btn_user-nav pointer">
                         <div class="img_user flex" id="btn_user" for="checkbox_menu">
                             <img src="<?= $imgUser ?>" class="size-img img-user pointer" />
                             <div class="lbluser pointer"><?= $username ?></div>

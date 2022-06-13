@@ -12,6 +12,7 @@ $style = "grupe6Style.css";
 <html>
     <head>
         <?php include_once '../header.php'; ?>
+        <title>Login</title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script type="text/javascript">
             

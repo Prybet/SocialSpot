@@ -103,6 +103,12 @@ header {
     margin-left: -20rem;
     color: var(--primary);
 }
+.lbl-{
+    color: var(--primaryDark);
+}
+.lblname{
+    color: var(--ligthgray);
+}
 /* FOLLOW */
 .follow{
     display: grid;
@@ -309,7 +315,7 @@ header {
 }
 .img_post{
     min-width: 75rem;
-    height: 100%;
+    max-height: 50vh;
     object-fit: contain;
 }
 .img_images-ico{
@@ -321,6 +327,9 @@ header {
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    background: transparent;
+    border: none;
+    z-index: 99;
 }
 .img_images-ico:hover{
     background-color: rgba(202, 202, 202, 0.486);
@@ -452,7 +461,7 @@ label{
 }
 
 /* MODAL */
-.contain_modal-profile{
+.contain_modal{
     position: fixed;
     top: 0;
     left: 0;
@@ -485,7 +494,6 @@ label{
 .btn{
     width: 60%;
     background-color: var(--primary);
-    border: none;
     border-radius: 0.5rem;
     padding: 1rem;
     color: var(--black);
@@ -506,7 +514,94 @@ label{
     justify-content: center;
 
 }
-
-
-
-
+/* MODAL REPORT */
+.contain_btn-report{
+    visibility: hidden;
+    display: none;
+}
+.contain_modal-report{
+    visibility: hidden;
+    display: none;
+}
+/* MODAL FOLLOW */
+.contain_btn-follow{
+    visibility: hidden;
+    display: none;
+}
+/* MODAL DELETE POST */
+.div-delete label{
+    text-align: center;
+    font-size: 2rem;
+}
+.div-delete button{
+    width: 100%;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: var(--black);
+    font-weight: bold;
+    border: 1px solid var(--primary);
+    margin-top: 2rem;
+}
+.div-delete button:hover{
+    background-color: var(--black);
+    transition: 0.5s;
+    color: var(--primary);
+    border: 1px solid var(--ligthgray);
+}
+/* MODAL EDIT POST */
+.div-edit{
+    padding: 0 2rem;
+}
+.div-edit label{
+    font-size: 2rem;
+}
+.div-edit h2{
+    color: var(--primary);
+    text-align: center;
+    margin: 0;
+}
+.div-edit textarea{
+    background: var(--black);
+    padding: 1rem 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    color: var(--primary);
+    resize: none;
+}
+.contin-edit{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.div-edit button:hover{
+    background-color: var(--black);
+    transition: 0.5s;
+    color: var(--primary);
+    border: 1px solid var(--ligthgray);
+}
+.contain-edit-btn{
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-auto-columns: 1fr;
+    width: 100%;
+}
+.contain-btnedit button{
+    width: 100%;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: var(--black);
+    font-weight: bold;
+    border: 1px solid var(--primary);
+    margin-top: 2rem;
+}
+.mod-edit{
+    height: 43rem;
+}
+.contain_modal-profile{
+    visibility: hidden;
+    display: none;
+}

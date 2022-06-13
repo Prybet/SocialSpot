@@ -14,6 +14,7 @@ $_SESSION["err"] = isset($_SESSION["err"]) ? $_SESSION["err"] : "ss"
 <html>
     <head>
         <?php include_once '../header.php'; ?>
+        <title>Recuperar Contraseña</title>
     </head>
     <body class="sig-in">
         <main class="container mainn">

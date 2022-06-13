@@ -50,5 +50,14 @@ class Image {
             return $list;
         }
     }
+    
+    public function delete() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE image SET Status_ID = 6  WHERE id = :id");
+        $sen->bindParam(":id", $this->id);
+        if($sen->execute()){
+            return true;
+        }
+    }
 
 }

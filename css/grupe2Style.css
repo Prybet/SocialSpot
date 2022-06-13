@@ -18,7 +18,7 @@ body{
     z-index: 100;
 }
 /* BANNER AND PROFILE */
-.con{
+.contain_images{
     margin-top: 6rem;
 }
 .frm{
@@ -26,13 +26,13 @@ body{
 }
 header {
     position: relative;
-    width: 100%;
     height: 60vh;
-    background-image: url(../img/gatito.png);
+    background-image: url(../img/banner.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     border-bottom: 0.5rem solid var(--white);
+    background-color: var(--black);
 }
 .banner{
     position: absolute;
@@ -156,12 +156,40 @@ main, .center, .op, .asf{
 .asf{
     margin-top: 1.5rem;
 }
+
+.contain_provi{
+    visibility: hidden;
+    display: none;
+}
+.contain_city{
+    visibility: hidden;
+    display: none;
+}
+
 .asf-conta{
     width: 70%;
 }
 .label_field{
     font-size: 1.5rem;
     
+}
+.contain_btn-flex{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+      
+}
+.contain_btn-edit{
+    width: 70%;
+    display: flex;
+    justify-content: right
+}
+.btn_edit-ubi{
+    background-color: var(--black);
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
 }
 hr{
     border-color: var(--primary);
@@ -267,7 +295,7 @@ hr{
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
-    border-color: var(--primary);
+    border: 1px solid var(--black);
     border-radius: 0.6rem;
     background-color: var(--primary);
     color: var(--darkgray);
@@ -275,8 +303,10 @@ hr{
     margin-top: 2rem;
 }
 .btn-drop:hover{
-    background-color: var(--red);
-    border-color: var(--red);
+    color: var(--red);
+    background: var(--black);
+    transition: background-color .8s ease;
+    border: 1px solid var(--primary);
 }
 
 /* FOOTER */
@@ -367,18 +397,22 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border: 1px solid var(--primary);
     display: grid;
     grid-template-columns: 1fr;
 }
 .lbl_h2{
     font-size: 2rem;
     text-align: center;
-    
 }
-#modalProfile:target{
-    opacity:1;
-    pointer-events:auto;
+.contain_btn-profile form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.contain_btn-profile{
+    display: flex;
+    justify-content: center;
 }
 .btn{
     width: 60%;
@@ -399,10 +433,9 @@ a{
     color: var(--primary);
     border: 1px solid var(--ligthgray);
 }
-.contain_btn-profile{
-    display: flex;
-    justify-content: center;
-
+.contain_modal{
+    visibility: hidden;
+    display: none;
 }
 
 

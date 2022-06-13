@@ -41,7 +41,7 @@ class User {
 
     public function getLogin() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT id, email, username, profile_id, status_id, usertype_id FROM user WHERE username like :user OR email like :user");
+        $sen = $conn->mysql->prepare("SELECT id, email, username, profile_id, status_id, usertype_id FROM user WHERE Status_ID = 1 AND username like :user OR email like :user ");
         $sen->bindParam(":user", $this->username);
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
@@ -74,8 +74,13 @@ class User {
         }
     }
 
-    public function setUpdate() {
-        
+    public function delete() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE user SET Status_ID = 6 WHERE id = :user");
+        $sen->bindParam(":user", $this->id);
+        if ($sen->execute()) {
+            return $this->profile->delete();
+        }
     }
 
     public function encriptPass($pass) {
@@ -84,7 +89,7 @@ class User {
 
     public static function verifyPass($user, $pass) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT password FROM user WHERE username like :user OR email like :user");
+        $sen = $conn->mysql->prepare("SELECT password FROM user WHERE Status_ID = 1 AND username like :user OR email like :user");
         $sen->bindParam(":user", $user);
         if ($sen->execute()) {
             $rs = $sen->fetch();

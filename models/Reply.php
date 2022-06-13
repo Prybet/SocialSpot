@@ -68,6 +68,15 @@ class Reply {
             return $list;
         }
     }
+    
+    public function deleteReplyForProfile($param) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE reply SET  Status_ID = 6  WHERE Profile_ID = :id ");
+        $sen->bindParam(":id", $this->id);
+        if($sen->execute()){
+            return true;
+        }
+    }
         
     
 

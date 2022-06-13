@@ -48,24 +48,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
         $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
         
-        $regi = isset($_POST["regi"]) ? $_POST["regi"] : "";
-        $provi = isset($_POST["provi"]) ? $_POST["provi"] : "";
-        $city = isset($_POST["city"]) ? $_POST["city"] : "";
-
+        $city = isset($_POST["city"]) ? $_POST["city"] : null ;
         if ($name != "" && $birth != "") {
             $user = $_SESSION["user"];
             $user->profile->name = $name;
             $user->profile->check = $check;
             $user->profile->description = $desc;
             $user->profile->birthDate = $birth;
+            if($city == -1){
+                $city = null;
+            }
+            $user->profile->city = $city;
             if ($user->profile->update()) {
+                $_SESSION["user"] = $user->getLogin();
                 header("Location: ../views/editprofile.php");
             }
         } else {
             header("Location: ../views/editprofile.php");
         }
-
-
+        //Delete Account
+    } elseif($POST["submit"] == "delete"){
+        $user = $_SESSION["user"];
+        if($user->delete()){
+            $_SESSION["user"] = null;
+            header("Location: ../views/index.php");
+        }
+        
         //Edit Images
     } elseif ($POST["submit"] == "img") {
         $user = $_SESSION["user"];
@@ -109,8 +117,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($POST["submit"] == "singin") {
         header("Location: ../views/singin.php");
     } elseif ($POST["submit"] == "goUser") {
+        $user = $_SESSION["user"];
+        $_SESSION["user"] = $user->getLogin();
         header("Location: ../views/profile.php");
     } elseif ($POST["submit"] == "goEdit") {
+        $user = $_SESSION["user"];
+        $_SESSION["user"] = $user->getLogin();
         header("Location: ../views/editprofile.php");
     } elseif ($POST["submit"] == "close") {
         $_SESSION["user"] = null;

@@ -2,12 +2,13 @@
 <?php
 require_once '../models/Post.php';
 session_start();
-$allPosts = Post::getAllPosts();
+$posts = Post::getAllPosts();
 $style = "grupe4Style.css";
 ?>
 <html>
     <head>
         <?php include_once '../header.php'; ?>
+        <title>SocialSpot</title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/model.js"></script>
     </head>
@@ -20,7 +21,7 @@ $style = "grupe4Style.css";
                 <main class="contain_main">
                     <a href="http://localhost/SocialSpot/views/newpost.php" class="upload">
                         <div class="upload__field">
-                            <img src="../img/perfil.png" class="img img-user"></img>
+                            <img src="<?= $imgUser ?>" class="img img-user"></img>
                             <input type="text" class="upload__fiel-input" placeholder="Publicar" disabled />
                             <div class="img img-photo"></div>
                             <div class="img img-maps"></div>
@@ -33,7 +34,7 @@ $style = "grupe4Style.css";
                         </div>
                     </div>
                     <?php
-                        foreach ($allPosts as $post):
+                        foreach ($posts as $post):
                             include '../item.php';
                         
                         endforeach;

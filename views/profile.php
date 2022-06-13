@@ -24,14 +24,13 @@ $profile = $user->profile;
         <?php include_once '../header.php'; ?>
 
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+        <title>Perfil</title>
         <script src="../js/model.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 $(".ftbanner").css("background-image", "url('../../SSpotImages/UserMedia/<?= $profile->username ?>-Folder/BannerImages/<?= $profile->bannerURL ?>')");
                 $(".ftprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $profile->username ?>-Folder/ProfileImages/<?= $profile->imageURL ?>')");
             });
-        </script>
-        <script type="text/javascript">
             $(document).ready(function () {
                 $("#btn_post-profile").click(function () {
                     $(".contain_modal-profile").css({
@@ -48,6 +47,7 @@ $profile = $user->profile;
                 $(".btn_editar").click(function () {
                     window.location.href = "http://localhost/SocialSpot/views/editprofile.php";
                 });
+                
             });
         </script>
     </head>
@@ -69,9 +69,11 @@ $profile = $user->profile;
         </header>
         <div class="contain-info-profile">
             <div class="name_user">
-                <label><?= $profile->username ?></label>
-                <label>/</label>
-                <label><?= $profile->name ?></label>
+                <label><?= $profile->username ?></label> 
+                <?php if($profile->check == "1"){?>
+                <label class="lbl-">/</label>
+                <label class="lblname"><?= $profile->name ?></label>
+                <?php } ?>
             </div> 
             <div class="follow">
                 <div class="pointer contain-cont-prym">
@@ -155,7 +157,8 @@ $profile = $user->profile;
                     </div>  
                 </div>
             </div>
-        </main>
+        </main> 
+        <?php include_once '../modal.php'; ?>
     </body>
     <script src="../js/nav.js"></script>
 </html>

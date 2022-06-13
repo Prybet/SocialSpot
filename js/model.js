@@ -2,7 +2,7 @@ $(document).ready(function () {
     //item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
-        if ($("#id" + id).is(":focus")) {
+        if ($("#id_" + id).is(":focus") || $(".cont-left").is(":focus") || $(".cont-right").is(":focus")) {
             console.log($("#id_" + id));
         } else {
             window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
@@ -13,9 +13,9 @@ $(document).ready(function () {
     var a = $(".contain-img");
 
     for (var i=0; i < a.length; i++) {
-        var id = a[i].getAttribute('id')
+        var id = a[i].getAttribute('id');
         var contI = $(".container_img_" + id);
-        if(contI.length>2){
+        if(contI.length>1){
             $(".img-left_" + id).css({
                 "visibility" : "visible"
             });
@@ -89,9 +89,9 @@ $(document).ready(function () {
         let id = $(this).val();
         $("button[name=btn_report]").val(id);
         $("button[name=btn-gopost]").val(id);
+        $("button[name=showEdit]").val(id);
 
-
-        $(".contain_modal-profile").css({
+        $(".modal").css({
             "pointer-events": "auto",
             "opacity": "1"
         });
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
     });
     $(".btn_cancel").click(function () {
-        $(".contain_modal-profile").css({
+        $(".modal").css({
             "pointer-events": "none",
             "opacity": "0"
         });
@@ -115,7 +115,7 @@ $(document).ready(function () {
         });
     });
     $("#btn_report").click(function () {
-        $(".contain_modal-profile").css({
+        $(".modal").css({
             "pointer-events": "none",
             "opacity": "0"
         });
@@ -140,4 +140,56 @@ $(document).ready(function () {
             "padding-right": "0"
         });
     });
-})
+    
+    $("#btn_delete-post").click(() =>{
+        $("#modal-delete").css({
+            "pointer-events": "auto",
+            "opacity": "1"
+        });
+        $(".modal").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+        $("body").css({
+            "overflow": "hidden",
+            "height": "100vh",
+            "padding-right": "17px"
+        });
+    });
+    $(".btn_cancel").click(() =>{
+        $("#modal-delete").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+    });
+    //Show edit post
+    $("button[name=showEdit]").click(function (){
+        let id = $(this).val();
+        //$("button[name=edit]").val(id);;
+        $("#modal-edit").css({
+            "pointer-events": "auto",
+            "opacity": "1"
+        });
+        
+        $.ajax({
+            url: "../Controllers/AjaxController.php",
+            type: "post",
+            data: {"id": id, "sub": "getPost"},
+            dataType: "json"
+        }).done(function(data) {
+            if(data !== null){
+                console.log(id);
+                $("button[name=post]").attr("value", id);;
+                $("#textTitle").empty();
+                $("#textDesc").empty();
+                $("#textTitle").append(data.title);
+                $("#textDesc").append(data.body);
+            }else{
+                console.log("error");
+            }
+        });
+            
+    });
+    //edit post
+    
+});

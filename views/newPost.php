@@ -14,12 +14,13 @@ $categories = Category::getListAllCategories();
 <html>
 <head>
     <?php include_once '../header.php'; ?>
+    <title>Crear Nuevo Post</title>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("select[name=cate]").change(function () {
                 id = $("select[name=cate]").val();
-                if (id == -1) {
+                if (id === "-1") {
                     $("#catName").empty();
                     $("#catDesc").empty();
                     $("#catImage").attr("src", "");
@@ -28,7 +29,7 @@ $categories = Category::getListAllCategories();
                         url: "../Controllers/AjaxController.php",
                         type: "post",
                         data: {"id": id, "sub": "category"},
-                        dataType: "json",
+                        dataType: "json"
                     }).done(function (data) {
                         if (data !== null) {
                             console.log(data);
@@ -65,8 +66,6 @@ $categories = Category::getListAllCategories();
         });
     </script>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-    <script src="../js/nav.js"></script>
-    <script src="../js/newpost.js"></script>
 </head>
 <body> 
     <div class="a"> 

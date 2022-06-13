@@ -226,7 +226,7 @@ body{
 }
 .img_post{
     min-width: 75rem;
-    height: 100%;
+    max-height: 50vh;
     object-fit: contain;
 }
 .img_images-ico{
@@ -238,6 +238,9 @@ body{
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    background-color: transparent;
+    border: none;
+    z-index: 99;
 }
 .img_images-ico:hover{
     background-color: rgba(202, 202, 202, 0.486);
@@ -403,7 +406,7 @@ label{
 
 
 /* MODAL */
-.contain_modal-profile{
+.contain_modal{
     position: fixed;
     top: 0;
     left: 0;
@@ -458,18 +461,6 @@ label{
 
 }
 /* MODAL REPORT */
-.contain_modal-report{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity:0;
-    pointer-events:none;
-    transition: all 1s;
-    background-color: rgba(0, 0, 0, 0.329);
-    z-index: 200;
-}
 .contain_report{
     width: 40rem;
     height: 40rem;
@@ -539,6 +530,18 @@ label{
 .contain_btn-profile{
     display: flex;
     justify-content: center;
-
 }
-
+.contain_modal-profile{
+    visibility: hidden;
+    display: none;
+}
+/* MODAL EDIT POST*/
+.contain_btn-editPost{
+    visibility: hidden;
+    display: none;
+}
+/* MODAL DELETE POST*/
+.contain_btn-deletePost{
+    visibility: hidden;
+    display: none;
+}

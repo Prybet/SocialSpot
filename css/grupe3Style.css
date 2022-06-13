@@ -112,7 +112,7 @@ html {
 }
 .img_post{
     min-width: 75rem;
-    height: 100%;
+    max-height: 50vh;
     object-fit: contain;
 }
 .img_images-ico{
@@ -124,6 +124,9 @@ html {
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    background: transparent;
+    border: none;
+    z-index: 100;
 }
 .img_images-ico:hover{
     background-color: rgba(202, 202, 202, 0.486);

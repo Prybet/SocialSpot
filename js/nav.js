@@ -7,13 +7,13 @@
  */
 
 
-var modalU = document.querySelector(".contain_option");
-var decoU = document.querySelector(".decorate_user");
+const modalU = document.querySelector(".contain_option");
+const decoU = document.querySelector(".decorate_user");
 
-var modalN = document.querySelector("scroll-container-noti");
-var decoN = document.querySelector(".decorate_noti");
+const modalN = document.querySelector("scroll-container-noti");
+const decoN = document.querySelector(".decorate_noti");
 
-var modalS = document.querySelector("scroll-container");
+const modalS = document.querySelector("scroll-container");
 
 $(document).on("click",function(e) {
     var btnS = $(".input_search"); 

@@ -27,13 +27,7 @@ if ($method == "POST") {
         case 0:
             // Insert new Post
             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
-                $post = new Post();
-                $post->profID = $params->profID;
-                $post->userProfile = $params->userProfile;
-                $post->title = $params->title;
-                $post->body = $params->body;
-                $post->category = $params->category;
-                $post->hashtags = $params->hashtags;
+                $post = makePost($params);
                 if ($post->setPost() > 0) {
                     $user = new User();
                     $user->username = $params->userProfile->username;
@@ -51,13 +45,7 @@ if ($method == "POST") {
         case $id > 0:
             //edit Post
             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
-                $post = new Post();
-                $post->id = $id;
-                $post->profID = $params->profID;
-                $post->userProfile = $params->userProfile;
-                $post->title = $params->title;
-                $post->body = $params->body;
-                $post->hashtags = $params->hashtags;
+                $post = makePost($params);
                 if ($post->editPost()) {
                     header("Content-Type: application/json; charset=UTF8");
                     echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
@@ -72,7 +60,8 @@ if ($method == "POST") {
             break;
         case -1:
             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
-                if (Post::delete($params)) {
+                $post = makePost($params);
+                if ($post->delete()) {
                     header("Content-Type: application/json; charset=UTF8");
                     echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                 } else {
@@ -112,4 +101,13 @@ if ($method == "POST") {
     }
 }
 
- 
+function makePost($params) {
+    $post = new Post();
+    $post->id = $params->id;
+    $post->profID = $params->profID;
+    $post->userProfile = $params->userProfile;
+    $post->title = $params->title;
+    $post->body = $params->body;
+    $post->hashtags = $params->hashtags;
+    return $post;
+}
