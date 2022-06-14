@@ -9,8 +9,8 @@ $style = "grupe3Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"];
 $category = $post->category;
-if ($post == null) {
-    $id = isset($_GET["id"]) ? $_GET["id"] : "";
+$id = isset($_GET["id"]) ? $_GET["id"] : "";
+if ($id != "") { 
     header("Location: ../controllers/postController.php?id=" . $id);
 }
 ?>
@@ -206,6 +206,3 @@ if ($post == null) {
 </body>
 <script src="../js/nav.js"></script>
 </html>
-<?php 
-$_SESSION["post"] = null;
-?>
