@@ -36,7 +36,8 @@ $regions = Region::getListAllRegion();
             
             $("header").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/BannerImages/<?= $user->profile->bannerURL?>')");
             $("#imgprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/ProfileImages/<?= $user->profile->imageURL?>')");
-                
+            
+            
             
             
             $("#btn_delete").click(function () {

@@ -84,14 +84,14 @@ class Post {
         $sen->bindParam(":body", $this->body);
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
-            //foreach ($this->hashtags as $hash) {
-            //    if($hash->status == 6){
-            //        Hashtag::deleteHashtag($hash->id);
-            //    }elseif($hash->status ===0){
-            //        $id = Hashtag::setNewHashtag($hash->name);
-            //        Hashtag::setHashtag($this->id,$id);
-            //    }
-            //}
+            foreach ($this->hashtags as $hash) {
+                if($hash->status == 6){
+                    Hashtag::deleteHashtag($hash->id);
+                }elseif($hash->status ===0){
+                    $id = Hashtag::setNewHashtag($hash->name);
+                  Hashtag::setHashtag($this->id,$id);
+                }
+            }
            return true;
         }
     }

@@ -90,7 +90,7 @@ $(document).ready(function () {
         $("button[name=btn_report]").val(id);
         $("button[name=btn-gopost]").val(id);
         $("button[name=showEdit]").val(id);
-
+        $("button[name=showDelete]").val(id);
         $(".modal").css({
             "pointer-events": "auto",
             "opacity": "1"
@@ -141,7 +141,9 @@ $(document).ready(function () {
         });
     });
     
-    $("#btn_delete-post").click(() =>{
+    $("#btn_delete-post").click(function (){
+        let id = $(this).val();
+        $("textarea[name=postID]").append(id);
         $("#modal-delete").css({
             "pointer-events": "auto",
             "opacity": "1"
@@ -178,8 +180,7 @@ $(document).ready(function () {
             dataType: "json"
         }).done(function(data) {
             if(data !== null){
-                console.log(id);
-                $("button[name=post]").attr("value", id);;
+                $("textarea[name=postID]").append(id);
                 $("#textTitle").empty();
                 $("#textDesc").empty();
                 $("#textTitle").append(data.title);
@@ -191,5 +192,10 @@ $(document).ready(function () {
             
     });
     //edit post
-    
+    $("#cancelEdit").click(function (){
+        $("#modal-edit").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+    });
 });
