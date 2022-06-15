@@ -17,6 +17,15 @@ if ($_SESSION["user"]->userType->id == 2) {
 }
 $user = $_SESSION["user"];
 $profile = $user->profile;
+
+$imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/perfil.png";
+if($profile->imageURL == "-" || $profile->imageURL == ""){
+    $imgUser = "../img/perfil.png";
+}
+$imgBanner = isset($profile->bannerURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/BannerImages/" . $profile->bannerURL : "../img/banner.jpg";
+if($profile->bannerURL == "-" || $profile->bannerURL == ""){
+    $imgBanner = "../img/banner.jpg";
+}
 ?>
 <html>
 
@@ -28,10 +37,10 @@ $profile = $user->profile;
         <script src="../js/model.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $(".ftbanner").css("background-image", "url('../../SSpotImages/UserMedia/<?= $profile->username ?>-Folder/BannerImages/<?= $profile->bannerURL ?>')");
-                $(".ftprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $profile->username ?>-Folder/ProfileImages/<?= $profile->imageURL ?>')");
-            });
-            $(document).ready(function () {
+                
+                $(".ftbanner").css("background-image", "url('<?= $imgBanner ?>')");
+                $(".ftprofile").css("background-image", "url('<?= $imgUser ?>')");
+                
                 $("#btn_post-profile").click(function () {
                     $(".contain_modal-profile").css({
                         "pointer-events": "auto",
@@ -98,7 +107,7 @@ $profile = $user->profile;
                 <div class="contain_public">
                     <a href="newPost.php" class="upload">
                         <div class="upload__field">
-                            <img src="../../SSpotImages/UserMedia/<?= $profile->username ?>-Folder/ProfileImages/<?= $profile->imageURL ?>" class="img img-user"></img>
+                            <img src=" <?= $imgUser ?>" class="img img-user"></img>
                             <input type="text" class="upload__fiel-input" placeholder="Publicar" disabled />
                             <div class="img img-photo"></div>
                             <div class="img img-maps"></div>
