@@ -12,7 +12,7 @@ $(document).ready(function () {
             url: "../Controllers/AjaxController.php",
             type: "post",
             data: {"email": email, "sub": "email"},
-            dataType: "json",
+            dataType: "json"
         }).done(function (data) {
 
             if (data) {
@@ -33,7 +33,7 @@ $(document).ready(function () {
             url: "../Controllers/AjaxController.php",
             type: "post",
             data: {"user": user, "sub": "user"},
-            dataType: "json",
+            dataType: "json"
         }).done(function (data) {
 
             if (data) {

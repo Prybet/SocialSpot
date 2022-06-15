@@ -115,7 +115,19 @@
                     <button type="button" id="cancelEdit">Cancelar</button>
                 </div>
             </div>
+            <div class="contin-edit">
+                <label>Hashtags</label>
+                <input type="text" id="hashtags"/>
+            </div>
+            <div class="contin-edit" id="conthashs">
+                <span>sssss</span>
+            </div>
+            <div class="contain-edit-btn">
+                <div class="contain-btnedit">
+                    <button type="button" value="24" name="hash">Añadir Hashtag</button>
+                </div>
+            </div>
         </div>
     </form>
-    
+    <script src="../js/viewpost.js"></script>
 </div>

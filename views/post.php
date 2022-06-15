@@ -4,15 +4,16 @@ require_once '../models/User.php';
 require_once '../models/Post.php';
 require_once '../models/Reply.php';
 require_once '../models/Category.php';
-session_start();
-$style = "grupe3Style.css";
-$user = $_SESSION["user"];
-$post = $_SESSION["post"];
-$category = $post->category;
 $id = isset($_GET["id"]) ? $_GET["id"] : "";
 if ($id != "") { 
     header("Location: ../controllers/postController.php?id=" . $id);
 }
+session_start();
+$style = "grupe3Style.css";
+$user = $_SESSION["user"];
+$post = $_SESSION["post"]->reload();
+$category = $post->category;
+
 ?>
 <html>
 <head>
@@ -50,8 +51,6 @@ if ($id != "") {
                     "display": "none"
                 });
             }); 
-            
-            
         });
     </script>
 </head>

@@ -28,11 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $resp = User::checkEmail($email);
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($resp, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            break;  
+            break;
         case"user":
             $user = $_POST["user"];
             require_once '../models/User.php';
-             $resp = User::checkUser($user);
+            $resp = User::checkUser($user);
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($resp, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
@@ -61,15 +61,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $post = $_SESSION["post"];
             $post->title = isset($_POST["title"]) ? $_POST["title"] : "";
             $post->body = isset($_POST["body"]) ? $_POST["body"] : "";
-            if($post->title != "" && $post->body != ""){
+            if ($post->title != "" && $post->body != "") {
                 $post->editPost();
             }
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($post, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
+        case "hash":
+            require_once '../models/Post.php';
+            require_once '../models/Hashtag.php';
+            $idP = isset($_POST["id"]) ? $_POST["id"] : "";
+            $hashtag = isset($_POST["hash"]) ? $_POST["hash"] : "";
+            if ($hashtag != "") {
+                $idH = Hashtag::setNewHashtag($hashtag);
+                Hashtag::setHashtag($idP, $idH);
+                header("Content-Type: application/json; charset=UTF8");
+                echo json_encode(true, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            } else {
+                 header("Content-Type: application/json; charset=UTF8");
+                echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }
+
+            break;
         default:
             header("Content-Type: application/json; charset=UTF8");
-            echo json_encode("cayo en default", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode("default", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
     }
 }

@@ -2,7 +2,11 @@
     <?php
     $user = $_SESSION["user"];
     $profile = $user->profile;
-    $imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/perfil.png";
+    if ($profile->imageURL != "-") {
+        $imgUser = "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL;
+    } else {
+        $imgUser = "../img/perfil.png";
+    }
     $username = isset($profile->username) ? $profile->username : "Usuario";
     ?>
     <div class="contain_logo flex">
@@ -77,7 +81,7 @@
                                 <img src="<?= $imgUser ?>" class="separation size-img ">
                                 <span>Ver Perfil</span>
                             </div>
-                            
+
                         </button>
                         <button  class="option flex">
                             <label class="content-input">

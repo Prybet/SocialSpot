@@ -259,5 +259,7 @@ class Post {
             return false;
         }
     }
-
+    public function reload() {
+       return self::getPost($this->id);
+    }
 }
