@@ -20,6 +20,17 @@ if ($_SESSION["user"]->userType->id == 2) {
 $user = $_SESSION["user"];
 $city = $_SESSION["user"]->profile->city;
 $regions = Region::getListAllRegion(); 
+
+$user = $_SESSION["user"];
+$profile = $user->profile;
+$imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/perfil.png";
+if($profile->imageURL === "-" || $profile->imageURL === ""){
+    $imgUser = "../img/perfil.png";
+}
+$imgBanner = isset($profile->bannerURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/BannerImages/" . $profile->bannerURL : "../img/banner.jpg";
+if($profile->bannerURL === "-" || $profile->bannerURL === ""){
+    $imgBanner = "../img/banner.jpg";
+}
 ?>
 <html>
 
@@ -32,12 +43,8 @@ $regions = Region::getListAllRegion();
     <script type="text/javascript">
         $(document).ready(function(){
             
-            //const urlB ="url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/BannerImages/<?= $user->profile->bannerURL?>)";
-            
-            $("header").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/BannerImages/<?= $user->profile->bannerURL?>')");
-            $("#imgprofile").css("background-image", "url('../../SSpotImages/UserMedia/<?= $user->profile->username?>-Folder/ProfileImages/<?= $user->profile->imageURL?>')");
-            
-            
+            $("header").css("background-image", "url('<?= $imgBanner ?>')");
+            $("#imgprofile").css("background-image", "url('<?= $imgUser ?>')");
             
             
             $("#btn_delete").click(function () {

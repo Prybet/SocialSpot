@@ -27,7 +27,6 @@ body{
 header {
     position: relative;
     height: 60vh;
-    background-image: url(../img/banner.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -60,7 +59,6 @@ header {
     width: 20rem;
     height: 20rem;
     background-size: cover;
-    background-image: url(../img/perfil.png);
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 10rem;

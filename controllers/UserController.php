@@ -80,8 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user->profile->imageURL = uploadProfileImage($user->profile, $formats);
         $user->profile->bannerURL = uploadBannerImage($user->profile, $formats);
         if ($user->profile->updateImages()) {
+            $user = $_SESSION["user"];
+            $_SESSION["user"] = $user->getLogin();
             header("Location: ../views/editprofile.php");
         }
+        //Edit Password
     } elseif (($POST["submit"] == "change")) {
 
         $oldPass = isset($_POST["oldPass"]) ? $_POST["oldPass"] : "";
@@ -89,16 +92,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($oldPass != "" && $pass != "") {
             $user = $_SESSION["user"];
             if ($user->verifyPass($user->username, $oldPass)) {
-                if ($user->updatePass($pass, $user->id)) {
-                    header("Location: ../views/editprofile.php");
-                }
+                //if ($user->updatePass($pass, $user->id)) {
+                    //header("Location: ../views/editprofile.php");
+                //}
+                echo 'if';
             } else {
-                $_SESSION["err"] = "Contraseña actual INCORREECTA";
-                header("Location: ../views/editprofile.php");
+                //$_SESSION["err"] = "Contraseña actual INCORREECTA";
+                //header("Location: ../views/editprofile.php");
+                echo 'contraseña actual incorrecta';
             }
         } else {
-            $_SESSION["err"] = "Datos mal ingresados";
-            header("Location: ../views/editprofile.php");
+            //$_SESSION["err"] = "Datos mal ingresados";
+            //header("Location: ../views/editprofile.php");
+            echo 'datos mal ingresados';
         }
         // Login
     } elseif ($POST["submit"] == "login") {
