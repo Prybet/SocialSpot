@@ -124,7 +124,7 @@
             </div>
             <div class="contain-edit-btn">
                 <div class="contain-btnedit">
-                    <button type="button" value="24" name="hash">Añadir Hashtag</button>
+                    <button type="button" name="hash">Añadir Hashtag</button>
                 </div>
             </div>
         </div>

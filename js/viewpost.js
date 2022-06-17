@@ -10,20 +10,34 @@ $(document).ready(function () {
 
 
     $("button[name=hash]").click(function () {
-        console.log("jajsjasjsjsaj");
-        var id = $("button[name=hash]").val();
-        var hash = $("#hashtags").val();
-        $.ajax({
-            url: "../Controllers/AjaxController.php",
-            type: "post",
-            data: {"hash": hash, "sub": "hash", "id": id},
-            success: function (data) {
-                if (data) {
-                    $("#conthashs").append("<span>" + hash + "</span>");
+        var text = $("#hashtags").val();
+        var hash = toHashTag(text);
+        if (hash !== "") {
+            var id = $("button[name=hash]").val();
+            $.ajax({
+                url: "../Controllers/AjaxController.php",
+                type: "post",
+                data: {"hash": hash, "sub": "hash", "id": id},
+                success: function (data) {
+                    console.log(data);
+                    if (data) {
+                        $("#conthashs").append("<input type='text' name='hash-' value=" + hash + " hidden>");
+                        $("#conthashs").append("<span>" + hash + "</span>");
+                    }
+                },
+                error: function (data) {
                 }
-            },
-            error: function (data) {
-            }
-        });
+            });
+        } else {
+        }
     });
 });
+
+
+function toHashTag(text) {
+    var text = text.replace(/\s+/g, "");
+    var text = text.replaceAll("#", "");
+    var text = text.replaceAll("'", "");
+    var text = text.replaceAll("\"", "");
+    return text;
+} 

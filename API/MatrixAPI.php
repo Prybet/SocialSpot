@@ -7,10 +7,11 @@
  *  soulbroken
  *  Prybet
  */
-
+require_once '../models/Hashtag.php';
 $body = file_get_contents('php://input');
 $params = json_decode($body);
-
+echo Hashtag::toHashTag($params);
+/*
 $response = file_get_contents('https://maps.googleapis.com/maps/api/distancematrix/json', [
             'units' => 'metric',
             'origins' => 'Neuhöfer Damm 110,Germany',
@@ -19,3 +20,4 @@ $response = file_get_contents('https://maps.googleapis.com/maps/api/distancematr
         ]);
 echo $response;
 $_SESSION["user"]->profile->getThisPosgt($id);
+*/

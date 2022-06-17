@@ -63,6 +63,9 @@ $category = $post->category;
             <div class="contain_post-grid">
                 <div class="contain_post-general">
                     <?php include '../item.php'; ?>
+                    <div>
+                        <?php include_once "../hashtags.php"; ?>
+                    </div>
                     <div class="container_reply">
                         <form action="../controllers/PostController.php" method="post" class="container_reply_field">
                             <label class="com">Comentar como <span><?= $user->username ?></span></label>
@@ -108,7 +111,6 @@ $category = $post->category;
                                     <?php endforeach; ?>
                                 </div>  
                             </div>
-                            
                         </div>
                         <?php endforeach; ?>
                     </div>

@@ -135,13 +135,12 @@ class Profile {
         }
     }
     
-     public function getNumFollowers(){
+    public function getNumFollowers(){
         if($this->followers!=null){
             return count($this->followers);
         } else {
             return 0;
         }
-       
     }
     
     public function getNumFollows(){

@@ -63,6 +63,7 @@ if ($method == "GET") {
             $post = $_SESSION["user"]->profile->getThisPost($id);
             $post->title = $title;
             $post->body = $body;
+            
             if($post->editPost()){
                 header("Location: ../views/profile.php");
             }
