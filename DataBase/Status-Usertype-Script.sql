@@ -212,3 +212,16 @@ INSERT INTO city VALUES (NULL,"Bulnes","Es una comuna ubicada en la provincia de
 (NULL,"Chillán","Es una comuna de la zona central de Chile, capital de la Región de Ñuble, ubicada a 403 Km al sur de Santiago. Su área urbana, en conjunto a la de la comuna de Chillán Viejo, conforman la Conurbación Chillán.",47,1),
 (NULL,"Quirihue","Es una ciudad y comuna, capital de la provincia de Itata, Región de Ñuble, en la zona central de Chile. Está situada a unos 72 kilómetros al noroeste de Chillán, a 82 kilómetros al norte de Concepción y a 398 kilómetros al sur de Santiago. Limita al norte con Cauquenes, al oeste con Cobquecura, al sur con Trehuaco y al este con Ninhue.",48,1),
 (NULL,"San Carlos","Es una ciudad y comuna, capital de la provincia de Punilla, Región de Ñuble en Chile. Según el censo de 2017, la comuna de San Carlos posee una población total de 53 024 habitantes. lo que corresponde tanto al área urbana de la ciudad, como a los sectores rurales y semirurales de la misma.",49,1);
+
+/**Norms**/
+
+INSERT INTO norm VALUES (NULL, "Spam", " Cualquier forma de comunicación no solicitada que se envía de forma masiva."),
+(NULL, "Incitar al odio", "Cometer actos de odio o de desprecio contra una o más personas en razón del color de su piel, su raza, religión u origen nacional o étnico."),
+(NULL, "Violencia o organizaciones peligrosas", "Cometer actos de violencia moral o física."),
+(NULL, "Informacion falsa", "Contenido que presenta deliberadamente una mentira como verdad. Su finalidad es confundir a las personas, haciendo que crean que ciertos datos ficticios son reales."),
+(NULL, "Estafa o fraude", "Utiliza engaño bastante para producir error en otro, induciéndolo a realizar un acto de disposición en perjuicio propio o ajeno."),
+(NULL, "Bullying o acoso", "Acoso físico o psicológico al que someten, de forma continuada."),
+(NULL, "Suicidio o autolesion", "Se muestra contenido gore o de autolesiones (Se omiten los accidentes leves.)"),
+(NULL, "Venta de articulos ilegales o regulados", "Prohibido la venta de drogas, armas u otros articulos no regulados."),
+(NULL, "Desnudos o contenido para mayores", "Fotos o videos donde de muestra contenido pornografico."),
+(NULL, "Otro motivo", "Otra razon.");
