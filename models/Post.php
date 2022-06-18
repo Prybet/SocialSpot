@@ -67,8 +67,9 @@ class Post {
         $catID = $this->category->id;
         $sen->bindParam(":cate", $catID);
         if ($sen->execute()) {
-            $sen = $conn->mysql->prepare("SELECT id FROM post WHERE time = :time");
+            $sen = $conn->mysql->prepare("SELECT id FROM post WHERE time = :time AND date = :date");
             $sen->bindParam(":time", $time);
+            $sen->bindParam(":date", $date);
             if ($sen->execute()) {
                 $res = $sen->fetch();
                 $this->insertHashtags($res[0]);

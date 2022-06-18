@@ -18,6 +18,11 @@ if ($method == "POST") {
     $body = file_get_contents('php://input');
     $params = json_decode($body);
     $id = isset($params->id) ? $params->id : "err";
+    
+    if($id == "err"){
+        $token = isset($params->token)? $params->token: "err";
+                
+    }
 
     switch ($id) {
         case "err":
@@ -28,13 +33,14 @@ if ($method == "POST") {
             // Insert new Post
             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
                 $post = makePost($params);
-                if ($post->setPost() > 0) {
+                $id = $post->setPost();
+                if ($id > 0) {
                     $user = new User();
                     $user->username = $params->userProfile->username;
                     $user->password = $params->userProfile->name;
                     if ($user->getLogin()) {
                         header("Content-Type: application/json; charset=UTF8");
-                        echo json_encode($user, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                        echo json_encode($id, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                     }
                 }
             } else {

@@ -3,18 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/SocialSpot/API/SocialApi.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/views/post.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/js/nav.js</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/hashtags.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/controllers/AjaxController.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/js/singin.js</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/js/viewpost.js</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Post.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/API/MatrixAPI.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/modal.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/item.php</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/models/Hashtag.php</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/API/PostAPI.php</file>
         </group>
     </open-files>
 </project-private>
