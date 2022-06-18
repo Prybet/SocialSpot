@@ -191,11 +191,56 @@ $(document).ready(function () {
         });
             
     });
-    //edit post
+    //Edit Post
     $("#cancelEdit").click(function (){
         $("#modal-edit").css({
             "pointer-events": "none",
             "opacity": "0"
         });
     });
+    //Find User
+    $(document).on('keyup', '#search', function (){
+        var r = $(this).val();
+        console.log(r);
+        
+        $.ajax({
+            url: "../Controllers/AjaxController.php",
+            type: "post",
+            data: {"id": r, "sub": "search"},
+            dataType: "json"
+        }).done(function(data) {
+            if(data !== null){
+                $("#textTitle").empty();
+                $("#textTitle").append(data.title);
+            }else{
+                console.log("error");
+            }
+        });
+    });
+    
+    //Modal Followers
+    $("#viewFollowers").click(function (){
+        $("#modal-followers").css({
+            "pointer-events": "auto",
+            "opacity": "1"
+        });
+        $("body").css({
+            "overflow": "hidden",
+            "height": "100vh",
+            "padding-right": "17px"
+        });
+    });
+    $(".btn_exit-followers").click(function (){
+        $("#modal-followers").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+        $("body").css({
+            "overflow": "auto",
+            "height": "auto",
+            "padding-right": "0"
+        });
+    });
+    
+   
 });

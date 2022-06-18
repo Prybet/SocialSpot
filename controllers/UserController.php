@@ -88,24 +88,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (($POST["submit"] == "change")) {
 
         $oldPass = isset($_POST["oldPass"]) ? $_POST["oldPass"] : "";
-        $pass = isset($_POST["pass"]) ? $_POST["pass"] : "";
-        if ($oldPass != "" && $pass != "") {
+        $passN = isset($_POST["passNew"]) ? $_POST["passNew"] : "";
+        $passV = isset($_POST["passVrf"]) ? $_POST["passVrf"] : "";
+        if ($oldPass != "" && $passN != "") {
             $user = $_SESSION["user"];
             if ($user->verifyPass($user->username, $oldPass)) {
-                //if ($user->updatePass($pass, $user->id)) {
-                    //header("Location: ../views/editprofile.php");
-                //}
-                echo 'if';
+                if($passN == $passV){
+                    if ($user->updatePass($passN, $user->id)) {
+                        header("Location: ../views/editprofile.php");
+                    }
+                }else{
+                    $_SESSION["errPassVrf"] = true;
+                    header("Location: ../views/editprofile.php");
+                }
             } else {
-                //$_SESSION["err"] = "Contraseña actual INCORREECTA";
-                //header("Location: ../views/editprofile.php");
-                echo 'contraseña actual incorrecta';
+                $_SESSION["errPass"] = true;
+                header("Location: ../views/editprofile.php");
             }
-        } else {
-            //$_SESSION["err"] = "Datos mal ingresados";
-            //header("Location: ../views/editprofile.php");
-            echo 'datos mal ingresados';
-        }
+        } 
         // Login
     } elseif ($POST["submit"] == "login") {
         $var1 = isset($_POST["user"]) ? $_POST["user"] : "";

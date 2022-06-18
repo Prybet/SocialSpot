@@ -38,12 +38,6 @@ INSERT INTO category VALUES (null, "Patines", "Son unos paratos deportivos o de 
 INSERT INTO category VALUES (null, "Bike Thriathlon", "Estas son similares a una bicicleta de carretera, pero en ella se busca una posición muy aerodinámica, la cual gana potencia o velocidad, reduciendo el esfuerzo.", "Thriathlon-ProfilePic.jpg", "Thriathlon-BannerPic.jpg",1);
 INSERT INTO category VALUES (null, "Cross Country", "Esta categoría son especialidad más común del ciclismo de montaña, aunque menos difundido que el descenso de montaña ya que es más difícil de televisar. Es la modalidad más extendida y popular.", "Crosscountry-ProfilePic.jpg", "Crosscountry-BannerPic.jpg",1);
 
-/** Norms **/
-INSERT INTO norm VALUES(null, " Spam ");
-INSERT INTO norm VALUES(null, " Contenido delicado ");
-INSERT INTO norm VALUES(null, " Fuera de contexto ");
-
-
 /** Regions of Chile **/
 INSERT INTO region VALUES(null,"Tarapacá", "se ubica en el norte del país, a una distancia superior a 1.800 kilómetros de la capital de Chile." , "Chile", 1);
 INSERT INTO region VALUES(null,"Antofagasta", "se ubica en el norte. La superficie regional abarca un área de 126.049,10 kilómetros cuadrados." , "Chile", 1);

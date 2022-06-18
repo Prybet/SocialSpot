@@ -31,6 +31,10 @@ $imgBanner = isset($profile->bannerURL) ? "../../SSpotImages/UserMedia/" . $prof
 if($profile->bannerURL === "-" || $profile->bannerURL === ""){
     $imgBanner = "../img/banner.jpg";
 }
+
+$err = isset($_SESSION["errPass"]) ? $_SESSION["errPass"] : false;
+
+$errVrf = isset($_SESSION["errPassVrf"]) ? $_SESSION["errPassVrf"] : false;
 ?>
 <html>
 
@@ -84,7 +88,6 @@ if($profile->bannerURL === "-" || $profile->bannerURL === ""){
                     remove(containProvi);
                     remove(containCity);
                 }else{
-                    console.log("else")
                     $.ajax({
                         url: "../Controllers/AjaxController.php",
                         type: "post",
@@ -318,19 +321,36 @@ if($profile->bannerURL === "-" || $profile->bannerURL === ""){
                         <div class="op">
                             <div class="field_pass">
                                 <label class="label_field">Contraseña actual</label>
-                                <input type="password" name="oldPass" class="input_field">
+                                <input type="password" name="oldPass" class="input_field" required value-data="<?php $err ?>">
+                                <?php 
+                                if($err == true){
+                                    echo "<div class='error'><label class='red'>*Contraseña incorrecta</label></div>";
+                                    $_SESSION["errPass"] = null;
+                                }else{
+                                    echo "<div class='error hidden'><label class='red hidden'></label></div>";
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="op">
                             <div class="field_pass">
                                 <label class="label_field">Contraseña nueva</label>
-                                <input type="password" name="pass" class="input_field">
+                                <input type="password" name="passNew" class="input_field" required>
                             </div>
                         </div>
                         <div class="op">
                             <div class="field_pass">
                                 <label class="label_field">Confirmar contraseña</label>
-                                <input type="password" name="pass" class="input_field">
+                                <input type="password" name="passVrf" class="input_field" required>
+                                <?php 
+                                if($errVrf == true){
+                                    echo "<div class='error'><label class='red'>*Las contraseñas no coinciden</label></div>";
+                                    $_SESSION["errPassVrf"] = null;
+                                }else{
+                                    echo "<div class='error hidden'><label class='red hidden'></label></div>";
+                                }
+                                ?>
+                                
                             </div>
                         </div>
                         <button type="submit" name="submit" value="change" class="btn-updatePass">Cambiar Contraseña</button>

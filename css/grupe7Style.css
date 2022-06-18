@@ -605,3 +605,59 @@ label{
     visibility: hidden;
     display: none;
 }
+/* MODAL FOLLOWERS */
+.modal-followers{
+    display: flex;
+}
+.contain_fs{
+    width: 40rem;
+    height: 40rem;
+    font-size: 2rem;
+    position: relative;
+    background-color: var(--darker);
+    top: 50%;
+    margin-top: -20rem;
+    left: 30%;
+    margin-left: -20rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--primary);
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.contain-a{
+    margin: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    display: grid;
+    flex-direction: column;
+    
+}
+.contain-foll{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+.div-follow{
+   overflow-y: scroll;
+   scroll-behavior: smooth; 
+}
+
+.contain_f{
+    width: 40rem;
+    height: 40rem;
+    font-size: 2rem;
+    position: relative;
+    background-color: var(--darker);
+    top: 50%;
+    margin-top: -20rem;
+    left: 60%;
+    margin-left: -20rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--primary);
+    display: grid;
+    grid-template-columns: 1fr;
+}

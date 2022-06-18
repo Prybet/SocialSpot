@@ -94,8 +94,7 @@ $style = "grupe6Style.css";
                         echo "<div class='error'><label class='red'>*Credenciales incorrectas</label></div>";
                         $_SESSION["err"] = null;
                     }else{
-                        echo "<div class='error hidden'><label class='red hidden'></label></div>";
-                        
+                        echo "<div class='error hidden'><label class='red hidden'></label></div>";      
                     }
                     ?>
                     

@@ -2,13 +2,13 @@
     <?php
     $user = $_SESSION["user"];
     $profile = $user->profile;
-    if ($profile->imageURL != "-") {
-        $imgUser = "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL;
-    } else {
+    $imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/perfil.png";
+    if($profile->imageURL === "-" || $profile->imageURL === ""){
         $imgUser = "../img/perfil.png";
     }
     $username = isset($profile->username) ? $profile->username : "Usuario";
     ?>
+    
     <div class="contain_logo flex">
         <a class="a_logo" href="http://localhost/SocialSpot/views/index.php">
             <img src="../img/logo.png" class="img_logo pointer" />
@@ -18,7 +18,7 @@
     <div class="contain_search flex">
         <form class="no-margin flex" id="frm">
             <div class="conta" id="contain_search">
-                <input type="text" id="search" class="input_search no-margin" placeholder="Buscar" />
+                <input type="text" id="search" name="nomUser" class="input_search no-margin" placeholder="Buscar" />
                 <button class="btn_find">
                     <img src="../img/find.png" class="img_search size-img no-margin pointer" />
                 </button>

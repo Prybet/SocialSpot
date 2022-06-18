@@ -10,12 +10,16 @@ Made by:
 require_once '../models/User.php';
 require_once '../models/UserType.php';
 session_start();
-$posts = $_SESSION["user"]->profile->myPosts;
+$user = $_SESSION["user"]->getLogin();
+$posts = $user->profile->myPosts;
+$followers = $user->profile->followers;
+$follows = $user->profile->follows;
+
 $style = "grupe7Style.css";
-if ($_SESSION["user"]->userType->id == 2) {
+if ($user->userType->id == 2) {
     header("location: ../views/index.php");
 }
-$user = $_SESSION["user"];
+
 $profile = $user->profile;
 
 $imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/perfil.png";
@@ -85,18 +89,18 @@ if($profile->bannerURL == "-" || $profile->bannerURL == ""){
                 <?php } ?>
             </div> 
             <div class="follow">
-                <div class="pointer contain-cont-prym">
+                <div class="contain-cont-prym">
                     <label class="cont pointer"><?= count($profile->myPosts) ?></label>
-                    <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray pointer">Publicaciones</label>
+                    <label class="lbl-ligthgray">-</label>
+                    <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
-                <div class="contain-cont">
-                    <label class="cont pointer"><?= $profile->getNumFollowers() ?></label>
+                <div class="contain-cont" id="viewFollowers">
+                    <label class="cont pointer"><?= isset($profile->followers) ? count($profile->followers): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray pointer">Seguidores</label>
                 </div>
-                <div class="contain-cont">
-                    <label class="cont pointer"><?= $profile->getNumFollows() ?></label>
+                <div class="contain-cont" id="viewFollow">
+                    <label class="cont pointer"><?= isset($profile->follows) ? count($profile->follows): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray ">Seguidos</label>
                 </div>

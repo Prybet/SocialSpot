@@ -436,4 +436,14 @@ a{
     display: none;
 }
 
+.input_field_danger{
+    border: 1px dashed var(--red);
+    border-radius: ¿;
+}
+
+.red{
+    color: var(--red);
+    font-size: 1.5rem;
+}
+
 

@@ -14,9 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     switch ($sub) {
         case "category":
-
             $id = $_POST["id"];
-
             require_once '../models/Category.php';
             $category = Category::getCategoy($id);
             header("Content-Type: application/json; charset=UTF8");

@@ -19,6 +19,7 @@ require_once 'User.php';
 require_once 'Status.php';
 require_once 'Post.php';
 require_once 'City.php';
+require_once 'Follow.php';
 
 class Profile {
     var $id;
@@ -78,13 +79,15 @@ class Profile {
             $p->city = City::getCity($rs[9]);
             $p->status = $p->status->getstatu($rs[10]);
             $p->myPosts = Post::getPostsForProfile($rs[0]);
+            $p->followers = Follow::getFollowers($rs[0]);
+            $p->follows = Follow::getFollows($rs[0]);
             return $p;            
         }
     }
         // Profile for Replies
     public static function getProfileForReplies($id){
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id ");
+        $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
         $sen->bindParam(":id", $id);
         if($sen->execute()){
             $rs = $sen->fetch();
@@ -92,7 +95,7 @@ class Profile {
             $p->id = $rs[0];
             $p->username = $rs[2];
             $p->imageURL = $rs[7];
-            return $p;            
+            return $p;               
         }
     }
     
@@ -107,6 +110,24 @@ class Profile {
             $p->id = $rs[0];
             $p->username = $rs[2];
             return $p;            
+        }
+    }
+    
+        // Profile for search
+    public static function getProfileForSearch($id){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE username LIKE :username ");
+        $sen->bindParam(":username", $id);
+        if($sen->execute()){
+            $res = $sen->fetchAll();
+            foreach ($res as $prof){
+                $p = new Profile();
+                $p->id = $rs[0];
+                $p->name = $rs[2];
+                $p->username = $rs[3];
+                $p->followers = Folow::getFollowersCant($rs[0]);
+                return $p; 
+            }         
         }
     }
     
@@ -145,7 +166,7 @@ class Profile {
     
     public function getNumFollows(){
         if($this->follows!=null){
-            return count($this->follows);
+            return rowCount($this->follows);
         } else {
             return 0;
         }
