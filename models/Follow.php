@@ -29,6 +29,7 @@ class Follow {
         $sen->bindParam(":id", $id);
         if($sen->execute()){
             $rs = $sen->fetchAll();
+            $list = array();
             foreach ($rs as $f){
                 $p = new Profile();
                 $p = Profile::getProfileForReplies($f[2]);

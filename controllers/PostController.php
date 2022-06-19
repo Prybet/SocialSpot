@@ -53,31 +53,30 @@ if ($method == "GET") {
         if ($user != null) {
             $comm = isset($_POST["comm"]) ? $_POST["comm"] : "";
         }
-        
+
         //Edit Post
-    } elseif($_POST["submit"] == "edit"){
+    } elseif ($_POST["submit"] == "edit") {
         $id = isset($_POST["postID"]) ? $_POST["postID"] : "";
         $title = isset($_POST["title"]) ? $_POST["title"] : "";
         $body = isset($_POST["body"]) ? $_POST["body"] : "";
-        if($title != "" && $body != ""){
+        if ($title != "" && $body != "") {
             $post = $_SESSION["user"]->profile->getThisPost($id);
             $post->title = $title;
             $post->body = $body;
-            
-            if($post->editPost()){
+
+            if ($post->editPost()) {
                 header("Location: ../views/profile.php");
             }
         }
         //Delete Post
-    }elseif($_POST["submit"] == "delete"){
+    } elseif ($_POST["submit"] == "delete") {
         $id = isset($_POST["postID"]) ? $_POST["postID"] : "";
         $post = $_SESSION["user"]->profile->getThisPost($id);
         $user = $_SESSION["user"];
-        if($post->deleteThis()){
+        if ($post->deleteThis()) {
             $_SESSION["user"] = $user->getLogin();
             header("Location: ../views/profile.php");
         }
-        
     }
 }
 
