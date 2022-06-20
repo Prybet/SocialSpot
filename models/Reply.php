@@ -23,6 +23,7 @@ class Reply {
     var $date;
     var $time;
     var $replies;
+    var $post;
     var $profile;
     var $status;
 
@@ -78,6 +79,21 @@ class Reply {
         }
     }
         
+    public static function setReplyApp($reply){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("INSERT INTO reply VALUES(null,:body,:date,:time, null,:post,:profile,:status)");
+        $sen->bindParam(":body", $reply->body);
+        $sen->bindParam(":date", $reply->date);
+        $sen->bindParam(":time", $reply->time);
+        $sen->bindParam(":post", $reply->post);
+        $p = $reply->profile->id;
+        $sen->bindParam(":profile", $p);
+        $s = $reply->status->id;
+        $sen->bindParam(":status", $s);
+        if($sen->execute()){
+            return true;
+        }
+    }
     
 
 }
