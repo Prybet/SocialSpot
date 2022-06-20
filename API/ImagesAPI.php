@@ -18,7 +18,7 @@ if ($METHOD == "POST") {
     header("Content-Type: application/json");
     if ($token != 0) {
         if (User::verifyPass(isset($POST["var1"]) ? $POST["var1"] : "", isset($POST["var2"]) ? $POST["var2"] : "")) {
-            if (uploadFiles($token, $var1)){
+            if (uploadFiles($token, $POST["var1"])) {
                 $user = new User();
                 $user->username = $POST["var1"];
                 echo json_encode($user->getLogin(), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
@@ -66,17 +66,29 @@ function tryPath($username, $idp) {
 
 function getDot($file) {
     switch ($file["type"]) {
+        case "*/jpg":
+            return ".jpg";
         case "image/jpg":
             return ".jpg";
+        case "*/jpeg":
+            return ".jpeg";
         case "image/jpeg":
             return ".jpeg";
+        case "*/gif":
+            return ".gif";
         case "image/gif":
             return ".gif";
+        case "*/png":
+            return ".png";
         case "image/png":
             return ".png";
-        case "video/mp4":
+        case "image/mp4":
             return ".mp4";
-        case "video/mov":
+        case "*/mp4":
+            return ".mp4";
+        case "image/mov":
+            return ".mov";
+        case "*/mov":
             return ".mov";
         default:
             return "NotMedia";
