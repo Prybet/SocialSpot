@@ -323,3 +323,16 @@ scroll-container-noti a{
   margin-top: 7rem;
   padding: 0 18rem;
 }
+
+.noFound-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 18rem;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+.spnFollows{
+    margin-left: 1rem;
+    color: var(--ligthgray);
+}

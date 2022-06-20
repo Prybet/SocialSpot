@@ -13,15 +13,15 @@ require_once '../models/Region.php';
 require_once '../models/Province.php';
 require_once '../models/City.php';
 session_start();
+$user = $_SESSION["user"]->getLogin();
+
 $style = "grupe2Style.css";
-if ($_SESSION["user"]->userType->id == 2) {
+if ($user->userType->id == 2) {
     header("location: ../views/index.php");
 }
-$user = $_SESSION["user"];
-$city = $_SESSION["user"]->profile->city;
+$city = $user->profile->city;
 $regions = Region::getListAllRegion(); 
 
-$user = $_SESSION["user"];
 $profile = $user->profile;
 $imgUser = isset($profile->imageURL) ? "../../SSpotImages/UserMedia/" . $profile->username . "-Folder/ProfileImages/" . $profile->imageURL : "../img/perfil.png";
 if($profile->imageURL === "-" || $profile->imageURL === ""){

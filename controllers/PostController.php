@@ -32,26 +32,42 @@ if ($method == "GET") {
         $check = isset($_POST["check"]) ? $_POST["check"] : "";
 
         if ($cate != "" && $title != "") {
-
-            $user = $_SESSION["user"];
-            $post = new Post();
-            $post->profID = $user->profile->id;
-            $post->title = $title;
-            $post->body = $body;
-            $post->category = new Category();
-            $post->category->id = $cate;
-            $idp = $post->setPost();
-            if (uploadFiles($idp)) {
-                $_SESSION["post"] = Post::getPost($idp);
-                header("Location: ../views/post.php");
-            } else {
-                header("Location: ../views/index.php");
+            if($cate != -1){
+                $user = $_SESSION["user"];
+                $post = new Post();
+                $post->profID = $user->profile->id;
+                $post->title = $title;
+                $post->body = $body;
+                $post->category = new Category();
+                $post->category->id = $cate;
+                $idp = $post->setPost();
+                if (uploadFiles($idp)) {
+                    $_SESSION["post"] = Post::getPost($idp);
+                    header("Location: ../views/post.php");
+                } else {
+                    header("Location: ../views/index.php");
+                }
+            }else{
+                $_SESSION["errCate"] = true;
+                header("Location: ../views/Newpost.php");
             }
+            
         }
     } elseif ($_POST["submit"] == "comm") {
         $user = $_SESSION["user"];
         if ($user != null) {
             $comm = isset($_POST["comm"]) ? $_POST["comm"] : "";
+            if($comm != ""){
+                $rep = new Reply();
+                $rep->post = $_SESSION["post"]->id;
+                $rep->profile = $_SESSION["user"]->profile->id;
+                $rep->body = $comm;
+                if($rep->setReply()){
+                    header("Location: ../views/post.php");
+                }
+            }else{
+               header("Location: ../views/post.php");
+            }
         }
 
         //Edit Post

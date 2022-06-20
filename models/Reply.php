@@ -15,6 +15,8 @@
  */
 require_once '../PDO/Connection.php';
 require_once '../models/Status.php';
+require_once 'Profile.php';
+require_once 'Post.php';
 
 class Reply {
 
@@ -26,6 +28,20 @@ class Reply {
     var $post;
     var $profile;
     var $status;
+
+    public function setReply() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("INSERT INTO reply VALUES (null, :body, CURRENT_DATE, CURRENT_TIME, null, :postID, :profID, 14)");
+        $sen->bindParam(":body", $this->body);
+        $postID = $this->post;
+        $sen->bindParam(":postID", $postID);
+        $profID = $this->profile;
+        $sen->bindParam(":profID", $profID);
+        if($sen->execute()){
+            return true;
+        }
+    }
+
 
     public static function getRepliesByPostId($id) {
         $conn = new Connection();

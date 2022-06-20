@@ -2,14 +2,18 @@
 <?php
 require_once '../models/User.php';
 require_once '../models/UserType.php';
+require_once '../models/Category.php';
+require_once '../models/City.php';
+require_once '../models/Norm.php';
 session_start();
 if ($_SESSION["user"]->userType->id == 2) {
     header("location: ../views/index.php");
 }
 $style = "grupe5Style.css";
-require_once '../models/Category.php';
-require_once '../models/City.php';
 $categories = Category::getListAllCategories();
+$norms = Norm::getAll();
+$count = 1;
+$err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
 ?>
 <html>
 <head>
@@ -23,7 +27,8 @@ $categories = Category::getListAllCategories();
                 if (id === "-1") {
                     $("#catName").empty();
                     $("#catDesc").empty();
-                    $("#catImage").attr("src", "");
+                    $("#catName").append("/Categoria");
+                    $("#catImage").attr("src", "../img/perfil.png");
                 } else {
                     $.ajax({
                         url: "../Controllers/AjaxController.php",
@@ -84,6 +89,14 @@ $categories = Category::getListAllCategories();
                         <option value="<?= $category->id ?>"><?= $category->name ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <?php 
+                    if($err == true){
+                        echo "<div class='error'><label class='red'>*Seleccione una Categoría</label></div>";
+                        $_SESSION["errCate"] = null;
+                    }else{
+                        echo "<div class='error hidden'><label class='red hidden'></label></div>";
+                    }
+                    ?>
                     <div class="contain_post">
                         <div class="contain_post-input">
                             <div class="contain_input-title">
@@ -156,7 +169,7 @@ $categories = Category::getListAllCategories();
                                 <img id="catImage" src="../img/perfil.png" class="img_cate" alt="Imagen de Perfil"/>
                             </div>
                             <div>
-                                <h2 id="catName" class="cate_name">/Name</h2>
+                                <h2 id="catName" class="cate_name">/Categoria</h2>
                             </div>
                         </div>
                         <div class="contain_descrip">
@@ -187,17 +200,13 @@ $categories = Category::getListAllCategories();
                     <section class="section_rules">
                         <div class="contain_rules">
                             <div class="flex">
-                                <h2 class="h2_rule">Reglas de </h2><h2 id="catName" class="h2_rule"></h2>
-                            </div>  
+                                <h2 class="h2_rule">Reglas</h2>
+                            </div> 
+                            <?php $i=0; foreach($norms as $n){ $i++;?>
                             <div class="lbl_rule">
-                                <label>1. Rule 1</label>
+                                <label><?= $i?>-<?= $n->name ?>: </label><span class="spnNum"><?= $n->desc ?></span>
                             </div>
-                            <div class="lbl_rule">
-                                <label>2. Rule 2</label>
-                            </div>
-                            <div class="lbl_rule">
-                                <label>3. Rule 3</label>
-                            </div>
+                            <?php }?>
                         </div>
                     </section>
                     <footer>

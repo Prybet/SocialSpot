@@ -111,23 +111,72 @@
                 <div class="contain-btnedit">
                     <button type="submit" name="submit" value="edit">Editar</button>
                 </div>
+            </div>
+            <div class="contin-edit">
+                <label>Hashtags</label>
+                <div>
+                    <input type="text" id="hashtags"/>
+                    <button type="button" value="1" name="hash" class="btnAddHash" >Añadir Hashtag</button>
+                </div>
+                </div>
+                <div class="contin-edit" id="conthashs">
+                
+                </div>
                 <div class="contain-btnedit">
                     <button type="button" id="cancelEdit">Cancelar</button>
                 </div>
             </div>
-            <div class="contin-edit">
-                <label>Hashtags</label>
-                <input type="text" id="hashtags"/>
-            </div>
-            <div class="contin-edit" id="conthashs">
-                <span>sssss</span>
-            </div>
-            <div class="contain-edit-btn">
-                <div class="contain-btnedit">
-                    <button type="button" value="24" name="hash">Añadir Hashtag</button>
-                </div>
-            </div>
+            
+            
         </div>
     </form>
     <script src="../js/viewpost.js"></script>
+</div>
+
+<!-- VIEW FOLLOWERS -->
+<div class="contain_modal modal-followers" id="modal-followers">
+    <div class="contain_fs">
+        <h2>Seguidores</h2>
+        <div class="div-follow">
+            <a class="contain-a">
+                <?php 
+                if($followers != null):
+                foreach ($followers as $fs){ ?>
+                <div class="contain-foll" data-prof="<?= $fs->id?>">
+                    <?php if($fs->imageURL === ""){
+                      echo "<img src='../img/perfil.png' alt='usuariooo' class='img_noti pointer'>";
+                    }else{
+                        echo "<img src='../../SSpotImages/UserMedia/$fs->username-Folder/ProfileImages/$fs->imageURL' alt='usuario' class='img_noti pointer'>";
+                     } ?>
+                    <div class="noti_follow-inf">
+                        <label class="pointer"><?= $fs->username?></label>
+                    </div>
+                </div>
+                <?php }endif; ?>
+            </a>
+        </div>
+    </div>
+    <div class="contain_f">
+        <h2>Seguidos</h2>
+        <div class="div-follow">
+            <a class="contain-a">
+                <?php 
+                if($follows != null):
+                foreach ($follows as $f){ ?>
+                <div class="contain-foll" data-prof="<?= $f->id?>">
+                    <?php if($f->imageURL === ""){
+                      echo "<img src='../img/perfil.png' alt='usuariooo' class='img_noti pointer'>";
+                    }else{
+                        echo "<img src='../../SSpotImages/UserMedia/$f->username-Folder/ProfileImages/$f->imageURL' alt='usuario' class='img_noti pointer'>";
+                     } ?>
+                    <div class="noti_follow-inf">
+                        <label class="pointer"><?= $f->username?></label>
+                    </div>
+                </div>
+                <?php }endif; ?>
+            </a>
+            <button type="button" class="btn_exit-followers">Salir</button>
+        </div>
+    </div>
+    
 </div>

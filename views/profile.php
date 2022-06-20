@@ -30,12 +30,15 @@ $imgBanner = isset($profile->bannerURL) ? "../../SSpotImages/UserMedia/" . $prof
 if($profile->bannerURL == "-" || $profile->bannerURL == ""){
     $imgBanner = "../img/banner.jpg";
 }
+
+if($profile->description == ""){
+    $profile->description = "Sin descripción";
+}
 ?>
 <html>
 
     <head>
         <?php include_once '../header.php'; ?>
-
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <title>Perfil</title>
         <script src="../js/model.js"></script>
@@ -94,15 +97,15 @@ if($profile->bannerURL == "-" || $profile->bannerURL == ""){
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
-                <div class="contain-cont" id="viewFollowers">
+                <div class="contain-cont">
                     <label class="cont pointer"><?= isset($profile->followers) ? count($profile->followers): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray pointer">Seguidores</label>
                 </div>
-                <div class="contain-cont" id="viewFollow">
+                <div class="contain-cont">
                     <label class="cont pointer"><?= isset($profile->follows) ? count($profile->follows): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray ">Seguidos</label>
+                    <label class="lbl-ligthgray pointer ">Seguidos</label>
                 </div>
             </div>
         </div>
@@ -135,7 +138,7 @@ if($profile->bannerURL == "-" || $profile->bannerURL == ""){
                             <div class="contain_descrip-content">
                                 <h2 class="h2_descrip">Descripción</h2>
                                 <div class="contain_descrip">
-                                    <p class="p_descrip"><?= $profile->description ?>
+                                    <p class="p_descrip"><?= isset($profile->description) ? $profile->description : "Sin Descripción" ?>
                                     </p>
                                 </div>
                             </div>
