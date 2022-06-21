@@ -14,6 +14,11 @@
  *
  * @author Prybet
  */
+
+require_once '../PDO/Connection.php';
+require_once '../models/Status.php';
+require_once 'Profile.php';
+require_once 'Post.php';
 class Like {
     var $id;
     var $userID;
@@ -56,6 +61,23 @@ class Like {
                 $list[] = $l;
             }
             return $list;
+        }
+    }
+
+    public static function setLikeApp($like){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("INSERT INTO like VALUES(null, :userID, :postID, :date, :time, :status)");
+        
+        $u = $like->userID->id;
+        $sen->bindParam(":userID", $u);
+        $p = $like->postID;
+        $sen->bindParam(":postID", $p);
+        $sen->bindParam(":date", $like->date);
+        $sen->bindParam(":time", $like->time);
+        $s = $like->status->id;
+        $sen->bindParam(":status", $s);
+        if($sen->execute()){
+            return true;
         }
     }
     

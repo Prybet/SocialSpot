@@ -25,6 +25,7 @@ class Reply {
     var $date;
     var $time;
     var $replies;
+    var $reply;
     var $post;
     var $profile;
     var $status;
@@ -57,6 +58,7 @@ class Reply {
                 $r->date = $com[2];
                 $r->time = $com[3];
                 $r->replies = self::getRepliesByReplyId($com[0]);
+                $r->post = $com[5];
                 $r->profile = Profile::getProfileForReplies($com[6]);
                 $r->status = Status::getStatu($com[7]);
                 $list[] = $r;
@@ -77,7 +79,8 @@ class Reply {
                 $r->id = $com[0];
                 $r->body = $com[1];
                 $r->date = $com[2];
-                $r->reply = $com[3];
+                $r->time = $com[3];
+                $r->reply = $com[4];
                 $r->profile = Profile::getProfileForReplies($com[6]);
                 $r->status = Status::getStatu($com[7]);
                 $list[] = $r;
@@ -97,10 +100,15 @@ class Reply {
         
     public static function setReplyApp($reply){
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO reply VALUES(null,:body,:date,:time, null,:post,:profile,:status)");
+        $sen = $conn->mysql->prepare("INSERT INTO reply VALUES(null,:body,:date,:time, :reply ,:post,:profile,:status)");
         $sen->bindParam(":body", $reply->body);
         $sen->bindParam(":date", $reply->date);
         $sen->bindParam(":time", $reply->time);
+        $comm = $reply->reply;
+        if($reply->reply == 0){
+            $comm = null;
+        }
+        $sen->bindParam(":reply", $comm);
         $sen->bindParam(":post", $reply->post);
         $p = $reply->profile->id;
         $sen->bindParam(":profile", $p);

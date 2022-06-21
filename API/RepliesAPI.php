@@ -11,6 +11,7 @@ if($method == 'PUT'){
     $reply->body = $params->body;
     $reply->date = $params->date;
     $reply->time = $params->time;
+    $reply->reply = $params->reply;
     $reply->post = $params->post;
     $reply->profile = $params->profile;
     $reply->status = $params->status;
