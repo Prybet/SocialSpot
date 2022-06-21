@@ -85,6 +85,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             break;
+        case "search":
+            require_once '../models/Profile.php';
+            $result = isset($_POST["id"]) ? $_POST["id"] : "";
+            header("Content-Type: application/json; charset=UTF8");
+            if($result != ""){
+                $prof = Profile::getProfileForSearch($result);
+                echo json_encode($prof, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }else{
+                $prof = null;
+                echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }
+            break;
         default:
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode("default", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);

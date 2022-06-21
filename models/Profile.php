@@ -45,7 +45,7 @@ class Profile {
     
     public function setProfile() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO profile VALUES (null, :name, :user, 0, '', :birth, CURRENT_TIMESTAMP,'-', '-', null, 2)");
+        $sen = $conn->mysql->prepare("INSERT INTO profile VALUES (null, :name, :user, 0, '', :birth, CURRENT_TIMESTAMP,'', '', null, 2)");
         $sen->bindParam(":name", $this->name);
         $sen->bindParam(":user", $this->username);
         $sen->bindParam(":birth", $this->birthDate);
@@ -114,20 +114,25 @@ class Profile {
     }
     
         // Profile for search
-    public static function getProfileForSearch($id){
+    public static function getProfileForSearch($nom){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE username LIKE :username ");
-        $sen->bindParam(":username", $id);
+        $param = $nom."%";
+        $sen->bindParam(":username", $param);
         if($sen->execute()){
             $res = $sen->fetchAll();
+            $list = array(); 
             foreach ($res as $prof){
                 $p = new Profile();
-                $p->id = $rs[0];
-                $p->name = $rs[2];
-                $p->username = $rs[3];
-                $p->followers = Folow::getFollowersCant($rs[0]);
-                return $p; 
-            }         
+                $p->id = $prof[0];
+                $p->name = $prof[1];
+                $p->username = $prof[2];
+                $p->check = $prof[3];
+                $p->imageURL = $prof[7];
+                $p->followers = Follow::getFollowers($prof[0]);
+                $list[] = $p;
+            }    
+            return $list; 
         }
     }
     

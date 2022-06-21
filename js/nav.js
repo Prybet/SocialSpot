@@ -16,8 +16,8 @@ const decoN = document.querySelector(".decorate_noti");
 const modalS = document.querySelector("scroll-container");
 
 $(document).on("click",function(e) {
-    var btnS = $(".input_search"); 
-    var containerS = $("scroll-container");            
+    const btnS = $(".input_search"); 
+    const containerS = $("scroll-container");            
     if (!containerS.is(e.target) && containerS.has(e.target).length === 0) { 
         if(btnS.is(e.target)){
             modalS.style.display = "flex";
@@ -26,9 +26,9 @@ $(document).on("click",function(e) {
         }
         
     }
-    var btnN = $("#btn_noti"); 
-    var imgN = $(".img-noti"); 
-    var containerN = $("scroll-container-noti");            
+    const btnN = $("#btn_noti"); 
+    const imgN = $(".img-noti"); 
+    const containerN = $("scroll-container-noti");            
     if (!containerN.is(e.target) && containerN.has(e.target).length === 0) { 
         if(btnN.is(e.target) || imgN.is(e.target)){
             modalN.style.visibility = "visible";
@@ -38,10 +38,10 @@ $(document).on("click",function(e) {
             decoN.style.visibility = "hidden";
         }  
     }
-    var btnU = $("#btn_user"); 
-    var imgU = $(".img-user"); 
-    var lblU = $(".lbluser"); 
-    var containerU = $(".contain_option"); 
+    const btnU = $("#btn_user"); 
+    const imgU = $(".img-user"); 
+    const lblU = $(".lbluser"); 
+    const containerU = $(".contain_option"); 
     if (!containerU.is(e.target) && containerU.has(e.target).length === 0) { 
         if(btnU.is(e.target) || imgU.is(e.target) || lblU.is(e.target)){
             modalU.style.visibility = "visible";

@@ -30,6 +30,7 @@ class Norm {
                 $n = new Norm();
                 $n->id = $norm[0];
                 $n->name = $norm[1];
+                $n->desc = $norm[2];
                 $list[] = $n;
             }
             return $list;

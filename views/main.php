@@ -36,7 +36,6 @@ $style = "grupe4Style.css";
                     <?php
                         foreach ($posts as $post):
                             include '../item.php';
-                        
                         endforeach;
                     ?>
                 </main>

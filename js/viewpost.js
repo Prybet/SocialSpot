@@ -23,6 +23,7 @@ $(document).ready(function () {
                     if (data) {
                         $("#conthashs").append("<input type='text' name='hash-' value=" + hash + " hidden>");
                         $("#conthashs").append("<span>" + hash + "</span>");
+                        $("#hashtags").empty();
                     }
                 },
                 error: function (data) {

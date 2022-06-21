@@ -22,13 +22,8 @@
                 <button class="btn_find">
                     <img src="../img/find.png" class="img_search size-img no-margin pointer" />
                 </button>
-                <scroll-container class="ocultar" id="scroll">
-                    <a class="search_user pointer">
-                        <img src="../img/perfil.png" alt="usuario" class="img_noti pointer">
-                        <div class="noti_follow-inf">
-                            <label class="pointer">User/Username <span class="spn_date">10 seguidores</span></label>
-                        </div>
-                    </a>
+                <scroll-container class="ocultar" id="scroll-find">
+                    
                 </scroll-container>
             </div>
         </form>

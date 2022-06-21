@@ -167,7 +167,7 @@ $(document).ready(function () {
     //Show edit post
     $("button[name=showEdit]").click(function (){
         let id = $(this).val();
-        //$("button[name=edit]").val(id);;
+        $("button[name=hash]").val(id);;
         $("#modal-edit").css({
             "pointer-events": "auto",
             "opacity": "1"
@@ -201,25 +201,67 @@ $(document).ready(function () {
     //Find User
     $(document).on('keyup', '#search', function (){
         var r = $(this).val();
-        console.log(r);
-        
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
             data: {"id": r, "sub": "search"},
-            dataType: "json"
-        }).done(function(data) {
-            if(data !== null){
-                $("#textTitle").empty();
-                $("#textTitle").append(data.title);
-            }else{
-                console.log("error");
+            success: function (data) {
+                if (data) {
+                    console.log(data);
+                    $("#scroll-find").empty();
+                    if(data !== null){
+                        if(data.length > 0){
+                            for (var i=0; i < data.length; i++){
+                                if(data[i].imageURL === ""){
+                                    data[i].imageURL = "../img/perfil.png";
+                                }else{
+                                    data[i].imageURL = "../../SSpotImages/UserMedia/" + data[i].username + "-Folder/ProfileImages/" + data[i].imageURL;
+                                }
+                                
+                                if(data[i].check !== 0){
+                                    data[i].name = "/" + data[i].name;
+                                }else{
+                                    data[i].name = "";
+                                }
+                                
+                                var stringFollow = "";
+                                if(data[i].followers.length === 1){
+                                    stringFollow = "Seguidor";
+                                    
+                                }else{
+                                    stringFollow = "Seguidores";
+                                }
+                                $("#scroll-find").append("\n\
+                                <a class='search_user pointer' value="+data[i].id+">\n\
+                                    <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                    <div class='noti_follow-inf'>\n\
+                                        <label class='pointer'>"+data[i].username+" <span class='spn_date'>"+data[i].name+"</span><span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
+                                    </div>\n\
+                                    </a>\n\
+                                ");
+                            } 
+                        }else{
+                            $("#scroll-find").append("\n\
+                                <div class='noFound-user'>\n\
+                                    <h2>Busqueda no encontrada</h2>\n\
+                                </div>\n\
+                                ");
+                        }
+                        
+                    }
+                }else{
+                    $("#scroll-find").empty();
+                }
+            },
+            error: function (data) {
+                console.log(data);
             }
         });
     });
     
+    
     //Modal Followers
-    $("#viewFollowers").click(function (){
+    $(".contain-cont").click(function (){
         $("#modal-followers").css({
             "pointer-events": "auto",
             "opacity": "1"
@@ -242,5 +284,4 @@ $(document).ready(function () {
         });
     });
     
-   
 });

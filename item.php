@@ -19,7 +19,6 @@
                 <img src="../img/MenuPoints.png" class="pointer">
             </button>
         </div>
-
         <div class="container_info">
             <div class="container_info-descrip">
                 <h2 class="color-ora"><?= $post->title ?></h2>

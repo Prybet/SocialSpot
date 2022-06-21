@@ -323,8 +323,11 @@ main{
 .lbl_rule{
     color: var(--ligthgray);
     font-size: 1.5rem;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
 } 
+.spnNum{
+    color: var(--ligthgray);
+}
 
 /* FOOTER */
  .container_footer{
@@ -361,3 +364,9 @@ a{
 label{
     color: var(--ligthgray);
 } 
+
+.red{
+    color: var(--red);
+    font-weight: bold;
+    font-size: 1.8rem;
+}
