@@ -66,12 +66,11 @@ class Like {
 
     public static function setLikeApp($like){
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO like VALUES(null, :userID, :postID, :date, :time, :status)");
+        $sen = $conn->mysql->prepare("INSERT INTO socialspotdb.like VALUES(null, :userID, :postID, :date, :time, :status)");
         
         $u = $like->userID->id;
         $sen->bindParam(":userID", $u);
-        $p = $like->postID;
-        $sen->bindParam(":postID", $p);
+        $sen->bindParam(":postID", $like->postID);
         $sen->bindParam(":date", $like->date);
         $sen->bindParam(":time", $like->time);
         $s = $like->status->id;
