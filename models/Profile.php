@@ -156,6 +156,26 @@ class Profile {
         }
     }
     
+    public static function updateProfImage($id, $url) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE profile SET ImageURL = :img WHERE id = :id");
+        $sen->bindParam(":id", $id);
+        $sen->bindParam(":img", $url);
+        if($sen->execute()){
+            return true;
+        }
+    }
+    
+    public static function updateBannImage($id, $url) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE profile SET BannerURL = :img WHERE id = :id");
+        $sen->bindParam(":id", $id);
+        $sen->bindParam(":img", $url);
+        if($sen->execute()){
+            return true;
+        }
+    }
+    
     public function getNumFollowers(){
         if($this->followers!=null){
             return count($this->followers);
@@ -184,7 +204,7 @@ class Profile {
         }
     }
     
-    
+   
     public function getThisPost($id) {
         foreach ($this->myPosts as $post){
             if($id == $post->id ){

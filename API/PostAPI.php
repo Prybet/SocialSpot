@@ -20,15 +20,6 @@ if ($method == "POST") {
     $params = json_decode($body);
     $id = isset($params->id) ? $params->id : "err";
 
-    if ($id == "err") {
-        $token = isset($_POST["token"]) ? $_POST["token"] : "err";
-        echo $token;
-        foreach ($_FILES as $i => $file) {
-            $respuesta = "Imagen subida exitosamente:  : " . $_FILES[$i]["type"];
-            echo json_encode($respuesta);
-        }
-    }
-
     switch ($id) {
         case "err":
             echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
