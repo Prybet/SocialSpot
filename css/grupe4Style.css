@@ -295,7 +295,7 @@ body{
     align-items: center;
 }
 .heartLike{
-    display: none;
+    display: flex;
     cursor: pointer;
     border: none;
     background: transparent;
@@ -307,7 +307,6 @@ body{
     cursor: pointer;
     border: none;
     background: transparent;
-    display: flex;
     justify-content: center;
     align-items: center;
 }

@@ -180,7 +180,22 @@ html {
     justify-content: center;
     align-items: center;
 }
+.heartLike{
+    display: flex;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+}
 
+.heartNotLike{
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+}
 /* REPLY */
 .container_reply{
     width: 75rem;
