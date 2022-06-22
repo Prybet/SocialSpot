@@ -42,6 +42,21 @@ class Reply {
             return true;
         }
     }
+    
+    public function setReplyForReply() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("INSERT INTO reply VALUES (null, :body, CURRENT_DATE, CURRENT_TIME, :replyID, :postID, :profID, 15)");
+        $sen->bindParam(":body", $this->body);
+        $ReplyID = $this->replies;
+        $sen->bindParam(":replyID",$ReplyID);
+        $postID = $this->post;
+        $sen->bindParam(":postID", $postID);
+        $profID = $this->profile;
+        $sen->bindParam(":profID", $profID);
+        if($sen->execute()){
+            return true;
+        }
+    }
 
 
     public static function getRepliesByPostId($id) {

@@ -282,6 +282,9 @@ body{
 .cont-pst{
     font-size: 1.5rem;
     font-weight: bold;
+    color: var(--primary);
+}
+.lbl_edit-post{
     color: var(--ligthgray);
 }
 .divcom{
@@ -291,7 +294,23 @@ body{
     justify-content: center;
     align-items: center;
 }
+.heartLike{
+    display: none;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+}
 
+.heartNotLike{
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* CATEGORY POPULAR */
 .contain_popular{
     width: 100%;

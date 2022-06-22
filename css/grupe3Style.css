@@ -168,6 +168,9 @@ html {
 .cont-pst{
     font-size: 1.5rem;
     font-weight: bold;
+    color: var(--primary);
+}
+.lbl_edit-post{
     color: var(--ligthgray);
 }
 .divcom{
@@ -255,7 +258,7 @@ hr{
     display: flex;
     justify-content: left;
     width: 100%;
-    margin: 2rem 3rem;
+    margin: 0.5rem 3rem;
     font-size: 1.5rem;
 }
 .img_profile-reply{
@@ -668,6 +671,17 @@ label{
 .contain_modal-profile{
     visibility: hidden;
     display: none;
+}
+.upload__fiel-input{
+    width: 100%;
+    margin: 0 auto;
+    border: none;
+    background-color: var(--black);
+    outline: none;
+    border-radius: 0.3rem;
+    color: var(--white);
+    font-size: 1.3rem;
+    padding-left: 1rem;
 }
 /* MODAL EDIT POST*/
 .contain_btn-editPost{

@@ -3,6 +3,7 @@
 require_once '../models/Post.php';
 session_start();
 $posts = Post::getAllPosts();
+$norms = Norm::getAll();
 $style = "grupe4Style.css";
 ?>
 <html>

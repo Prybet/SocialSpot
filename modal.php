@@ -43,7 +43,7 @@
     </div>
 </div> 
 <!-- MODAL REPORT-->
-<div class="contain_modal">
+<div class="contain_modal" id="modal-report">
     <div class="contain_report">
         <div>
             <div class="center">
@@ -51,19 +51,24 @@
                     ¿Por que quieres reportar esta publicacion?
                 </label>
             </div>
-            <form action="PostController" method="get" class="contain-form">
+            <div class="contain-form">
+                
+            </div>
+            <form action="../controllers/PostController.php" method="post" >
+                <?php $i=0; foreach($norms as $n){ $i++;?>
                 <div class="conta_rep">
-                    <input type="checkbox">
-                    <label>Contenido molestoso<label>
+                    <input type="radio" name="radio_report" class="checkReport" value="<?= $n->id ?>">
+                    <label><?= $n->name ?><label>
                 </div>  
+                <?php }?>
                 <div class="second-div">
                     <label class="lbl-ques">Escriba su molestia de la publicacion<label>
                     <div class>
-                        <input type="text" name="comm" placeholder="(Opcional)" class="upload__fiel-input input_report">
+                        <input type="text" name="com" placeholder="(Opcional)" class="upload__fiel-input input_report">
                     </div>
                 </div>          
                 <div class="contain_btn-profile">
-                    <button type="submit" class="btn" id="btn_report" value="" name="btn_report">Reportar</button>
+                    <button type="submit" class="btn btn_report" value="report_post" name="submit">Reportar</button>
                 </div>
                 <div class="contain_btn-profile">
                     <button type="button" class="btn_cancel-report btn" id="btn_cancel" value="" name="cancel-report">Cancelar</button>

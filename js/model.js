@@ -2,7 +2,7 @@ $(document).ready(function () {
     //item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
-        if ($("#id_" + id).is(":focus") || $(".cont-left").is(":focus") || $(".cont-right").is(":focus")) {
+        if ($("#id_" + id).is(":focus") || $(".cont-left").is(":focus") || $(".cont-right").is(":focus") || $(".heartNotLike").is(":focus") || $(".heartLike").is(":focus")) {
             console.log($("#id_" + id));
         } else {
             window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
@@ -119,7 +119,7 @@ $(document).ready(function () {
             "pointer-events": "none",
             "opacity": "0"
         });
-        $(".contain_modal-report").css({
+        $("#modal-report").css({
             "pointer-events": "auto",
             "opacity": "1"
         });
@@ -130,7 +130,7 @@ $(document).ready(function () {
         window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
     });
     $(".btn_cancel-report").click(function () {
-        $(".contain_modal-report").css({
+        $("#modal-report").css({
             "pointer-events": "none",
             "opacity": "0"
         });
@@ -281,6 +281,26 @@ $(document).ready(function () {
             "overflow": "auto",
             "height": "auto",
             "padding-right": "0"
+        });
+    });
+    
+    
+    $(".heartNotLike").click(function (){
+        $.ajax({
+            url: "../Controllers/AjaxController.php",
+            type: "post",
+            data: {"id": id, "sub": "setLike"},
+            dataType: "json"
+        }).done(function(data) {
+            if(data !== null){
+                $("textarea[name=postID]").append(id);
+                $("#textTitle").empty();
+                $("#textDesc").empty();
+                $("#textTitle").append(data.title);
+                $("#textDesc").append(data.body);
+            }else{
+                console.log("error");
+            }
         });
     });
     
