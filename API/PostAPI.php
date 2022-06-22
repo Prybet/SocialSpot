@@ -76,6 +76,19 @@ if ($method == "POST") {
             $comms = Reply::getRepliesByPostId($action);
             echo json_encode($comms, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
+        case "like":
+            require_once"../models/Like.php";
+            $like = new Like();
+
+            $like->id = $params->id;
+            $like->userID = $params->profile->id;
+            $like->postID = $params->post;
+            
+            if(Like::setLike($like)){
+                header("Content-Type: application/json; charset=UTF8");
+                echo json_encode('true', JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }
+            break;
         case "report":
             if (Report::setReport($params)) {
                 echo json_encode("yes", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);

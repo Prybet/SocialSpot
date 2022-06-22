@@ -70,7 +70,14 @@ class Profile {
             $p->name = $rs[1];
             $p->username = $rs[2];
             //$p->check = isset($rs[3])==1?true:false;
-            $p->check = $rs[3];
+            $check = $rs[3];
+            if($rs[3]== 0){
+                $check = "0";
+            }
+            if($rs[3]== 1){
+                $check = "1";
+            }
+            $p->check = $check;
             $p->description = $rs[4];
             $p->birthDate = $rs[5];
             $p->entryDate = $rs[6];
