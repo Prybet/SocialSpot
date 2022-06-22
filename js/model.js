@@ -284,24 +284,70 @@ $(document).ready(function () {
         });
     });
     
-    
+    //Like For Post
     $(".heartNotLike").click(function (){
+        var idPost = $(this).attr("data-post");
+        var idUser = $(this).attr("data-user");
+        
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
-            data: {"id": id, "sub": "setLike"},
-            dataType: "json"
-        }).done(function(data) {
-            if(data !== null){
-                $("textarea[name=postID]").append(id);
-                $("#textTitle").empty();
-                $("#textDesc").empty();
-                $("#textTitle").append(data.title);
-                $("#textDesc").append(data.body);
-            }else{
-                console.log("error");
+            data: {"idUser": idUser, "idPost": idPost, "sub": "setLike"},
+            success: function (data) {
+                console.log(data);
+                if(data !== null){
+                    var action = "showHeart";
+                    changeLike(action);
+                }else{
+                    console.log("error");
+                }
+            },
+            error: function (data) {
+                console.log(data);
             }
         });
     });
+    $(".heartLike").click(function (){
+        var idPost = $(this).attr("data-post");
+        var idUser = $(this).attr("data-user");
+        console.log("quitar like");
+        $.ajax({
+            url: "../Controllers/AjaxController.php",
+            type: "post",
+            data: {"idUser": idUser, "idPost": idPost, "sub": "putLike"},
+            success: function (data) {
+                if(data !== null){
+                    var action = "showNoLike";
+                    changeLike(action);
+                }else{
+                    console.log("error");
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+        
+    });
     
+    function changeLike(action){
+        switch (action){
+            case "showHeart":
+                $(".heartNotLike").css({
+                    "display": "none"
+                });
+                $(".heartLike").css({
+                    "display": "flex"
+                });
+                break;
+            case "showNoLike":
+                $(".heartNotLike").css({
+                    "display": "flex"
+                });
+                $(".heartLike").css({
+                    "display": "none"
+                });
+                break;
+        }
+    }
 });

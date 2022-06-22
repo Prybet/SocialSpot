@@ -5,6 +5,7 @@ session_start();
 $posts = Post::getAllPosts();
 $norms = Norm::getAll();
 $style = "grupe4Style.css";
+$user = $_SESSION["user"]->getLogin();
 ?>
 <html>
     <head>
