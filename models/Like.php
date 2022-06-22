@@ -67,14 +67,14 @@ class Like {
         if ($sen->execute()) {
             $res = $sen->fetchAll();
             $list = array();
-            foreach ($res as $likes) {
+            foreach ($res as $like) {
                 $l = new Like();
-                $l->id = $likes[0];
-                $l->userID = $likes[1];
-                $l->postID = $likes[2];
-                $l->date = $likes[3];
-                $l->time = $likes[4];
-                $l->status = $likes[5];
+                $l->id = $like[0];
+                $l->userID = $like[1];
+                $l->postID = $like[2];
+                $l->date = $like[3];
+                $l->time = $like[4];
+                $l->status = Status::getStatu($like[5]);
                 $list[] = $l;
             }
             return $list;
