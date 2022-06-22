@@ -28,11 +28,11 @@ class Like {
     var $status;
     
     
-    public function setLike() {
+    public static function setLike($like) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO socialspotdb.like VALUES (null, :user, :post, :date, :time, 12)");
-        $sen->bindParam(":user", $this->userID);
-        $sen->bindParam(":post", $this->postID);
+        $sen->bindParam(":user", $like->userID);
+        $sen->bindParam(":post", $like->postID);
         date_default_timezone_set("America/Santiago");
         $date = date("Y-m-d",$timestamp = time());
         $time = date("H:i:s",$timestamp = time());
@@ -61,22 +61,6 @@ class Like {
                 $list[] = $l;
             }
             return $list;
-        }
-    }
-
-    public static function setLikeApp($like){
-        $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO socialspotdb.like VALUES(null, :userID, :postID, :date, :time, :status)");
-        
-        $u = $like->userID->id;
-        $sen->bindParam(":userID", $u);
-        $sen->bindParam(":postID", $like->postID);
-        $sen->bindParam(":date", $like->date);
-        $sen->bindParam(":time", $like->time);
-        $s = $like->status->id;
-        $sen->bindParam(":status", $s);
-        if($sen->execute()){
-            return true;
         }
     }
     

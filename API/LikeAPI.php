@@ -15,7 +15,7 @@ if($method == 'PUT'){
     $like->status = $params->status;
 
 
-    if(Like::setLikeApp($like)){
+    if(Like::setLike($like)){
         header("Content-Type: application/json; charset=UTF8");
         echo json_encode('true', JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
 
