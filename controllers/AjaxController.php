@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $prof = null;
                 echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
-            break;
+            break;  
         default:
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode("default", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);

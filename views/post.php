@@ -13,7 +13,7 @@ $style = "grupe3Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"]->reload();
 $category = $post->category;
-
+$norms = Norm::getAll();
 ?>
 <html>
 <head>
@@ -23,20 +23,24 @@ $category = $post->category;
     <script src="../js/model.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $("#btn_reply-show").click(function () {
-                $(".textarea_reply").css({
+            
+             $(".lbl_reply").click(function () {
+                 let val = $(this).attr("value");
+                 console.log(val);
+                $(".txt_"+val).css({
                     "visibility": "visible",
                     "display": "flex"
                 });
-                $(".lbl_reply").css({
+                $(".lbl_reply_"+val).css({
                     "visibility": "none",
                     "display": "none"
                 });
-                $(".btn_reply-right").css({
+                $(".btn_reply-right_"+val).css({
                     "visibility": "visible",
                     "display": "flex"
                 });
             });  
+            
             $("#btn_com").click(function () {
                 $(".textarea_reply").css({
                     "visibility": "hidden",
@@ -73,13 +77,19 @@ $category = $post->category;
                                 <div>
                                     <textarea name="comm" class="input_textarea" placeholder="¿En que estas pensando?"></textarea>
                                 </div>
+                                <?php if ($_SESSION["user"]->userType->id != 2): ?>
                                 <div class="flexo">
                                     <button type="submit" name="submit" value="comm" class="btn_reply">Comentar</button>
                                 </div>
+                                <?php else: ?>
+                                <div class="flexo">
+                                    <button type="submit" name="submit" value="goLogin" class="btn_reply">Comentar</button>
+                                </div>
+                                <?php endif; ?>
                             </div>
                         </form>
                         <hr />
-                        <?php foreach ($post->replies as $comm) : ?>
+                        <?php foreach ($post->replies as $i => $comm) : ?>
                         <div class="contain_reply">
                             
                             <div class="contain_reply-profile">
@@ -90,11 +100,12 @@ $category = $post->category;
                                         <label>Hace 1 min</label>
                                     </div>
                                     <p class="reply_comm"><?= $comm->body ?></p>
-                                    <label class="lbl_reply" id="btn_reply-show">Responder</label>
-                                    <form action="" class="frm-reply">
-                                        <textarea class="input_textarea textarea_reply"></textarea>
+                                    <label class="lbl_reply lbl_reply_<?= $i?>" value="<?= $i?>">Responder</label>                                    
+                                    <form action="../controllers/PostController.php" method="post" class="frm-reply" >
+                                        <input name="comId" value="<?= $comm->id ?>" hidden>
+                                        <textarea class="input_textarea textarea_reply txt_<?= $i?>" name="body"></textarea>
                                         <div class="flexrigth">
-                                            <button type="submit" name="submit" value="comm" class="btn_reply-right" id="btn_com">Comentar</button>
+                                            <button type="submit" name="submit" value="reply" class="btn_reply-right btn_reply-right_<?= $i?>" id="btn_com">Comentar</button>
                                         </div>
                                     </form>
                                     <?php foreach ($comm->replies as $reply) : ?>

@@ -19,6 +19,7 @@ class Norm {
 
     var $id;
     var $name;
+    var $desc;
 
     public static function getAll() {
         $conn = new Connection();

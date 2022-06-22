@@ -10,6 +10,7 @@
 require_once '../models/User.php';
 require_once '../models/Post.php';
 require_once '../models/Image.php';
+require_once '../models/Report.php';
 session_start();
 $method = $_SERVER["REQUEST_METHOD"];
 if ($method == "GET") {
@@ -30,7 +31,6 @@ if ($method == "GET") {
         $title = isset($_POST["title"]) ? $_POST["title"] : "";
         $body = isset($_POST["body"]) ? $_POST["body"] : "";
         $check = isset($_POST["check"]) ? $_POST["check"] : "";
-
         if ($cate != "" && $title != "") {
             if($cate != -1){
                 $user = $_SESSION["user"];
@@ -51,8 +51,8 @@ if ($method == "GET") {
                 $_SESSION["errCate"] = true;
                 header("Location: ../views/Newpost.php");
             }
-            
         }
+        //Reply For Post
     } elseif ($_POST["submit"] == "comm") {
         $user = $_SESSION["user"];
         if ($user != null) {
@@ -69,7 +69,27 @@ if ($method == "GET") {
                header("Location: ../views/post.php");
             }
         }
-
+        //Reply For Reply
+    }elseif($_POST["submit"] == "reply"){
+        $user = $_SESSION["user"];
+        if ($user != null) {
+            $body = isset($_POST["body"]) ? $_POST["body"] : "";
+            $id = isset($_POST["comId"]) ? $_POST["comId"] : "";
+            if($body  != ""){
+                $rep = new Reply();
+                $rep->post = $_SESSION["post"]->id;
+                $rep->profile = $_SESSION["user"]->profile->id;
+                $rep->body = $body;
+                $rep->replies = $id;
+                print_r($_SESSION["user"]->profile);
+                if($rep->setReplyForReply()){
+                    header("Location: ../views/post.php");
+                }
+            }else{
+                    header("Location: ../views/post.php");
+            }
+        }
+        
         //Edit Post
     } elseif ($_POST["submit"] == "edit") {
         $id = isset($_POST["postID"]) ? $_POST["postID"] : "";
@@ -93,6 +113,35 @@ if ($method == "GET") {
             $_SESSION["user"] = $user->getLogin();
             header("Location: ../views/profile.php");
         }
+        //Report Post
+    } elseif ($_POST["submit"] == "report_post"){
+        $user = $_SESSION["user"];
+        if ($user != null) {
+            $com = isset($_POST["com"]) ? $_POST["com"] : "";
+            $rReport = isset($_POST["radio_report"]) ? $_POST["radio_report"] : "";
+            if($rReport != ""){
+                $rprt = new Report();
+                $norm = new Norm();
+                $norm->id = $rReport;
+                $rprt->norm = $norm;
+                $rprt->userId = $_SESSION["user"]->id;
+                $rprt->postId = $_SESSION["post"]->id;
+                $rprt->replyId = null;
+                $rprt->spotId = null;
+                $rprt->commentary = $com;
+                if($rprt->setReport($rprt)){
+                    echo 'nice';
+                }else{
+                    echo 'malooooooo';
+                }
+            }else{
+                echo 'faaaaillll';
+            }
+            
+            //print_r($_POST);
+        }
+    } elseif ($_POST["submit"] == "goLogin") {
+        header("Location: ../views/login.php");
     }
 }
 

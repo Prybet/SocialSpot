@@ -370,6 +370,9 @@ header {
 .cont-pst{
     font-size: 1.5rem;
     font-weight: bold;
+    color: var(--primary);
+}
+.lbl_edit-post{
     color: var(--ligthgray);
 }
 .divcom{
