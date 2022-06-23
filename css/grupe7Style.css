@@ -419,6 +419,22 @@ header {
     font-size: 1.5rem;
     width: 85%;
 }
+.heartLike{
+    display: flex;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+}
+
+.heartNotLike{
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+}
 /* FOOTER */
 .flex-footer{
     width: 100%; 

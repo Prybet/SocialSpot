@@ -288,16 +288,14 @@ $(document).ready(function () {
     $(".heartNotLike").click(function (){
         var idPost = $(this).attr("data-post");
         var idUser = $(this).attr("data-user");
-        
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
             data: {"idUser": idUser, "idPost": idPost, "sub": "setLike"},
             success: function (data) {
-                console.log(data);
                 if(data !== null){
-                    var action = "showHeart";
-                    changeLike(action);
+                    var action = "on";
+                    changeLike(action, idPost, data);
                 }else{
                     console.log("error");
                 }
@@ -310,15 +308,14 @@ $(document).ready(function () {
     $(".heartLike").click(function (){
         var idPost = $(this).attr("data-post");
         var idUser = $(this).attr("data-user");
-        console.log("quitar like");
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
-            data: {"idUser": idUser, "idPost": idPost, "sub": "putLike"},
+            data: {"idUser": idUser, "idPost": idPost, "sub": "trimLike"},
             success: function (data) {
                 if(data !== null){
-                    var action = "showNoLike";
-                    changeLike(action);
+                    var action = "off";
+                    changeLike(action, idPost, data);
                 }else{
                     console.log("error");
                 }
@@ -330,23 +327,27 @@ $(document).ready(function () {
         
     });
     
-    function changeLike(action){
+    function changeLike(action, int, data){
         switch (action){
-            case "showHeart":
-                $(".heartNotLike").css({
+            case "on":
+                $(".btnHeartOn_"+int).css({
                     "display": "none"
                 });
-                $(".heartLike").css({
+                $(".btnHeartOff_"+int).css({
                     "display": "flex"
                 });
+                $(".lblOff_"+int).empty();
+                $(".lblOff_"+int).append(data);
                 break;
-            case "showNoLike":
-                $(".heartNotLike").css({
+            case "off":
+                $(".btnHeartOn_"+int).css({
                     "display": "flex"
                 });
-                $(".heartLike").css({
+                $(".btnHeartOff_"+int).css({
                     "display": "none"
                 });
+                $(".lblOn_"+int).empty();
+                $(".lblOn_"+int).append(data);
                 break;
         }
     }

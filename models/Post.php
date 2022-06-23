@@ -152,7 +152,7 @@ class Post {
 
     public static function getPostsForProfile($id) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id AND status_id = 1 OR status_id = 7");
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 OR status_id = 7 AND profile_id = :id ORDER BY id DESC");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
             $res = $sen->fetchAll();

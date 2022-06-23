@@ -1,0 +1,23 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    background-color: var(--darkgray);
+}
+
+body{
+    margin: 0 auto;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+.pointer{
+    cursor: pointer;
+}
+/* NAV */
+.a{
+    position: fixed;
+    z-index: 100;
+}
+
