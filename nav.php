@@ -76,7 +76,6 @@
                                 <img src="<?= $imgUser ?>" class="separation size-img ">
                                 <span>Ver Perfil</span>
                             </div>
-
                         </button>
                         <button  class="option flex">
                             <label class="content-input">

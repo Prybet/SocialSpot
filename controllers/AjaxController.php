@@ -101,17 +101,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             require_once '../models/Like.php';
             $idPost = isset($_POST["idPost"]) ? $_POST["idPost"] : "";
             $idUser = isset($_POST["idUser"]) ? $_POST["idUser"] : "";
+            header("Content-Type: application/json; charset=UTF8");
             if(Like::getLike($idUser, $idPost)){
                 Like::updateLikeGiven($idUser, $idPost);
-                header("Content-Type: application/json; charset=UTF8");
                 echo json_encode(count(Like::getLikes($idPost)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }else{
                 $like = new Like();
                 $like->postID = $idPost;
                 $like->userID = $idUser;
                 Like::setLike($like);
-
-                header("Content-Type: application/json; charset=UTF8");
                 echo json_encode(count(Like::getLikes($idPost)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             

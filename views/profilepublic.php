@@ -7,10 +7,29 @@ Made by:
  Prybet
 -->
 <?php 
+require_once '../models/User.php';
+//require_once '../models/Profile.php';
 session_start();
 $style = "grupe7Style.css";
-if ($user->userType->id == 2) {
-    header("location: ../views/index.php");
+$id = isset($_GET["id"]) ? $_GET["id"] : 1;
+//$profile = null;
+$prof = Profile::getProfile($id);
+
+$posts = $prof->myPosts;
+$followers = $prof->followers;
+$follows = $prof->follows;
+
+$imgUser = isset($prof->imageURL) ? "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/ProfileImages/" . $prof->imageURL : "../img/perfil.png";
+if($prof->imageURL == "-" || $prof->imageURL == ""){
+    $imgUser = "../img/perfil.png";
+}
+$imgBanner = isset($profile->bannerURL) ? "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/BannerImages/" . $prof->bannerURL : "../img/banner.jpg";
+if($prof->bannerURL == "-" || $prof->bannerURL == ""){
+    $imgBanner = "../img/banner.jpg";
+}
+
+if($prof->description == ""){
+    $prof->description = "Sin descripción";
 }
 ?>
 <html>
@@ -25,21 +44,7 @@ if ($user->userType->id == 2) {
                 $(".ftbanner").css("background-image", "url('<?= $imgBanner ?>')");
                 $(".ftprofile").css("background-image", "url('<?= $imgUser ?>')");
                 
-                $("#btn_post-profile").click(function () {
-                    $(".contain_modal-profile").css({
-                        "pointer-events": "auto",
-                        "opacity": "1"
-                    });
-                });
-                $("#btn_cancel").click(function () {
-                    $(".contain_modal-profile").css({
-                        "pointer-events": "none",
-                        "opacity": "0"
-                    });
-                });
-                $(".btn_editar").click(function () {
-                    window.location.href = "http://localhost/SocialSpot/views/editprofile.php";
-                });
+               
                 
             });
         </script>
@@ -61,25 +66,25 @@ if ($user->userType->id == 2) {
         </header>
         <div class="contain-info-profile">
             <div class="name_user">
-                <label>username</label> 
-                <!--<?php if($profile->check == "1"){?>-->
+                <label><?= $prof->username  ?></label> 
+                <?php if($prof->check == "1"){?>
                 <label class="lbl-">/</label>
-                <label class="lblname">name</label>
-                <!--<?php } ?>-->
+                <label class="lblname"><?= $prof->name ?></label>
+                <?php } ?>
             </div> 
             <div class="follow">
                 <div class="contain-cont-prym">
-                    <label class="cont pointer">?</label>
+                    <label class="cont pointer"><?= isset($prof->myPosts) ? count($prof->myPosts): 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
                 <div class="contain-cont">
-                    <label class="cont pointer">?</label>
+                    <label class="cont pointer"><?= isset($prof->followers) ? count($prof->followers): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray pointer">Seguidores</label>
                 </div>
                 <div class="contain-cont">
-                    <label class="cont pointer">?</label>
+                    <label class="cont pointer"><?= isset($prof->follows) ? count($prof->follows): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray pointer ">Seguidos</label>
                 </div>
@@ -94,11 +99,11 @@ if ($user->userType->id == 2) {
                             <button class="most_btn">Mas votado</button>
                         </div>
                     </div>
-                    <!--<?php
+                    <?php
                     foreach ($posts as $post):
                         include '../item.php';
                     endforeach;
-                    ?>-->
+                    ?>
                 </div>
                 <div class="descrip_user">
                     <div class="descrip_user-contain">
@@ -106,7 +111,7 @@ if ($user->userType->id == 2) {
                             <div class="contain_descrip-content">
                                 <h2 class="h2_descrip">Descripción</h2>
                                 <div class="contain_descrip">
-                                    <p class="p_descrip">?
+                                    <p class="p_descrip"><?= isset($prof->description) ? $prof->description : "Sin Descripción" ?>
                                     </p>
                                 </div>
                             </div>

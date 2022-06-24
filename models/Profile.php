@@ -69,7 +69,6 @@ class Profile {
             $p->id = $rs[0];
             $p->name = $rs[1];
             $p->username = $rs[2];
-            //$p->check = isset($rs[3])==1?true:false;
             $check = $rs[3];
             if($rs[3]== 0){
                 $check = "0";
@@ -223,5 +222,6 @@ class Profile {
                 return $post;
             }
         }
-    }
+    } 
+    
 }

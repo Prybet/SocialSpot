@@ -232,7 +232,7 @@ $(document).ready(function () {
                                     stringFollow = "Seguidores";
                                 }
                                 $("#scroll-find").append("\n\
-                                <a class='search_user pointer' value="+data[i].id+">\n\
+                                <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
                                     <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
                                     <div class='noti_follow-inf'>\n\
                                         <label class='pointer'>"+data[i].username+" <span class='spn_date'>"+data[i].name+"</span><span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
@@ -240,6 +240,11 @@ $(document).ready(function () {
                                     </a>\n\
                                 ");
                             } 
+                            //Nav For Search
+                            $(".search_user").click(function (){
+                                let id = $(this).attr("value");
+                                window.location.href = "http://localhost/SocialSpot/views/profilepublic.php?id=" + id;
+                            });
                         }else{
                             $("#scroll-find").append("\n\
                                 <div class='noFound-user'>\n\
@@ -351,4 +356,6 @@ $(document).ready(function () {
                 break;
         }
     }
+    
+    
 });
