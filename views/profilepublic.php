@@ -147,6 +147,7 @@ if($prof->description == ""){
                 </div>
             </div>
         </main> 
+        <?php include_once '../modal.php'; ?>
     </body>
     <script src="../js/nav.js"></script>
 </html>
