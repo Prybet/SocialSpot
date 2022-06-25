@@ -9,14 +9,12 @@
  */
 
 $METHOD = $_SERVER["REQUEST_METHOD"];
-if($METHOD == "GET"){
+if ($METHOD == "GET") {
     require_once '../models/Spot.php';
     header("Content-Type: application/json");
-    
-    echo json_encode( Spot::getAll(), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-    
-    
-}elseif ($METHOD == "POST") {
+
+    echo json_encode(Spot::getAll(), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+} elseif ($METHOD == "POST") {
     require_once '../models/User.php';
     require_once '../models/Spot.php';
     require_once '../models/Marker.php';
@@ -31,23 +29,22 @@ if($METHOD == "GET"){
             $spot->prof = $POST["prof"];
             $spot->name = $POST["name"];
             $spot->description = $POST["description"];
-            $spot->address =  $POST["address"];
-            
+            $spot->address = $POST["address"];
+
             $region = new Region();
             $region->name = $POST["level1"];
             $region->country = $POST["country"];
-            
+
             $prov = new Province();
             $prov->name = $POST["level2"];
-            
-            
+
             $spot->commune = new City();
             $spot->commune->name = $POST["level3"];
             $spot->commune->province = $prov;
             $spot->commune->province->region = $region;
-            
+
             $spot->marker = new Marker($POST["LAT"], $POST["LNG"]);
-            $spot->imageURL = uploadImage(0, $user);
+            $spot->imageURL = uploadImage($POST["LAT"].$POST["LNG"], $user);
             $resp = Spot::setSpot($spot);
             if ($resp != null) {
                 echo json_encode($resp, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
@@ -58,61 +55,43 @@ if($METHOD == "GET"){
     }
 }
 
-function uploadImage($idsp, $username) {
-    $id = 0;
-    foreach ($_FILES as $file) {
-        $dot = getDot($file);
-        if ($dot == "NotMedia") {
-            echo json_encode("Not Suported Extension", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-        } else {
-            tryPathSpot($username, $idsp);
-            $path = "../../SSpotImages/UserMedia/" . $username . "-Folder/Spot-" . $idsp . "Folder";
-            $file["name"] = $username . "-Spot-" . $idsp . "Image-" . $id . $dot;
-            move_uploaded_file($file["tmp_name"], $path . "/" . $file["name"]);
-            $id++;
-            return $username . "-Folder/Spot-" . $idsp . "Folder/" . $file["name"];
-        }
+function uploadImage($latlng, $username) {
+    $file = $_FILES["imgSpot"];
+    $dot = getDot($file);
+    if ($dot == "NotMedia") {
+        echo json_encode("Not Suported Extension", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+    } else {
+        $path = tryPathSpot($username, $latlng);
+        $file["name"] = $latlng . "-Image" . $dot;
+        move_uploaded_file($file["tmp_name"], $path . "/" . $file["name"]);
+        return $path . "/" . $file["name"];
     }
+
     return true;
 }
 
-function tryPathSpot($username, $idsp) {
-    $path = "../../SSpotImages/UserMedia/" . $username . "-Folder";
+function tryPathSpot($username, $latlng) {
+    $path = "../../SSpotImages/SpotMedia/Spots-Folder-" . $username;
     if (!is_dir($path)) {
         mkdir($path);
     }
-    $path = "../../SSpotImages/UserMedia/" . $username . "-Folder/Spot-" . $idsp . "Folder";
+    $path = "../../SSpotImages/SpotMedia/Spots-Folder-" . $username . "/Spot-" . $latlng . "-Folder";
     if (!is_dir($path)) {
         mkdir($path);
     }
+    return $path;
 }
 
 function getDot($file) {
     switch ($file["type"]) {
-        case "*/jpg":
-            return ".jpg";
         case "image/jpg":
             return ".jpg";
-        case "*/jpeg":
-            return ".jpeg";
         case "image/jpeg":
             return ".jpeg";
-        case "*/gif":
-            return ".gif";
         case "image/gif":
             return ".gif";
-        case "*/png":
-            return ".png";
         case "image/png":
             return ".png";
-        case "image/mp4":
-            return ".mp4";
-        case "*/mp4":
-            return ".mp4";
-        case "image/mov":
-            return ".mov";
-        case "*/mov":
-            return ".mov";
         default:
             return "NotMedia";
     }
