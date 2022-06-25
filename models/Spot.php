@@ -22,7 +22,7 @@ require_once 'Status.php';
 class Spot {
 
     var $id;
-    var $prof;
+    var $profile;
     var $name;
     var $description;
     var $imageURL;
@@ -42,11 +42,11 @@ class Spot {
         $sen = $conn->mysql->prepare("SELECT * FROM spot WHERE status_id = 1");
         if ($sen->execute()) {
             $rs = $sen->fetchAll();
-            $list =  array();
+            $list = array();
             foreach ($rs as $spot) {
                 $s = new Spot();
                 $s->id = $spot[0];
-                $s->prof = Profile::getProfileForReplies($spot[1]);
+                $s->profile = Profile::getProfileForReplies($spot[1]);
                 $s->name = $spot[2];
                 $s->description = $spot[3];
                 $s->imageURL = $spot[4];
@@ -89,7 +89,7 @@ class Spot {
                 $rs = $sen->fetch();
                 $s = new Spot();
                 $s->id = $rs[0];
-                $s->prof = Profile::getProfileForReplies($rs[1]);
+                $s->profile = Profile::getProfileForReplies($rs[1]);
                 $s->name = $rs[2];
                 $s->description = $rs[3];
                 $s->imageURL = $rs[4];
@@ -104,25 +104,35 @@ class Spot {
                 return $s;
             }
         }
+    }
 
-        function fetchSpot($rs) {
-            $s = new Spot();
-            $s->id = $rs[0];
-            $s->prof = Profile::getProfileForReplies($rs[1]);
-            $s->name = $rs[2];
-            $s->description = $rs[3];
-            $s->imageURL = $rs[4];
-            $s->address = $rs[5];
-            $s->marker = Marker::getMarker($rs[6]);
-            $s->commune = City::getCity($rs[7]);
-            $s->route = $rs[8];
-            $s->status = $rs[9];
-            $s->count = $rs[10];
-            $s->date = $rs[11];
-            $s->time = $rs[12];
-            return $s;
+    function fetchSpot($rs) {
+        $s = new Spot();
+        $s->id = $rs[0];
+        $s->prof = Profile::getProfileForReplies($rs[1]);
+        $s->name = $rs[2];
+        $s->description = $rs[3];
+        $s->imageURL = $rs[4];
+        $s->address = $rs[5];
+        $s->marker = Marker::getMarker($rs[6]);
+        $s->commune = City::getCity($rs[7]);
+        $s->route = $rs[8];
+        $s->status = $rs[9];
+        $s->count = $rs[10];
+        $s->date = $rs[11];
+        $s->time = $rs[12];
+        return $s;
+    }
+
+    public static function deleteById($id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE spot SET status_id = 6 WHERE id = :id");
+        $sen->bindParam(":id", $id);
+        if($sen->execute()){
+            return true;
+        }else{
+            return false;
         }
-
     }
 
 }

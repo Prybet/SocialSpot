@@ -8,8 +8,26 @@
  *  Prybet
  */
 
+
 $METHOD = $_SERVER["REQUEST_METHOD"];
-if ($METHOD == "GET") {
+if ($METHOD == "PUT") {
+    require_once '../models/User.php';
+    require_once '../models/Spot.php';
+
+    $body = file_get_contents('php://input');
+    $params = json_decode($body);
+
+    if ($params->var3 != null) {
+        if (User::verifyPass(isset($params->var1) ? $params->var1 : "", isset($params->var2) ? $params->var2 : "")) {
+            if (Spot::deleteByID($params->var3)) {
+                header("Content-Type: application/json");
+                echo json_encode("True", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            } else {
+                echo json_encode("False", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }
+        }
+    }
+} elseif ($METHOD == "GET") {
     require_once '../models/Spot.php';
     header("Content-Type: application/json");
 
@@ -44,7 +62,7 @@ if ($METHOD == "GET") {
             $spot->commune->province->region = $region;
 
             $spot->marker = new Marker($POST["LAT"], $POST["LNG"]);
-            $spot->imageURL = uploadImage($POST["LAT"].$POST["LNG"], $user);
+            $spot->imageURL = uploadImage($POST["LAT"] . $POST["LNG"], $user);
             $resp = Spot::setSpot($spot);
             if ($resp != null) {
                 echo json_encode($resp, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
