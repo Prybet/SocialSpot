@@ -10,8 +10,9 @@ Made by:
 require_once '../models/User.php';
 //require_once '../models/Profile.php';
 session_start();
-$style = "grupe7Style.css";
+$style = "grupe9Style.css";
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
+
 //$profile = null;
 $prof = Profile::getProfile($id);
 
@@ -31,7 +32,17 @@ if($prof->bannerURL == "-" || $prof->bannerURL == ""){
 if($prof->description == ""){
     $prof->description = "Sin descripción";
 }
+
+$pos = 0;
+foreach($followers as $foll):
+    if($foll->profile->id == $_SESSION["user"]->id){
+        $pos = 1;
+    }
+    print_r($foll->profile->id);
+endforeach; 
+
 ?>
+
 <html>
     <head>
         <?php include_once '../header.php'; ?>
@@ -62,7 +73,16 @@ if($prof->description == ""){
             <div class="ftprofile pointer">
 
             </div>
-            <button href="editprofile.php" class="btn_editar" id="btn_editar">Seguir/Siguiendo</button>
+            <form action="../controllers/UserController.php" method="post">
+                <?php if($pos == 0):?>
+                    <input type="text" name="prof" value="<?= $prof->id ?>" hidden>
+                    <button type="submit" name="submit" value="follow" class="btn_follow" id="btn_editar">Seguir</button>
+                <?php endif;?>
+                <?php if($pos == 1):?>
+                    <input type="text" name="prof" value="<?= $prof->id  ?>" hidden>
+                    <button type="submit" name="submit" value="follow" class="btn_unfollow" id="btn_editar">Dejar de seguir</button>
+                <?php endif;?>
+            </form>
         </header>
         <div class="contain-info-profile">
             <div class="name_user">

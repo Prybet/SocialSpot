@@ -25,7 +25,16 @@
                 <button class="btn btn-gotospot" name="btn-gopost">Ir a la publicacion</button>
             </div>
             <div class="contain_btn-profile contain_btn-follow">
-                <button class="btn">Dejar de seguir/seguir</button>
+                <form action="../controllers/UserController.php" method="post" class="frm-follow">
+                    <?php if($pos == 0):?>
+                        <input type="text" name="prof" value="<?= $prof->id ?>" hidden>
+                        <button type="submit" name="submit" value="follow" class="btn_modal-follow" id="btn_editar">Seguir</button>
+                    <?php endif;?>
+                    <?php if($pos == 1):?>
+                        <input type="text" name="prof" value="<?= $prof->id  ?>" hidden>
+                        <button type="submit" name="submit" value="follow" class="btn_modal-follow" id="btn_editar">Dejar de Seguir</button>
+                    <?php endif;?>
+                </form>
             </div>
             <div class="contain_btn-profile contain_btn-report">
                 <button class="btn" id="btn_report" value="">Reportar</button> 
@@ -146,15 +155,16 @@
             <a class="contain-a">
                 <?php 
                 if($followers != null):
-                foreach ($followers as $fs){ ?>
-                <div class="contain-foll" data-prof="<?= $fs->id?>">
-                    <?php if($fs->imageURL === ""){
+                foreach ($followers as $fs){ 
+                    $profi = $fs->profile?>
+                <div class="contain-foll" data-prof="<?= $profi->id?>">
+                    <?php if($profi->imageURL === ""){
                       echo "<img src='../img/perfil.png' alt='usuariooo' class='img_noti pointer'>";
                     }else{
-                        echo "<img src='../../SSpotImages/UserMedia/$fs->username-Folder/ProfileImages/$fs->imageURL' alt='usuario' class='img_noti pointer'>";
+                        echo "<img src='../../SSpotImages/UserMedia/$profi->username-Folder/ProfileImages/$profi->imageURL' alt='usuario' class='img_noti pointer'>";
                      } ?>
                     <div class="noti_follow-inf">
-                        <label class="pointer"><?= $fs->username?></label>
+                        <label class="pointer"><?= $profi->username?></label>
                     </div>
                 </div>
                 <?php }endif; ?>
@@ -167,15 +177,16 @@
             <a class="contain-a">
                 <?php 
                 if($follows != null):
-                foreach ($follows as $f){ ?>
-                <div class="contain-foll" data-prof="<?= $f->id?>">
-                    <?php if($f->imageURL === ""){
+                foreach ($follows as $f){ 
+                    $profi = $f->profile?>
+                <div class="contain-foll" data-prof="<?= $profi->id?>">
+                    <?php if($profi->imageURL === ""){
                       echo "<img src='../img/perfil.png' alt='usuariooo' class='img_noti pointer'>";
                     }else{
-                        echo "<img src='../../SSpotImages/UserMedia/$f->username-Folder/ProfileImages/$f->imageURL' alt='usuario' class='img_noti pointer'>";
+                        echo "<img src='../../SSpotImages/UserMedia/$profi->username-Folder/ProfileImages/$profi->imageURL' alt='usuario' class='img_noti pointer'>";
                      } ?>
                     <div class="noti_follow-inf">
-                        <label class="pointer"><?= $f->username?></label>
+                        <label class="pointer"><?= $profi->username?></label>
                     </div>
                 </div>
                 <?php }endif; ?>

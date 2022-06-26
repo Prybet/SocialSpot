@@ -120,6 +120,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["err"] = true;
             header("Location: ../views/login.php");
         }
+        // Follow User
+    } elseif($POST["submit"] == "follow"){
+        $profID = isset($_POST["prof"]) ? $_POST["prof"] : "";
+        $follow = new Follow();
+        $follow->profile = $profID;
+        $follow->me = $_SESSION["user"]->profile->id;
+        if($follow->findFollow($follow)){
+            $user = $_SESSION["user"];
+            $_SESSION["user"] = $user->getLogin();
+            header("Location: ../views/profilepublic.php?id=$profID");
+        }else{
+            echo 'fail';
+            //header("Location: ../views/index.php");
+        }
     } elseif ($POST["submit"] == "singin") {
         header("Location: ../views/singin.php");
     } elseif ($POST["submit"] == "goUser") {

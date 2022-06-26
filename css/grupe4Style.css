@@ -476,7 +476,6 @@ label{
 .contain_btn-profile{
     display: flex;
     justify-content: center;
-
 }
 /* MODAL REPORT */
 .contain_report{
@@ -560,6 +559,11 @@ label{
 }
 /* MODAL DELETE POST*/
 .contain_btn-deletePost{
+    visibility: hidden;
+    display: none;
+}
+
+.contain_btn-follow{
     visibility: hidden;
     display: none;
 }

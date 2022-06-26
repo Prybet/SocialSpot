@@ -224,4 +224,12 @@ class Profile {
         }
     } 
     
+     public function getThisFollow($pid) {
+        foreach ($this->follows as $f){
+            if($f->id == $pid){
+                return $f;
+            }
+        }
+    }
+    
 }
