@@ -14,7 +14,7 @@
  * @author Prybet
  */
 require_once '../PDO/Connection.php';
-require_once '../models/Status.php';
+require_once 'Status.php';
 require_once 'Profile.php';
 require_once 'Post.php';
 
@@ -38,26 +38,25 @@ class Reply {
         $sen->bindParam(":postID", $postID);
         $profID = $this->profile;
         $sen->bindParam(":profID", $profID);
-        if($sen->execute()){
+        if ($sen->execute()) {
             return true;
         }
     }
-    
+
     public function setReplyForReply() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO reply VALUES (null, :body, CURRENT_DATE, CURRENT_TIME, :replyID, :postID, :profID, 15)");
         $sen->bindParam(":body", $this->body);
         $ReplyID = $this->replies;
-        $sen->bindParam(":replyID",$ReplyID);
+        $sen->bindParam(":replyID", $ReplyID);
         $postID = $this->post;
         $sen->bindParam(":postID", $postID);
         $profID = $this->profile;
         $sen->bindParam(":profID", $profID);
-        if($sen->execute()){
+        if ($sen->execute()) {
             return true;
         }
     }
-
 
     public static function getRepliesByPostId($id) {
         $conn = new Connection();
@@ -81,7 +80,7 @@ class Reply {
             return $list;
         }
     }
-    
+
     public static function getRepliesByReplyId($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE reply_id = :id AND status_id = 15");
@@ -103,24 +102,27 @@ class Reply {
             return $list;
         }
     }
-    
+
     public function deleteReplyForProfile($param) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE reply SET  Status_ID = 6  WHERE Profile_ID = :id ");
         $sen->bindParam(":id", $this->id);
-        if($sen->execute()){
+        if ($sen->execute()) {
             return true;
         }
     }
-        
-    public static function setReplyApp($reply){
+
+    public static function setReplyApp($reply) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO reply VALUES(null,:body,:date,:time, :reply ,:post,:profile,:status)");
+        $sen = $conn->mysql->prepare("INSERT INTO reply VALUES(null, :body, :date, :time, :reply , :post, :profile, :status)");
+        date_default_timezone_set("America/Santiago");
+        $date = date("Y-m-d", $timestamp = time());
+        $time = date("H:i:s", $timestamp = time());
+        $sen->bindParam(":date", $date);
+        $sen->bindParam(":time", $time);
         $sen->bindParam(":body", $reply->body);
-        $sen->bindParam(":date", $reply->date);
-        $sen->bindParam(":time", $reply->time);
         $comm = $reply->reply;
-        if($reply->reply == 0){
+        if ($reply->reply == 0) {
             $comm = null;
         }
         $sen->bindParam(":reply", $comm);
@@ -129,10 +131,34 @@ class Reply {
         $sen->bindParam(":profile", $p);
         $s = $reply->status->id;
         $sen->bindParam(":status", $s);
-        if($sen->execute()){
-            return true;
+        if ($sen->execute()) {
+            return self::getRepliesByPostId($reply->post);
         }
     }
-    
+
+    public static function findThisReply($date, $time) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE date = :date AND time = :time");
+        $sen->bindParam(":date", $date);
+        $sen->bindParam(":time", $time);
+        if ($sen->execute()) {
+            $rs = $sen->fetch();
+            $r = new Reply();
+            $r->id = $rs[0];
+            $r->body = $rs[1];
+            $r->date = $rs[2];
+            $r->time = $rs[3];
+            if ($rs[4] != null) {
+                $r->reply = $rs[4];
+            } else {
+                $r->reply = 0;
+            }
+            $r->replies = Reply::getRepliesByReplyId($rs[0]);
+            $r->post = $rs[5];
+            $r->profile = Profile::getProfileForReplies($rs[6]);
+            $r->status = Status::getStatu($rs[7]);
+            return $r;
+        }
+    }
 
 }
