@@ -37,6 +37,17 @@ class Spot {
     var $count;
     var $difdiculty;
 
+    public static function getSpot($id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM spot WHERE id = :id AND status_id = 1");
+        $sen->bindParam(":id", $id);
+        if($sen->execute()){
+            if($sen->rowCount()>0){
+                return self::fetchSpot($sen->fetch());
+            }
+        }
+    }
+
     public static function getAll() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM spot WHERE status_id = 1");
@@ -66,7 +77,7 @@ class Spot {
 
     public static function setSpot($spot) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO spot VALUES (null, :prof, :name, :desc, :url, :add, :mark, :city, null, 1 , 1, :date, :time)");
+        $sen = $conn->mysql->prepare("INSERT INTO spot VALUES (null, :prof, :name, :desc, :url, :add, :mark, :city, null, 1 , 0, :date, :time)");
         $sen->bindParam(":prof", $spot->prof);
         $sen->bindParam(":name", $spot->name);
         $sen->bindParam(":desc", $spot->description);
@@ -106,7 +117,7 @@ class Spot {
         }
     }
 
-    function fetchSpot($rs) {
+    public static function fetchSpot($rs) {
         $s = new Spot();
         $s->id = $rs[0];
         $s->prof = Profile::getProfileForReplies($rs[1]);
@@ -117,7 +128,7 @@ class Spot {
         $s->marker = Marker::getMarker($rs[6]);
         $s->commune = City::getCity($rs[7]);
         $s->route = $rs[8];
-        $s->status = $rs[9];
+        $s->status = Status::getStatu($rs[9]);
         $s->count = $rs[10];
         $s->date = $rs[11];
         $s->time = $rs[12];
@@ -128,9 +139,9 @@ class Spot {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE spot SET status_id = 6 WHERE id = :id");
         $sen->bindParam(":id", $id);
-        if($sen->execute()){
+        if ($sen->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

@@ -59,5 +59,24 @@ class Image {
             return true;
         }
     }
+    
+    public static function getImagesForSpot($ids) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM image INNER JOIN post on image.Post_ID = post.ID WHERE post.Spot_ID = :ids ");
+        $sen->bindParam(":ids", $ids);
+        if ($sen->execute()) {
+            $images = $sen->fetchAll();
+            $list = array();
+            foreach ($images as $image) {
+                $im = new Image();
+                $im->id = $image[0];
+                $im->URL = $image[1];
+                $im->post = $image[2];
+                $im->status = $image[3];
+                $list[] = $im;
+            }
+            return $list;
+        }
+    }
 
 }

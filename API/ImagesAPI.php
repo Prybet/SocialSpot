@@ -52,7 +52,15 @@ if ($METHOD == "POST") {
                 }
             }
             break;
+        case "spot":
+            $token = isset($POST["token"]) ? $POST["token"] : 0;
+            
+            echo json_encode(Image::getImagesForSpot($token), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            
+            
+            break;
         default:
+            echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
     }
 }

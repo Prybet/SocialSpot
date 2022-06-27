@@ -21,6 +21,7 @@ require_once 'Profile.php';
 require_once 'Reply.php';
 require_once 'Like.php';
 require_once 'Hashtag.php';
+require_once 'Spot.php';
 
 class Post {
 
@@ -55,7 +56,7 @@ class Post {
 
     public function setPost() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO post VALUES (null, :prof, :title , :body, :date, :time, :cate, 1, null)");
+        $sen = $conn->mysql->prepare("INSERT INTO post VALUES (null, :prof, :title , :body, :date, :time, :cate, 1, :spot)");
         $sen->bindParam(":prof", $this->profID);
         $sen->bindParam(":title", $this->title);
         $sen->bindParam(":body", $this->body);
@@ -66,6 +67,11 @@ class Post {
         $sen->bindParam(":time", $time);
         $catID = $this->category->id;
         $sen->bindParam(":cate", $catID);
+        $spot = $this->spot->id;
+        if($spot == 0){
+            $spot = null;
+        }
+        $sen->bindParam(":spot", $spot);
         if ($sen->execute()) {
             $sen = $conn->mysql->prepare("SELECT id FROM post WHERE time = :time AND date = :date");
             $sen->bindParam(":time", $time);
@@ -114,6 +120,7 @@ class Post {
             $p->time = $res[5];
             $p->category = Category::getCategoy($res[6]);
             $p->status = Status::getStatu($res[7]);
+            $p->spot = Spot::getSpot($res[8]);
             $p->hashtags = Hashtag::getHashTags($res[0]);
             $p->images = Image::getImages($res[0]);
             $p->likes = Like::getLikes($res[0]);
@@ -140,6 +147,7 @@ class Post {
                 $p->time = $post[5];
                 $p->category = Category::getCategoy($post[6]);
                 $p->status = Status::getStatu($post[7]);
+                $p->spot = Spot::getSpot($post[8]);
                 $p->images = Image::getImages($post[0]);
                 $p->videos = Video::getVideos($post[0]);
                 $p->likes = Like::getLikes($post[0]);
