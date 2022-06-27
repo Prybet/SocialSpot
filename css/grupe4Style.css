@@ -310,6 +310,11 @@ body{
     justify-content: center;
     align-items: center;
 }
+.conta-p{
+    width: 20%;
+    text-decoration: none;
+    margin-left: -1rem;
+}
 /* CATEGORY POPULAR */
 .contain_popular{
     width: 100%;

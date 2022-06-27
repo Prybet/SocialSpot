@@ -12,44 +12,23 @@ session_start();
 $style = "grupe9Style.css";
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
 
-$prof = Profile::getProfile($id);
+$cate = Category::getFullCategoy($id);
 
-$posts = $prof->myPosts;
-$followers = $prof->followers;
-$follows = $prof->follows;
+$imageCate = isset($cate->imageURL) ? "../../SSpotImages/CategoryImages/CategoryImages/BannerImages/" . $cate->bannerURL : "../img/perfil.png";
+$bannerCate = isset($cate->bannerURL) ? "../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/" . $cate->imageURL : "../img/banner.jpg";
 
-$imgUser = isset($prof->imageURL) ? "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/ProfileImages/" . $prof->imageURL : "../img/perfil.png";
-if($prof->imageURL == "-" || $prof->imageURL == ""){
-    $imgUser = "../img/perfil.png";
-}
-$imgBanner = isset($profile->bannerURL) ? "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/BannerImages/" . $prof->bannerURL : "../img/banner.jpg";
-if($prof->bannerURL == "-" || $prof->bannerURL == ""){
-    $imgBanner = "../img/banner.jpg";
-}
-
-if($prof->description == ""){
-    $prof->description = "Sin descripción";
-}
-
-$pos = 0;
-foreach($followers as $foll):
-    if($foll->profile->id == $_SESSION["user"]->id){
-        $pos = 1;
-    }
-endforeach; 
-
+$posts = $cate->posts;
 ?>
-
 <html>
     <head>
         <?php include_once '../header.php'; ?>
+        <title>Categoria</title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
-        <title>Perfil Publico</title>
         <script src="../js/model.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $(".ftbanner").css("background-image", "url('<?= $imgBanner ?>')");
-                $(".ftprofile").css("background-image", "url('<?= $imgUser ?>')"); 
+                $(".ftbanner").css("background-image", "url('<?= $imageCate ?>')");
+                $(".ftprofile").css("background-image", "url('<?= $bannerCate ?>')"); 
             });
         </script>
     </head>
@@ -66,40 +45,36 @@ endforeach;
             <div class="ftprofile pointer">
 
             </div>
-            <form action="../controllers/UserController.php" method="post">
+            <form action="../controllers/InterestController.php" method="post">
                 <?php if($pos == 0):?>
-                    <input type="text" name="prof" value="<?= $prof->id ?>" hidden>
-                    <button type="submit" name="submit" value="follow" class="btn_follow" id="btn_editar">Seguir</button>
+                    <input type="text" name="cate" value="<?= $cate->id ?>" hidden>
+                    <button type="submit" name="submit" value="follCate" class="btn_follow" id="btn_editar">Seguir</button>
                 <?php endif;?>
                 <?php if($pos == 1):?>
-                    <input type="text" name="prof" value="<?= $prof->id  ?>" hidden>
-                    <button type="submit" name="submit" value="follow" class="btn_unfollow" id="btn_editar">Dejar de seguir</button>
+                    <input type="text" name="cate" value="<?= $cate->id  ?>" hidden>
+                    <button type="submit" name="submit" value="follCate" class="btn_unfollow" id="btn_editar">Dejar de seguir</button>
                 <?php endif;?>
             </form>
         </header>
         <div class="contain-info-profile">
             <div class="name_user">
-                <label><?= $prof->username  ?></label> 
-                <?php if($prof->check == "1"){?>
-                <label class="lbl-">/</label>
-                <label class="lblname"><?= $prof->name ?></label>
-                <?php } ?>
+                <label><?= $cate->name  ?></label> 
             </div> 
             <div class="follow">
                 <div class="contain-cont-prym">
-                    <label class="cont pointer"><?= isset($prof->myPosts) ? count($prof->myPosts): 0 ?></label>
+                    <label class="cont pointer"><?= isset($cate->posts) ? count($cate->posts): 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
                 <div class="contain-cont">
-                    <label class="cont pointer"><?= isset($prof->followers) ? count($prof->followers): 0 ?></label>
+                    <label class="cont pointer">?</label>
                     <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray pointer">Seguidores</label>
+                    <label class="lbl-ligthgray pointer">Miembros</label>
                 </div>
                 <div class="contain-cont">
-                    <label class="cont pointer"><?= isset($prof->follows) ? count($prof->follows): 0 ?></label>
+                    <label class="cont pointer">?</label>
                     <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray pointer ">Seguidos</label>
+                    <label class="lbl-ligthgray pointer">Online</label>
                 </div>
             </div>
         </div>
@@ -124,7 +99,7 @@ endforeach;
                             <div class="contain_descrip-content">
                                 <h2 class="h2_descrip">Descripción</h2>
                                 <div class="contain_descrip">
-                                    <p class="p_descrip"><?= isset($prof->description) ? $prof->description : "Sin Descripción" ?>
+                                    <p class="p_descrip"><?= isset($cate->description) ? $cate->description : "Sin Descripción" ?>
                                     </p>
                                 </div>
                             </div>
@@ -160,7 +135,5 @@ endforeach;
                 </div>
             </div>
         </main> 
-        <?php include_once '../modal.php'; ?>
     </body>
-    <script src="../js/nav.js"></script>
 </html>

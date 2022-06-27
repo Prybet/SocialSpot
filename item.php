@@ -9,10 +9,13 @@ endforeach;
 <div class="contain_post" id="<?= $post->id ?>"> <!-- data-val="<?= $post->id ?> -->
     <div class="contain_post-top">
         <div class="container_p">
-            <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
-            <div class="name-prim">
-                <label class="color-lig"><?= $post->category->name ?></label>
-            </div>
+            <a href="http://localhost/SocialSpot/views/interests.php?id=<?=$post->category->id?>" class="container_p conta-p">
+                <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
+                <div class="name-prim">
+                    <span class="color-lig"><?= $post->category->name ?></span>
+                </div>
+            </a>
+            
             <div class="name-cate">
                 <label class="color-lig">Publicado Por <span><?= $post->userProfile->username ?></span></label>
             </div>

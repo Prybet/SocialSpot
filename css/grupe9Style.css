@@ -163,9 +163,8 @@ header {
     margin-top: 1rem;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    
-    
 }
+
 /* UPLOAD FIELD */
 .contain_public{
     width: 100%;
@@ -404,6 +403,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.conta-p{
+    width: 20%;
+    text-decoration: none;
+    margin-left: -1rem;
 }
 /* DESCRIPTION */
 .descrip_user{

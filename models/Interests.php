@@ -16,6 +16,7 @@
 class Interests {
 
     var $id;
+    var $me;
     var $spot;
     var $hashtag;
     var $city;
@@ -24,15 +25,52 @@ class Interests {
     var $category;
     var $status;
 
-    public function setInterest() {
+    public function setInterest($typeInte, $inter) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO interests VALUES (null, :spot, :hashtag, :city, :province,:region, :category, 12)");
-        $sen->bindParam(":spot", $this->spot);
-        $sen->bindParam(":hashtag", $this->hashtag);
-        $sen->bindParam(":city", $this->city);
-        $sen->bindParam(":province", $this->province);
-        $sen->bindParam(":region", $this->region);
-        $sen->bindParam(":category", $this->category);
+        $sen = $conn->mysql->prepare("INSERT INTO interests (profile_id, {$typeInte}, status_id) VALUES (:prof, :inte, 12)");
+        $sen->bindParam(":prof", $this->me);
+        $sen->bindParam(":inte", $inter);
+        if ($sen->execute()) {
+            return true;
+        }
+    }
+    
+    public function findInterest($action) {
+        switch ($action){
+            case "category":
+                $typeInte = 'category_id';
+                $inter = $this->category;
+            break;
+        }
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * from interests WHERE Profile_ID = :prof AND {$typeInte} = :inte");
+        $sen->bindParam(":prof", $this->me);
+        $sen->bindParam(":inte", $inter);
+        if($sen->execute()){
+            if ($sen->rowCount() > 0) {
+                $res = $sen->fetch();
+                $i = new Interests();
+                $i->id = $res[0];
+                $i->status = Status::getStatu($res[8]);
+                return self::updateInterest($i);
+            }else{
+                return self::setInterest($typeInte, $inter);
+            }
+        }
+    }
+    
+    function updateInterest($i) {
+        $conn = new Connection();
+        if ($i->status->id == 12) {
+            $status = 6;
+        }
+        if ($i->status->id == 6) {
+            $status = 12;
+        }
+        print_r($i->status->id);
+        $sen = $conn->mysql->prepare("UPDATE interests SET Status_ID = :status WHERE id = :id");
+        $sen->bindParam(":id", $i->id);
+        $sen->bindParam(":status", $status);
         if ($sen->execute()) {
             return true;
         }
