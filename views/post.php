@@ -55,6 +55,7 @@ $norms = Norm::getAll();
                     "display": "none"
                 });
             }); 
+            $("#view").attr("value", "post");
         });
     </script>
 </head>
@@ -89,11 +90,15 @@ $norms = Norm::getAll();
                             </div>
                         </form>
                         <hr />
-                        <?php foreach ($post->replies as $i => $comm) : ?>
+                        <?php foreach ($post->replies as $i => $comm) : 
+                        $imgg = isset($comm->profile->imageURL) ? "../../SSpotImages/UserMedia/" . $comm->profile->username . "-Folder/ProfileImages/" . $comm->profile->imageURL : "../img/perfil.png";
+                        if($comm->profile->imageURL == "-" || $comm->profile->imageURL == ""){
+                            $imgg = "../img/perfil.png";
+                        }?>
                         <div class="contain_reply">
                             
                             <div class="contain_reply-profile">
-                                <img src="../../SSpotImages/UserMedia/<?= $comm->profile->username ?>-Folder/ProfileImages/<?= $comm->profile->imageURL ?>" class="img_profile-reply">
+                                <img src="<?= $imgg ?>" class="img_profile-reply">
                                 <div class="contain_reply_details">
                                     <div class="nom_time">
                                         <label class="lbl_nom-repl"><?= $comm->profile->username ?></label>
@@ -108,9 +113,13 @@ $norms = Norm::getAll();
                                             <button type="submit" name="submit" value="reply" class="btn_reply-right btn_reply-right_<?= $i?>" id="btn_com">Comentar</button>
                                         </div>
                                     </form>
-                                    <?php foreach ($comm->replies as $reply) : ?>
+                                    <?php foreach ($comm->replies as $reply) :
+                                        $img = isset($reply->profile->imageURL) ? "../../SSpotImages/UserMedia/" . $reply->profile->username . "-Folder/ProfileImages/" . $reply->profile->imageURL : "../img/perfil.png";
+                                        if($reply->profile->imageURL == "-" || $reply->profile->imageURL == ""){
+                                            $img = "../img/perfil.png";
+                                        }?>
                                     <div class="contan_rep">
-                                        <img src="../../SSpotImages/UserMedia/<?= $reply->profile->username ?>-Folder/ProfileImages/<?= $reply->profile->imageURL ?>" class="img_profile-reply">
+                                        <img src="<?= $img ?>" class="img_profile-reply">
                                         <div class="contain_rep">
                                             <div class="nom_time">
                                                 <label class="lbl_nom-repl"><?= $reply->profile->username ?></label>

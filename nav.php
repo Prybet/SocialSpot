@@ -22,7 +22,7 @@
                 <button class="btn_find">
                     <img src="../img/find.png" class="img_search size-img no-margin pointer" />
                 </button>
-                <scroll-container class="ocultar" id="scroll-find">
+                <scroll-container class="ocultar" id="scroll-find" data-user="<?= $user->id ?>">
                     
                 </scroll-container>
             </div>

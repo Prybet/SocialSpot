@@ -1,6 +1,40 @@
 
-<!-- DELETE USER -->
-<div class="contain_modal-profile">
+<div class="modal contain_modal">
+    <div class="contain_mod">
+        <div>         
+            <div class="contain_btn-profile">
+                <button class="btn btn-gotospot" name="btn-gopost">Ir a la publicacion</button>
+            </div>
+            <div class="contain_btn-profile contain_btn-follow" id="modal-follow-user">
+                <form action="../controllers/UserController.php" method="post" class="frm-follow">
+                    <?php if($pos == 0):?>
+                        <input type="text" name="prof" value="<?= $prof->id ?>" hidden>
+                        <button type="submit" name="submit" value="follow" class="btn_modal-follow" id="btn_editar">Seguir</button>
+                    <?php endif;?>
+                    <?php if($pos == 1):?>
+                        <input type="text" name="prof" value="<?= $prof->id  ?>" hidden>
+                        <button type="submit" name="submit" value="follow" class="btn_modal-follow" id="btn_editar">Dejar de Seguir</button>
+                    <?php endif;?>
+                </form>
+            </div>
+            <div class="contain_btn-profile contain_btn-report" id="modal-report-user">
+                <button class="btn" id="btn_report">Reportar</button> 
+            </div>
+            <div class="contain_btn-profile contain_btn-editPost" id="modal-editPost">
+                <button class="btn" value="" name="showEdit">Editar Post</button>
+            </div>
+            <div class="contain_btn-profile contain_btn-deletePost" id="modal-deletePost">
+                <button class="btn" id="btn_delete-post" value="" name="showDelete">Eliminar Post</button>
+            </div> 
+            <div class="contain_btn-profile">
+                <button class="btn_cancel btn" id="btn_cancel">Cancelar</button>
+            </div>
+        </div> 
+    </div>
+</div> 
+
+
+<div class="contain_modal-profile" id="modal-delete_user">
     <div class="contain_mod">
        <div>
             <h2 class="lbl_h2">¿Esta seguro de eliminar su cuenta?</h2>
@@ -17,41 +51,7 @@
     </div>
 </div>
 
-<!-- MAIN CONTAIN -->
-<div class="modal contain_modal">
-    <div class="contain_mod">
-        <div>         
-            <div class="contain_btn-profile">
-                <button class="btn btn-gotospot" name="btn-gopost">Ir a la publicacion</button>
-            </div>
-            <div class="contain_btn-profile contain_btn-follow">
-                <form action="../controllers/UserController.php" method="post" class="frm-follow">
-                    <?php if($pos == 0):?>
-                        <input type="text" name="prof" value="<?= $prof->id ?>" hidden>
-                        <button type="submit" name="submit" value="follow" class="btn_modal-follow" id="btn_editar">Seguir</button>
-                    <?php endif;?>
-                    <?php if($pos == 1):?>
-                        <input type="text" name="prof" value="<?= $prof->id  ?>" hidden>
-                        <button type="submit" name="submit" value="follow" class="btn_modal-follow" id="btn_editar">Dejar de Seguir</button>
-                    <?php endif;?>
-                </form>
-            </div>
-            <div class="contain_btn-profile contain_btn-report">
-                <button class="btn" id="btn_report" value="">Reportar</button> 
-            </div>
-             <div class="contain_btn-profile contain_btn-editPost">
-                <button class="btn" value="" name="showEdit">Editar Post</button>
-            </div>
-            <div class="contain_btn-profile contain_btn-deletePost">
-                <button class="btn" id="btn_delete-post" value="" name="showDelete">Eliminar Post</button>
-            </div> 
-            <div class="contain_btn-profile">
-                <button class="btn_cancel btn" id="btn_cancel">Cancelar</button>
-            </div>
-        </div> 
-    </div>
-</div> 
-<!-- MODAL REPORT-->
+
 <div class="contain_modal" id="modal-report">
     <div class="contain_report">
         <div>
@@ -73,6 +73,9 @@
                 <div class="second-div">
                     <label class="lbl-ques">Escriba su molestia de la publicacion<label>
                     <div class>
+                        <input type="text" name="when" value="<?= $id ?>" hidden>
+                        <input type="text" name="goView" value="" id="view" hidden>
+                        <input type="text" name="idpost" value="" id="inputIdPost" hidden>
                         <input type="text" name="com" placeholder="(Opcional)" class="upload__fiel-input input_report">
                     </div>
                 </div>          
@@ -86,7 +89,7 @@
         </div> 
     </div> 
 </div> 
-<!-- DELETE POST -->
+
 <div class="contain_modal" id="modal-delete">
     <div class="contain_mod">
         <form action="../controllers/PostController.php" method="post" class="flex">
@@ -105,7 +108,7 @@
         </form>
     </div>
 </div>
-<!-- EDIT POST -->
+
 <div class="contain_modal" id="modal-edit">
     <form action="../controllers/PostController.php" method="post" class="contain_mod" >
         <textarea name="postID" hidden></textarea>
@@ -134,7 +137,9 @@
                 </div>
                 </div>
                 <div class="contin-edit" id="conthashs">
-                
+                    <div>
+                        <?php include_once "../hashtags.php"; ?>
+                    </div>
                 </div>
                 <div class="contain-btnedit">
                     <button type="button" id="cancelEdit">Cancelar</button>
@@ -147,7 +152,7 @@
     <script src="../js/viewpost.js"></script>
 </div>
 
-<!-- VIEW FOLLOWERS -->
+
 <div class="contain_modal modal-followers" id="modal-followers">
     <div class="contain_fs">
         <h2>Seguidores</h2>
@@ -194,5 +199,26 @@
             <button type="button" class="btn_exit-followers">Salir</button>
         </div>
     </div>
-    
 </div>
+
+
+<?php 
+$err = isset($_SESSION["modalReport"]) ? $_SESSION["modalReport"] : false;
+if($err == true){
+    echo '<div class="contain_modal modal-warning" id="modal-warning">
+            <div class="contain_mod">
+                <div class="div-warning">
+                    <div class="conta_warn">
+                        <img src="../img/check.png">
+                        <label class="lblWar">Reporte enviado</label>
+                        <button type="button" class="btn-warning">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    $_SESSION["modalReport"] = null;
+}else{
+    echo '';
+    
+}
+?>

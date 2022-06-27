@@ -21,15 +21,44 @@ $(document).ready(function () {
                 success: function (data) {
                     console.log(data);
                     if (data) {
-                        $("#conthashs").append("<input type='text' name='hash-' value=" + hash + " hidden>");
-                        $("#conthashs").append("<span>" + hash + "</span>");
+                        $("#cont-hash").append("\n\
+                        <label class='conten_lbl-hash'>\n\
+                            "+hash+"\n\
+                            <div class='conten_btn-hashtag'>\n\
+                                <button type='button' class='btn_hashtag' value="+data+">x</button>\n\
+                            </div>\n\
+                        </label>");
+                        //$("#cont-hash").append("<input type='text' name='hash-' value=" + hash + " hidden>");
+                        //$("#cont-hash").append("<span>" + hash + "</span>");
                         $("#hashtags").empty();
                     }
                 },
                 error: function (data) {
+                    console.log(data);
                 }
             });
         }
+    });
+    $(".btn_hashtag").click(function (){
+        let id = $(this).val();
+        console.log(id);
+        $.ajax({
+            url: "../Controllers/AjaxController.php",
+            type: "post",
+            data: {"id": id , "sub": "deletehash"},
+            success: function (data) {
+                console.log(data);
+                if (data) {
+                    $(".conten_lbl-hash_"+id).empty;
+                }else{
+                    console.log("algo malo ocurrio");
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+        
     });
 });
 

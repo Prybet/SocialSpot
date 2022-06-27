@@ -196,6 +196,11 @@ html {
     justify-content: center;
     align-items: center;
 }
+.conta-p{
+    width: 20%;
+    text-decoration: none;
+    margin-left: -1rem;
+}
 /* REPLY */
 .container_reply{
     width: 75rem;
@@ -707,4 +712,54 @@ label{
 .contain_btn-deletePost{
     visibility: hidden;
     display: none;
+}
+/* HASHTAG */
+.contain_hashtag{
+    display: flex;
+    flex-wrap: wrap;
+}
+.conten_lbl-hash{
+    background-color: var(--darker);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    margin: 0.5rem 0.2rem;
+    font-size: 1.7rem;
+}
+.conten_btn-hashtag{
+    margin-left: 0.5rem;
+    margin-top: -0.1rem;
+}
+.btn_hashtag{
+    display: none;
+    visibility: hidden;
+}
+/*  MODAL WARNING REPORT */
+.modal-warning{
+    opacity: 1;
+    pointer-events: auto;
+}
+.div-warning{
+    display: flex;
+    justify-content: center
+}
+.conta_warn{
+    display: grid;
+}
+.btn-warning{
+    margin-top: 5rem;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: var(--black);
+    font-weight: bold;
+    border: 1px solid var(--primary);
+}
+.btn-warning:hover{
+    background-color: var(--black);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+.lblWar{
+    margin-top: 1.5rem;
 }

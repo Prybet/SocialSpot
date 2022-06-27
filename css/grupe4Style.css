@@ -315,6 +315,9 @@ body{
     text-decoration: none;
     margin-left: -1rem;
 }
+.conta_a-user{
+    text-decoration: none;
+}
 /* CATEGORY POPULAR */
 .contain_popular{
     width: 100%;
@@ -536,7 +539,6 @@ label{
 .btn{
     width: 60%;
     background-color: var(--primary);
-    border: none;
     border-radius: 0.5rem;
     padding: 1rem;
     color: var(--black);
@@ -571,4 +573,33 @@ label{
 .contain_btn-follow{
     visibility: hidden;
     display: none;
+}
+/*  MODAL WARNING REPORT */
+.modal-warning{
+    opacity: 1;
+    pointer-events: auto;
+}
+.div-warning{
+    display: flex;
+    justify-content: center
+}
+.conta_warn{
+    display: grid;
+}
+.btn-warning{
+    margin-top: 5rem;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: var(--black);
+    font-weight: bold;
+    border: 1px solid var(--primary);
+}
+.btn-warning:hover{
+    background-color: var(--black);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+.lblWar{
+    margin-top: 1.5rem;
 }

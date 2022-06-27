@@ -16,6 +16,7 @@
 
 require_once '../PDO/Connection.php';
 require_once 'Norm.php';
+require_once 'Post.php';
 class Report {
     var $id;
     var $norm;

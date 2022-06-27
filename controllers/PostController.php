@@ -81,7 +81,6 @@ if ($method == "GET") {
                 $rep->profile = $_SESSION["user"]->profile->id;
                 $rep->body = $body;
                 $rep->replies = $id;
-                print_r($_SESSION["user"]->profile);
                 if($rep->setReplyForReply()){
                     header("Location: ../views/post.php");
                 }
@@ -118,19 +117,31 @@ if ($method == "GET") {
         $user = $_SESSION["user"];
         if ($user != null) {
             $com = isset($_POST["com"]) ? $_POST["com"] : "";
+            $idPost = isset($_POST["idpost"]) ? $_POST["idpost"] : "";
             $rReport = isset($_POST["radio_report"]) ? $_POST["radio_report"] : "";
+            $view = isset($_POST["goView"]) ? $_POST["goView"] : "";
+            $id = isset($_POST["when"]) ? $_POST["when"] : "";
             if($rReport != ""){
                 $rprt = new Report();
                 $norm = new Norm();
                 $norm->id = $rReport;
                 $rprt->norm = $norm;
                 $rprt->userId = $_SESSION["user"]->id;
-                $rprt->postId = $_SESSION["post"]->id;
+                $rprt->postId = $idPost;
                 $rprt->replyId = null;
                 $rprt->spotId = null;
                 $rprt->commentary = $com;
                 if($rprt->setReport($rprt)){
-                    echo 'nice';
+                    $_SESSION["modalReport"] = true;
+                    if($view == "profilepublic"){
+                        header("Location: ../views/profilepublic.php?id=$id");
+                    }elseif($view == "main"){
+                        header("Location: ../views/main.php");
+                    }elseif($view == "post"){
+                        header("Location: ../views/post.php");
+                    }elseif($view == "interests"){
+                        header("Location: ../views/interests.php?id=$id");
+                    }
                 }else{
                     echo 'malooooooo';
                 }

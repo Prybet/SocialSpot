@@ -10,6 +10,7 @@ Made by:
 require_once '../models/User.php';
 session_start();
 $style = "grupe9Style.css";
+$norms = Norm::getAll();
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
 
 $prof = Profile::getProfile($id);
@@ -50,6 +51,8 @@ endforeach;
             $(document).ready(function () {
                 $(".ftbanner").css("background-image", "url('<?= $imgBanner ?>')");
                 $(".ftprofile").css("background-image", "url('<?= $imgUser ?>')"); 
+                
+                $("#view").attr("value", "profilepublic");
             });
         </script>
     </head>

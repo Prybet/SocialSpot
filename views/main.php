@@ -6,6 +6,7 @@ $posts = Post::getAllPosts();
 $norms = Norm::getAll();
 $style = "grupe4Style.css";
 $user = $_SESSION["user"]->getLogin();
+
 ?>
 <html>
     <head>
@@ -13,6 +14,19 @@ $user = $_SESSION["user"]->getLogin();
         <title>SocialSpot</title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/model.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                            
+                document.getElementById("modal-delete_user").outerHTML = "";
+                document.getElementById("modal-followers").outerHTML = "";
+                document.getElementById("modal-edit").outerHTML = "";
+                document.getElementById("modal-delete").outerHTML = "";
+                document.getElementById("modal-editPost").outerHTML = "";
+                document.getElementById("modal-deletePost").outerHTML = "";
+                $("#view").attr("value", "main");
+            });
+            
+        </script>
     </head>
     <body>
         <div class="a">

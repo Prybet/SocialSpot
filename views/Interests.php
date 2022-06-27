@@ -10,14 +10,22 @@ Made by:
 require_once '../models/User.php';
 session_start();
 $style = "grupe9Style.css";
+$norms = Norm::getAll();
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
 
-$cate = Category::getFullCategoy($id);
+$inte = Category::getFullCategoy($id);
 
-$imageCate = isset($cate->imageURL) ? "../../SSpotImages/CategoryImages/CategoryImages/BannerImages/" . $cate->bannerURL : "../img/perfil.png";
-$bannerCate = isset($cate->bannerURL) ? "../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/" . $cate->imageURL : "../img/banner.jpg";
+$imageCate = isset($inte->imageURL) ? "../../SSpotImages/CategoryImages/CategoryImages/BannerImages/" . $inte->bannerURL : "../img/perfil.png";
+$bannerCate = isset($inte->bannerURL) ? "../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/" . $inte->imageURL : "../img/banner.jpg";
 
-$posts = $cate->posts;
+$posts = $inte->posts;
+
+$pos = 0;
+foreach ($inte->members as $i){
+    if($i->me == $_SESSION["user"]->id){
+        $pos = 1;
+    }
+}
 ?>
 <html>
     <head>
@@ -29,6 +37,7 @@ $posts = $cate->posts;
             $(document).ready(function () {
                 $(".ftbanner").css("background-image", "url('<?= $imageCate ?>')");
                 $(".ftprofile").css("background-image", "url('<?= $bannerCate ?>')"); 
+                $("#view").attr("value", "interests");
             });
         </script>
     </head>
@@ -47,27 +56,27 @@ $posts = $cate->posts;
             </div>
             <form action="../controllers/InterestController.php" method="post">
                 <?php if($pos == 0):?>
-                    <input type="text" name="cate" value="<?= $cate->id ?>" hidden>
-                    <button type="submit" name="submit" value="follCate" class="btn_follow" id="btn_editar">Seguir</button>
+                    <input type="text" name="cate" value="<?= $inte->id ?>" hidden>
+                    <button type="submit" name="submit" value="follCate" class="btn_follow" id="btn_editar">Ser Miembro</button>
                 <?php endif;?>
                 <?php if($pos == 1):?>
-                    <input type="text" name="cate" value="<?= $cate->id  ?>" hidden>
-                    <button type="submit" name="submit" value="follCate" class="btn_unfollow" id="btn_editar">Dejar de seguir</button>
+                    <input type="text" name="cate" value="<?= $inte->id  ?>" hidden>
+                    <button type="submit" name="submit" value="follCate" class="btn_unfollow" id="btn_editar">Dejar de ser Miembro</button>
                 <?php endif;?>
             </form>
         </header>
         <div class="contain-info-profile">
             <div class="name_user">
-                <label><?= $cate->name  ?></label> 
+                <label><?= $inte->name  ?></label> 
             </div> 
             <div class="follow">
                 <div class="contain-cont-prym">
-                    <label class="cont pointer"><?= isset($cate->posts) ? count($cate->posts): 0 ?></label>
+                    <label class="cont pointer"><?= isset($inte->posts) ? count($inte->posts): 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
                 <div class="contain-cont">
-                    <label class="cont pointer">?</label>
+                    <label class="cont pointer"><?= isset($inte->members) ? count($inte->members): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray pointer">Miembros</label>
                 </div>
@@ -99,7 +108,7 @@ $posts = $cate->posts;
                             <div class="contain_descrip-content">
                                 <h2 class="h2_descrip">Descripción</h2>
                                 <div class="contain_descrip">
-                                    <p class="p_descrip"><?= isset($cate->description) ? $cate->description : "Sin Descripción" ?>
+                                    <p class="p_descrip"><?= isset($inte->description) ? $inte->description : "Sin Descripción" ?>
                                     </p>
                                 </div>
                             </div>
@@ -135,5 +144,7 @@ $posts = $cate->posts;
                 </div>
             </div>
         </main> 
+        <?php include_once '../modal.php'; ?>
     </body>
+    <script src="../js/nav.js"></script>
 </html>
