@@ -329,17 +329,20 @@ $(document).ready(function () {
             }
         });
     });
+    
+    
     $(".heartLike").click(function (){
         var idPost = $(this).attr("data-post");
         var idUser = $(this).attr("data-user");
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
-            data: {"idUser": idUser, "idPost": idPost, "sub": "trimLike"},
+            data: {"idUser": idUser, "idPost": idPost, "sub": "like"},
             success: function (data) {
                 if(data !== null){
-                    var action = "off";
-                    changeLike(action, idPost, data);
+                    //var action = "off";
+                    //changeLike(action, idPost, data);
+                    console.log("nice");
                 }else{
                     console.log("error");
                 }
