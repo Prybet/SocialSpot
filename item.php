@@ -7,15 +7,15 @@ foreach($post->likes as $like):
 endforeach; 
 
 if($post->userProfile->id != $_SESSION["user"]->id){
-    $urlUser = "http://localhost/SocialSpot/views/profilepublic.php?id=" . $post->userProfile->id;
+    $urlUser = $ip ."/SocialSpot/views/profilepublic.php?id=" . $post->userProfile->id;
 }else{
-    $urlUser = "http://localhost/SocialSpot/views/profile.php?";
+    $urlUser = $ip ."/SocialSpot/views/profile.php?";
 }
 ?>
 <div class="contain_post" id="<?= $post->id ?>"> <!-- data-val="<?= $post->id ?> -->
     <div class="contain_post-top">
         <div class="container_p">
-            <a href="http://localhost/SocialSpot/views/interests.php?id=<?=$post->category->id?>" class="container_p conta-p">
+            <a href="<?= $ip ?>/SocialSpot/views/interests.php?id=<?=$post->category->id?>" class="container_p conta-p">
                 <img src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
                 <div class="name-prim">
                     <span class="color-lig"><?= $post->category->name ?></span>
