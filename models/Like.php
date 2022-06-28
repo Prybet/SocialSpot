@@ -54,6 +54,7 @@ class Like {
                 $l = new Like();
                 $l->id = $like[0];
                 $l->profile = Profile::getProfileForReplies($like[1]);
+                $i->profID = $like[1];
                 $l->postID = $like[2];
                 $l->date = $like[3];
                 $l->time = $like[4];
