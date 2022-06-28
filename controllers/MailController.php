@@ -7,10 +7,11 @@
  *  soulbroken
  *  Prybet
  */
-
+require_once '../PDO/Connection.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+$ip = Connection::$ip;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once '../models/User.php';
@@ -18,9 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     if ($_POST["submit"] == "recover") {
         $user = $_SESSION["user"];
-        $user->email = isset($_POST["email"]) ? $_POST["email"] : "";
+        $email = isset($_POST["email"]) ? $_POST["email"] : "";
+        $user->email = $email;
         if(Recovery::verifyEmail($email)){
-            $user = Recovery::getData($user);
+            $user = Recovery::getData($email);
         }else{
             $_SESSION["err"] = "El correo electronico no se encuenta en nuestros registros";
             header("Location: ../views/recovery.php");
@@ -28,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $recov = new Recovery();
         $recov->userId = $user->id;
         $recov->hash = bin2hex(random_bytes(20));
-        $link = "http://localhost/SocialSpot/Controllers/RecoveryController.php?token=".$recov->hash;
+        $link = $ip."/SocialSpot/Controllers/RecoveryController.php?token=".$recov->hash;
         if ($recov->setRecovery()) {
             require_once '../mailer/vendor/autoload.php';
 
@@ -43,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom("contactus.sspot@gmail.com", "RECOVERY SOCIALSPOT");
+                $mail->setFrom("recovery.socialspot@outlook.com", "RECOVERY SOCIALSPOT");
                 $mail->addAddress($user->email, "CONTACTO" . $user->profile->name);
                 $mail->addCC("contactus.sspot@gmail.com");
 

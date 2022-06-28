@@ -7,7 +7,7 @@
  *  soulbroken
  *  Prybet
  */
-
+require_once '../PDO/Connection.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -15,6 +15,7 @@ use PHPMailer\PHPMailer\Exception;
 require_once '../PDO/Connection.php';
 require_once '../models/User.php';
 require_once '../models/Profile.php';
+$ip = Connection::$ip;
 
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
 
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "PUT") {
         $recov = new Recovery();
         $recov->userId = $user->id;
         $recov->hash = bin2hex(random_bytes(20));
-        $link = "http://localhost/SocialSpot/Controllers/RecoveryController.php?token=" . $recov->hash;
+        $link = $ip."/SocialSpot/Controllers/RecoveryController.php?token=" . $recov->hash;
         if ($recov->setRecovery()) {
             require_once '../mailer/vendor/autoload.php';
 
@@ -38,14 +39,14 @@ if ($_SERVER["REQUEST_METHOD"] == "PUT") {
             try {
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
-                $mail->Host = "smtp.gmail.com";
+               $mail->Host = "smtp.office365.com";
                 $mail->SMTPAuth = true;
-                $mail->Username = "contactus.sspot@gmail.com";
+                $mail->Username = "recovery.socialspot@outlook.com";
                 $mail->Password = "skmaps88";
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom("contactus.sspot@gmail.com", "RECOVERY SOCIALSPOT");
+                $mail->setFrom("recovery.socialspot@outlook.com", "RECOVERY SOCIALSPOT");
                 $mail->addAddress($user->email, "CONTACTO" . $user->profile->name);
                 $mail->addCC("contactus.sspot@gmail.com");
 
