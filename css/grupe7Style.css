@@ -87,7 +87,7 @@ header {
 }
 
 .contain-info-profile{
-    width: 200rem;
+    width: 100%;
     height: 15vh;
     background-color: var(--darkgray);
     position: relative;
@@ -382,6 +382,14 @@ header {
     justify-content: center;
     align-items: center;
 }
+.conta-p{
+    width: 20%;
+    text-decoration: none;
+    margin-left: -1rem;
+}
+.conta_a-user{
+    text-decoration: none;
+}
 /* DESCRIPTION */
 .descrip_user{
     height: 10vh;
@@ -532,20 +540,6 @@ label{
     justify-content: center;
 
 }
-/* MODAL REPORT */
-.contain_btn-report{
-    visibility: hidden;
-    display: none;
-}
-.contain_modal-report{
-    visibility: hidden;
-    display: none;
-}
-/* MODAL FOLLOW */
-.contain_btn-follow{
-    visibility: hidden;
-    display: none;
-}
 /* MODAL DELETE POST */
 .div-delete label{
     text-align: center;
@@ -570,6 +564,9 @@ label{
 /* MODAL EDIT POST */
 .div-edit{
     padding: 0 2rem;
+    min-width: 100%;
+    overflow-y: scroll;
+    height: 51.9rem;
 }
 .div-edit label{
     font-size: 2rem;
@@ -639,6 +636,9 @@ label{
 .contain_modal-profile{
     visibility: hidden;
     display: none;
+}
+#cancelEdit{
+    margin-bottom: 2rem;
 }
 /* MODAL FOLLOWERS */
 .modal-followers{
@@ -719,6 +719,29 @@ label{
 .btn_exit-followers:hover{
     background-color: var(--darker);
     color: var(--primary);
-    
 }
+
+/* HASHTAG */
+.contain_hashtag{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -1rem;
+}
+.conten_lbl-hash{
+    background-color: var(--niga);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    margin: 0.5rem;
+}
+.conten_btn-hashtag{
+    margin-left: 0.5rem;
+    margin-top: -0.1rem;
+}
+.btn_hashtag{
+    background-color: var(--primary);
+    border-radius: 0.2rem;
+    border: 1px solid var(--niga);
+}
+
 

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //item
+    //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
         if ($("#id_" + id).is(":focus") || $(".cont-left").is(":focus") || $(".cont-right").is(":focus") || $(".heartNotLike").is(":focus") || $(".heartLike").is(":focus")) {
@@ -8,10 +8,80 @@ $(document).ready(function () {
             window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
         }
     }); 
+    
+    //Modal
+    $(".more-post").click(function () {
+        let id = $(this).val();
+        $("button[name=btn_report]").val(id);
+        $("#btn_report").val(id);
+        $("button[name=btn-gopost]").val(id);
+        $("button[name=showEdit]").val(id);
+        $("button[name=showDelete]").val(id);
+        
+        
+        $(".modal").css({
+            "pointer-events": "auto",
+            "opacity": "1"
+        });
+        $("body").css({
+            "overflow": "hidden",
+            "height": "100vh",
+            "padding-right": "17px"
 
+        });
 
+    });
+    $(".btn_cancel").click(function () {
+        $(".modal").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+        $("body").css({
+            "overflow": "auto",
+            "height": "auto",
+            "padding-right": "0"
+        });
+    });
+    $(".btn-gotospot").click(function () {
+        let id = $(this).val();
+        window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
+    });
+    
+    //Report Post
+    $("#btn_report").click(function () {
+        let id = $(this).val();
+        $("#inputIdPost").val(id);
+        $(".modal").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+        $("#modal-report").css({
+            "pointer-events": "auto",
+            "opacity": "1"
+        });
+    });
+    $(".btn_cancel-report").click(function () {
+        $("#modal-report").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+        $("body").css({
+            "overflow": "auto",
+            "height": "auto",
+            "padding-right": "0"
+        });
+    });
+    
+    //Modal Report Warning
+    $(".btn-warning").click(function (){
+        $("#modal-warning").css({
+            "pointer-events": "none",
+            "opacity": "0"
+        });
+    });
+    
+    //Icon For Images Post
     var a = $(".contain-img");
-
     for (var i=0; i < a.length; i++) {
         var id = a[i].getAttribute('id');
         var contI = $(".container_img_" + id);
@@ -27,7 +97,6 @@ $(document).ready(function () {
             });
         }
     }
-    
     $(".cont-right").click(function () {
         var position = 0;
         var sum = 0;
@@ -76,71 +145,14 @@ $(document).ready(function () {
             }
         }
     });
-
     
-
+    //Icon Comentary For Post
     $(".divcom").click(function () {
         let id = $(this).val();
         window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
-    });
-
-    //modal
-    $(".more-post").click(function () {
-        let id = $(this).val();
-        $("button[name=btn_report]").val(id);
-        $("button[name=btn-gopost]").val(id);
-        $("button[name=showEdit]").val(id);
-        $("button[name=showDelete]").val(id);
-        $(".modal").css({
-            "pointer-events": "auto",
-            "opacity": "1"
-        });
-        $("body").css({
-            "overflow": "hidden",
-            "height": "100vh",
-            "padding-right": "17px"
-
-        });
-
-    });
-    $(".btn_cancel").click(function () {
-        $(".modal").css({
-            "pointer-events": "none",
-            "opacity": "0"
-        });
-        $("body").css({
-            "overflow": "auto",
-            "height": "auto",
-            "padding-right": "0"
-        });
-    });
-    $("#btn_report").click(function () {
-        $(".modal").css({
-            "pointer-events": "none",
-            "opacity": "0"
-        });
-        $("#modal-report").css({
-            "pointer-events": "auto",
-            "opacity": "1"
-        });
-
-    });
-    $(".btn-gotospot").click(function () {
-        let id = $(this).val();
-        window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
-    });
-    $(".btn_cancel-report").click(function () {
-        $("#modal-report").css({
-            "pointer-events": "none",
-            "opacity": "0"
-        });
-        $("body").css({
-            "overflow": "auto",
-            "height": "auto",
-            "padding-right": "0"
-        });
-    });
+    });   
     
+    //Modal Delete Post
     $("#btn_delete-post").click(function (){
         let id = $(this).val();
         $("textarea[name=postID]").append(id);
@@ -164,6 +176,7 @@ $(document).ready(function () {
             "opacity": "0"
         });
     });
+    
     //Show edit post
     $("button[name=showEdit]").click(function (){
         let id = $(this).val();
@@ -188,9 +201,9 @@ $(document).ready(function () {
             }else{
                 console.log("error");
             }
-        });
-            
+        });  
     });
+    
     //Edit Post
     $("#cancelEdit").click(function (){
         $("#modal-edit").css({
@@ -198,6 +211,7 @@ $(document).ready(function () {
             "opacity": "0"
         });
     });
+    
     //Find User
     $(document).on('keyup', '#search', function (){
         var r = $(this).val();
@@ -243,7 +257,12 @@ $(document).ready(function () {
                             //Nav For Search
                             $(".search_user").click(function (){
                                 let id = $(this).attr("value");
-                                window.location.href = "http://localhost/SocialSpot/views/profilepublic.php?id=" + id;
+                                let idUser = $("#scroll-find").attr("data-user");
+                                if(id == idUser){
+                                    window.location.href = "http://localhost/SocialSpot/views/profile.php";
+                                }else{
+                                    window.location.href = "http://localhost/SocialSpot/views/profilepublic.php?id=" + id;
+                                }
                             });
                         }else{
                             $("#scroll-find").append("\n\
@@ -263,7 +282,6 @@ $(document).ready(function () {
             }
         });
     });
-    
     
     //Modal Followers
     $(".contain-cont").click(function (){
@@ -356,6 +374,4 @@ $(document).ready(function () {
                 break;
         }
     }
-    
-    
 });

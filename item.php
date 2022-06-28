@@ -5,6 +5,12 @@ foreach($post->likes as $like):
          $veri = 1;
     }
 endforeach; 
+
+if($post->userProfile->id != $_SESSION["user"]->id){
+    $urlUser = "http://localhost/SocialSpot/views/profilepublic.php?id=" . $post->userProfile->id;
+}else{
+    $urlUser = "http://localhost/SocialSpot/views/profile.php?";
+}
 ?>
 <div class="contain_post" id="<?= $post->id ?>"> <!-- data-val="<?= $post->id ?> -->
     <div class="contain_post-top">
@@ -17,7 +23,12 @@ endforeach;
             </a>
             
             <div class="name-cate">
-                <label class="color-lig">Publicado Por <span><?= $post->userProfile->username ?></span></label>
+                <label class="color-lig">Publicado Por 
+                    <a href="<?= $urlUser ?>" class="conta_a-user">
+                        <span><?= $post->userProfile->username ?></span>
+                    </a>
+                    
+                </label>
             </div>
             <div class="name-cate">
                 <label class="color-lig"><?= $post->date ?></label>
@@ -133,12 +144,12 @@ endforeach;
             </div>
             <div class="flex_option">
                 <button class="divcom" value="<?= $post->id ?>">
-                    <img src="../img/Replys.png" class="img_option-post pointer">
+                    <img src="../img/reply.png" class="img_option-post pointer">
                     <label class="cont-pst"><?= isset($post->replies) ? count($post->replies): 0 ?></label>
                 </button> 
             </div>
             <div class="flex_option">
-                <img src="../img/Spot.png" class="img_option-post pointer">
+                <img src="../img/map.png" class="img_option-post pointer">
             </div>
         </div>
         

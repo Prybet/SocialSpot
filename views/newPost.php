@@ -20,6 +20,7 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
     <?php include_once '../header.php'; ?>
     <title>Crear Nuevo Post</title>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/model.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("select[name=cate]").change(function () {
@@ -37,7 +38,6 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                         dataType: "json"
                     }).done(function (data) {
                         if (data !== null) {
-                            console.log(data);
                             $("#catName").empty();
                             $("#catName").append(data["name"]);
 
@@ -48,7 +48,8 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                             $("#catImage").attr("src", "../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/" + data["imageURL"]);
 
                             $("#members").empty();
-                            $("#members").append(data["members"]);
+                            $("#members").append(data["members"].length);
+                            
                             $("#online").empty();
                             $("#online").append(data["onLine"]);
                         }
@@ -70,7 +71,6 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
             
         });
     </script>
-    <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
 </head>
 <body> 
     <div class="a"> 
@@ -179,7 +179,7 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                                 <div class="grid_follow">
                                     <div>
                                         <div class="flex">
-                                            <label class="lbl_cont" id="members">1.3K</label>
+                                            <label class="lbl_cont" id="members">0</label>
                                         </div>
                                         <div>
                                             <label >Miembros</label>
@@ -187,7 +187,7 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                                     </div>
                                     <div>
                                         <div class="flex">
-                                            <label class="lbl_cont" id="online">93</label>
+                                            <label class="lbl_cont" id="online">0</label>
                                         </div>
                                         <div>
                                             <label>En linea</label>

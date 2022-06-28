@@ -121,10 +121,18 @@ class Category {
 
     private function getMembers() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE category_id = :id");
+        $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE category_id = :id AND status_id = 12");
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
-            return $sen->rowCount();
+            $rs = $sen->fetchAll();
+            $list = array();
+            foreach ($rs as $i) {
+                $in = new Category();
+                $in->id = $i[0];
+                $in->me = $i[1];
+                $list[] = $in;
+            }
+            return $list;
         }
     }
 

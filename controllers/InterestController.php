@@ -17,17 +17,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // New Account
     if ($POST["submit"] == "follCate") {
         $cateID = isset($POST["cate"]) ? $POST["cate"] : "";
-        
         $inte = new Interests();
         $inte->category = $cateID;
         $inte->me = $_SESSION["user"]->id;
-        $typeInte = "category";
-        if($inte->findInterest($typeInte)){
+        $typeInte = "cate";
+        $inter = $cateID;
+        if($inte->findInterest($typeInte, $inter)){
             header("Location: ../views/interests.php?id=$cateID");
         }else{
             echo 'fail';
         }
-    } 
+    } elseif($POST["submit"] == "province"){
+    
+    } elseif($POST["submit"] == "city"){
+        
+    } elseif($POST["submit"] == "region"){
+        
+    }elseif ($POST["submit"] == "hashtag") {
+        
+    }
 } else {
     header("Location: ../views/index.php");
 }

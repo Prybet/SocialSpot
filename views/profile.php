@@ -64,7 +64,12 @@ if($profile->description == ""){
                     window.location.href = "http://localhost/SocialSpot/views/editprofile.php";
                 });
                 
+                document.getElementById("modal-delete_user").outerHTML = "";
+                document.getElementById("modal-report").outerHTML = "";
+                document.getElementById("modal-follow-user").outerHTML = "";
+                document.getElementById("modal-report-user").outerHTML = "";
             });
+            
         </script>
     </head>
 
@@ -81,7 +86,7 @@ if($profile->description == ""){
             <div class="ftprofile pointer">
 
             </div>
-            <button href="editprofile.php" class="btn_editar" id="btn_editar">Editar Perfil</button>
+            <button class="btn_editar" id="btn_editar">Editar Perfil</button>
         </header>
         <div class="contain-info-profile">
             <div class="name_user">

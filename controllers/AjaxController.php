@@ -75,8 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hashtag = Hashtag::toHashTag($text);
                 if ($hashtag != "") {
                     $idH = Hashtag::setNewHashtag($hashtag);
-                    Hashtag::setHashtag($idP, $idH);
-                    echo json_encode(true, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                    $Hash = Hashtag::setHashtag($idP, $idH);
+                    echo json_encode($idH, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                 } else {
                     echo json_encode($hashtag, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                 }
@@ -84,6 +84,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
 
+            break;
+        case "deletehash":
+            $idH = isset($_POST["id"]) ? $_POST["id"] : "";
+            require_once '../models/Hashtag.php';
+            if(Hashtag::deleteHashtag($idH)){
+                header("Content-Type: application/json; charset=UTF8");
+                echo json_encode(true, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }else{
+                header("Content-Type: application/json; charset=UTF8");
+                echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            }
             break;
         case "search":
             require_once '../models/Profile.php';

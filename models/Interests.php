@@ -35,17 +35,13 @@ class Interests {
         }
     }
     
-    public function findInterest($action) {
-        switch ($action){
-            case "category":
-                $typeInte = 'category_id';
-                $inter = $this->category;
-            break;
-        }
+    public function findInterest($action, $interest) {
+        $typeInte = self::getIntername($action);
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * from interests WHERE Profile_ID = :prof AND {$typeInte} = :inte");
         $sen->bindParam(":prof", $this->me);
-        $sen->bindParam(":inte", $inter);
+        $sen->bindParam(":inte", $interest);
+        print_r($sen);
         if($sen->execute()){
             if ($sen->rowCount() > 0) {
                 $res = $sen->fetch();
@@ -54,8 +50,24 @@ class Interests {
                 $i->status = Status::getStatu($res[8]);
                 return self::updateInterest($i);
             }else{
-                return self::setInterest($typeInte, $inter);
+                return self::setInterest($typeInte, $interest);
             }
+        }
+    }
+    public function getIntername($action) {
+        switch ($action) {
+            case "cate":
+                return 'category_id';
+            case "city":
+                return 'city_id';
+            case "prov":
+                return 'province_id';
+            case "reg":
+                return 'region_id';
+            case "spot":
+                return 'spot_id';
+            default :
+                return "non";
         }
     }
     
