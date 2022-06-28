@@ -13,7 +13,7 @@ $style = "grupe3Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"]->reload();
 $category = $post->category;
-$norms = Norm::getAll();
+$norms = Norm::getAll();    
 ?>
 <html>
 <head>
