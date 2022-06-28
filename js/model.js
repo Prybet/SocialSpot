@@ -340,8 +340,8 @@ $(document).ready(function () {
             data: {"idUser": idUser, "idPost": idPost, "sub": "like"},
             success: function (data) {
                 if(data !== null){
-                    //var action = "off";
-                    //changeLike(action, idPost, data);
+                    var action = "off";
+                    changeLike(action, idPost, data);
                     console.log("nice");
                 }else{
                     console.log("error");
