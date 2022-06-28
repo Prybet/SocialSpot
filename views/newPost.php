@@ -97,7 +97,7 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                         echo "<div class='error hidden'><label class='red hidden'></label></div>";
                     }
                     ?>
-                    <div class="contain_post">
+                    <div class="contain_info-post">
                         <div class="contain_post-input">
                             <div class="contain_input-title">
                                 <input type="text" placeholder="Titulo" class="input_title" name="title">

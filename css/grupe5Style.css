@@ -59,7 +59,7 @@ main{
     padding: 1rem 3rem ;
     font-size: 1.5rem;
 }
-.contain_post{
+.contain_info-post{
     background-color: var(--darker);
     width: 100%;
     margin-top: 1rem;
