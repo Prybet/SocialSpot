@@ -1,10 +1,4 @@
 <?php
-$veri = 0;
-foreach($post->likes as $like):
-    if($like->userID == $_SESSION["user"]->id){
-         $veri = 1;
-    }
-endforeach; 
 
 if($post->userProfile->id != $_SESSION["user"]->id){
     $urlUser = $ip ."/SocialSpot/views/profilepublic.php?id=" . $post->userProfile->id;
