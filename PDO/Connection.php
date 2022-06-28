@@ -18,7 +18,8 @@ class Connection {
     private $username = "root";
     private $password = "root";
     public $mysql = null;
-    
+    public static $ip = "http://20.226.8.31";
+            
     function __construct() {
         try {
             $this->mysql = new PDO($this->dsn, $this->username, $this->password);
@@ -26,4 +27,5 @@ class Connection {
             echo $ex->getTraceAsString();
         }
     }
+    
 }

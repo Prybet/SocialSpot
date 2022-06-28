@@ -10,7 +10,7 @@
     ?>
     
     <div class="contain_logo flex">
-        <a class="a_logo" href="http://localhost/SocialSpot/views/index.php">
+        <a class="a_logo" href="<?= $ip ?>/SocialSpot/views/index.php">
             <img src="../img/logo.png" class="img_logo pointer" />
         </a>
     </div>

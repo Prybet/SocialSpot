@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <?php
 require_once '../models/Post.php';
+require_once '../PDO/Connection.php';
 session_start();
 $posts = Post::getAllPosts();
 $norms = Norm::getAll();
 $style = "grupe4Style.css";
 $user = $_SESSION["user"]->getLogin();
-
+$ip = Connection::$ip;
 ?>
 <html>
     <head>
@@ -35,7 +36,7 @@ $user = $_SESSION["user"]->getLogin();
         <div class="container_post">
             <div class="contain_post-grid">
                 <main class="contain_main">
-                    <a href="http://localhost/SocialSpot/views/newpost.php" class="upload">
+                    <a href="<?= $ip ?>/SocialSpot/views/newpost.php" class="upload">
                         <div class="upload__field">
                             <img src="<?= $imgUser ?>" class="img img-user"></img>
                             <input type="text" class="upload__fiel-input" placeholder="Publicar" disabled />

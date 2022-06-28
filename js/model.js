@@ -1,11 +1,12 @@
 $(document).ready(function () {
+    var ip = "http://20.226.8.31";
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
         if ($("#id_" + id).is(":focus") || $(".cont-left").is(":focus") || $(".cont-right").is(":focus") || $(".heartNotLike").is(":focus") || $(".heartLike").is(":focus")) {
             console.log($("#id_" + id));
         } else {
-            window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
+            window.location.href = ip +"/SocialSpot/views/post.php?id=" + id;
         }
     }); 
     
@@ -44,7 +45,7 @@ $(document).ready(function () {
     });
     $(".btn-gotospot").click(function () {
         let id = $(this).val();
-        window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
+        window.location.href = ip+"/SocialSpot/views/post.php?id=" + id;
     });
     
     //Report Post
@@ -149,7 +150,7 @@ $(document).ready(function () {
     //Icon Comentary For Post
     $(".divcom").click(function () {
         let id = $(this).val();
-        window.location.href = "http://localhost/SocialSpot/views/post.php?id=" + id;
+        window.location.href = ip+"/SocialSpot/views/post.php?id=" + id;
     });   
     
     //Modal Delete Post
@@ -259,9 +260,9 @@ $(document).ready(function () {
                                 let id = $(this).attr("value");
                                 let idUser = $("#scroll-find").attr("data-user");
                                 if(id == idUser){
-                                    window.location.href = "http://localhost/SocialSpot/views/profile.php";
+                                    window.location.href = ip+"/SocialSpot/views/profile.php";
                                 }else{
-                                    window.location.href = "http://localhost/SocialSpot/views/profilepublic.php?id=" + id;
+                                    window.location.href = ip+"/SocialSpot/views/profilepublic.php?id=" + id;
                                 }
                             });
                         }else{

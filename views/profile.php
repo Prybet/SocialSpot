@@ -14,7 +14,7 @@ $user = $_SESSION["user"]->getLogin();
 $posts = $user->profile->myPosts;
 $followers = $user->profile->followers;
 $follows = $user->profile->follows;
-
+$ip = Connection::$ip;
 $style = "grupe7Style.css";
 if ($user->userType->id == 2) {
     header("location: ../views/index.php");
@@ -61,7 +61,7 @@ if($profile->description == ""){
                     });
                 });
                 $(".btn_editar").click(function () {
-                    window.location.href = "http://localhost/SocialSpot/views/editprofile.php";
+                    window.location.href = "<?= $ip ?>/SocialSpot/views/editprofile.php";
                 });
                 
                 document.getElementById("modal-delete_user").outerHTML = "";
