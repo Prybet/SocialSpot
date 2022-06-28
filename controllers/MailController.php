@@ -36,9 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
-                $mail->Host = "smtp.gmail.com";
+                $mail->Host = "smtp.office365.com";
                 $mail->SMTPAuth = true;
-                $mail->Username = "contactus.sspot@gmail.com";
+                $mail->Username = "recovery.socialspot@outlook.com";
                 $mail->Password = "skmaps88";
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
