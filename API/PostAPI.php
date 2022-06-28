@@ -79,17 +79,8 @@ if ($method == "POST") {
         case "like":
             require_once"../models/Like.php";
 
-            if (Like::getLike($params->profile->id, $params->post)) {
-                Like::updateLikeGiven($params->profile->id, $params->post);
+            if (Like::findLike($params->profile->id, $params->post)) {
                 echo json_encode(count(Like::getLikes($params->post)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            } else {
-                $like = new Like();
-
-                $like->id = $params->id;
-                $like->userID = $params->profile->id;
-                $like->postID = $params->post;
-                Like::setLike($like);
-                echo json_encode(count(Like::getLikes($like->userID)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
         case "report":
