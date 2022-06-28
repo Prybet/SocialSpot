@@ -7,7 +7,7 @@
  *  soulbroken
  *  Prybet
  */
-
+$ip = Connection::$ip;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         $recov->userId = $user->id;
         $recov->hash = bin2hex(random_bytes(20));
-        $link = "http://localhost/SocialSpot/Controllers/RecoveryController.php?token=".$recov->hash;
+        $link = $ip."/SocialSpot/Controllers/RecoveryController.php?token=".$recov->hash;
         if ($recov->setRecovery()) {
             require_once '../mailer/vendor/autoload.php';
 

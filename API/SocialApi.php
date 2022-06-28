@@ -28,8 +28,22 @@ if ($method == "GET") {
     echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
 } elseif ($method == "PUT") {
     $action = json_decode($body);
+    
+    if(!is_string($action)){
+        if($action->action != null){
+            $ob = $action;
+            $action = $ob->action;
+        }
+    }
 
     switch ($action) {
+        case "search":
+            $text = isset($ob->text) != "" ? $ob->text : "";
+            $list = Profile::getProfileForSearch($text);
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
+
         case "last":
             $list = Post::getAllPosts();
             header("Content-Type: application/json; charset=UTF8");

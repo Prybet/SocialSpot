@@ -315,7 +315,7 @@ $(document).ready(function () {
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
-            data: {"idUser": idUser, "idPost": idPost, "sub": "setLike"},
+            data: {"idUser": idUser, "idPost": idPost, "sub": "like"},
             success: function (data) {
                 if(data !== null){
                     var action = "on";
@@ -329,13 +329,15 @@ $(document).ready(function () {
             }
         });
     });
+    
+    
     $(".heartLike").click(function (){
         var idPost = $(this).attr("data-post");
-        var idUser = $(this).attr("data-user");
+        var idUser = $(this).attr("data-user");        
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
-            data: {"idUser": idUser, "idPost": idPost, "sub": "trimLike"},
+            data: {"idUser": idUser, "idPost": idPost, "sub": "like"},
             success: function (data) {
                 if(data !== null){
                     var action = "off";
@@ -348,7 +350,6 @@ $(document).ready(function () {
                 console.log(data);
             }
         });
-        
     });
     
     function changeLike(action, int, data){

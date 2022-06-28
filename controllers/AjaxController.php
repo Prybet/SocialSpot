@@ -108,30 +108,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;  
-        case "setLike":
+        case "like":
             require_once '../models/Like.php';
             $idPost = isset($_POST["idPost"]) ? $_POST["idPost"] : "";
-            $idUser = isset($_POST["idUser"]) ? $_POST["idUser"] : "";
-            header("Content-Type: application/json; charset=UTF8");
-            if(Like::getLike($idUser, $idPost)){
-                Like::updateLikeGiven($idUser, $idPost);
-                echo json_encode(count(Like::getLikes($idPost)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            }else{
-                $like = new Like();
-                $like->postID = $idPost;
-                $like->userID = $idUser;
-                Like::setLike($like);
+            $idProf = isset($_POST["idUser"]) ? $_POST["idUser"] : "";
+            if(Like::findLike($idProf, $idPost)){
+                header("Content-Type: application/json; charset=UTF8");
                 echo json_encode(count(Like::getLikes($idPost)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
-            
-            break;
-        case "trimLike":
-            require_once '../models/Like.php';
-            $idPost = isset($_POST["idPost"]) ? $_POST["idPost"] : "";
-            $idUser = isset($_POST["idUser"]) ? $_POST["idUser"] : "";
-            Like::updateLike($idUser, $idPost);
-            header("Content-Type: application/json; charset=UTF8");
-            echo json_encode(count(Like::getLikes($idPost)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
         default:
             header("Content-Type: application/json; charset=UTF8");

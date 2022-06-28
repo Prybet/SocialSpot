@@ -1,7 +1,7 @@
 <?php
 $veri = 0;
 foreach($post->likes as $like):
-    if($like->userID == $_SESSION["user"]->id){
+    if($like->profID == $_SESSION["user"]->id){
          $veri = 1;
     }
 endforeach; 
@@ -92,7 +92,7 @@ if($post->userProfile->id != $_SESSION["user"]->id){
             <div class="flex_option">
                 <?php if ($_SESSION["user"]->userType->id != 2): ?>
                     <?php if($veri == 1):?>
-                        <button class="heartLike btnHeartOff_<?= $post->id ?>" data-post="<?= $post->id ?>" data-user="<?= $_SESSION["user"]->id ?>"style="display: flex">
+                       <button class="heartLike btnHeartOff_<?= $post->id ?>" data-post="<?= $post->id ?>" data-user="<?= $_SESSION["user"]->id ?>"style="display: flex">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512 512">
                                 <path d="M429.9 95.6c-40.4-42.1-106-42.1-146.4 0L256 124.1l-27.5-28.6c-40.5-42.1-106-42.1-146.4 0-45.5 47.3-45.5 124.1 0 171.4L256 448l173.9-181c45.5-47.3 45.5-124.1 0-171.4z" fill="#bd93f9" class="color000 svgShape"/>
                             </svg>

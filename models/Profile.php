@@ -133,7 +133,14 @@ class Profile {
                 $p->id = $prof[0];
                 $p->name = $prof[1];
                 $p->username = $prof[2];
-                $p->check = $prof[3];
+                $check = $prof[3];
+                if($prof[3]== 0){
+                    $check = "0";
+                }
+                 if($prof[3]== 1){
+                    $check = "1";
+                }
+                $p->check = $check;
                 $p->imageURL = $prof[7];
                 $p->followers = Follow::getFollowers($prof[0]);
                 $list[] = $p;
