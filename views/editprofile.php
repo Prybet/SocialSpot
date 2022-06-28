@@ -13,6 +13,7 @@ require_once '../models/Region.php';
 require_once '../models/Province.php';
 require_once '../models/City.php';
 session_start();
+$ip = Connection::$ip;
 $user = $_SESSION["user"]->getLogin();
 
 $style = "grupe2Style.css";

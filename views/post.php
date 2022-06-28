@@ -9,6 +9,7 @@ if ($id != "") {
     header("Location: ../controllers/postController.php?id=" . $id);
 }
 session_start();
+$ip = Connection::$ip;
 $style = "grupe3Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"]->reload();

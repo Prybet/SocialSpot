@@ -9,6 +9,7 @@ Made by:
 <?php 
 require_once '../models/User.php';
 session_start();
+$ip = Connection::$ip;
 $style = "grupe9Style.css";
 $norms = Norm::getAll();
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
