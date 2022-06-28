@@ -1,7 +1,7 @@
 <?php
 $veri = 0;
 foreach($post->likes as $like):
-    print_r ($like->$profID);
+    print_r ($like->profID);
 endforeach; 
 
 if($post->userProfile->id != $_SESSION["user"]->id){
