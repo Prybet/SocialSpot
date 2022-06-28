@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case "like":
             require_once '../models/Like.php';
             $idPost = isset($_POST["idPost"]) ? $_POST["idPost"] : "";
-            $idUser = isset($_POST["idUser"]) ? $_POST["idUser"] : "";
+            $idProf = isset($_POST["idUser"]) ? $_POST["idUser"] : "";
             if(Like::findLike($idProf, $idPost)){
                 header("Content-Type: application/json; charset=UTF8");
                 echo json_encode(count(Like::getLikes($idPost)), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
