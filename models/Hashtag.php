@@ -82,5 +82,34 @@ class Hashtag {
             return $list;
         }
     }
+    public function findHashtag($text) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM hashtag WHERE name = :name");
+        $sen->bindParam(":name", $text);
+        if ($sen->execute()) {
+            if($sen->rowCount() > 0){
+                $res = $sen->fetch();
+                $hash = new Hashtag();
+                $hash->id = $res[0];
+                $hash->name = $res[1];
+                return self::findHashtagpost($hash);
+            }else{
+                return self::setNewHashtag($text);
+            }
+        }
+    }
+   
+    public function findHashtagpost($hash) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost WHERE id = :id");
+        $sen->bindParam(":id", $hash);
+        if ($sen->execute()) {
+            $res = $sen->fetch();
+            $h = new Hashtag();
+            $hash->id = $res[0];
+            $hash->status = $res[3];
+            return self::deleteHashtag($hash);
+        }
+    }
 
 }
