@@ -6,4 +6,4 @@ $_FILES = null;
 $_SESSION["user"] = isset($_SESSION["user"]) ? $_SESSION["user"]  : new User();
 
 
-header("location: ../views/main.php");
+header("location: ../views/main");

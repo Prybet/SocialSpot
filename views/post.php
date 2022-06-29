@@ -6,7 +6,7 @@ require_once '../models/Reply.php';
 require_once '../models/Category.php';
 $id = isset($_GET["id"]) ? $_GET["id"] : "";
 if ($id != "") { 
-    header("Location: ../controllers/postController.php?id=" . $id);
+    header("Location: ../controllers/postController?id=" . $id);
 }
 session_start();
 $ip = Connection::$ip;

@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = Recovery::getData($email);
         }else{
             $_SESSION["err"] = "El correo electronico no se encuenta en nuestros registros";
-            header("Location: ../views/recovery.php");
+            header("Location: ../views/recovery");
         }
         $recov = new Recovery();
         $recov->userId = $user->id;
@@ -53,12 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->Subject = "Actualizar tu contraseña de SocialSpot";
                 $mail->Body = "Hola <b>" . $user->profile->name . "</b> <br/> Has solicitad una nueva contraseña. Para restablecerla pincha <a href=".$link.">acá</a> ";
                 $mail->send();
-                header("Location: ../views/reply.php");
+                header("Location: ../views/reply");
             } catch (Exception $ex) {
                 echo $ex->getTraceAsString() . $mail->ErrorInfo;
             }
         }
     }
-    header("Location: ../views/index.php");
+    header("Location: ../views/index");
 }
-header("Location: ../views/index.php");
+header("Location: ../views/index");

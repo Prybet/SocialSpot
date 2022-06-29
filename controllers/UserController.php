@@ -34,10 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user->profile->status = new Status();
             if ($user->setSingIn()) {
                 $_SESSION["user"] = $user->getLogin();
-                header("Location: ../views/EditProfile.php");
+                header("Location: ../views/EditProfile");
             }
         } else {
-            header("Location: ../views/singin.php");
+            header("Location: ../views/singin");
         }
 
 
@@ -61,17 +61,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user->profile->city = $city;
             if ($user->profile->update()) {
                 $_SESSION["user"] = $user->getLogin();
-                header("Location: ../views/editprofile.php");
+                header("Location: ../views/editprofile");
             }
         } else {
-            header("Location: ../views/editprofile.php");
+            header("Location: ../views/editprofile");
         }
         //Delete Account
     } elseif($POST["submit"] == "delete"){
         $user = $_SESSION["user"];
         if($user->delete()){
             $_SESSION["user"] = null;
-            header("Location: ../views/index.php");
+            header("Location: ../views/index");
         }
         
         //Edit Images
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user->profile->updateImages()) {
             $user = $_SESSION["user"];
             $_SESSION["user"] = $user->getLogin();
-            header("Location: ../views/editprofile.php");
+            header("Location: ../views/editprofile");
         }
         //Edit Password
     } elseif (($POST["submit"] == "change")) {
@@ -95,15 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($user->verifyPass($user->username, $oldPass)) {
                 if($passN == $passV){
                     if ($user->updatePass($passN, $user->id)) {
-                        header("Location: ../views/editprofile.php");
+                        header("Location: ../views/editprofile");
                     }
                 }else{
                     $_SESSION["errPassVrf"] = true;
-                    header("Location: ../views/editprofile.php");
+                    header("Location: ../views/editprofile");
                 }
             } else {
                 $_SESSION["errPass"] = true;
-                header("Location: ../views/editprofile.php");
+                header("Location: ../views/editprofile");
             }
         } 
         // Login
@@ -115,10 +115,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user->username = $var1;
             $_SESSION["user"] = $user->getLogin();
             $_SESSION["err"] = "";
-            header("Location: ../views/index.php");
+            header("Location: ../views/index");
         } else {
             $_SESSION["err"] = true;
-            header("Location: ../views/login.php");
+            header("Location: ../views/login");
         }
         // Follow User
     } elseif($POST["submit"] == "follow"){
@@ -129,32 +129,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if($follow->findFollow($follow)){
             $user = $_SESSION["user"];
             $_SESSION["user"] = $user->getLogin();
-            header("Location: ../views/profilepublic.php?id=$profID");
+            header("Location: ../views/profilepublic?id=$profID");
         }else{
             echo 'fail';
             //header("Location: ../views/index.php");
         }
     } elseif ($POST["submit"] == "singin") {
-        header("Location: ../views/singin.php");
+        header("Location: ../views/singin");
     } elseif ($POST["submit"] == "goUser") {
         $user = $_SESSION["user"];
         $_SESSION["user"] = $user->getLogin();
-        header("Location: ../views/profile.php");
+        header("Location: ../views/profile");
     } elseif ($POST["submit"] == "goEdit") {
         $user = $_SESSION["user"];
         $_SESSION["user"] = $user->getLogin();
-        header("Location: ../views/editprofile.php");
+        header("Location: ../views/editprofile");
     } elseif ($POST["submit"] == "close") {
         $_SESSION["user"] = null;
-        header("Location: ../views/index.php");
+        header("Location: ../views/index");
     } elseif ($POST["submit"] == "goLogin") {
-        header("Location: ../views/login.php");
+        header("Location: ../views/login");
     } else {
-        header("Location: ../views/index.php");
+        header("Location: ../views/index");
     }
     //
 } else {
-    header("Location: ../views/index.php");
+    header("Location: ../views/index");
 }
 
 function uploadProfileImage($prof, $formats) {

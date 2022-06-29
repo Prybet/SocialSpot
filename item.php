@@ -7,9 +7,9 @@ foreach($post->likes as $like):
 endforeach; 
 
 if($post->userProfile->id != $_SESSION["user"]->id){
-    $urlUser = $ip ."/SocialSpot/views/profilepublic.php?id=" . $post->userProfile->id;
+    $urlUser = $ip ."/SocialSpot/views/profilepublic?id=" . $post->userProfile->id;
 }else{
-    $urlUser = $ip ."/SocialSpot/views/profile.php?";
+    $urlUser = $ip ."/SocialSpot/views/profile?";
 }
 ?>
 <div class="contain_post" id="<?= $post->id ?>"> <!-- data-val="<?= $post->id ?> -->

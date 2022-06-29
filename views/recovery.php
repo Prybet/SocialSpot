@@ -36,7 +36,7 @@ $_SESSION["err"] = isset($_SESSION["err"]) ? $_SESSION["err"] : "ss"
             </form>
             <div>
                 <p class="p_in">¿Quieres crear una cuenta?
-                    <a href="#" class="link">Crear Cuenta </a>
+                    <a href="singin" class="link">Crear Cuenta </a>
                 </p>
 
             </div>

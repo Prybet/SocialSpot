@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if ($re->getVerify($tkn)) {
             session_start();
             $_SESSION["recov"] = $re;
-            header("Location: ../views/change.php");
+            header("Location: ../views/change");
         } else {
             $_SESSION["err"] = "Enlace invalido, pruebe a enviar otro";
-            header("Location: ../views/recovery.php");
+            header("Location: ../views/recovery");
         }
     } else {
-        header("Location: ../views/index.php");
+        header("Location: ../views/index");
     }
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_SESSION["recov"]->setClose()) {
         if ($user->updatePass($pass, $_SESSION["recov"]->userId)) {
             $_SESSION["recov"] = "";
-            header("Location: ../views/index.php");
+            header("Location: ../views/index.");
         }
     }
 }

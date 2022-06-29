@@ -18,7 +18,7 @@ $user = $_SESSION["user"]->getLogin();
 
 $style = "grupe2Style.css";
 if ($user->userType->id == 2) {
-    header("location: ../views/index.php");
+    header("location: ../views/index");
 }
 $city = $user->profile->city;
 $regions = Region::getListAllRegion(); 

@@ -36,7 +36,7 @@ $ip = Connection::$ip;
         <div class="container_post">
             <div class="contain_post-grid">
                 <main class="contain_main">
-                    <a href="<?= $ip ?>/SocialSpot/views/newpost.php" class="upload">
+                    <a href="<?= $ip ?>/SocialSpot/views/newpost" class="upload">
                         <div class="upload__field">
                             <img src="<?= $imgUser ?>" class="img img-user"></img>
                             <input type="text" class="upload__fiel-input" placeholder="Publicar" disabled />

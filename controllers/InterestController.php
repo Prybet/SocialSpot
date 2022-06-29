@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $typeInte = "cate";
         $inter = $cateID;
         if($inte->findInterest($typeInte, $inter)){
-            header("Location: ../views/interests.php?id=$cateID");
+            header("Location: ../views/interests?id=$cateID");
         }else{
             echo 'fail';
         }
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     }
 } else {
-    header("Location: ../views/index.php");
+    header("Location: ../views/index");
 }
 
 

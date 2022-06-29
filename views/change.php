@@ -39,6 +39,6 @@ if ($_SESSION["recov"] != "") {
 
     <?php
 } else {
-    header("Location: ../views/indexa.php");
+    header("Location: ../views/index");
 }
 

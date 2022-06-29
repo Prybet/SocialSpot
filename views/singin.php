@@ -48,7 +48,7 @@ $style = "grupe1Style.css";
             </form>
             <div>
                 <p class="p_in">¿Tienes Cuenta?
-                    <a href="login.php" class="link">Inicia Sesión</a>
+                    <a href="login" class="link">Inicia Sesión</a>
                 </p>
             </div>    
         </main>
