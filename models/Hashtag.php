@@ -14,11 +14,12 @@
  * @author Prybet
  */
 require_once '../PDO/Connection.php';
+
 class Hashtag {
 
     var $id;
     var $name;
-    var $post_id;
+    var $postID;
     var $status;
 
     public static function toHashTag($text) {
@@ -30,13 +31,23 @@ class Hashtag {
         }
     }
 
-    public static function setHashtag($pos, $hash) {
+    public static function setHashtag($idH, $idP) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO hashtagpost VALUES(null, :post, :hash, 1)");
-        $sen->bindParam(":post", $pos);
-        $sen->bindParam(":hash", $hash);
+        $sen->bindParam(":post", $idP);
+        $sen->bindParam(":hash", $idH);
         if ($sen->execute()) {
-            return true;
+            $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost WHERE post_id = :idp AND hashtag_id = :idh");
+            $sen->bindParam(":idp", $idP);
+            $sen->bindParam(":idh", $idH);
+            if ($sen->execute()) {
+                $rs = $sen->fetch();
+                $h = new Hashtag();
+                $h->id = $rs[0];
+                $h->postID = $rs[1];
+                $h->status = $rs[3];
+                return $h;
+            }
         }
     }
 
@@ -49,7 +60,7 @@ class Hashtag {
         }
     }
 
-    public static function setNewHashtag($text) {
+    public static function setNewHashtag($text, $idP) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO hashtag VALUES(null,:name)");
         $sen->bindParam(":name", $text);
@@ -58,7 +69,9 @@ class Hashtag {
             $sen->bindParam(":name", $text);
             if ($sen->execute()) {
                 $rs = $sen->fetch();
-                return $rs[0];
+                $h = self::setHashtag($rs[0], $idP);
+                $h->name = $text;
+                return $h;
             }
         }
         return false;
@@ -75,40 +88,48 @@ class Hashtag {
                 $h = new Hashtag();
                 $h->id = $ha[0];
                 $h->name = $ha[5];
-                $h->post_id = $ha[1];
+                $h->postID = $ha[1];
                 $h->status = $ha[3];
                 $list[] = $h;
             }
             return $list;
         }
     }
-    public function findHashtag($text) {
+
+    public static function findHashtag($text, $idpost) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM hashtag WHERE name = :name");
         $sen->bindParam(":name", $text);
         if ($sen->execute()) {
-            if($sen->rowCount() > 0){
+            if ($sen->rowCount() > 0) {
                 $res = $sen->fetch();
                 $hash = new Hashtag();
                 $hash->id = $res[0];
                 $hash->name = $res[1];
-                return self::findHashtagpost($hash);
-            }else{
-                return self::setNewHashtag($text);
+                $h = self::findHashtagpost($hash);
+                if ($h->postID == $idpost) {
+                    return $h;
+                } else {
+                   return self::setHashtag($h->idT, $idpost);
+                }
+            } else {
+                return self::setNewHashtag($text, $idpost);
             }
         }
     }
-   
-    public function findHashtagpost($hash) {
+
+    public static function findHashtagpost($hash) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost WHERE id = :id");
-        $sen->bindParam(":id", $hash);
+        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost WHERE Hashtag_ID = :id");
+        $sen->bindParam(":id", $hash->id);
         if ($sen->execute()) {
             $res = $sen->fetch();
-            $h = new Hashtag();
             $hash->id = $res[0];
+            $hash->postID = $res[1];
+            $hash->idT = $res[2];
             $hash->status = $res[3];
-            return self::deleteHashtag($hash);
+            return $hash;
+            //self::deleteHashtag($hash)
         }
     }
 

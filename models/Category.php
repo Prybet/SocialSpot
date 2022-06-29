@@ -16,6 +16,7 @@
 require_once '../PDO/Connection.php';
 require_once 'Status.php';
 require_once 'Norm.php';
+require_once 'Interests.php';
 
 class Category {
 
@@ -119,7 +120,7 @@ class Category {
         }
     }
 
-    public static function getMembers() {
+    public function getMembers() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE category_id = :id AND status_id = 12");
         $sen->bindParam(":id", $this->id);

@@ -17,32 +17,32 @@ $(document).ready(function () {
             $.ajax({
                 url: "../Controllers/AjaxController.php",
                 type: "post",
-                data: {"hash": hash, "sub": "hash", "id": id},
+                data: {"hash": hash, "sub": "hashtag", "id": id},
+                dataType: "json",
                 success: function (data) {
-                    console.log(data);
                     if (data) {
+                        console.log("nice");
+                        console.log(data);
                         $(".contain_hashtag").append("\n\
-                         <label class='conten_lbl-hash' id='conten_lbl-hash_"+data+"'>\n\
-                            " +hash+ "\n\
+                         <label class='conten_lbl-hash' id='conten_lbl-hash_" + data.id + "'>\n\
+                            " + data.name + "\n\
                             <div class='conten_btn-hashtag'>\n\
-                                <button type='button' class='btn_hashtag' value="+data+">x</button>\n\
+                                <button type='button' class='btn_hashtag' value=" + data.id + ">x</button>\n\
                             </div>\n\
                         </label>");
-                        //$("#cont-hash").append("<input type='text' name='hash-' value=" + hash + " hidden>");
-                        //$("#cont-hash").append("<span>" + hash + "</span>");
                         $("#hashtags").empty();
                     }
-                    $(".btn_hashtag").click(function (){
+                    $(".btn_hashtag").click(function () {
                         let id = $(this).val();
                         console.log(id);
                         $.ajax({
                             url: "../Controllers/AjaxController.php",
                             type: "post",
-                            data: {"id": id , "sub": "deletehash"},
+                            data: {"id": id, "sub": "deletehash"},
                             success: function (data) {
                                 if (data) {
-                                    $("#conten_lbl-hash_"+id).remove();
-                                }else{
+                                    $("#conten_lbl-hash_" + id).remove();
+                                } else {
                                     console.log("algo malo ocurrio");
                                 }
                             },
@@ -50,26 +50,26 @@ $(document).ready(function () {
                                 console.log(data);
                             }
                         });
-
                     });
                 },
                 error: function (data) {
+                    console.log("algo malo paso :c");
                     console.log(data);
                 }
             });
         }
     });
-    $(".btn_hashtag").click(function (){
+    $(".btn_hashtag").click(function () {
         let id = $(this).val();
         console.log(id);
         $.ajax({
             url: "../Controllers/AjaxController.php",
             type: "post",
-            data: {"id": id , "sub": "deletehash"},
+            data: {"id": id, "sub": "deletehash"},
             success: function (data) {
                 if (data) {
-                    $("#conten_lbl-hash_"+id).remove();
-                }else{
+                    $("#conten_lbl-hash_" + id).remove();
+                } else {
                     console.log("algo malo ocurrio");
                 }
             },
@@ -77,7 +77,7 @@ $(document).ready(function () {
                 console.log(data);
             }
         });
-        
+
     });
 });
 

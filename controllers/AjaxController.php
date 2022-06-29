@@ -96,6 +96,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
+        case "hashtag":
+            require_once '../models/Post.php';
+            require_once '../models/Hashtag.php';
+            $idP = isset($_POST["id"]) ? $_POST["id"] : "";
+            $text = isset($_POST["hash"]) ? $_POST["hash"] : "";
+            header("Content-Type: application/json; charset=UTF8");
+            if ($text != "") {
+                $hashtag = Hashtag::toHashTag($text);
+                if ($hashtag != "") {
+                    echo json_encode(Hashtag::findHashtag($text, $idP), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                }else{
+                    echo json_encode($hasht, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                }
+            }
+            break;
         case "search":
             require_once '../models/Profile.php';
             $result = isset($_POST["id"]) ? $_POST["id"] : "";

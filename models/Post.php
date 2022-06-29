@@ -189,7 +189,7 @@ class Post {
 
     public static function getPostsForCategory($id) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE category_id = :id ");
+        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE category_id = :id AND (status_id = 1 OR status_id = 7)  ORDER BY id DESC ");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
             $res = $sen->fetchAll();

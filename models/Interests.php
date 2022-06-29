@@ -13,8 +13,9 @@
  *
  * @author Prybet
  */
-
 require_once 'Profile.php';
+require_once 'Category.php';
+
 class Interests {
 
     var $id;
@@ -36,7 +37,7 @@ class Interests {
             return true;
         }
     }
-    
+
     public function findInterest($action, $interest) {
         $typeInte = self::getIntername($action);
         $conn = new Connection();
@@ -44,18 +45,19 @@ class Interests {
         $sen->bindParam(":prof", $this->me);
         $sen->bindParam(":inte", $interest);
         print_r($sen);
-        if($sen->execute()){
+        if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
                 $res = $sen->fetch();
                 $i = new Interests();
                 $i->id = $res[0];
                 $i->status = Status::getStatu($res[8]);
                 return self::updateInterest($i);
-            }else{
+            } else {
                 return self::setInterest($typeInte, $interest);
             }
         }
     }
+
     public function getIntername($action) {
         switch ($action) {
             case "cate":
@@ -72,7 +74,7 @@ class Interests {
                 return "non";
         }
     }
-    
+
     function updateInterest($i) {
         $conn = new Connection();
         if ($i->status->id == 12) {
@@ -89,8 +91,8 @@ class Interests {
             return true;
         }
     }
-    
-     public static function getMembers($type, $id) {
+
+    public static function getMembers($type, $id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT id, Profile_ID, {$type} FROM interests WHERE {$type} = :id AND status_id = 12");
         $sen->bindParam(":id", $id);
@@ -104,6 +106,15 @@ class Interests {
                 $list[] = $in;
             }
             return $list;
+        }
+    }
+    
+    private function getOnline($type, $id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM interests INNER JOIN profile ON interests.profile_id = profile.id WHERE {$type} = :id  AND profile.status_id = 2");
+        $sen->bindParam(":id", $this->id);
+        if ($sen->execute()) {
+            return $sen->rowCount();
         }
     }
 
