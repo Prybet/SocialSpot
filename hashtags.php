@@ -7,9 +7,6 @@ Made by:
  Prybet
 -->
 <div class="contain_hashtag">
-    <div id="cont-hash">
-
-    </div>
     <?php foreach ($post->hashtags as $hashtag): ?>
     <label class="conten_lbl-hash" id="conten_lbl-hash_<?= $hashtag->id ?>">
         <?= $hashtag->name ?>
