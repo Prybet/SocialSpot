@@ -13,6 +13,7 @@
  *
  * @author Prybet
  */
+require_once '../PDO/Connection.php';
 class Hashtag {
 
     var $id;

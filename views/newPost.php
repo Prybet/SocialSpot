@@ -6,6 +6,7 @@ require_once '../models/Category.php';
 require_once '../models/City.php';
 require_once '../models/Norm.php';
 session_start();
+$ip = Connection::$ip;
 if ($_SESSION["user"]->userType->id == 2) {
     header("location: ../views/index.php");
 }

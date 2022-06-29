@@ -21,9 +21,9 @@ $(document).ready(function () {
                 success: function (data) {
                     console.log(data);
                     if (data) {
-                        $("#cont-hash").append("\n\
-                        <label class='conten_lbl-hash'>\n\
-                            "+hash+"\n\
+                        $(".contain_hashtag").append("\n\
+                         <label class='conten_lbl-hash' id='conten_lbl-hash_"+data+"'>\n\
+                            " +hash+ "\n\
                             <div class='conten_btn-hashtag'>\n\
                                 <button type='button' class='btn_hashtag' value="+data+">x</button>\n\
                             </div>\n\
@@ -32,6 +32,26 @@ $(document).ready(function () {
                         //$("#cont-hash").append("<span>" + hash + "</span>");
                         $("#hashtags").empty();
                     }
+                    $(".btn_hashtag").click(function (){
+                        let id = $(this).val();
+                        console.log(id);
+                        $.ajax({
+                            url: "../Controllers/AjaxController.php",
+                            type: "post",
+                            data: {"id": id , "sub": "deletehash"},
+                            success: function (data) {
+                                if (data) {
+                                    $("#conten_lbl-hash_"+id).remove();
+                                }else{
+                                    console.log("algo malo ocurrio");
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data);
+                            }
+                        });
+
+                    });
                 },
                 error: function (data) {
                     console.log(data);
@@ -47,9 +67,8 @@ $(document).ready(function () {
             type: "post",
             data: {"id": id , "sub": "deletehash"},
             success: function (data) {
-                console.log(data);
                 if (data) {
-                    $(".conten_lbl-hash_"+id).empty;
+                    $("#conten_lbl-hash_"+id).remove();
                 }else{
                     console.log("algo malo ocurrio");
                 }

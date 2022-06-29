@@ -743,5 +743,10 @@ label{
     border-radius: 0.2rem;
     border: 1px solid var(--niga);
 }
+/* Hashtag */
+#cont-hash{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 
