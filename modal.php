@@ -3,7 +3,7 @@
     <div class="contain_mod">
         <div>         
             <div class="contain_btn-profile">
-                <button class="btn btn-gotospot" name="btn-gopost">Ir a la publicacion</button>
+                <button class="btn btn-gotospot" name="btn-gopost"id="btn-modal-gotopost">Ir a la publicacion</button>
             </div>
             <div class="contain_btn-profile contain_btn-follow" id="modal-follow-user">
                 <form action="../controllers/UserController.php" method="post" class="frm-follow">

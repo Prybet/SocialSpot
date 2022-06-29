@@ -57,6 +57,14 @@ $norms = Norm::getAll();
                 });
             }); 
             $("#view").attr("value", "post");
+            document.getElementById("modal-follow-user").outerHTML = "";
+            document.getElementById("modal-followers").outerHTML = "";
+            document.getElementById("modal-editPost").outerHTML = "";
+            document.getElementById("modal-deletePost").outerHTML = "";
+            document.getElementById("modal-delete_user").outerHTML = "";
+            document.getElementById("modal-delete").outerHTML = "";
+            document.getElementById("modal-edit").outerHTML = "";
+            document.getElementById("btn-modal-gotopost").outerHTML = "";
         });
     </script>
 </head>
@@ -141,7 +149,7 @@ $norms = Norm::getAll();
                     <section class="details_cate">
                         <div class="contai">
                             <div class="contain_img">
-                                <img id="catImage" src="../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img_cate" alt="Imagen de Perfil"/>
+                                <img id="catImage" src="../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img_cate" alt="Imagen de Perfil"/>
                             </div>
                             <div>
                                 <h2 id="catName" class="cate_name"><?= $post->category->name ?></h2>

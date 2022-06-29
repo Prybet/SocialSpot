@@ -18,7 +18,7 @@ if ($method == "GET") {
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
     if ($id > 0) {
         $_SESSION["post"] = Post::getPost($id);
-        header("Location: ../views/post.php");
+        header("Location: ../views/post");
     } else {
         header("Location: ../views/index.php");
     }

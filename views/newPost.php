@@ -46,7 +46,7 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                             $("#catDesc").append(data["description"]);
 
                             $("#catImage").empty();
-                            $("#catImage").attr("src", "../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/" + data["imageURL"]);
+                            $("#catImage").attr("src", "../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/" + data["imageURL"]);
 
                             $("#members").empty();
                             $("#members").append(data["members"].length);

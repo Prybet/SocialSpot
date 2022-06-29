@@ -16,8 +16,8 @@ $id = isset($_GET["id"]) ? $_GET["id"] : 1;
 
 $inte = Category::getFullCategoy($id);
 
-$imageCate = isset($inte->imageURL) ? "../../SSpotImages/CategoryImages/CategoryImages/BannerImages/" . $inte->bannerURL : "../img/perfil.png";
-$bannerCate = isset($inte->bannerURL) ? "../../SSpotImages/CategoryImages/CategoryImages/ProfileImages/" . $inte->imageURL : "../img/banner.jpg";
+$imageCate = isset($inte->imageURL) ? "../../SSpotImages/InterestsImages/CategoryImages/BannerImages/" . $inte->bannerURL : "../img/perfil.png";
+$bannerCate = isset($inte->bannerURL) ? "../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/" . $inte->imageURL : "../img/banner.jpg";
 
 $posts = $inte->posts;
 
