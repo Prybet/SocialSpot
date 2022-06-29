@@ -27,14 +27,9 @@ if ($method == "GET") {
     header("Content-Type: application/json; charset=UTF8");
     echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
 } elseif ($method == "PUT") {
-    $action = json_decode($body);
-    
-    if(!is_string($action)){
-        if($action->action != null){
-            $ob = $action;
-            $action = $ob->action;
-        }
-    }
+    $object = json_decode($body);
+
+    $action = $object->action;
 
     switch ($action) {
         case "search":
@@ -59,10 +54,9 @@ if ($method == "GET") {
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
-        case is_numeric($action):
-            $cate = Category::getFullCategoy($action);
+        case "interest":
             header("Content-Type: application/json; charset=UTF8");
-            echo json_encode($cate, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode(isInterest($object->context, $object), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
         default:
             header("Content-Type: application/json; charset=UTF8");
@@ -71,3 +65,15 @@ if ($method == "GET") {
     }
 }
 
+function isInterest($context, $object) {
+    switch ($context) {
+        case"Category":
+            return Category::getFullCategoy($object->id);
+        case "City";
+            break;
+        default:
+            header("Content-Type: application/json; charset=UTF8");
+            echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            break;
+    }
+}
