@@ -13,6 +13,8 @@
  *
  * @author Prybet
  */
+
+require_once 'Profile.php';
 class Interests {
 
     var $id;
@@ -85,6 +87,23 @@ class Interests {
         $sen->bindParam(":status", $status);
         if ($sen->execute()) {
             return true;
+        }
+    }
+    
+     public static function getMembers($type, $id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT id, Profile_ID, {$type} FROM interests WHERE {$type} = :id AND status_id = 12");
+        $sen->bindParam(":id", $id);
+        if ($sen->execute()) {
+            $rs = $sen->fetchAll();
+            $list = array();
+            foreach ($rs as $i) {
+                $in = new Interests();
+                $in->id = $i[0];
+                $in->me = Profile::getProfileForReplies($i[1]);
+                $list[] = $in;
+            }
+            return $list;
         }
     }
 

@@ -108,7 +108,7 @@ class Category {
                 $c->imageURL = $res[3];
                 $c->bannerURL = $res[4];
                 $c->status = Status::getStatu($res[5]);
-                $c->members = $c->getMembers();
+                $c->members = Interests::getMembers("Category_ID", $id);
                 $c->onLine = $c->getOnline();
                 $c->posts = Post::getPostsForCategory($res[0]);
                 $conn = null;
@@ -119,7 +119,7 @@ class Category {
         }
     }
 
-    private function getMembers() {
+    public static function getMembers() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE category_id = :id AND status_id = 12");
         $sen->bindParam(":id", $this->id);
