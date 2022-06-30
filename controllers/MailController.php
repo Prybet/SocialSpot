@@ -36,23 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($recov->setRecovery()) {
             require_once '../mailer/vendor/autoload.php';
 
-            $mail = new PHPMailer(true);
             try {
-                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-                $mail->isSMTP();
-                $mail->Host = "smtp.office365.com";
-                $mail->SMTPAuth = true;
-                $mail->Username = "recovery.socialspot@outlook.com";
-                $mail->Password = "skmaps88";
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
+                $mail = Recovery::fillData($user);
 
-                $mail->setFrom("recovery.socialspot@outlook.com", "RECOVERY SOCIALSPOT");
-                $mail->addAddress($user->email, "CONTACTO" . $user->profile->name);
-                $mail->addCC("contactus.sspot@gmail.com");
-
-                $mail->isHTML(true);
-                $mail->Subject = "Actualizar tu contraseña de SocialSpot";
                 $mail->Body = '<!doctype html> <html ⚡4email data-css-strict> <head>  <meta charset="utf-8"><style amp4email-boilerplate> body { visibility: hidden }  </style> <script async src="https://cdn.ampproject.org/v0.js"></script> <style amp-custom> .es-desk-hidden {
             display: none;
             float: left;
@@ -800,7 +786,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                         <table style="background-color: #ffffff;border-radius: 4px;border-collapse: separate" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff" role="presentation">
                                                             <tr>
                                                                 <td class="es-p35t es-p5b es-p30r es-p30l" align="center">
-                                                                    <h1>Hola ' . $user->profile->name . ' Problemas al Iniciar Sesión?</h1>
+                                                                    <h1>Hola ' . $user->profile->name . ' Problemas al Iniciar Sesion?</h1>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -834,7 +820,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                         <table style="background-color: #ffffff" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff" role="presentation">
                                                             <tr>
                                                                 <td class="es-m-txt-l es-p20t es-p15b es-p30r es-p30l" bgcolor="#ffffff" align="left">
-                                                                    <p>Cambiar tu contraseña es fácil. Solo presiona el botón de abajo y sigue las instrucciones. Estamos ansiosos que participes en la nuestra comunidad.</p>
+                                                                    <p>Cambiar tu password es facil. Solo presiona el boton de abajo y sigue las instrucciones. Estamos ansiosos que participes en la nuestra comunidad.</p>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -850,7 +836,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <td width="540" valign="top" align="center">
                                                         <table width="100%" cellspacing="0" cellpadding="0" role="presentation">
                                                             <tr>
-                                                                <td class="es-p40t es-p40b es-p10r es-p10l" align="center"><span class="es-button-border"><a href=' . $ip . "/SocialSpot/Controllers/RecoveryController.php?token=" . $recov->hash . '" class="es-button" target="_blank">Cambiar Contraseña</a></span></td>
+                                                                <td class="es-p40t es-p40b es-p10r es-p10l" align="center"><span class="es-button-border"><a href=' . $ip . "/SocialSpot/Controllers/RecoveryController.php?token=" . $recov->hash . ' class="es-button" target="_blank">Cambiar Password</a></span></td>
                                                             </tr>
                                                         </table>
                                                     </td>
@@ -878,7 +864,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="es-p20t es-p40b es-p30r es-p30l" align="left"><a target="_blank" href="http://20.226.8.31/SocialSpot/views/singin" style="color: #7c72dc">Ve lo fácil que es crear una</a></td>
+                                                                <td class="es-p20t es-p40b es-p30r es-p30l" align="left"><a target="_blank" href="http://20.226.8.31/SocialSpot/views/singin" style="color: #7c72dc">Ve lo facil que es crear una</a></td>
                                                             </tr>
                                                         </table>
                                                     </td>
@@ -935,7 +921,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="es-p30b es-p30r es-p30l" align="center"><a target="_blank" href="20.226.8.31/SocialSpot/views/index" style="color: #7c72dc">Estamos aquí para hablar</a></td>
+                                                                <td class="es-p30b es-p30r es-p30l" align="center"><a target="_blank" href="20.226.8.31/SocialSpot/views/index" style="color: #7c72dc">Estamos aqui para hablar</a></td>
                                                             </tr>
                                                         </table>
                                                     </td>
@@ -959,7 +945,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                         <table width="100%" cellspacing="0" cellpadding="0" role="presentation">
                                                             <tr>
                                                                 <td align="left" class="es-p25t">
-                                                                    <p>Recibiste este Email porque seleccionaste olvide mi contraseña. Si no fuiste tú,&nbsp; <strong><a class="view" target="_blank" href="20.226.8.31/SocialSpot/views/login">inicia sesión y cambia tu contraseña</a></strong>.</p>
+                                                                    <p>Recibiste este Email porque seleccionaste recuperar password. Si no fuiste tu,&nbsp; <strong><a class="view" target="_blank" href="20.226.8.31/SocialSpot/views/login">inicia sesion y cambia tu password</a></strong>.</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1007,6 +993,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>';
+
                 $mail->send();
                 header("Location: ../views/reply");
             } catch (Exception $ex) {

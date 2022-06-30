@@ -18,12 +18,35 @@ require_once 'Status.php';
 require_once 'User.php';
 require_once 'Profile.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Recovery {
 
     var $id;
     var $hash;
     var $userId;
     var $status;
+
+    public static function fillData($user) {
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = "smtp.office365.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "recovery.socialspot@outlook.com";
+        $mail->Password = "skmaps88";
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        $mail->setFrom("recovery.socialspot@outlook.com", "RECOVERY SocialSpotAPP");
+        $mail->addAddress($user->email, "CONTACTO - " . $user->profile->name);
+        $mail->addCC("contactus.sspot@gmail.com");
+
+        $mail->isHTML(true);
+        $mail->Subject = "Actualizar tu Password de SocialSpot";
+        return $mail;
+    }
 
     public function __construct() {
         $this->id = 0;
@@ -77,7 +100,7 @@ class Recovery {
             }
         }
     }
-    
+
     public function getVerify($tkn) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT id, user_id FROM recovery WHERE hash like :tkn AND status_id = 9");
@@ -98,8 +121,9 @@ class Recovery {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE recovery SET status_id = 10 WHERE user_id = :id");
         $sen->bindParam(":id", $this->userId);
-        if($sen->execute()){
+        if ($sen->execute()) {
             return true;
         }
     }
+
 }
