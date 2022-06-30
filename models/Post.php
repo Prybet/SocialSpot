@@ -158,9 +158,18 @@ class Post {
         return $list;
     }
     
-     public static function getCustomPosts() {
+     public static function getCustomPosts($interests) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 OR status_id = 7 ORDER BY id DESC");
+        $sql = "SELECT * FROM post WHERE (status_id = 1 OR status_id = 7) AND (";
+        foreach ($interests as $i => $in){
+            if($i== 0){
+                $sql = $sql."category_id = ".$in->id;
+            }else{
+              $sql = $sql." OR category_id = ".$in->id; 
+            }   
+        }
+        $sql.")  ORDER BY id DESC";
+        $sen = $conn->mysql->prepare($sql);
         if ($sen->execute()) {
             $posts = $sen->fetchAll();
             $list = array();
