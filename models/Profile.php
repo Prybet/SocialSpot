@@ -20,6 +20,7 @@ require_once 'Status.php';
 require_once 'Post.php';
 require_once 'City.php';
 require_once 'Follow.php';
+require_once 'Interests.php';
 
 class Profile {
     var $id;
@@ -87,6 +88,7 @@ class Profile {
             $p->myPosts = Post::getPostsForProfile($rs[0]);
             $p->followers = Follow::getFollowers($rs[0]);
             $p->follows = Follow::getFollows($rs[0]);
+            $p->interests = Interests::getInterests($rs[0]);
             return $p;            
         }
     }

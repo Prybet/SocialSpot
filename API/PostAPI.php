@@ -85,9 +85,9 @@ if ($method == "POST") {
             break;
         case "report":
             if (Report::setReport($params)) {
-                echo json_encode("yes", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             } else {
-                echo json_encode("no", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
             break;
         case "error":

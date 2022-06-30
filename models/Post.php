@@ -163,12 +163,12 @@ class Post {
         $sql = "SELECT * FROM post WHERE (status_id = 1 OR status_id = 7) AND (";
         foreach ($interests as $i => $in){
             if($i== 0){
-                $sql = $sql."category_id = ".$in->id;
+                $sql = $sql."category_id = ".$in;
             }else{
-              $sql = $sql." OR category_id = ".$in->id; 
+              $sql = $sql." OR category_id = ".$in; 
             }   
         }
-        $sql.")  ORDER BY id DESC";
+        $sql = $sql.")  ORDER BY id DESC";
         $sen = $conn->mysql->prepare($sql);
         if ($sen->execute()) {
             $posts = $sen->fetchAll();

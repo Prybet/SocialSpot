@@ -28,6 +28,30 @@ class Interests {
     var $category;
     var $status;
 
+    public static function getInterests($idP) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE profile_id = :idP");
+        $sen->bindParam(":idP", $idP);
+        if ($sen->execute()) {
+            $res = $sen->fetchAll();
+            $list = array();
+            foreach ($res as $inte) {
+                $i = new Interests();
+                $i->id = $inte[0];
+                $i->profile = $inte[1];
+                $i->spot = $inte[2];
+                $i->hashtag = $inte[3];
+                $i->city = $inte[4];
+                $i->province = $inte[5];
+                $i->region = $inte[6];
+                $i->category = $inte[7];
+                $i->status = Status::getStatu($inte[8]);
+                $list[] = $i;
+            }
+            return $list;
+        }
+    }
+
     public function setInterest($typeInte, $inter) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO interests (profile_id, {$typeInte}, status_id) VALUES (:prof, :inte, 12)");
@@ -108,7 +132,7 @@ class Interests {
             return $list;
         }
     }
-    
+
     private function getOnline($type, $id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM interests INNER JOIN profile ON interests.profile_id = profile.id WHERE {$type} = :id  AND profile.status_id = 2");
