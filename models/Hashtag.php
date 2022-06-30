@@ -110,6 +110,9 @@ class Hashtag {
                 if ($h->postID == $idpost) {
                     return $h;
                 } else {
+                    // Si lo encuentra y el estado es 12 solo lo enevia, no crear un
+                    //Nueevo hashtagPost
+                    //si el estado ees 6 lo cambia a 12 een la db y lo envia con 12 dee eestado
                    return self::setHashtag($h->idT, $idpost);
                 }
             } else {

@@ -145,5 +145,20 @@ class Category {
             return $sen->rowCount();
         }
     }
-
+    
+    
+    public static function getAllNames() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT id, name FROM category WHERE status_id = 1");
+        if ($sen->execute()) {
+            $res = $sen->fetchAll();
+            foreach ($res as $cate) {
+                $c = new Category();
+                $c->id = $cate[0];
+                $c->name = $cate[1];
+                $list[] = $c;
+            }
+            return $list;
+        }
+    }
 }

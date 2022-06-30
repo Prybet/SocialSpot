@@ -9,6 +9,9 @@
  */
 $method = $_SERVER["REQUEST_METHOD"];
 require_once '../models/Category.php';
+require_once '../models/City.php';
+require_once '../models/Province.php';
+require_once '../models/Region.php';
 require_once '../models/Status.php';
 require_once '../models/Image.php';
 require_once '../models/Video.php';
@@ -38,25 +41,18 @@ if ($method == "GET") {
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
-
-        case "last":
-            $list = Post::getAllPosts();
+        case "posts":
             header("Content-Type: application/json; charset=UTF8");
-            echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            break;
-        case "top":
-            $list = Post::getTopPosts();
-            header("Content-Type: application/json; charset=UTF8");
-            echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode(isPosts($object), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
         case "all":
-            $list = Category::getAllCategories();
+            $list = Category::getAllNames();
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
         case "interest":
             header("Content-Type: application/json; charset=UTF8");
-            echo json_encode(isInterest($object->context, $object), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+            echo json_encode(isInterest($object), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
         default:
             header("Content-Type: application/json; charset=UTF8");
@@ -65,12 +61,28 @@ if ($method == "GET") {
     }
 }
 
-function isInterest($context, $object) {
-    switch ($context) {
+function isPosts($object) {
+    switch ($object->context) {
+        case "last":
+            return Post::getAllPosts();
+        case"custom":
+            return Post::getCustomPosts();
+        default:
+            break;
+    }
+}
+
+function isInterest($object) {
+    switch ($object->context) {
         case"Category":
             return Category::getFullCategoy($object->id);
         case "City";
-            break;
+            return City::getFullCity($object->id);
+        case "Province";
+            return Province::getFullCity($object->id);
+        case "Region";
+            return City::getFullCity($object->id);
+
         default:
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
