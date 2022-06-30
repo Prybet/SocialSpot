@@ -165,28 +165,9 @@ $norms = Norm::getAll();
                         </div>         
                     </section> 
                     <div class="contain_spot">
-                        <h2 class="h2_dif">/Dificil</h2>
+                        <h2 class="h2_dif">/Nombre Spot</h2>
                         <div class="contain-map">
                             <!-- FALTA MAPA -->
-                        </div>
-                        <div class="contain_vote">
-                            <div class="contain_vote-tittle">
-                                <label class="who_vote">Vota dificultad</label>
-                            </div>
-                            <div class="contain_voted">
-                                <div class="flex-column">
-                                    <label>Fácil</label>
-                                    <input type="radio" name="dif">
-                                </div>
-                                <div class="flex-column">
-                                    <label>Medio</label>
-                                    <input type="radio"  name="dif">
-                                </div>
-                                <div class="flex-column">
-                                    <label>Difícil</label>
-                                    <input type="radio"  name="dif">
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="container_mode">

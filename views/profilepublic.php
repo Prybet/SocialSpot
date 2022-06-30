@@ -53,6 +53,12 @@ endforeach;
                 $(".ftbanner").css("background-image", "url('<?= $imgBanner ?>')");
                 $(".ftprofile").css("background-image", "url('<?= $imgUser ?>')"); 
                 
+                document.getElementById("modal-delete_user").outerHTML = "";
+                document.getElementById("modal-followers").outerHTML = "";
+                document.getElementById("modal-edit").outerHTML = "";
+                document.getElementById("modal-delete").outerHTML = "";
+                document.getElementById("modal-editPost").outerHTML = "";
+                document.getElementById("modal-deletePost").outerHTML = "";
                 $("#view").attr("value", "profilepublic");
             });
         </script>
