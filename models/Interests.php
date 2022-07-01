@@ -19,7 +19,7 @@ require_once 'Category.php';
 class Interests {
 
     var $id;
-    var $me;
+    var $profile;
     var $spot;
     var $hashtag;
     var $city;
@@ -64,13 +64,12 @@ class Interests {
         }
     }
 
-    public function findInterest($action, $interest) {
-        $typeInte = self::getIntername($action);
+    public function findInterest() {
+        $typeInte = self::getIntername($this->context);
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * from interests WHERE Profile_ID = :prof AND {$typeInte} = :inte");
-        $sen->bindParam(":prof", $this->me);
-        $sen->bindParam(":inte", $interest);
-        print_r($sen);
+        $sen->bindParam(":prof", $this->profile);
+        $sen->bindParam(":inte", $this->typeID);
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
                 $res = $sen->fetch();
@@ -79,22 +78,22 @@ class Interests {
                 $i->status = Status::getStatu($res[8]);
                 return self::updateInterest($i);
             } else {
-                return self::setInterest($typeInte, $interest);
+                return self::setInterest($typeInte, $this->context);
             }
         }
     }
 
-    public function getIntername($action) {
+     public function getIntername($action) {
         switch ($action) {
-            case "cate":
+            case "Category":
                 return 'category_id';
-            case "city":
+            case "City":
                 return 'city_id';
-            case "prov":
+            case "Province":
                 return 'province_id';
-            case "reg":
+            case "Region":
                 return 'region_id';
-            case "spot":
+            case "Spot":
                 return 'spot_id';
             default :
                 return "non";
