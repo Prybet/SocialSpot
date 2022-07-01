@@ -132,18 +132,18 @@
             <div class="contin-edit">
                 <label>Hashtags</label>
                 <div>
-                    <input type="text" id="hashtags"/>
+                    <input type="text" id="hashtags" name="inputHash"/>
                     <button type="button" value="1" name="hash" class="btnAddHash" >Añadir Hashtag</button>
                 </div>
                 </div>
                 <div class="contain-hash">
                     <div id="oldHash" class="conten_oldHash">
                         
-                    </div>
-                    <label class="lbl-hash">Nuevos Hashtag: </label>
-                    <div id="contnew" class="contin-hNew">
+                        <div id="contnew" class="contin-hNew">
                         
+                        </div>
                     </div>
+                    
                 </div>
                 <div class="contain-btnedit">
                     <button type="button" id="cancelEdit">Cancelar</button>

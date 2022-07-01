@@ -19,6 +19,7 @@ class Connection {
     private $password = "root";
     public $mysql = null;
     public static $ip = "http://20.226.8.31";
+    //public static $ip = "http://192.168.0.86";
             
     function __construct() {
         try {

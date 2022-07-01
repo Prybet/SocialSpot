@@ -31,7 +31,7 @@ class Hashtag {
         }
     }
 
-    public static function setHashtag($idH, $idP) {
+    public static function setHashtagPost($idH, $idP) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO hashtagpost VALUES(null, :post, :hash, 1)");
         $sen->bindParam(":post", $idP);
@@ -51,23 +51,23 @@ class Hashtag {
         }
     }
 
-    public static function deleteHashtag($hash) {
+    public static function updateHashtagPost($st, $id) {
         $conn = new Connection();
-        if($hash->status == 6){
-            $status = 1;
-        }
-        if($hash->status == 1){
+        if ($st == 1) {
             $status = 6;
+        }
+        if ($st == 6) {
+            $status = 1;
         }
         $sen = $conn->mysql->prepare("UPDATE hashtagpost SET status_id = :status WHERE id = :id");
         $sen->bindParam(":status", $status);
-        $sen->bindParam(":hash", $hash->id);
+        $sen->bindParam(":id", $id);
         if ($sen->execute()) {
-            return true;
+            return self::getHashPost($id);
         }
     }
 
-    public static function setNewHashtag($text, $idP) {
+    public static function setHashtag($text, $idP) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO hashtag VALUES(null,:name)");
         $sen->bindParam(":name", $text);
@@ -76,7 +76,7 @@ class Hashtag {
             $sen->bindParam(":name", $text);
             if ($sen->execute()) {
                 $rs = $sen->fetch();
-                $h = self::setHashtag($rs[0], $idP);
+                $h = self::setHashtagPost($rs[0], $idP);
                 $h->name = $text;
                 return $h;
             }
@@ -105,7 +105,7 @@ class Hashtag {
 
     public static function findHashtag($text, $idpost) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM hashtag WHERE name = :name");
+        $sen = $conn->mysql->prepare("SELECT * FROM hashtag WHERE name LIKE :name");
         $sen->bindParam(":name", $text);
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
@@ -114,37 +114,55 @@ class Hashtag {
                 $hash->id = $res[0];
                 $hash->name = $res[1];
                 $h = self::findHashtagpost($hash, $idpost);
-                if ($h->postID == $idpost) {
-                    return deleteHashtag($h);
-                } else {
-                    // Si lo encuentra y el estado es 12 solo lo enevia, no crear un
-                    //Nueevo hashtagPost
-                    //si el estado ees 6 lo cambia a 12 een la db y lo envia con 12 dee eestado
-                   return self::setHashtag($h->idT, $idpost);
+                $pstID = $h->postID;
+                $sttus = $h->status;
+                $idH = $h->id;
+                if ($pstID == $idpost) {
+                    if ($sttus == 1) {
+                        return true;
+                    } else {
+                        return self::updateHashtagPost($sttus, $idH);
+                    }
                 }
+                return self::setHashtagPost($hash->id, $idpost);
             } else {
-                return self::setNewHashtag($text, $idpost);
+                return self::setHashtag($text, $idpost);
             }
         }
     }
 
     public static function findHashtagpost($hash, $idpost) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost WHERE Hashtag_ID = :id");
+        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost WHERE Hashtag_ID = :id AND Post_ID = :idpost");
         $sen->bindParam(":id", $hash->id);
+        $sen->bindParam(":idpost", $idpost);
         if ($sen->execute()) {
-            $hashs = $sen->fetchAll();
-            foreach ($hashs as $ha) {
-                if($idpost == $ha[1]){
-                    $h = new Hashtag(); 
-                    $h->id = $ha[0];
-                    $h->postID = $ha[1];
-                    $h->idT = $ha[2];
-                    $h->status = $ha[3];
-                    return $h;
-                }
+            $ha = $sen->fetch();
+            $h = new Hashtag();
+            if ($sen->rowCount() > 0) {
+                $h->id = $ha[0];
+                $h->postID = $ha[1];
+                $h->status = $ha[3];
+                return $h;
+            } else {
+                $h->postID = 0;
+                return $h;
             }
-            //preguntar si el return funciona colocarlo aca
+        }
+    }
+
+    public static function getHashPost($idhp) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost INNER JOIN hashtag ON hashtagpost.hashtag_id = hashtag.id WHERE hashtagpost.id = :id");
+        $sen->bindParam(":id", $idhp);
+        if ($sen->execute()) {
+            $res = $sen->fetch();
+            $h = new Hashtag();
+            $h->id = $res[0];
+            $h->name = $res[5];
+            $h->postID = $res[1];
+            $h->status = $res[3];
+            return $h;
         }
     }
 

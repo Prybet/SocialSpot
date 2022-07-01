@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var ip = "http://20.226.8.31";
+    //var ip = "http://192.168.0.86";
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
@@ -199,11 +200,7 @@ $(document).ready(function () {
                 $("#textDesc").empty();
                 $("#textTitle").append(data.title);
                 $("#textDesc").append(data.body);
-                $(".lbl.hash").css({
-                    "display" : "flex",
-                    "visivility" : "none"
-                });
-                $("#conthashs").empty();
+                //$("#oldHash").empty();
                 for (var i = 0; i < data.hashtags.length; i++) {
                     console.log(data.hashtags[i].id);
                     $("#oldHash").append("\n\
@@ -214,10 +211,31 @@ $(document).ready(function () {
                                    </div>\n\
                                </label>");
                 }
-                
+                $(".contin-hNew").empty();
             }else{
                 console.log("error");
             }
+            $(".btn_hashtag").click(function () {
+                let id = $(this).val();
+                console.log(id);
+                $.ajax({
+                    url: "../Controllers/AjaxController.php",
+                    type: "post",
+                    data: {"id": id, "sub": "hashtag", "func" : "remove"},
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) {
+                            $("#conten_lbl-hash_" + id).remove();
+                        } else {
+                            console.log("algo malo ocurrio");
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+
+            });
         });  
     });
     
@@ -227,7 +245,8 @@ $(document).ready(function () {
             "pointer-events": "none",
             "opacity": "0"
         });
-        $("#conthashs").empty();
+        $("#oldHash").empty();
+        $(".contin-hNew").empty();
     });
     
     //Find User

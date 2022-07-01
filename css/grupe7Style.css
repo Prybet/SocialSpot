@@ -627,12 +627,6 @@ label{
     display: flex;
     flex-wrap: wrap;
 }
-.lbl-hash{
-    display: none;
-    justify-content: center;
-    visibility: hidden;
-}
-
 .contain-btnedit button{
     width: 100%;
     background-color: var(--primary);
@@ -652,6 +646,10 @@ label{
 }
 #cancelEdit{
     margin-bottom: 2rem;
+}
+.contin-hNew{
+    display: flex;
+    flex-wrap: wrap;
 }
 /* MODAL FOLLOWERS */
 .modal-followers{

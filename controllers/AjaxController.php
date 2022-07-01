@@ -65,50 +65,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($post, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
-        case "hash":
-            require_once '../models/Post.php';
-            require_once '../models/Hashtag.php';
-            $idP = isset($_POST["id"]) ? $_POST["id"] : "";
-            $text = isset($_POST["hash"]) ? $_POST["hash"] : "";
-            header("Content-Type: application/json; charset=UTF8");
-            if ($text != "") {
-                $hashtag = Hashtag::toHashTag($text);
-                if ($hashtag != "") {
-                    $idH = Hashtag::setNewHashtag($hashtag);
-                    $Hash = Hashtag::setHashtag($idP, $idH);
-                    echo json_encode($idH, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-                } else {
-                    echo json_encode($hashtag, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-                }
-            } else {
-                echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            }
-
-            break;
-        case "deletehash":
-            $idH = isset($_POST["id"]) ? $_POST["id"] : "";
-            require_once '../models/Hashtag.php';
-            if(Hashtag::deleteHashtag($idH)){
-                header("Content-Type: application/json; charset=UTF8");
-                echo json_encode(true, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            }else{
-                header("Content-Type: application/json; charset=UTF8");
-                echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            }
-            break;
         case "hashtag":
             require_once '../models/Post.php';
-            require_once '../models/Hashtag.php';
-            $idP = isset($_POST["id"]) ? $_POST["id"] : "";
-            $text = isset($_POST["hash"]) ? $_POST["hash"] : "";
+            require_once '../models/Hashtag.php';            
+            $id = isset($_POST["id"]) ? $_POST["id"] : "";
+            $text = isset($_POST["text"]) ? $_POST["text"] : "";
+            $func = isset($_POST["func"]) ? $_POST["func"] : "";
             header("Content-Type: application/json; charset=UTF8");
-            if ($text != "") {
-                $hashtag = Hashtag::toHashTag($text);
-                if ($hashtag != "") {
-                    echo json_encode(Hashtag::findHashtag($text, $idP), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-                }else{
-                    echo json_encode($hasht, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-                }
+            switch ($func){
+                case "add":
+                    if ($text != "") {
+                        $hashtag = Hashtag::toHashTag($text);
+                        if ($hashtag != "") {
+                            echo json_encode(Hashtag::findHashtag($hashtag, $id), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                        }else{
+                            echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                        }
+                    }
+                    break;
+                case "remove":
+                    require_once '../models/Hashtag.php';
+                    $status = 1;
+                    if(Hashtag::updateHashtagPost($status, $id)){
+                        header("Content-Type: application/json; charset=UTF8");
+                        echo json_encode(true, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                    }else{
+                        header("Content-Type: application/json; charset=UTF8");
+                        echo json_encode(false, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                    }
+                    break;
             }
             break;
         case "search":
