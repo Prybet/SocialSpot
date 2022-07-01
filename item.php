@@ -33,9 +33,6 @@ if($post->userProfile->id != $_SESSION["user"]->id){
             <div class="name-cate">
                 <label class="color-lig"><?= $post->date ?></label>
             </div>
-            <div class="name-cate">
-                <label>Dificil</label>
-            </div>
             <?php if($post->status->id === 7):?>
             <div class="name-cate">
                 <label class="lbl_edit-post">(Editado)</label>

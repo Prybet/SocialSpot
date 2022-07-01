@@ -37,7 +37,15 @@ foreach ($inte->members as $i){
         <script type="text/javascript">
             $(document).ready(function () {
                 $(".ftbanner").css("background-image", "url('<?= $imageCate ?>')");
-                $(".ftprofile").css("background-image", "url('<?= $bannerCate ?>')"); 
+                $(".ftprofile").css("background-image", "url('<?= $bannerCate ?>')");
+                
+                document.getElementById("modal-delete_user").outerHTML = "";
+                document.getElementById("modal-followers").outerHTML = "";
+                document.getElementById("modal-edit").outerHTML = "";
+                document.getElementById("modal-delete").outerHTML = "";
+                document.getElementById("modal-editPost").outerHTML = "";
+                document.getElementById("modal-deletePost").outerHTML = "";
+                document.getElementById("modal-follow-user").outerHTML = "";
                 $("#view").attr("value", "interests");
             });
         </script>
