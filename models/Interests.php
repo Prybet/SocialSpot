@@ -40,13 +40,13 @@ class Interests {
                 $i = new Interests();
                 $i->context = Self::getContext($inte);
                 $i->id = $inte[0];
-                $i->profile = $inte[1];
-                $i->spot = $inte[2];
-                $i->hashtag = $inte[3];
-                $i->city = $inte[4];
-                $i->province = $inte[5];
-                $i->region = $inte[6];
-                $i->category = $inte[7];
+                $i->profileID = $inte[1];
+                $i->spotID = $inte[2];
+                $i->hashtagID = $inte[3];
+                $i->cityID = $inte[4];
+                $i->provinceID = $inte[5];
+                $i->regionID = $inte[6];
+                $i->categoryID = $inte[7];
                 $i->status = Status::getStatu($inte[8]);
                 $list[] = $i;
             }
