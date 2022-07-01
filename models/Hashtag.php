@@ -113,9 +113,9 @@ class Hashtag {
                 $hash = new Hashtag();
                 $hash->id = $res[0];
                 $hash->name = $res[1];
-                $h = self::findHashtagpost($hash);
+                $h = self::findHashtagpost($hash, $idpost);
                 if ($h->postID == $idpost) {
-                    return false;
+                    return deleteHashtag($h);
                 } else {
                     // Si lo encuentra y el estado es 12 solo lo enevia, no crear un
                     //Nueevo hashtagPost
@@ -128,23 +128,24 @@ class Hashtag {
         }
     }
 
-    public static function findHashtagpost($hash) {
+    public static function findHashtagpost($hash, $idpost) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM hashtagpost WHERE Hashtag_ID = :id");
         $sen->bindParam(":id", $hash->id);
         if ($sen->execute()) {
             $hashs = $sen->fetchAll();
-            $list = array();
             foreach ($hashs as $ha) {
-                $h = new Hashtag();
-                $h->id = $ha[0];
-                $h->postID = $ha[1];
-                $h->idT = $ha[2];
-                $h->status = $ha[3];
-                $list[] = $h;
+                if($idpost == $ha[1]){
+                    $h = new Hashtag(); 
+                    $h->id = $ha[0];
+                    $h->postID = $ha[1];
+                    $h->idT = $ha[2];
+                    $h->status = $ha[3];
+                    return $h;
+                }
             }
+            //preguntar si el return funciona colocarlo aca
         }
-        return $list;
     }
 
 }
