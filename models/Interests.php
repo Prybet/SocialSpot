@@ -60,7 +60,7 @@ class Interests {
         $sen->bindParam(":prof", $this->profile);
         $sen->bindParam(":inte", $this->typeID);
         if ($sen->execute()) {
-            return true;
+            return self::getInterests($this->profile);
         }
     }
 
@@ -75,6 +75,7 @@ class Interests {
                 $res = $sen->fetch();
                 $i = new Interests();
                 $i->id = $res[0];
+                $i->profile = $this->profile;
                 $i->status = Status::getStatu($res[8]);
                 return self::updateInterest($i);
             } else {
@@ -108,12 +109,11 @@ class Interests {
         if ($i->status->id == 6) {
             $status = 12;
         }
-        print_r($i->status->id);
         $sen = $conn->mysql->prepare("UPDATE interests SET Status_ID = :status WHERE id = :id");
         $sen->bindParam(":id", $i->id);
         $sen->bindParam(":status", $status);
         if ($sen->execute()) {
-            return true;
+            return self::getInterests($i->profile);
         }
     }
 
