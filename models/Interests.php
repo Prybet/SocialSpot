@@ -38,7 +38,7 @@ class Interests {
             $list = array();
             foreach ($res as $inte) {
                 $i = new Interests();
-                $i->context = $i->getContext($inte);
+                $i->context = Self::getContext($inte);
                 $i->id = $inte[0];
                 $i->profile = $inte[1];
                 $i->spot = $inte[2];
@@ -144,32 +144,36 @@ class Interests {
         }
     }
 
-    private function getContext($inter) {
-        $pos = $this->getPos($inter);
+    public static function getContext($inter) {
+        $pos = Self::getPos($inter);
         switch ($pos) {
-            case "2":
+            case "Spot_ID":
                 return "Spot";
-            case "3":
+            case "HashtagPost_ID":
                 return "Hashtag";
-            case "4":
+            case "City_ID":
                 return "City";
-            case "5":
+            case "Province_ID":
                 return "Province";
-            case "6":
+            case "Region_ID":
                 return "Region";
-            case "7":
+            case "Category_ID":
                 return "Category";
             default:
                 break;
         }
     }
 
-    private function getPos($inter) {
-        $inter[0] = 0;
-        $inter[1] = 0;
-        $inter[8] = 0;
-        foreach ($inter as $i => $num) {
-            if ($num > 1) {
+    public static function getPos($inter) {
+        $inter[0] = null;
+        $inter[1] = null;
+        $inter[8] = null;
+        $inter["ID"] = null;
+        $inter["Profile_ID"] = null;
+        $inter["Status_ID"] = null;
+        foreach ($inter as $i => $col) {
+            
+            if ($col != null) {
                 return $i;
             }
         }
