@@ -136,9 +136,13 @@
                     <button type="button" value="1" name="hash" class="btnAddHash" >Añadir Hashtag</button>
                 </div>
                 </div>
-                <div class="contin-edit" id="conthashs">
-                    <div>
-                        <?php include_once "../hashtags.php"; ?>
+                <div class="contain-hash">
+                    <div id="oldHash" class="conten_oldHash">
+                        
+                    </div>
+                    <label class="lbl-hash">Nuevos Hashtag: </label>
+                    <div id="contnew" class="contin-hNew">
+                        
                     </div>
                 </div>
                 <div class="contain-btnedit">
