@@ -31,7 +31,7 @@ class Interests {
 
     public static function getInterests($idP) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE profile_id = :idP");
+        $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE profile_id = :idP AND status_id = 12");
         $sen->bindParam(":idP", $idP);
         if ($sen->execute()) {
             $res = $sen->fetchAll();
@@ -54,20 +54,20 @@ class Interests {
         }
     }
 
-    public function setInterest($typeInte, $inter) {
+    public function setInterest() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO interests (profile_id, {$typeInte}, status_id) VALUES (:prof, :inte, 12)");
-        $sen->bindParam(":prof", $this->me);
-        $sen->bindParam(":inte", $inter);
+        $sen = $conn->mysql->prepare("INSERT INTO interests (profile_id, {$this->context}, status_id) VALUES (:prof, :inte, 12)");
+        $sen->bindParam(":prof", $this->profile);
+        $sen->bindParam(":inte", $this->typeID);
         if ($sen->execute()) {
             return true;
         }
     }
 
     public function findInterest() {
-        $typeInte = self::getIntername($this->context);
+        $this->context = self::getIntername($this->context);
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * from interests WHERE Profile_ID = :prof AND {$typeInte} = :inte");
+        $sen = $conn->mysql->prepare("SELECT * from interests WHERE Profile_ID = :prof AND {$this->context} = :inte");
         $sen->bindParam(":prof", $this->profile);
         $sen->bindParam(":inte", $this->typeID);
         if ($sen->execute()) {
@@ -78,7 +78,7 @@ class Interests {
                 $i->status = Status::getStatu($res[8]);
                 return self::updateInterest($i);
             } else {
-                return self::setInterest($typeInte, $this->context);
+                return $this->setInterest();
             }
         }
     }

@@ -67,6 +67,7 @@ function isPosts($object) {
             return Post::getAllPosts();
         case"custom":
             return Post::getCustomPosts($object->interests);
+
         default:
             break;
     }
@@ -82,7 +83,13 @@ function isInterest($object) {
             return Province::getFullCity($object->id);
         case "Region";
             return City::getFullCity($object->id);
-
+        case "find":
+            $inte = new Interests();
+            $inte->id = $object->interest->id;
+            $inte->typeID = $object->interest->typeID;
+            $inte->profile = $object->interest->profile;
+            $inte->context = $object->interest->context;
+            return $inte->findInterest();
         default:
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode(null, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
