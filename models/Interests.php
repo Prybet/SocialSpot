@@ -27,6 +27,7 @@ class Interests {
     var $region;
     var $category;
     var $status;
+    var $context;
 
     public static function getInterests($idP) {
         $conn = new Connection();
@@ -37,6 +38,7 @@ class Interests {
             $list = array();
             foreach ($res as $inte) {
                 $i = new Interests();
+                $i->context = $i->getContext($inte);
                 $i->id = $inte[0];
                 $i->profile = $inte[1];
                 $i->spot = $inte[2];
@@ -139,6 +141,37 @@ class Interests {
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
             return $sen->rowCount();
+        }
+    }
+
+    private function getContext($inter) {
+        $pos = $this->getPos($inter);
+        switch ($pos) {
+            case "2":
+                return "Spot";
+            case "3":
+                return "Hashtag";
+            case "4":
+                return "City";
+            case "5":
+                return "Province";
+            case "6":
+                return "Region";
+            case "7":
+                return "Category";
+            default:
+                break;
+        }
+    }
+
+    private function getPos($inter) {
+        $inter[0] = 0;
+        $inter[1] = 0;
+        $inter[8] = 0;
+        foreach ($inter as $i => $num) {
+            if ($num > 1) {
+                return $i;
+            }
         }
     }
 
