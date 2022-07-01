@@ -23,7 +23,7 @@ $(document).ready(function () {
                     if (data) {
                         console.log("nice");
                         console.log(data);
-                        $(".contain_hashtag").append("\n\
+                        $(".contin-hNew").append("\n\
                          <label class='conten_lbl-hash' id='conten_lbl-hash_" + data.id + "'>\n\
                             " + data.name + "\n\
                             <div class='conten_btn-hashtag'>\n\

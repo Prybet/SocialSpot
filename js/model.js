@@ -199,6 +199,22 @@ $(document).ready(function () {
                 $("#textDesc").empty();
                 $("#textTitle").append(data.title);
                 $("#textDesc").append(data.body);
+                $(".lbl.hash").css({
+                    "display" : "flex",
+                    "visivility" : "none"
+                });
+                $("#conthashs").empty();
+                for (var i = 0; i < data.hashtags.length; i++) {
+                    console.log(data.hashtags[i].id);
+                    $("#oldHash").append("\n\
+                                <label class='conten_lbl-hash' id='conten_lbl-hash_" + data.hashtags[i].id + "'>\n\
+                                   " + data.hashtags[i].name + "\n\
+                                   <div class='conten_btn-hashtag'>\n\
+                                       <button type='button' class='btn_hashtag' value=" + data.hashtags[i].id + ">x</button>\n\
+                                   </div>\n\
+                               </label>");
+                }
+                
             }else{
                 console.log("error");
             }
@@ -211,6 +227,7 @@ $(document).ready(function () {
             "pointer-events": "none",
             "opacity": "0"
         });
+        $("#conthashs").empty();
     });
     
     //Find User

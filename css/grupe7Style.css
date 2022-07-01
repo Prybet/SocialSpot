@@ -620,6 +620,19 @@ label{
     font-weight: bold;
     border: 1px solid var(--primary);
 }
+.contain-hash{
+    margin-top: 1rem;
+}
+.conten_oldHash, .contin-hNew, conten_oldHash{
+    display: flex;
+    flex-wrap: wrap;
+}
+.lbl-hash{
+    display: none;
+    justify-content: center;
+    visibility: hidden;
+}
+
 .contain-btnedit button{
     width: 100%;
     background-color: var(--primary);
