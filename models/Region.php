@@ -23,7 +23,26 @@ class Region {
     var $description;
     var $country;
     var $status;
-
+    
+    public static function getFullRegion($id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM region WHERE status_id = 1 AND id = :id");
+        $sen->bindParam(":id", $id);
+        if ($sen->execute()) {
+            $reg = $sen->fetch();
+            if ($reg != null) {
+                $r = new Province();
+                $r->id = $reg[0];
+                $r->name = $reg[1];
+                $r->description = $reg[2];
+                $r->posts = Post::getCustomRegion("Region_ID", $reg[0]);
+                $r->region = Region::getRegion($reg[3]);
+                $r->status = Status::getStatu($reg[4]);
+                return $r;
+            }
+        }
+    }
+    
     public static function getRegion($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM region WHERE  id = :id");

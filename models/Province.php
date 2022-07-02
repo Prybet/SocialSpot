@@ -24,6 +24,25 @@ class Province {
     var $region;
     var $status;
 
+    public static function getFullProvince($id) {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM province WHERE status_id = 1 AND id = :id");
+        $sen->bindParam(":id", $id);
+        if ($sen->execute()) {
+            $prov = $sen->fetch();
+            if ($prov != null) {
+                $p = new Province();
+                $p->id = $prov[0];
+                $p->name = $prov[1];
+                $p->description = $prov[2];
+                $p->posts = Post::getCustomProvince("Province_ID", $prov[0]);
+                $p->region = Region::getRegion($prov[3]);
+                $p->status = Status::getStatu($prov[4]);
+                return $p;
+            }
+        }
+    }
+
     public static function getProvince($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM province WHERE  id = :id");

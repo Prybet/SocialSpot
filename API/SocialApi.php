@@ -79,9 +79,9 @@ function isInterest($object) {
         case "City";
             return City::getFullCity($object->id);
         case "Province";
-            return Province::getFullCity($object->id);
+            return Province::getFullProvince($object->id);
         case "Region";
-            return City::getFullCity($object->id);
+            return Region::getFullRegion($object->id);
         case "find":
             $inte = new Interests();
             $inte->id = $object->interest->id;

@@ -26,7 +26,6 @@ class City {
     //Only for Maps
     var $region;
     var $country;
-    
     //Only for Interests
     var $posts;
 
@@ -47,7 +46,7 @@ class City {
             }
         }
     }
-    
+
     public static function getFullCity($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM city WHERE status_id = 1 AND id = :id");
@@ -59,15 +58,13 @@ class City {
                 $c->id = $city[0];
                 $c->name = $city[1];
                 $c->description = $city[2];
-                  $c->posts = Post::getPostsForCity($city[0]);
+                $c->posts = Post::getCustomCity("City_ID",$city[0]);
                 $c->province = Province::getProvince($city[3]);
                 $c->status = Status::getStatu($city[4]);
                 return $c;
             }
         }
     }
-    
-    
 
     public static function getCitiesForProvice($id) {
         $conn = new Connection();

@@ -302,7 +302,7 @@ class Post {
         }
     }
 
-    public static function getCustomRegion($param0, $param1) {
+    public static function getCustomRegion($context, $typeID) {
         $conn = new Connection();
         $sql = "SELECT * FROM post INNER JOIN spot ON post.spot_id = spot.id INNER JOIN city ON spot.city_id = city.id INNER JOIN province ON city.province_id = province.id INNER JOIN region ON province.region_id = region.id WHERE (post.status_id = 1 OR post.status_id = 7) AND ( {$context} = {$typeID}) ORDER BY post.id DESC ";
         $sen = $conn->mysql->prepare($sql);
