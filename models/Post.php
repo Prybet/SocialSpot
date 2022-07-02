@@ -68,7 +68,7 @@ class Post {
         $catID = $this->category->id;
         $sen->bindParam(":cate", $catID);
         $spot = $this->spot->id;
-        if($spot == 0){
+        if ($spot == 0) {
             $spot = null;
         }
         $sen->bindParam(":spot", $spot);
@@ -92,14 +92,14 @@ class Post {
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
             foreach ($this->hashtags as $hash) {
-                if($hash->status == 6){
+                if ($hash->status == 6) {
                     Hashtag::deleteHashtag($hash->id);
-                }elseif($hash->status ===0){
+                } elseif ($hash->status === 0) {
                     $id = Hashtag::setNewHashtag($hash->name);
-                  Hashtag::setHashtag($this->id,$id);
+                    Hashtag::setHashtag($this->id, $id);
                 }
             }
-           return true;
+            return true;
         }
     }
 
@@ -157,18 +157,18 @@ class Post {
         }
         return $list;
     }
-    
-     public static function getCustomPosts($interests) {
+
+    public static function getCustomPosts($interests) {
         $conn = new Connection();
         $sql = "SELECT * FROM post WHERE (status_id = 1 OR status_id = 7) AND (";
-        foreach ($interests as $i => $in){
-            if($i== 0){
-                $sql = $sql."category_id = ".$in;
-            }else{
-              $sql = $sql." OR category_id = ".$in; 
-            }   
+        foreach ($interests as $i => $in) {
+            if ($i == 0) {
+                $sql = $sql . "category_id = " . $in;
+            } else {
+                $sql = $sql . " OR category_id = " . $in;
+            }
         }
-        $sql = $sql.")  ORDER BY id DESC";
+        $sql = $sql . ")  ORDER BY id DESC";
         $sen = $conn->mysql->prepare($sql);
         if ($sen->execute()) {
             $posts = $sen->fetchAll();
@@ -224,31 +224,35 @@ class Post {
         }
     }
 
-
- 
-
-    public  function delete() {
+    public function delete() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE date = :date AND time = :time ");
         $sen->bindParam(":date", $this->date);
         $sen->bindParam(":time", $this->time);
         if ($sen->execute()) {
-            foreach ($this->images as $i){
-                if($i->delete()){
-                    return true;
-                }
+            if ($this->images > 0){
+                return $this->deletePostImages();
+            } else {
+                return "true";
             }
         } else {
-            return false;
+            return "false";
         }
     }
-    
-    public  function deleteThis() {
+
+    public function deletePostImages() {
+        foreach ($this->images as $i) {
+            Image::delete($i);
+        }
+        return "true";
+    }
+
+    public function deleteThis() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE id = :id ");
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
-            foreach ($this->images as $i){
+            foreach ($this->images as $i) {
                 $i->delete();
             }
             return true;
@@ -256,13 +260,13 @@ class Post {
             return false;
         }
     }
+
     public function reload() {
-       return self::getPost($this->id);
+        return self::getPost($this->id);
     }
-    
-    
+
     //For Interests
-    
+
     public static function getPostsForCategory($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE category_id = :id AND (status_id = 1 OR status_id = 7)  ORDER BY id DESC ");
@@ -289,7 +293,7 @@ class Post {
             return $list;
         }
     }
-    
+
     public static function getPostsForCity($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post INNER JOIN spot ON post.spot_id = spot.id WHERE city_id = :id AND (post.status_id = 1 OR post.status_id = 7)  ORDER BY post.id DESC ");
@@ -316,4 +320,5 @@ class Post {
             return $list;
         }
     }
+
 }

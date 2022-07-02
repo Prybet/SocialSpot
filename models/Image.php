@@ -34,7 +34,7 @@ class Image {
 
     public static function getImages($idp) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM image WHERE post_id = :idp ");
+        $sen = $conn->mysql->prepare("SELECT * FROM image WHERE post_id = :idp AND status_id = 1");
         $sen->bindParam(":idp", $idp);
         if ($sen->execute()) {
             $images = $sen->fetchAll();
@@ -51,10 +51,10 @@ class Image {
         }
     }
     
-    public function delete() {
+    public static function delete($image) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE image SET Status_ID = 6  WHERE id = :id");
-        $sen->bindParam(":id", $this->id);
+        $sen->bindParam(":id", $image->id);
         if($sen->execute()){
             return true;
         }
@@ -62,7 +62,7 @@ class Image {
     
     public static function getImagesForSpot($ids) {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM image INNER JOIN post on image.Post_ID = post.ID WHERE post.Spot_ID = :ids ");
+        $sen = $conn->mysql->prepare("SELECT * FROM image INNER JOIN post on image.Post_ID = post.ID WHERE post.Spot_ID = :ids AND image.status_id = 1");
         $sen->bindParam(":ids", $ids);
         if ($sen->execute()) {
             $images = $sen->fetchAll();

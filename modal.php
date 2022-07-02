@@ -166,16 +166,16 @@
                 if($followers != null):
                 foreach ($followers as $fs){ 
                     $profi = $fs->profile?>
-                <div class="contain-foll" data-prof="<?= $profi->id?>">
-                    <?php if($profi->imageURL === ""){
-                      echo "<img src='../img/perfil.png' alt='usuariooo' class='img_noti pointer'>";
-                    }else{
-                        echo "<img src='../../SSpotImages/UserMedia/$profi->username-Folder/ProfileImages/$profi->imageURL' alt='usuario' class='img_noti pointer'>";
-                     } ?>
-                    <div class="noti_follow-inf">
-                        <label class="pointer"><?= $profi->username?></label>
+                    <div class="contain-foll" data-prof="<?= $profi->id?>">
+                        <?php if($profi->imageURL === ""){
+                          echo "<img src='../img/perfil.png' alt='usuariooo' class='img_noti pointer'>";
+                        }else{
+                            echo "<img src='../../SSpotImages/UserMedia/$profi->username-Folder/ProfileImages/$profi->imageURL' alt='usuario' class='img_noti pointer'>";
+                         } ?>
+                        <div class="noti_follow-inf">
+                            <label class="pointer"><?= $profi->username?></label>
+                        </div>
                     </div>
-                </div>
                 <?php }endif; ?>
             </a>
         </div>

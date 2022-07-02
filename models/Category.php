@@ -33,7 +33,7 @@ class Category {
 
     public static function getListAllCategories() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 1");
+        $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 2 ORDER BY id DESC");
         if ($sen->execute()) {
             $res = $sen->fetchAll();
             foreach ($res as $cate) {
@@ -49,7 +49,7 @@ class Category {
 
     public static function getAllCategories() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 1");
+        $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 1 ORDER BY id DESC ");
         if ($sen->execute()) {
             $res = $sen->fetchAll();
             foreach ($res as $cate) {
@@ -149,7 +149,7 @@ class Category {
     
     public static function getAllNames() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT id, name FROM category WHERE status_id = 1");
+        $sen = $conn->mysql->prepare("SELECT id, name FROM category WHERE status_id = 1 ORDER BY id DESC");
         if ($sen->execute()) {
             $res = $sen->fetchAll();
             foreach ($res as $cate) {

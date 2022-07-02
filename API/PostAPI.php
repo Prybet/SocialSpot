@@ -28,6 +28,7 @@ if ($method == "POST") {
             // Insert new Post
             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
                 $post = makePost($params);
+                $post->spot = $params->spot;
                 $id = $post->setPost();
                 if ($id > 0) {
                     $user = new User();
@@ -57,11 +58,12 @@ if ($method == "POST") {
         case -1:
             if (User::verifyPass($params->userProfile->username, $params->userProfile->name)) {
                 $post = makePost($params);
-                if ($post->delete()) {
-                    echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-                } else {
-                    echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+                if ($params->images > 0) {
+                    $post->images = $params->images;
                 }
+                $post->date = $params->date;
+                $post->time = $params->time;
+                echo json_encode($post->delete(), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             }
 
             break;
@@ -84,11 +86,9 @@ if ($method == "POST") {
             }
             break;
         case "report":
-            if (Report::setReport($params)) {
-                echo json_encode("true", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            } else {
-                echo json_encode("false", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
-            }
+
+            echo json_encode(Report::setReport($params), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+
             break;
         case "error":
             echo json_encode("error", JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
@@ -108,6 +108,5 @@ function makePost($params) {
     $post->body = $params->body;
     $post->category = $params->category;
     $post->hashtags = $params->hashtags;
-    $post->spot = $params->spot;
     return $post;
 }
