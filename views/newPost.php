@@ -119,7 +119,7 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                             <div class="top">
                                 <div class="contain_dif">
                                     <select name="spot" class="select">
-                                        <option value="-1">Selecciona Spot(Opcional)</option>
+                                        <option value="0">Selecciona Spot(Opcional)</option>
                                         <?php foreach ($spots as $spot): ?>
                                         <option value="<?= $spot->id ?>"><?= $spot->name ?></option>
                                         <?php endforeach; ?>

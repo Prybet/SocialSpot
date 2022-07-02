@@ -31,7 +31,7 @@ if ($method == "GET") {
         $title = isset($_POST["title"]) ? $_POST["title"] : "";
         $body = isset($_POST["body"]) ? $_POST["body"] : "";
         $check = isset($_POST["check"]) ? $_POST["check"] : "";
-        $idpost = isset($_POST["spot"]) ? $_POST["spot"] : "";
+        $spot = isset($_POST["spot"]) ? $_POST["spot"] : 0;
         $hash = isset($_POST["hashtags"]) ? $_POST["hashtags"] : "";
         if ($cate != "" && $title != "") {
             if($cate != -1){
@@ -43,7 +43,7 @@ if ($method == "GET") {
                 $post->category = new Category();
                 $post->category->id = $cate;
                 $post->spot = new Spot();
-                $post->spot->id = $idpost;
+                $post->spot->id = $spot;
                 //$post->hashtags = $hash;
                 $idp = $post->setPost();
                 if (uploadFiles($idp)) {

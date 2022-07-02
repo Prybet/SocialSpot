@@ -44,12 +44,14 @@ class Post {
     var $replies;
 
     private function insertHashtags($pos) {
-        foreach ($this->hashtags as $hash) {
-            if ($hash->id == 0) {
-                $id = Hashtag::setNewHashtag($hash->name);
-                Hashtag::setHashtag($pos, $id);
-            } else {
-                Hashtag::setHashtag($pos, $hash->id);
+        if ($this->hashtags != null) {
+            foreach ($this->hashtags as $hash) {
+                if ($hash->id == 0) {
+                    $id = Hashtag::setNewHashtag($hash->name);
+                    Hashtag::setHashtag($pos, $id);
+                } else {
+                    Hashtag::setHashtag($pos, $hash->id);
+                }
             }
         }
     }

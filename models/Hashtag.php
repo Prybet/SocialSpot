@@ -166,4 +166,9 @@ class Hashtag {
         }
     }
 
+    public static function makeHashtags($hash) {
+        $list = array();
+        return $list;
+    }
+
 }
