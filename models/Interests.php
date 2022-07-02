@@ -40,6 +40,7 @@ class Interests {
                 $i = new Interests();
                 $i->context = Self::getContext($inte);
                 $i->id = $inte[0];
+                $i->typeID = $inte[$i->getIntername($i->context)];
                 $i->profileID = $inte[1];
                 $i->spotID = $inte[2];
                 $i->hashtagID = $inte[3];
