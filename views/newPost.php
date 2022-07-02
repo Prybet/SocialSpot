@@ -118,9 +118,6 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                             </div>
                             <div class="top">
                                 <div class="contain_dif">
-                                    <select class="select">
-                                        <option>Difultad</option>
-                                    </select>
                                     <select name="spot" class="select">
                                         <option value="-1">Selecciona Spot(Opcional)</option>
                                         <?php foreach ($spots as $spot): ?>
