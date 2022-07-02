@@ -84,20 +84,20 @@ class Interests {
         }
     }
 
-     public function getIntername($action) {
+     public static function getIntername($action) {
         switch ($action) {
             case "Category":
-                return 'category_id';
+                return 'Category_ID';
             case "City":
-                return 'city_id';
+                return 'City_ID';
             case "Province":
-                return 'province_id';
+                return 'Province_ID';
             case "Region":
-                return 'region_id';
+                return 'Region_ID';
             case "Spot":
-                return 'spot_id';
+                return 'Spot_ID';
             default :
-                return "non";
+                return;
         }
     }
 

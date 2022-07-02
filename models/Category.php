@@ -33,7 +33,7 @@ class Category {
 
     public static function getListAllCategories() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 2 ORDER BY id DESC");
+        $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 1 ORDER BY id DESC");
         if ($sen->execute()) {
             $res = $sen->fetchAll();
             foreach ($res as $cate) {

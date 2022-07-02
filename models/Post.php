@@ -159,40 +159,30 @@ class Post {
     }
 
     public static function getCustomPosts($interests) {
-        $conn = new Connection();
-        $sql = "SELECT * FROM post WHERE (status_id = 1 OR status_id = 7) AND (";
-        foreach ($interests as $i => $in) {
-            if ($i == 0) {
-                $sql = $sql . "category_id = " . $in;
-            } else {
-                $sql = $sql . " OR category_id = " . $in;
+        $raw = array();
+        foreach ($interests as $inter) {
+            $l = array();
+            switch ($inter->context) {
+                case "Spot":
+                    $l = self::getCustomCS(Interests::getIntername($inter->context), $inter->typeID);
+                    break;
+                case "Hashtag":
+                    break;
+                case "City":
+                    $l = self::getCustomCity(Interests::getIntername($inter->context), $inter->typeID);
+                    break;
+                case "Province":
+                    $l = self::getCustomProvince(Interests::getIntername($inter->context), $inter->typeID);
+                    break;
+                case "Region":
+                    $l = self::getCustomRegion(Interests::getIntername($inter->context), $inter->typeID);
+                    break;
+                default://Category
+                    $l = self::getCustomCS(Interests::getIntername($inter->context), $inter->typeID);
             }
+            $raw = array_merge($raw, $l);
         }
-        $sql = $sql . ")  ORDER BY id DESC";
-        $sen = $conn->mysql->prepare($sql);
-        if ($sen->execute()) {
-            $posts = $sen->fetchAll();
-            $list = array();
-            foreach ($posts as $post) {
-                $p = new Post();
-                $p->id = $post[0];
-                $p->profID = $post[1];
-                $p->userProfile = Profile::getProfileForMain($post[1]);
-                $p->title = $post[2];
-                $p->body = $post[3];
-                $p->date = $post[4];
-                $p->time = $post[5];
-                $p->category = Category::getCategoy($post[6]);
-                $p->status = Status::getStatu($post[7]);
-                $p->spot = Spot::getSpot($post[8]);
-                $p->images = Image::getImages($post[0]);
-                $p->videos = Video::getVideos($post[0]);
-                $p->likes = Like::getLikes($post[0]);
-                $p->replies = Reply::getRepliesByPostId($post[0]);
-                $list[] = $p;
-            }
-        }
-        return $list;
+        return $raw;
     }
 
     public static function getPostsForProfile($id) {
@@ -230,7 +220,7 @@ class Post {
         $sen->bindParam(":date", $this->date);
         $sen->bindParam(":time", $this->time);
         if ($sen->execute()) {
-            if ($this->images > 0){
+            if ($this->images > 0) {
                 return $this->deletePostImages();
             } else {
                 return "true";
@@ -272,25 +262,7 @@ class Post {
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE category_id = :id AND (status_id = 1 OR status_id = 7)  ORDER BY id DESC ");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
-            $res = $sen->fetchAll();
-            $list = array();
-            foreach ($res as $post) {
-                $p = new Post();
-                $p->id = $post[0];
-                $p->profID = $post[1];
-                $p->userProfile = Profile::getProfileForMain($post[1]);
-                $p->title = $post[2];
-                $p->body = $post[3];
-                $p->date = $post[4];
-                $p->time = $post[5];
-                $p->category = Category::getCategoy($post[6]);
-                $p->status = Status::getStatu($post[7]);
-                $p->images = Image::getImages($post[0]);
-                $p->likes = Like::getLikes($post[0]);
-                $p->replies = Reply::getRepliesByPostId($post[0]);
-                $list[] = $p;
-            }
-            return $list;
+            return self::fetchPosts($sen);
         }
     }
 
@@ -299,26 +271,68 @@ class Post {
         $sen = $conn->mysql->prepare("SELECT * FROM post INNER JOIN spot ON post.spot_id = spot.id WHERE city_id = :id AND (post.status_id = 1 OR post.status_id = 7)  ORDER BY post.id DESC ");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
-            $res = $sen->fetchAll();
-            $list = array();
-            foreach ($res as $post) {
-                $p = new Post();
-                $p->id = $post[0];
-                $p->profID = $post[1];
-                $p->userProfile = Profile::getProfileForMain($post[1]);
-                $p->title = $post[2];
-                $p->body = $post[3];
-                $p->date = $post[4];
-                $p->time = $post[5];
-                $p->category = Category::getCategoy($post[6]);
-                $p->status = Status::getStatu($post[7]);
-                $p->images = Image::getImages($post[0]);
-                $p->likes = Like::getLikes($post[0]);
-                $p->replies = Reply::getRepliesByPostId($post[0]);
-                $list[] = $p;
-            }
-            return $list;
+            return self::fetchPosts($sen);
         }
+    }
+
+    public static function getCustomCS($context, $typeID) {
+        $conn = new Connection();
+        $sql = "SELECT * FROM post WHERE (post.status_id = 1 OR post.status_id = 7) AND ( {$context} = {$typeID}) ORDER BY post.id DESC ";
+        $sen = $conn->mysql->prepare($sql);
+        if ($sen->execute()) {
+            return self::fetchPosts($sen);
+        }
+    }
+
+    public static function getCustomCity($context, $typeID) {
+        $conn = new Connection();
+        $sql = "SELECT * FROM post INNER JOIN spot ON post.spot_id = spot.id WHERE (post.status_id = 1 OR post.status_id = 7) AND ( {$context} = {$typeID}) ORDER BY post.id DESC ";
+        $sen = $conn->mysql->prepare($sql);
+        if ($sen->execute()) {
+            return self::fetchPosts($sen);
+        }
+    }
+
+    public static function getCustomProvince($context, $typeID) {
+        $conn = new Connection();
+        $sql = "SELECT * FROM post INNER JOIN spot ON post.spot_id = spot.id INNER JOIN city ON spot.city_id = city.id INNER JOIN province ON city.province_id = province.id WHERE (post.status_id = 1 OR post.status_id = 7) AND ( {$context} = {$typeID}) ORDER BY post.id DESC ";
+        $sen = $conn->mysql->prepare($sql);
+        if ($sen->execute()) {
+            return self::fetchPosts($sen);
+        }
+    }
+
+    public static function getCustomRegion($param0, $param1) {
+        $conn = new Connection();
+        $sql = "SELECT * FROM post INNER JOIN spot ON post.spot_id = spot.id INNER JOIN city ON spot.city_id = city.id INNER JOIN province ON city.province_id = province.id INNER JOIN region ON province.region_id = region.id WHERE (post.status_id = 1 OR post.status_id = 7) AND ( {$context} = {$typeID}) ORDER BY post.id DESC ";
+        $sen = $conn->mysql->prepare($sql);
+        if ($sen->execute()) {
+            return self::fetchPosts($sen);
+        }
+    }
+
+    public static function fetchPosts($sen) {
+        $posts = $sen->fetchAll();
+        $list = array();
+        foreach ($posts as $post) {
+            $p = new Post();
+            $p->id = $post[0];
+            $p->profID = $post[1];
+            $p->userProfile = Profile::getProfileForMain($post[1]);
+            $p->title = $post[2];
+            $p->body = $post[3];
+            $p->date = $post[4];
+            $p->time = $post[5];
+            $p->category = Category::getCategoy($post[6]);
+            $p->status = Status::getStatu($post[7]);
+            $p->spot = Spot::getSpot($post[8]);
+            $p->images = Image::getImages($post[0]);
+            $p->videos = Video::getVideos($post[0]);
+            $p->likes = Like::getLikes($post[0]);
+            $p->replies = Reply::getRepliesByPostId($post[0]);
+            $list[] = $p;
+        }
+        return $list;
     }
 
 }
