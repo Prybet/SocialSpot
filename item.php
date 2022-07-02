@@ -15,7 +15,7 @@ if($post->userProfile->id != $_SESSION["user"]->id){
 <div class="contain_post" id="<?= $post->id ?>"> <!-- data-val="<?= $post->id ?> -->
     <div class="contain_post-top">
         <div class="container_p">
-            <a href="<?= $ip ?>/SocialSpot/views/interests.php?id=<?=$post->category->id?>" class="container_p conta-p">
+            <a href="<?= $ip ?>/SocialSpot/views/interests.php?id=<?=$post->category->id?>" class="container_p conta-p cate_<?= $post->id ?>" data-cate="<?=$post->category->id?>">
                 <img src="../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
                 <div class="name-prim">
                     <span class="color-lig"><?= $post->category->name ?></span>

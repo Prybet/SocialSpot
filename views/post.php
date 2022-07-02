@@ -76,6 +76,7 @@ $norms = Norm::getAll();
         <div class="container_post">
             <div class="contain_post-grid">
                 <div class="contain_post-general">
+                    //investigar como cambiar la clase del container_post
                     <?php include '../item.php'; ?>
                     <div>
                         <?php include_once "../hashtags.php"; ?>

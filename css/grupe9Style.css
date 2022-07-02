@@ -45,6 +45,7 @@ header {
     background-position: center center;
     box-shadow: 0px 0px 30px var(--darker);
     background-color: var(--black);
+    background-size: cover;
 }
 
 .ftprofile {
@@ -264,13 +265,13 @@ header {
     width: 75rem;
     background-color: var(--darker);
     margin: 2rem 0;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     padding: 1.5rem 0;
     border: 2px solid var(--darker);
     overflow: hidden;
 }
 .contain_post:hover{
-    border: 2px solid var(--white);
+    border: 2px solid var(--primary);
 }
 .container_p{
     display: flex;

@@ -23,7 +23,6 @@ $posts = $inte->posts;
 
 $pos = 0;
 foreach ($inte->members as $i){
-    print_r($i->me);
     if($i->me->id == $_SESSION["user"]->profile->id){
         $pos = 1;
     }
@@ -32,7 +31,7 @@ foreach ($inte->members as $i){
 <html>
     <head>
         <?php include_once '../header.php'; ?>
-        <title>Categoria</title>
+        <title>Intereses</title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/model.js"></script>
         <script type="text/javascript">
@@ -81,19 +80,19 @@ foreach ($inte->members as $i){
             </div> 
             <div class="follow">
                 <div class="contain-cont-prym">
-                    <label class="cont pointer"><?= isset($inte->posts) ? count($inte->posts): 0 ?></label>
+                    <label class="cont"><?= isset($inte->posts) ? count($inte->posts): 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
                 <div class="contain-contt">
                     <label class="cont pointer"><?= isset($inte->members) ? count($inte->members): 0 ?></label>
-                    <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray pointer">Miembros</label>
+                    <label class="lbl-ligthgray">-</label>
+                    <label class="lbl-ligthgray">Miembros</label>
                 </div>
                 <div class="contain-contt">
-                    <label class="cont pointer">?</label>
-                    <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray pointer">Online</label>
+                    <label class="cont">?</label>
+                    <label class="lbl-ligthgray">-</label>
+                    <label class="lbl-ligthgray">Online</label>
                 </div>
             </div>
         </div>

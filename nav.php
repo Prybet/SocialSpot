@@ -16,10 +16,10 @@
     </div>
 
     <div class="contain_search flex">
-        <form class="no-margin flex" id="frm">
+        <form action="../controllers/InterestController.php" method="post" class="no-margin flex" id="frm">
             <div class="conta" id="contain_search">
                 <input type="text" id="search" name="nomUser" class="input_search no-margin" placeholder="Buscar" />
-                <button class="btn_find">
+                <button type="submit" name="submit" value="search" class="btn_find">
                     <img src="../img/find.png" class="img_search size-img no-margin pointer" />
                 </button>
                 <scroll-container class="ocultar" id="scroll-find" data-user="<?= $user->id ?>">

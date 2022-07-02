@@ -17,6 +17,9 @@
                     <?php endif;?>
                 </form>
             </div>
+            <div class="contain_btn-profile contain_btn-report" id="modal-category">
+                <button class="btn" id="btn_category" value="" name="btnCate">Ver Categoría</button> 
+            </div>
             <div class="contain_btn-profile contain_btn-report" id="modal-report-user">
                 <button class="btn" id="btn_report">Reportar</button> 
             </div>

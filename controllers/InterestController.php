@@ -25,14 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }else{
             echo 'fail';
         }
-    } elseif($POST["submit"] == "province"){
-    
+    } elseif($POST["submit"] == "search"){
+        header("Location: ../views/search");
     } elseif($POST["submit"] == "city"){
         
     } elseif($POST["submit"] == "region"){
         
     }elseif ($POST["submit"] == "hashtag") {
         
+    }elseif($POST["submit"] == "province"){
+        header("Location: ../views/search.php");
     }
 } else {
     header("Location: ../views/index");

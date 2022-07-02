@@ -40,13 +40,10 @@ html {
 .contain_post{
     width: 75rem;
     background-color: var(--darker);
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     padding: 1.5rem 0;
     border: 2px solid var(--darker);
     overflow: hidden;
-}
-.contain_post:hover{
-    border: 2px solid var(--white);
 }
 .container_p{
     display: flex;
