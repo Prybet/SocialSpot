@@ -31,6 +31,8 @@ if ($method == "GET") {
         $title = isset($_POST["title"]) ? $_POST["title"] : "";
         $body = isset($_POST["body"]) ? $_POST["body"] : "";
         $check = isset($_POST["check"]) ? $_POST["check"] : "";
+        $idpost = isset($_POST["spot"]) ? $_POST["spot"] : "";
+        $hash = isset($_POST["hashtags"]) ? $_POST["hashtags"] : "";
         if ($cate != "" && $title != "") {
             if($cate != -1){
                 $user = $_SESSION["user"];
@@ -40,6 +42,9 @@ if ($method == "GET") {
                 $post->body = $body;
                 $post->category = new Category();
                 $post->category->id = $cate;
+                $post->spot = new Spot();
+                $post->spot->id = $idpost;
+                //$post->hashtags = $hash;
                 $idp = $post->setPost();
                 if (uploadFiles($idp)) {
                     $_SESSION["post"] = Post::getPost($idp);

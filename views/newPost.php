@@ -3,6 +3,7 @@
 require_once '../models/User.php';
 require_once '../models/UserType.php';
 require_once '../models/Category.php';
+require_once '../models/Spot.php';
 require_once '../models/City.php';
 require_once '../models/Norm.php';
 session_start();
@@ -12,6 +13,7 @@ if ($_SESSION["user"]->userType->id == 2) {
 }
 $style = "grupe5Style.css";
 $categories = Category::getListAllCategories();
+$spots = Spot::getAll();
 $norms = Norm::getAll();
 $count = 1;
 $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
@@ -107,11 +109,11 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                                 <textarea placeholder="Texto(opcional)" class="textarea" name="body"></textarea>
                             </div>
                             <div class="top">
-                                <div class="contain_lbl-hash" name="hashtags">
+                                <div class="contain_lbl-hash">
                                     <label class="lbl-hash">Hashtags separado por coma","</label>
                                 </div>
                                 <div>
-                                    <input type="text" class="input_hash" placeholder="#vidaExtrema, #skate..."/>
+                                    <input type="text" class="input_hash" placeholder="#vidaExtrema, #skate..." name="hashtags"/>
                                 </div>
                             </div>
                             <div class="top">
@@ -119,8 +121,11 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                                     <select class="select">
                                         <option>Difultad</option>
                                     </select>
-                                    <select class="select">
-                                        <option>Spots</option>
+                                    <select name="spot" class="select">
+                                        <option value="-1">Selecciona Spot(Opcional)</option>
+                                        <?php foreach ($spots as $spot): ?>
+                                        <option value="<?= $spot->id ?>"><?= $spot->name ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>

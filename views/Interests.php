@@ -23,7 +23,8 @@ $posts = $inte->posts;
 
 $pos = 0;
 foreach ($inte->members as $i){
-    if($i->me == $_SESSION["user"]->id){
+    print_r($i->me);
+    if($i->me->id == $_SESSION["user"]->profile->id){
         $pos = 1;
     }
 }
@@ -84,12 +85,12 @@ foreach ($inte->members as $i){
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
-                <div class="contain-cont">
+                <div class="contain-contt">
                     <label class="cont pointer"><?= isset($inte->members) ? count($inte->members): 0 ?></label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray pointer">Miembros</label>
                 </div>
-                <div class="contain-cont">
+                <div class="contain-contt">
                     <label class="cont pointer">?</label>
                     <label class="lbl-ligthgray pointer">-</label>
                     <label class="lbl-ligthgray pointer">Online</label>

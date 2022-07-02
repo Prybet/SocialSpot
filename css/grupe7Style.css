@@ -725,13 +725,18 @@ label{
     cursor: pointer;
     right: 0;
     margin-right: -15rem;
-    margin-top: -25rem;
+    margin-top: -15rem;
 }
 .btn_exit-followers:hover{
     background-color: var(--darker);
     color: var(--primary);
 }
-
+.viewFollow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+}
 /* HASHTAG */
 .contain_hashtag{
     display: flex;
