@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var ip = "http://20.226.8.31";
-    //var ip = "http://192.168.0.86";
+    //var ip = "http://192.168.56.1";
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
@@ -19,8 +19,11 @@ $(document).ready(function () {
         $("button[name=btn-gopost]").val(id);
         $("button[name=showEdit]").val(id);
         $("button[name=showDelete]").val(id);
+        $("button[name=btnCate]").val(id);
         
-        
+        let idCate = $(".cate_" + id).attr("data-cate");
+        $("button[name=btnCate]").val(idCate);
+        console.log(idCate);
         $(".modal").css({
             "pointer-events": "auto",
             "opacity": "1"
@@ -412,4 +415,10 @@ $(document).ready(function () {
                 break;
         }
     }
+    
+    //Btn Modal Category
+    $("#btn_category").click(function (){
+        let id = $(this).val();
+        window.location.href = ip +"/SocialSpot/views/interests?id=" + id;
+    });
 });
