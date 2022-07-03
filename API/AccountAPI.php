@@ -12,6 +12,7 @@
 require_once '../PDO/Connection.php';
 require_once '../models/User.php';
 require_once '../models/Profile.php';
+require_once '../models/Follow.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "PUT") {
 
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $body = file_get_contents('php://input');
     $params = json_decode($body);
     $user = new User();
-    
+
     switch ($params->action) {
         case"user":
             header("Content-Type: application/json; charset=UTF8");
@@ -54,10 +55,22 @@ function isUser($params) {
         case "singIn":
             return singIn($params->user);
         case "follow":
-
+            return follow($params);
             break;
         default:
             break;
+    }
+}
+
+function follow($params) {
+    $follow = new Follow();
+    if (User::verifyPass($params->var1, $params->var2)) {
+        $follow->id = $params->follow->id;
+        $follow->profile = $params->follow->profile;
+        $follow->me = $params->follow->me;
+        if ($follow->findFollow($follow)) {
+            return Follow::getFollowers($follow->profile);
+        }
     }
 }
 
@@ -88,9 +101,6 @@ function edit($params) {
         }
     }
 }
-
-
-
 
 function singIn($params) {
     $user = new User();
