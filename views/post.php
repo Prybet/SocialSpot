@@ -14,7 +14,7 @@ $style = "grupe3Style.css";
 $user = $_SESSION["user"];
 $post = $_SESSION["post"]->reload();
 $category = $post->category;
-$norms = Norm::getAll();    
+$norms = Norm::getAll();  
 ?>
 <html>
 <head>
@@ -57,6 +57,7 @@ $norms = Norm::getAll();
                 });
             }); 
             $("#view").attr("value", "post");
+            $(".contain_post").attr("data-val", "p");
             document.getElementById("modal-follow-user").outerHTML = "";
             document.getElementById("modal-followers").outerHTML = "";
             document.getElementById("modal-editPost").outerHTML = "";
@@ -65,7 +66,10 @@ $norms = Norm::getAll();
             document.getElementById("modal-delete").outerHTML = "";
             document.getElementById("modal-edit").outerHTML = "";
             document.getElementById("btn-modal-gotopost").outerHTML = "";
+            
+            
         });
+        
     </script>
 </head>
 <body>
@@ -76,7 +80,6 @@ $norms = Norm::getAll();
         <div class="container_post">
             <div class="contain_post-grid">
                 <div class="contain_post-general">
-                    //investigar como cambiar la clase del container_post
                     <?php include '../item.php'; ?>
                     <div>
                         <?php include_once "../hashtags.php"; ?>

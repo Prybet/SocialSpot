@@ -4,10 +4,13 @@ $(document).ready(function () {
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
-        if ($("#id_" + id).is(":focus") || $(".cont-left").is(":focus") || $(".cont-right").is(":focus") || $(".heartNotLike").is(":focus") || $(".heartLike").is(":focus")) {
-            console.log($("#id_" + id));
-        } else {
-            window.location.href = ip +"/SocialSpot/views/post?id=" + id;
+        let veri = $(this).attr("data-val");
+        if(veri !== "p"){
+            if ($("#id_" + id).is(":focus") || $(".cont-left").is(":focus") || $(".cont-right").is(":focus") || $(".heartNotLike").is(":focus") || $(".heartLike").is(":focus")) {
+                
+            } else {
+                window.location.href = ip +"/SocialSpot/views/post?id=" + id;
+            }
         }
     }); 
     
@@ -20,10 +23,9 @@ $(document).ready(function () {
         $("button[name=showEdit]").val(id);
         $("button[name=showDelete]").val(id);
         $("button[name=btnCate]").val(id);
-        
         let idCate = $(".cate_" + id).attr("data-cate");
         $("button[name=btnCate]").val(idCate);
-        console.log(idCate);
+        
         $(".modal").css({
             "pointer-events": "auto",
             "opacity": "1"

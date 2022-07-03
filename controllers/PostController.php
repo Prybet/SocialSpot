@@ -11,6 +11,7 @@ require_once '../models/User.php';
 require_once '../models/Post.php';
 require_once '../models/Image.php';
 require_once '../models/Report.php';
+require_once '../models/Hashtag.php';
 session_start();
 $method = $_SERVER["REQUEST_METHOD"];
 if ($method == "GET") {
@@ -44,7 +45,7 @@ if ($method == "GET") {
                 $post->category->id = $cate;
                 $post->spot = new Spot();
                 $post->spot->id = $spot;
-                //$post->hashtags = $hash;
+                $post->hashtags = Hashtag::makeHashtags($hash);
                 $idp = $post->setPost();
                 if (uploadFiles($idp)) {
                     $_SESSION["post"] = Post::getPost($idp);

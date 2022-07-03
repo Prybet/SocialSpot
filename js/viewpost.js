@@ -36,7 +36,6 @@ $(document).ready(function () {
                     }
                     $(".btn_hashtag").click(function () {
                         let id = $(this).val();
-                        console.log(id);
                         $.ajax({
                             url: "../Controllers/AjaxController.php",
                             type: "post",

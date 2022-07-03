@@ -46,12 +46,7 @@ class Post {
     private function insertHashtags($pos) {
         if ($this->hashtags != null) {
             foreach ($this->hashtags as $hash) {
-                if ($hash->id == 0) {
-                    $id = Hashtag::setNewHashtag($hash->name);
-                    Hashtag::setHashtag($pos, $id);
-                } else {
-                    Hashtag::setHashtag($pos, $hash->id);
-                }
+                Hashtag::findHashtag($hash, $pos);
             }
         }
     }
@@ -125,6 +120,7 @@ class Post {
             $p->spot = Spot::getSpot($res[8]);
             $p->hashtags = Hashtag::getHashTags($res[0]);
             $p->images = Image::getImages($res[0]);
+            $p->videos = Video::getVideos($res[0]);
             $p->likes = Like::getLikes($res[0]);
             $p->replies = Reply::getRepliesByPostId($res[0]);
         }
@@ -244,9 +240,7 @@ class Post {
         $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE id = :id ");
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
-            foreach ($this->images as $i) {
-                $i->delete();
-            }
+            $this->deletePostImages();
             return true;
         } else {
             return false;

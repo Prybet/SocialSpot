@@ -153,6 +153,9 @@ header {
 .contain-contt{
     margin-left: 2rem;
 }
+.contain-cont-prym{
+    margin-right: 3rem;
+}
 /* POST  */
 .contain_main{
     display: flex;
@@ -231,7 +234,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1.5rem;
     background-color: var(--darker);
     border-radius: 0.5rem;
     width: 100%;
