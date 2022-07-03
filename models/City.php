@@ -145,5 +145,28 @@ class City {
         $c->status = Status::getStatu($city[4]);
         return $c;
     }
+    
+    public static function getCityForSearch($nom){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM city WHERE name LIKE :name AND Status_ID = 1");
+        $param = $nom."%";
+        $sen->bindParam(":name", $param);
+        if($sen->execute()){
+            $res = $sen->fetchAll();
+            $list = array(); 
+            foreach ($res as $city){
+                $c = new City();
+                $c->id = $city[0];
+                $c->name = $city[1];
+                $c->description = $city[2];
+                $c->imageURL = $city[3];
+                $c->province = Province::getProvince($city[5]);
+                $c->followers = Interests::getMembers("City_ID", $city[0]);
+                $c->status = Status::getStatu($city[6]);
+                $list[] = $c;
+            }    
+            return $list; 
+        }
+    }
 
 }

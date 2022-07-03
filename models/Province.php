@@ -122,5 +122,28 @@ class Province {
         $p->status = Status::getStatu($res[4]);
         return $p;
     }
+    
+    public static function getProvinceForSearch($nom){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM province WHERE name LIKE :name AND Status_ID = 1");
+        $param = $nom."%";
+        $sen->bindParam(":name", $param);
+        if($sen->execute()){
+            $res = $sen->fetchAll();
+            $list = array(); 
+            foreach ($res as $prov){
+                $p = new Province();
+                $p->id = $prov[0];
+                $p->name = $prov[1];
+                $p->description = $prov[2];
+                $p->imageURL = $prov[3];
+                $p->region = Region::getRegion($prov[5]);
+                $p->followers = Interests::getMembers("Province_ID", $prov[0]);
+                $p->status = Status::getStatu($prov[6]);
+                $list[] = $p;
+            }    
+            return $list; 
+        }
+    }
 
 }

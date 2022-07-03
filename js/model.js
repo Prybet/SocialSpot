@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    var ip = "http://20.226.8.31";
-    //var ip = "http://192.168.56.1";
+    var ip = "http://20.206.68.64";
+    //var ip = "http://192.168.1.149";
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
@@ -263,39 +263,164 @@ $(document).ready(function () {
             data: {"id": r, "sub": "search"},
             success: function (data) {
                 if (data) {
-                    console.log(data);
                     $("#scroll-find").empty();
                     if(data !== null){
                         if(data.length > 0){
+                            console.log(data);
                             for (var i=0; i < data.length; i++){
-                                if(data[i].imageURL === ""){
-                                    data[i].imageURL = "../img/perfil.png";
-                                }else{
-                                    data[i].imageURL = "../../SSpotImages/UserMedia/" + data[i].username + "-Folder/ProfileImages/" + data[i].imageURL;
+                                switch (data[i].context){
+                                    case "Profile":
+                                        if(data[i].imageURL === ""){
+                                            data[i].imageURL = "../img/perfil.png";
+                                        }else{
+                                            data[i].imageURL = "../../SSpotImages/UserMedia/" + data[i].username + "-Folder/ProfileImages/" + data[i].imageURL;
+                                        }
+
+                                        if(data[i].check !== 0){
+                                            data[i].name = "/" + data[i].name;
+                                        }else{
+                                            data[i].name = "";
+                                        }
+
+                                        var stringFollow = "";
+                                        if(data[i].followers.length === 1){
+                                            stringFollow = "Seguidor";
+
+                                        }else{
+                                            stringFollow = "Seguidores";
+                                        }
+                                        $("#scroll-find").append("\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <div class='noti_follow-inf'>\n\
+                                                <label class='pointer'>"+data[i].username+" <span class='spn_date'>"+data[i].name+"</span><span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
+                                            </div>\n\
+                                            <div>\n\
+                                                <div class='typeSearch'>\n\
+                                                    <span class='spn_date'>Usuario</span>\n\
+                                                </div>\n\
+                                            </div>\n\
+                                            </a>\n\
+                                        ");
+                                        break;
+                                    case "Category":
+                                        if(data[i].imageURL === ""){
+                                            data[i].imageURL = "../img/perfil.png";
+                                        }else{
+                                            data[i].imageURL = "../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/"+ data[i].imageURL;
+                                        }
+
+                                        var stringFollow = "";
+                                        if(data[i].followers.length === 1){
+                                            stringFollow = "Miembro";
+
+                                        }else{
+                                            stringFollow = "Miembros";
+                                        }
+                                        $("#scroll-find").append("\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <div class='noti_follow-inf'>\n\
+                                                <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
+                                            </div>\n\
+                                            <div>\n\
+                                                <div class='typeSearch'>\n\
+                                                    <span class='spn_date'>Categoría</span>\n\
+                                                </div>\n\
+                                            </div>\n\
+                                            </a>\n\
+                                        ");
+                                        break;
+                                    case "Region":
+                                        if(data[i].imageURL === ""){
+                                            data[i].imageURL = "../img/perfil.png";
+                                        }else{
+                                            data[i].imageURL = "../../SSpotImages/InterestsImages/RegionImages/ProfileImages/"+ data[i].imageURL;
+                                        }
+
+                                        var stringFollow = "";
+                                        if(data[i].followers.length === 1){
+                                            stringFollow = "Miembro";
+
+                                        }else{
+                                            stringFollow = "Miembros";
+                                        }
+                                        $("#scroll-find").append("\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <div class='noti_follow-inf'>\n\
+                                                <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
+                                            </div>\n\
+                                            <div>\n\
+                                                <div class='typeSearch'>\n\
+                                                    <span class='spn_date'>Region</span>\n\
+                                                </div>\n\
+                                            </div>\n\
+                                            </a>\n\
+                                        ");
+                                        break;
+                                    case "Province":
+                                        if(data[i].imageURL === ""){
+                                            data[i].imageURL = "../img/perfil.png";
+                                        }else{
+                                            data[i].imageURL = "../../SSpotImages/InterestsImages/ProvinceImages/ProfileImages/"+ data[i].imageURL;
+                                        }
+
+                                        var stringFollow = "";
+                                        if(data[i].followers.length === 1){
+                                            stringFollow = "Miembro";
+
+                                        }else{
+                                            stringFollow = "Miembros";
+                                        }
+                                        $("#scroll-find").append("\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <div class='noti_follow-inf'>\n\
+                                                <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
+                                            </div>\n\
+                                            <div>\n\
+                                                <div class='typeSearch'>\n\
+                                                    <span class='spn_date'>Provincia</span>\n\
+                                                </div>\n\
+                                            </div>\n\
+                                            </a>\n\
+                                        ");
+                                        break;
+                                    case "City":
+                                        if(data[i].imageURL === ""){
+                                            data[i].imageURL = "../img/perfil.png";
+                                        }else{
+                                            data[i].imageURL = "../../SSpotImages/InterestsImages/CityImages/ProfileImages/"+ data[i].imageURL;
+                                        }
+
+                                        var stringFollow = "";
+                                        if(data[i].followers.length === 1){
+                                            stringFollow = "Miembro";
+
+                                        }else{
+                                            stringFollow = "Miembros";
+                                        }
+                                        $("#scroll-find").append("\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <div class='noti_follow-inf'>\n\
+                                                <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
+                                            </div>\n\
+                                            <div>\n\
+                                                <div class='typeSearch'>\n\
+                                                    <span class='spn_date'>Cuidad</span>\n\
+                                                </div>\n\
+                                            </div>\n\
+                                            </a>\n\
+                                        ");
+                                        break;
                                 }
                                 
-                                if(data[i].check !== 0){
-                                    data[i].name = "/" + data[i].name;
-                                }else{
-                                    data[i].name = "";
-                                }
+                            }
                                 
-                                var stringFollow = "";
-                                if(data[i].followers.length === 1){
-                                    stringFollow = "Seguidor";
-                                    
-                                }else{
-                                    stringFollow = "Seguidores";
-                                }
-                                $("#scroll-find").append("\n\
-                                <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
-                                    <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
-                                    <div class='noti_follow-inf'>\n\
-                                        <label class='pointer'>"+data[i].username+" <span class='spn_date'>"+data[i].name+"</span><span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
-                                    </div>\n\
-                                    </a>\n\
-                                ");
-                            } 
+                               
+                                
                             //Nav For Search
                             $(".search_user").click(function (){
                                 let id = $(this).attr("value");
@@ -313,7 +438,7 @@ $(document).ready(function () {
                                 </div>\n\
                                 ");
                         }
-                        
+                    
                     }
                 }else{
                     $("#scroll-find").empty();

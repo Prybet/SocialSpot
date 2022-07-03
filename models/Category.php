@@ -161,4 +161,28 @@ class Category {
             return $list;
         }
     }
+    
+    public static function getCategoryForSearch($nom){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM category WHERE name LIKE :name AND Status_ID = 1");
+        $param = $nom."%";
+        $sen->bindParam(":name", $param);
+        if($sen->execute()){
+            $res = $sen->fetchAll();
+            $list = array(); 
+            foreach ($res as $cate){
+                $c = new Category();
+                $c->id = $cate[0];
+                $c->name = $cate[1];
+                $c->description = $cate[2];
+                $c->imageURL = $cate[3];
+                $c->followers = Interests::getMembers("Category_ID", $cate[0]);
+                $c->status = Status::getStatu($cate[5]);
+                $list[] = $c;
+            }    
+            return $list; 
+        }
+    }
+    
+    
 }
