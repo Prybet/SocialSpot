@@ -23,7 +23,7 @@ class Region {
     var $description;
     var $country;
     var $status;
-    
+
     public static function getFullRegion($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM region WHERE status_id = 1 AND id = :id");
@@ -35,25 +35,29 @@ class Region {
                 $r->id = $reg[0];
                 $r->name = $reg[1];
                 $r->description = $reg[2];
+                $r->imageURL = $reg[3];
+                $r->bannerURL = $reg[4];
                 $r->posts = Post::getCustomRegion("Region_ID", $reg[0]);
-                $r->status = Status::getStatu($reg[4]);
+                $r->status = Status::getStatu($reg[6]);
                 return $r;
             }
         }
     }
-    
+
     public static function getRegion($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM region WHERE  id = :id");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
-            $res = $sen->fetch();
+            $reg = $sen->fetch();
             $r = new Region();
-            $r->id = $res[0];
-            $r->name = $res[1];
-            $r->description = $res[2];
-            $r->country = $res[3];
-            $r->status = Status::getStatu($res[4]);
+            $r->id = $reg[0];
+            $r->name = $reg[1];
+            $r->description = $reg[2];
+            $r->imageURL = $reg[3];
+            $r->bannerURL = $reg[4];
+            $r->country = $reg[5];
+            $r->status = Status::getStatu($reg[6]);
             return $r;
         }
     }
@@ -78,13 +82,15 @@ class Region {
         $sen = $conn->mysql->prepare("SELECT * FROM region WHERE name LIKE :name");
         $sen->bindParam(":name", $this->name);
         if ($sen->execute()) {
-            $res = $sen->fetch();
+            $reg = $sen->fetch();
             $r = new Region();
-            $r->id = $res[0];
-            $r->name = $res[1];
-            $r->description = $res[2];
-            $r->country = $res[3];
-            $r->status = Status::getStatu($res[4]);
+            $r->id = $reg[0];
+            $r->name = $reg[1];
+            $r->description = $reg[2];
+            $r->imageURL = $reg[3];
+            $r->bannerURL = $reg[4];
+            $r->country = $reg[5];
+            $r->status = Status::getStatu($reg[6]);
             return $r;
         }
     }

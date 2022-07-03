@@ -40,8 +40,10 @@ class City {
                 $c->id = $city[0];
                 $c->name = $city[1];
                 $c->description = $city[2];
-                $c->province = Province::getProvince($city[3]);
-                $c->status = Status::getStatu($city[4]);
+                $c->imageURL = $city[3];
+                $c->bannerURL = $city[4];
+                $c->province = Province::getProvince($city[5]);
+                $c->status = Status::getStatu($city[6]);
                 return $c;
             }
         }
@@ -58,9 +60,11 @@ class City {
                 $c->id = $city[0];
                 $c->name = $city[1];
                 $c->description = $city[2];
-                $c->posts = Post::getCustomCity("City_ID",$city[0]);
-                $c->province = Province::getProvince($city[3]);
-                $c->status = Status::getStatu($city[4]);
+                $c->imageURL = $city[3];
+                $c->bannerURL = $city[4];
+                $c->posts = Post::getCustomCity("City_ID", $city[0]);
+                $c->province = Province::getProvince($city[5]);
+                $c->status = Status::getStatu($city[6]);
                 return $c;
             }
         }
@@ -110,8 +114,10 @@ class City {
                 $c->id = $res[0];
                 $c->name = $res[1];
                 $c->description = $res[2];
-                $c->province = Province::getProvince($res[3]);
-                $c->status = Status::getStatu($res[4]);
+                $c->imageURL = $city[3];
+                $c->bannerURL = $city[4];
+                $c->province = Province::getProvince($res[5]);
+                $c->status = Status::getStatu($res[6]);
                 return $c;
             } else {
                 return $city->setCity();

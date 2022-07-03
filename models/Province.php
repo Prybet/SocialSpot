@@ -35,9 +35,11 @@ class Province {
                 $p->id = $prov[0];
                 $p->name = $prov[1];
                 $p->description = $prov[2];
+                $p->imageURL = $prov[3];
+                $p->bannerURL = $prov[4];
                 $p->posts = Post::getCustomProvince("Province_ID", $prov[0]);
-                $p->region = Region::getRegion($prov[3]);
-                $p->status = Status::getStatu($prov[4]);
+                $p->region = Region::getRegion($prov[5]);
+                $p->status = Status::getStatu($prov[6]);
                 return $p;
             }
         }
@@ -48,13 +50,15 @@ class Province {
         $sen = $conn->mysql->prepare("SELECT * FROM province WHERE  id = :id");
         $sen->bindParam(":id", $id);
         if ($sen->execute()) {
-            $res = $sen->fetch();
+            $prov = $sen->fetch();
             $p = new Province();
-            $p->id = $res[0];
-            $p->name = $res[1];
-            $p->description = $res[2];
-            $p->region = Region::getRegion($res[3]);
-            $p->status = Status::getStatu($res[4]);
+            $p->id = $prov[0];
+            $p->name = $prov[1];
+            $p->description = $prov[2];
+            $p->imageURL = $prov[3];
+            $p->bannerURL = $prov[4];
+            $p->region = Region::getRegion($prov[5]);
+            $p->status = Status::getStatu($prov[6]);
             return $p;
         }
     }
@@ -82,13 +86,15 @@ class Province {
         $sen->bindParam(":name", $this->name);
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
-                $res = $sen->fetch();
+                $prov = $sen->fetch();
                 $p = new Province();
-                $p->id = $res[0];
-                $p->name = $res[1];
-                $p->description = $res[2];
-                $p->region = Region::getRegion($res[3]);
-                $p->status = Status::getStatu($res[4]);
+                $p->id = $prov[0];
+                $p->name = $prov[1];
+                $p->description = $prov[2];
+                $p->imageURL = $prov[3];
+                $p->bannerURL = $prov[4];
+                $p->region = Region::getRegion($prov[5]);
+                $p->status = Status::getStatu($prov[6]);
                 return $p;
             } else {
                 return $this->setProvince();
