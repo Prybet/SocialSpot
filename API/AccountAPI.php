@@ -56,7 +56,6 @@ function isUser($params) {
             return singIn($params->user);
         case "follow":
             return follow($params);
-            break;
         default:
             break;
     }

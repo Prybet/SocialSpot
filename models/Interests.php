@@ -29,6 +29,10 @@ class Interests {
     var $status;
     var $context;
 
+    public static function reload($interests) {
+        return self::getInterests($interests->profile);
+    }
+
     public static function getInterests($idP) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM interests WHERE profile_id = :idP AND status_id = 12");
@@ -85,7 +89,7 @@ class Interests {
         }
     }
 
-     public static function getIntername($action) {
+    public static function getIntername($action) {
         switch ($action) {
             case "Category":
                 return 'Category_ID';
@@ -172,7 +176,7 @@ class Interests {
         $inter["Profile_ID"] = null;
         $inter["Status_ID"] = null;
         foreach ($inter as $i => $col) {
-            
+
             if ($col != null) {
                 return $i;
             }

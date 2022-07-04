@@ -109,15 +109,15 @@ class City {
         $sen->bindParam(":name", $city->name);
         if ($sen->execute()) {
             if ($sen->rowCount() > 0) {
-                $res = $sen->fetch();
+                $city = $sen->fetch();
                 $c = new City();
-                $c->id = $res[0];
-                $c->name = $res[1];
-                $c->description = $res[2];
+                $c->id = $city[0];
+                $c->name = $city[1];
+                $c->description = $city[2];
                 $c->imageURL = $city[3];
                 $c->bannerURL = $city[4];
-                $c->province = Province::getProvince($res[5]);
-                $c->status = Status::getStatu($res[6]);
+                $c->province = Province::getProvince($city[5]);
+                $c->status = Status::getStatu($city[6]);
                 return $c;
             } else {
                 return $city->setCity();

@@ -66,7 +66,7 @@ function isPosts($object) {
         case "last":
             return Post::getAllPosts();
         case"custom":
-            return  Post::getCustomPosts($object->interests);
+            return Post::getCustomPosts(Interests::reload($object->interests));
         default:
             break;
     }
