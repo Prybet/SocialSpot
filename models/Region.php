@@ -104,5 +104,27 @@ class Region {
         $r->status = Status::getStatu($res[4]);
         return $r;
     }
+    
+    public static function getRegionForSearch($nom){
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT * FROM region WHERE name LIKE :name AND Status_ID = 1");
+        $param = $nom."%";
+        $sen->bindParam(":name", $param);
+        if($sen->execute()){
+            $res = $sen->fetchAll();
+            $list = array(); 
+            foreach ($res as $reg){
+                $r = new Region();
+                $r->id = $reg[0];
+                $r->name = $reg[1];
+                $r->description = $reg[2];
+                $r->imageURL = $reg[3];
+                $r->followers = Interests::getMembers("Region_ID", $reg[0]);
+                $r->status = Status::getStatu($reg[6]);
+                $list[] = $r;
+            }    
+            return $list; 
+        }
+    }
 
 }

@@ -124,7 +124,7 @@ class Profile {
         // Profile for search
     public static function getProfileForSearch($nom){
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE username LIKE :username ");
+        $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE username LIKE :username AND Status_ID = 2");
         $param = $nom."%";
         $sen->bindParam(":username", $param);
         if($sen->execute()){
@@ -135,6 +135,7 @@ class Profile {
                 $p->id = $prof[0];
                 $p->name = $prof[1];
                 $p->username = $prof[2];
+                $p->description = $prof[4];
                 $check = $prof[3];
                 if($prof[3]== 0){
                     $check = "0";
@@ -145,6 +146,7 @@ class Profile {
                 $p->check = $check;
                 $p->imageURL = $prof[7];
                 $p->followers = Follow::getFollowers($prof[0]);
+                $p->status = Status::getStatu($prof[10]);
                 $list[] = $p;
             }    
             return $list; 

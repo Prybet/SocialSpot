@@ -119,7 +119,10 @@ scroll-container {
   margin-right: 7rem;
   background-color: var(--black);
 }
-
+.typeSearch{
+    position: absolute;
+    left: 85%;
+}
 /* map */
 .contain_map {
   display: flex;
