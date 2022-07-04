@@ -105,9 +105,9 @@ class Province {
     public function setProvince() {
         $reg = $this->region->findRegion();
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO province values(null, :name, '', :prov, 1)");
+        $sen = $conn->mysql->prepare("INSERT INTO province values(null, :name, 'Not Description', 'socialspot.cl', 'socialspot.cl', :reg, 1)");
         $sen->bindParam(":name", $this->name);
-        $sen->bindParam(":prov", $reg->id);
+        $sen->bindParam(":reg", $reg->id);
         if ($sen->execute()) {
             return $this->findProvince();
         }

@@ -35,7 +35,7 @@ if ($method == "GET") {
         $spot = isset($_POST["spot"]) ? $_POST["spot"] : 0;
         $hash = isset($_POST["hashtags"]) ? $_POST["hashtags"] : "";
         if ($cate != "" && $title != "") {
-            if($cate != -1){
+            if ($cate != -1) {
                 $user = $_SESSION["user"];
                 $post = new Post();
                 $post->profID = $user->profile->id;
@@ -53,7 +53,7 @@ if ($method == "GET") {
                 } else {
                     header("Location: ../views/index.php");
                 }
-            }else{
+            } else {
                 $_SESSION["errCate"] = true;
                 header("Location: ../views/Newpost.php");
             }
@@ -63,38 +63,38 @@ if ($method == "GET") {
         $user = $_SESSION["user"];
         if ($user != null) {
             $comm = isset($_POST["comm"]) ? $_POST["comm"] : "";
-            if($comm != ""){
+            if ($comm != "") {
                 $rep = new Reply();
                 $rep->post = $_SESSION["post"]->id;
                 $rep->profile = $_SESSION["user"]->profile->id;
                 $rep->body = $comm;
-                if($rep->setReply()){
+                if ($rep->setReply()) {
                     header("Location: ../views/post.php");
                 }
-            }else{
-               header("Location: ../views/post.php");
+            } else {
+                header("Location: ../views/post.php");
             }
         }
         //Reply For Reply
-    }elseif($_POST["submit"] == "reply"){
+    } elseif ($_POST["submit"] == "reply") {
         $user = $_SESSION["user"];
         if ($user != null) {
             $body = isset($_POST["body"]) ? $_POST["body"] : "";
             $id = isset($_POST["comId"]) ? $_POST["comId"] : "";
-            if($body  != ""){
+            if ($body != "") {
                 $rep = new Reply();
                 $rep->post = $_SESSION["post"]->id;
                 $rep->profile = $_SESSION["user"]->profile->id;
                 $rep->body = $body;
                 $rep->replies = $id;
-                if($rep->setReplyForReply()){
+                if ($rep->setReplyForReply()) {
                     header("Location: ../views/post.php");
                 }
-            }else{
-                    header("Location: ../views/post.php");
+            } else {
+                header("Location: ../views/post.php");
             }
         }
-        
+
         //Edit Post
     } elseif ($_POST["submit"] == "edit") {
         $id = isset($_POST["postID"]) ? $_POST["postID"] : "";
@@ -119,7 +119,7 @@ if ($method == "GET") {
             header("Location: ../views/profile.php");
         }
         //Report Post
-    } elseif ($_POST["submit"] == "report_post"){
+    } elseif ($_POST["submit"] == "report_post") {
         $user = $_SESSION["user"];
         if ($user != null) {
             $com = isset($_POST["com"]) ? $_POST["com"] : "";
@@ -127,7 +127,7 @@ if ($method == "GET") {
             $rReport = isset($_POST["radio_report"]) ? $_POST["radio_report"] : "";
             $view = isset($_POST["goView"]) ? $_POST["goView"] : "";
             $id = isset($_POST["when"]) ? $_POST["when"] : "";
-            if($rReport != ""){
+            if ($rReport != "") {
                 $rprt = new Report();
                 $norm = new Norm();
                 $norm->id = $rReport;
@@ -137,24 +137,24 @@ if ($method == "GET") {
                 $rprt->replyId = null;
                 $rprt->spotId = null;
                 $rprt->commentary = $com;
-                if($rprt->setReport($rprt)){
+                if ($rprt->setReport($rprt)) {
                     $_SESSION["modalReport"] = true;
-                    if($view == "profilepublic"){
+                    if ($view == "profilepublic") {
                         header("Location: ../views/profilepublic.php?id=$id");
-                    }elseif($view == "main"){
+                    } elseif ($view == "main") {
                         header("Location: ../views/main.php");
-                    }elseif($view == "post"){
+                    } elseif ($view == "post") {
                         header("Location: ../views/post.php");
-                    }elseif($view == "interests"){
+                    } elseif ($view == "interests") {
                         header("Location: ../views/interests.php?id=$id");
                     }
-                }else{
+                } else {
                     echo 'malooooooo';
                 }
-            }else{
+            } else {
                 echo 'faaaaillll';
             }
-            
+
             //print_r($_POST);
         }
     } elseif ($_POST["submit"] == "goLogin") {
@@ -213,6 +213,8 @@ function getDot($file) {
         case "video/mp4":
             return ".mp4";
         case "video/mov":
+            return ".mov";
+        case "image/mov":
             return ".mov";
         default:
             return "NotMedia";

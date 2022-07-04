@@ -128,7 +128,7 @@ class City {
     public function setCity() {
         $prov = $this->province->findProvince();
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("INSERT INTO city values(null, :name, '', :prov, 1)");
+        $sen = $conn->mysql->prepare("INSERT INTO city  values(null, :name, 'Not Description', 'socialspot.cl' ,'socialspot.cl', :prov, 1)");
         $sen->bindParam(":name", $this->name);
         $sen->bindParam(":prov", $prov->id);
         if ($sen->execute()) {
