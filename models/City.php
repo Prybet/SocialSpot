@@ -160,7 +160,9 @@ class City {
                 $c->name = $city[1];
                 $c->description = $city[2];
                 $c->imageURL = $city[3];
+                $c->bannerURL = $city[4];
                 $c->province = Province::getProvince($city[5]);
+                $c->posts = Post::getCustomCity("City_ID", $city[0]);
                 $c->followers = Interests::getMembers("City_ID", $city[0]);
                 $c->status = Status::getStatu($city[6]);
                 $list[] = $c;

@@ -6,11 +6,18 @@ Made by:
  soulbroken
  Prybet
 -->
-<?php 
+<?php
 require_once '../models/User.php';
+require_once '../models/Search.php';
 session_start();
 $ip = Connection::$ip;
 $style = "grupe10Style.css";
+$text = isset($_GET["nom"]) ? $_GET["nom"] : "";
+if ($text != "") {
+    $contents = Search::setSearch($text);
+} else {
+    $contents = null;
+}
 ?>
 <html>
     <head>
@@ -20,7 +27,7 @@ $style = "grupe10Style.css";
         <script src="../js/model.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                
+
                 document.getElementById("modal-delete_user").outerHTML = "";
                 document.getElementById("modal-followers").outerHTML = "";
                 document.getElementById("modal-edit").outerHTML = "";
@@ -37,20 +44,34 @@ $style = "grupe10Style.css";
             <?php include_once '../nav.php'; ?>
         </div>
         <main>
-            <div class="contain_srch">
-                <div class="conten_item">
-                    <div class="conten_bn">
-                        <img src="../img/banner.jpg" class="img_bn">
-                    </div>
-                    <img src="../img/perfil.png" class="img_pf">
-                    <h2>Keku</h2>
-                    <div class="contain_inf-user">
-                        <label>?-<span>Publicaciones</span></label>
-                        <label class="lbl_f">?-<span>Seguidores</span></label>
-                        <label>?-<span>Seguidos</span></label>
-                    </div>
+            <?php if ($contents == null): ?>
+                <div class="contain_notSe">
+                    <h2 class="notSearch">Sin Resultado en la busqueda</h2>
                 </div>
-            </div>
+            <?php endif; ?>
+            <?php if ($contents != null): ?>
+                <div class="contain_srch">
+                    <?php foreach ($contents as $cont):?>
+                        <div class="conten_item">
+                            <div class="conten_bn">
+                                <img src="<?= $cont->getBanner() ?>" class="img_bn">
+                            </div>
+                            <img src="<?= $cont->getImages() ?>" class="img_pf">
+                            <h2 class="h2_search"><?= $cont->getNom() ?></h2>
+                            <div class="contain_inf-user">
+                                <label><?= count($cont->posts)?>-<span><?= $cont->getNomPost()?></span></label>
+                                <label class="lbl_f"><?= count($cont->followers) ?>-<span><?= $cont->getNomFollowers()?></span></label>
+                                <?php if($cont->context == "Profile" || $cont->context == "Category"):?>
+                                <label><?= $cont->getFollow()?>-<span><?= $cont->getNomFollow()?></span></label>
+                                <?php endif;?>
+                            </div>
+                            <div class="cont_ty">
+                                <span><?= $cont->getContext() ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </main>
     </body>
     <script src="../js/nav.js"></script>

@@ -176,7 +176,10 @@ class Category {
                 $c->name = $cate[1];
                 $c->description = $cate[2];
                 $c->imageURL = $cate[3];
+                $c->bannerURL = $cate[4];
                 $c->followers = Interests::getMembers("Category_ID", $cate[0]);
+                $c->posts = Post::getPostsForCategory($cate[0]);
+                $c->onLine = $c->getOnline();
                 $c->status = Status::getStatu($cate[5]);
                 $list[] = $c;
             }    

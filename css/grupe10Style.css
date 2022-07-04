@@ -64,11 +64,12 @@ main{
     background-size: cover;
     border: 2px solid var(--primary);
 }
-h2{
+.h2_search{
     color: var(--primary);
     font-size: 2.3rem;
     position: absolute;
     left: 55%;
+    margin: 1rem;
 }
 .contain_inf-user{
     margin-top: 8.2rem;
@@ -82,4 +83,23 @@ h2{
 }
 label span{
     color: var(--ligthgray);
+}
+.contain_notSe{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.notSearch{
+    color: var(--blue);
+    font-size: 3rem;
+}
+.cont_ty{
+    position: relative;
+    margin-top: 1rem;
+}
+.cont_ty span{
+    position: absolute;
+    right: 0;
+    margin-right: 0.5rem;
 }

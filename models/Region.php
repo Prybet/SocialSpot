@@ -119,6 +119,8 @@ class Region {
                 $r->name = $reg[1];
                 $r->description = $reg[2];
                 $r->imageURL = $reg[3];
+                $r->bannerURL = $reg[4];
+                $r->posts = Post::getCustomRegion("Region_ID", $reg[0]);
                 $r->followers = Interests::getMembers("Region_ID", $reg[0]);
                 $r->status = Status::getStatu($reg[6]);
                 $list[] = $r;

@@ -145,7 +145,10 @@ class Profile {
                 }
                 $p->check = $check;
                 $p->imageURL = $prof[7];
+                $p->bannerURL = $prof[8];
                 $p->followers = Follow::getFollowers($prof[0]);
+                $p->follows = Follow::getFollows($prof[0]);
+                $p->myPosts = Post::getPostsForProfile($prof[0]);
                 $p->status = Status::getStatu($prof[10]);
                 $list[] = $p;
             }    

@@ -10,6 +10,7 @@
 
 require_once '../models/User.php';
 require_once '../models/Interests.php';
+require_once '../models/Search.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $POST = $_POST;
@@ -26,7 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo 'fail';
         }
     } elseif($POST["submit"] == "search"){
-        header("Location: ../views/search");
+        $nom = isset($POST["nom"]) ? $POST["nom"] : "";
+        if($nom != ""){
+            header("Location: ../views/search?nom=$nom");
+        }else{
+            header("Location: ../views/search?nom=$nom");
+        }
     } elseif($POST["submit"] == "city"){
         
     } elseif($POST["submit"] == "region"){
