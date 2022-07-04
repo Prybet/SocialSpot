@@ -34,6 +34,7 @@ class Search {
     var $province;
     var $region;
     var $status;
+    var $posts;
     var $context;
 
     public static function setSearch($text) {

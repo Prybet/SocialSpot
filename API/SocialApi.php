@@ -37,7 +37,7 @@ if ($method == "GET") {
     switch ($action) {
         case "search":
             $text = isset($ob->text) != "" ? $ob->text : "";
-            $list = Profile::getProfileForSearch($text);
+            $list = Search::setSearch($text);
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;
