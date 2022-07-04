@@ -9,6 +9,8 @@ Made by:
 <?php
 session_start();
 $style = "grupe1Style.css";
+
+$date = date((date("Y")-14)."-m-d");
 ?>
 <html>
     <head>
@@ -38,7 +40,7 @@ $style = "grupe1Style.css";
                     <input type="password" name="pass" class="input_field" placeholder="Contraseña" required>
                 </div>
                 <div class="field">
-                    <input type="date" name="birth" class="input_field" placeholder="Fecha Nacimiento" required>
+                    <input type="date"  max="<?= $date ?>" name="birth" class="input_field" placeholder="Fecha Nacimiento" required>
                 </div>
                 <p class="u">
                     Al registrarte Aceptas nuesta condiciones, la Politica de Moderacion y Politica de Privacidad      

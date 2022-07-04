@@ -13,6 +13,7 @@ $ip = Connection::$ip;
 $style = "grupe9Style.css";
 $norms = Norm::getAll();
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
+$context = isset($_GET["context"]) ? $_GET["context"] : 1;
 
 $inte = Category::getFullCategoy($id);
 

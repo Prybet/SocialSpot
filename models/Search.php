@@ -394,5 +394,24 @@ class Search {
             return "Publicaciones";
         }
     }
+    
+    public static function getThis($id, $context) {
+        switch ($context){
+            case "Province":
+                return Province::getProvince($id);
+                break;
+            case "Region":
+                return Region::getFullRegion($id);
+                break;
+            case "City":
+                return City::getFullCity($id);
+                break;
+            case "Category":
+                return Category::getFullCategoy($id);
+                break;
+            default:
+                return"";
+        }
+    }
 
 }

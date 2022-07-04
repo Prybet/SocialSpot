@@ -33,7 +33,7 @@ if ($method == "GET") {
         $body = isset($_POST["body"]) ? $_POST["body"] : "";
         $check = isset($_POST["check"]) ? $_POST["check"] : "";
         $spot = isset($_POST["spot"]) ? $_POST["spot"] : 0;
-        $hash = isset($_POST["hashtags"]) ? $_POST["hashtags"] : "";
+        $hash = isset($_POST["hashtags"]) ? $_POST["hashtags"] : null;
         if ($cate != "" && $title != "") {
             if ($cate != -1) {
                 $user = $_SESSION["user"];

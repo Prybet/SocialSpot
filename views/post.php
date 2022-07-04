@@ -115,7 +115,7 @@ $norms = Norm::getAll();
                                 <div class="contain_reply_details">
                                     <div class="nom_time">
                                         <label class="lbl_nom-repl"><?= $comm->profile->username ?></label>
-                                        <label>Hace 1 min</label>
+                                        <label><?= Post::getDate($comm->date, $comm->time)?></label>
                                     </div>
                                     <p class="reply_comm"><?= $comm->body ?></p>
                                     <label class="lbl_reply lbl_reply_<?= $i?>" value="<?= $i?>">Responder</label>                                    
@@ -136,7 +136,7 @@ $norms = Norm::getAll();
                                         <div class="contain_rep">
                                             <div class="nom_time">
                                                 <label class="lbl_nom-repl"><?= $reply->profile->username ?></label>
-                                                <label>Hace 1 min</label>
+                                                <label><?= Post::getDate($reply->date, $reply->time)?></label>
                                             </div>
                                             <p class="reply_comm"><?= $reply->body ?></p>
                                         </div>

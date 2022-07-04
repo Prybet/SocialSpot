@@ -97,19 +97,19 @@ endforeach;
             </div> 
             <div class="follow">
                 <div class="contain-cont-prym">
-                    <label class="cont pointer"><?= isset($prof->myPosts) ? count($prof->myPosts): 0 ?></label>
+                    <label class="cont"><?= isset($prof->myPosts) ? count($prof->myPosts): 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
-                <div class="contain-cont">
-                    <label class="cont pointer"><?= isset($prof->followers) ? count($prof->followers): 0 ?></label>
-                    <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray pointer">Seguidores</label>
+                <div class="contain-conte">
+                    <label class="cont"><?= isset($prof->followers) ? count($prof->followers): 0 ?></label>
+                    <label class="lbl-ligthgray">-</label>
+                    <label class="lbl-ligthgray">Seguidores</label>
                 </div>
-                <div class="contain-cont">
-                    <label class="cont pointer"><?= isset($prof->follows) ? count($prof->follows): 0 ?></label>
-                    <label class="lbl-ligthgray pointer">-</label>
-                    <label class="lbl-ligthgray pointer ">Seguidos</label>
+                <div class="contain-conte">
+                    <label class="cont"><?= isset($prof->follows) ? count($prof->follows): 0 ?></label>
+                    <label class="lbl-ligthgray">-</label>
+                    <label class="lbl-ligthgray">Seguidos</label>
                 </div>
             </div>
         </div>

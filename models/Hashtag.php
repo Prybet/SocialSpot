@@ -168,11 +168,13 @@ class Hashtag {
 
     public static function makeHashtags($text) {
         $list = array();
-        $texts = explode(",", $text);
-        foreach ($texts as $t){
-            $list[] = Hashtag::toHashTag($t);
+        if($text != null){
+            $texts = explode(",", $text);
+            foreach ($texts as $t){
+                $list[] = Hashtag::toHashTag($t);
+            }
+            return $list;
         }
-        return $list;
     }
 
 }

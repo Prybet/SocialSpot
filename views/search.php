@@ -52,7 +52,7 @@ if ($text != "") {
             <?php if ($contents != null): ?>
                 <div class="contain_srch">
                     <?php foreach ($contents as $cont):?>
-                        <div class="conten_item">
+                        <div class="conten_item" data-value="<?= $cont->id ?>">
                             <div class="conten_bn">
                                 <img src="<?= $cont->getBanner() ?>" class="img_bn">
                             </div>

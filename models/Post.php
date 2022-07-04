@@ -75,7 +75,9 @@ class Post {
             $sen->bindParam(":date", $date);
             if ($sen->execute()) {
                 $res = $sen->fetch();
-                $this->insertHashtags($res[0]);
+                if($this->hashtags != null){
+                    $this->insertHashtags($res[0]);
+                }
                 return $res[0];
             }
         }
@@ -331,4 +333,49 @@ class Post {
         return $list;
     }
 
+    public static function getDate($date, $time) {
+        try {
+            $fechaInicial = $date.' '.$time;
+            date_default_timezone_set('Chile/Continental');
+            $fechaFinal = date("Y-m-d H:i:s ");
+            
+            $segundos = strtotime($fechaFinal) - strtotime($fechaInicial);
+            $dif = 0;
+            if($segundos == 1){
+                return "Hace 1 Segundo";
+            }else{
+                if($segundos < 60){
+                    return "Hace ".$segundos." Segundos";
+                }elseif((int)$segundos/60 <  2){
+                    $dif = $segundos/60;
+                    return "Hace ". (int)$dif ." Minuto";
+                }elseif($segundos/60 < 60){
+                    $dif = $segundos/60;
+                    return "Hace ". (int)$dif ." Minutos";
+                    
+                }elseif($segundos/3600 < 2){
+                    $dif = $segundos/3600;
+                    return "Hace ". (int)$dif ." Hora";
+                }elseif($segundos/3600 < 24){
+                    $dif = $segundos/3600;
+                    return "Hace ". (int)$dif ." Horas";
+                }elseif($segundos/86400 < 2){
+                    $dif = $segundos/86400;
+                    return "Hace ". (int)$dif ." Día";
+                }elseif($segundos/86400 < 24){
+                    $dif = $segundos/86400;
+                    return "Hace ". (int)$dif ." Días";
+                }
+            }
+           
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
+        
+    }
+    
+    public function GetTime() {
+        
+    }
 }
