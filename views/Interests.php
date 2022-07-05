@@ -6,54 +6,32 @@ Made by:
  soulbroken
  Prybet
 -->
-<?php 
+<?php
 require_once '../models/User.php';
+require_once '../models/Search.php';
+require_once '../models/Norm.php';
 session_start();
 $ip = Connection::$ip;
 $style = "grupe9Style.css";
 $norms = Norm::getAll();
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
-$context = isset($_GET["context"]) ? $_GET["context"] : 1;
-
-$inte = Category::getFullCategoy($id);
-
-$imageCate = isset($inte->imageURL) ? "../../SSpotImages/InterestsImages/CategoryImages/BannerImages/" . $inte->bannerURL : "../img/perfil.png";
-$bannerCate = isset($inte->bannerURL) ? "../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/" . $inte->imageURL : "../img/banner.jpg";
-
-$posts = $inte->posts;
-
-$pos = 0;
-foreach ($inte->members as $i){
-    if($i->me->id == $_SESSION["user"]->profile->id){
-        $pos = 1;
-    }
+$context = isset($_GET["context"]) ? $_GET["context"] : "";
+if ($context != "") {
+    $inte = Search::getThis($id, $context);
+    $posts = $inte->posts;
 }
 ?>
 <html>
     <head>
-        <?php include_once '../header.php'; ?>
+<?php include_once '../header.php'; ?>
         <title>Intereses</title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/model.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $(".ftbanner").css("background-image", "url('<?= $imageCate ?>')");
-                $(".ftprofile").css("background-image", "url('<?= $bannerCate ?>')");
-                
-                document.getElementById("modal-delete_user").outerHTML = "";
-                document.getElementById("modal-followers").outerHTML = "";
-                document.getElementById("modal-edit").outerHTML = "";
-                document.getElementById("modal-delete").outerHTML = "";
-                document.getElementById("modal-editPost").outerHTML = "";
-                document.getElementById("modal-deletePost").outerHTML = "";
-                document.getElementById("modal-follow-user").outerHTML = "";
-                $("#view").attr("value", "interests");
-            });
-        </script>
+
     </head>
     <body>
         <div class="a">
-            <?php include_once '../nav.php'; ?>
+<?php include_once '../nav.php'; ?>
         </div>
         <header>
             <div class="contain_bann " >
@@ -65,52 +43,44 @@ foreach ($inte->members as $i){
 
             </div>
             <form action="../controllers/InterestController.php" method="post">
-                <?php if($pos == 0):?>
-                    <input type="text" name="cate" value="<?= $inte->id ?>" hidden>
-                    <button type="submit" name="submit" value="follCate" class="btn_follow" id="btn_editar">Ser Miembro</button>
-                <?php endif;?>
-                <?php if($pos == 1):?>
-                    <input type="text" name="cate" value="<?= $inte->id  ?>" hidden>
-                    <button type="submit" name="submit" value="follCate" class="btn_unfollow" id="btn_editar">Dejar de ser Miembro</button>
-                <?php endif;?>
+                <input type="text" name="context" value="<?= $context ?>" hidden>
+                <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
+                <button type="submit" name="submit" value="follInterest" class="btn_unfollow" id="btn_editar">Dejar de ser Miembro</button>
             </form>
         </header>
         <div class="contain-info-profile">
             <div class="name_user">
-                <label><?= $inte->name  ?></label> 
+                <label><?= $inte->name ?></label> 
             </div> 
             <div class="follow">
                 <div class="contain-cont-prym">
-                    <label class="cont"><?= isset($inte->posts) ? count($inte->posts): 0 ?></label>
+                    <label class="cont"><?= isset($inte->posts) ? count($inte->posts) : 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
                 <div class="contain-contt">
-                    <label class="cont pointer"><?= isset($inte->members) ? count($inte->members): 0 ?></label>
+                    <label class="cont"><?= isset($inte->members) ? count($inte->members) : 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Miembros</label>
                 </div>
-                <div class="contain-contt">
-                    <label class="cont">?</label>
-                    <label class="lbl-ligthgray">-</label>
-                    <label class="lbl-ligthgray">Online</label>
-                </div>
+                <?php if ($context == "Category"): ?>
+                    <div class="contain-contt">
+                        <label class="cont"><?= $inte->onLine ?></label>
+                        <label class="lbl-ligthgray">-</label>
+                        <label class="lbl-ligthgray">Online</label>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
         <main class="contain_main">
             <div class="container-post-field">
                 <div class="contain_public">
-                    <div class="post_most">
-                        <div class="most most-grid">
-                            <button class="most_btn">Mas nuevos</button>
-                            <button class="most_btn">Mas votado</button>
-                        </div>
-                    </div>
-                    <?php
-                    foreach ($posts as $post):
-                        include '../item.php';
-                    endforeach;
-                    ?>
+                    
+                <?php
+                foreach ($posts as $post):
+                    include '../item.php';
+                endforeach;
+                ?>
                 </div>
                 <div class="descrip_user">
                     <div class="descrip_user-contain">
@@ -154,7 +124,22 @@ foreach ($inte->members as $i){
                 </div>
             </div>
         </main> 
-        <?php include_once '../modal.php'; ?>
+<?php include_once '../modal.php'; ?>
     </body>
     <script src="../js/nav.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".ftbanner").css("background-image", "url('<?= Search::getBanner($context, $inte->bannerURL, $inte->name) ?>')");
+            $(".ftprofile").css("background-image", "url('<?= Search::getImages($context, $inte->imageURL, $inte->name) ?>')");
+
+            document.getElementById("modal-delete_user").outerHTML = "";
+            document.getElementById("modal-followers").outerHTML = "";
+            document.getElementById("modal-edit").outerHTML = "";
+            document.getElementById("modal-delete").outerHTML = "";
+            document.getElementById("modal-editPost").outerHTML = "";
+            document.getElementById("modal-deletePost").outerHTML = "";
+            document.getElementById("modal-follow-user").outerHTML = "";
+            $("#view").attr("value", "interests");
+        });
+    </script>
 </html>
