@@ -188,7 +188,7 @@ class Category {
 
     public static function findPopular() {
         $conn = new Connection();
-        $sen = $conn->mysql->prepare("SELECT category_id FROM post");
+        $sen = $conn->mysql->prepare("SELECT category_id FROM post WHERE (status_id = 1 OR status_id = 7)");
         if ($sen->execute()) {
             $res = $sen->fetchAll();
             $list = array();

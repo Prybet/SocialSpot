@@ -101,7 +101,7 @@ $errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
 
                             <!-- ----------- -->
 
-                            <
+                            
                             <div  id="container">
                                     <input type="file" class="input_file" id="row-0" name="file-0"/>
                                 </div>
