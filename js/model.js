@@ -296,7 +296,7 @@ $(document).ready(function () {
                                                 <label class='pointer'>"+data[i].username+" <span class='spn_date'>"+data[i].name+"</span><span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch'>\n\
+                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Usuario</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -324,7 +324,7 @@ $(document).ready(function () {
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch'>\n\
+                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Categoría</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -352,7 +352,7 @@ $(document).ready(function () {
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch'>\n\
+                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Region</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -380,7 +380,7 @@ $(document).ready(function () {
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch'>\n\
+                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Provincia</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -408,7 +408,7 @@ $(document).ready(function () {
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch'>\n\
+                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Cuidad</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -418,15 +418,11 @@ $(document).ready(function () {
                                 }
                                 
                             }
-                                
-                               
-                                
-                            //Nav For Search
                             $(".search_user").click(function (){
-                                let id = $(this).attr("value");
-                                let idUser = $("#scroll-find").attr("data-user");
-                                if(id == idUser){
-                                    window.location.href = ip+"/SocialSpot/views/profile";
+                                var id = $(this).attr("value");
+                                var con = $(".conte_"+id).attr("data-context");
+                                if(con !== "Profile"){
+                                    window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context="+con;
                                 }else{
                                     window.location.href = ip+"/SocialSpot/views/profilepublic?id=" + id;
                                 }
@@ -547,5 +543,17 @@ $(document).ready(function () {
     $("#btn_category").click(function (){
         let id = $(this).val();
         window.location.href = ip +"/SocialSpot/views/interests?id=" + id;
+    });
+    
+    //Item Search
+    $(".conten_item").click(function (){
+        var id = $(this).attr("data-value");
+        var con = $(".cont_ty"+id).attr("value");
+        if(con !== "Profile"){
+            window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context="+con;
+        }else{
+            window.location.href = ip+"/SocialSpot/views/profilepublic?id=" + id;
+        }
+        
     });
 });

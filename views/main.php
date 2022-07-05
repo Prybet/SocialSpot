@@ -46,11 +46,11 @@ $ip = Connection::$ip;
                     </a>
                     <div class="post_most">
                         <div class="most most-grid">
-                            <button class="most_btn">Mas nuevos</button>
-                            <button class="most_btn">Mas votado</button>
                             <?php if($_SESSION["user"]->userType->id != 2): ?>
-                            <button class="most_btn">aaa</button>
+                            <button class="most_btn"><?=$_SESSION["user"]->profile->username ?>'s Feed</button>
                             <?php endif; ?>
+                            <button class="most_btn">Nuevos</button>
+                            <button class="most_btn">Destacados</button>
                         </div>
                     </div>
                     <?php

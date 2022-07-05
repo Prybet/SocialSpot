@@ -90,14 +90,7 @@ class Post {
         $sen->bindParam(":body", $this->body);
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
-            foreach ($this->hashtags as $hash) {
-                if ($hash->status == 6) {
-                    Hashtag::deleteHashtag($hash->id);
-                } elseif ($hash->status === 0) {
-                    $id = Hashtag::setNewHashtag($hash->name);
-                    Hashtag::setHashtag($this->id, $id);
-                }
-            }
+            
             return true;
         }
     }
@@ -206,6 +199,7 @@ class Post {
                 $p->hashtags = Hashtag::getHashTags($post[0]);
                 $p->images = Image::getImages($post[0]);
                 $p->videos = Video::getVideos($post[0]);
+                $p->spot = Spot::getSpot($post[8]);
                 $p->likes = Like::getLikes($post[0]);
                 $p->replies = Reply::getRepliesByPostId($post[0]);
                 $list[] = $p;
