@@ -116,12 +116,6 @@ endforeach;
         <main class="contain_main">
             <div class="container-post-field">
                 <div class="contain_public">
-                    <div class="post_most">
-                        <div class="most most-grid">
-                            <button class="most_btn">Mas nuevos</button>
-                            <button class="most_btn">Mas votado</button>
-                        </div>
-                    </div>
                     <?php
                     foreach ($posts as $post):
                         include '../item.php';

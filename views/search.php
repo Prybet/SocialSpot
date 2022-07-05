@@ -54,9 +54,9 @@ if ($text != "") {
                     <?php foreach ($contents as $cont):?>
                         <div class="conten_item" data-value="<?= $cont->id ?>">
                             <div class="conten_bn">
-                                <img src="<?= $cont->getBanner() ?>" class="img_bn">
+                                <img src="<?= $cont->getBanner($cont->context, $cont->bannerURL, $cont->username) ?>" class="img_bn">
                             </div>
-                            <img src="<?= $cont->getImages() ?>" class="img_pf">
+                            <img src="<?= $cont->getImages($cont->context, $cont->imageURL, $cont->username) ?>" class="img_pf">
                             <h2 class="h2_search"><?= $cont->getNom() ?></h2>
                             <div class="contain_inf-user">
                                 <label><?= count($cont->posts)?>-<span><?= $cont->getNomPost()?></span></label>
@@ -65,7 +65,7 @@ if ($text != "") {
                                 <label><?= $cont->getFollow()?>-<span><?= $cont->getNomFollow()?></span></label>
                                 <?php endif;?>
                             </div>
-                            <div class="cont_ty">
+                            <div class="cont_ty cont_ty<?= $cont->id ?>" value="<?= $cont->context ?>">
                                 <span><?= $cont->getContext() ?></span>
                             </div>
                         </div>

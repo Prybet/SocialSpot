@@ -48,6 +48,9 @@ $ip = Connection::$ip;
                         <div class="most most-grid">
                             <button class="most_btn">Mas nuevos</button>
                             <button class="most_btn">Mas votado</button>
+                            <?php if($_SESSION["user"]->userType->id != 2): ?>
+                            <button class="most_btn">aaa</button>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php

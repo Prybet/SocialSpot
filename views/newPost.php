@@ -17,6 +17,8 @@ $spots = Spot::getAll();
 $norms = Norm::getAll();
 $count = 1;
 $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
+$errT = isset($_SESSION["errTit"]) ? $_SESSION["errTit"] : false;
+$errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
 ?>
 <html>
 <head>
@@ -24,6 +26,7 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
     <title>Crear Nuevo Post</title>
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/model.js"></script>
+    <script src="../js/newpost.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("select[name=cate]").change(function () {
@@ -104,9 +107,25 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
                         <div class="contain_post-input">
                             <div class="contain_input-title">
                                 <input type="text" placeholder="Titulo" class="input_title" name="title">
+                                <?php 
+                                if($errT == true){
+                                    echo "<div class='error'><label class='pop'>*Campo Obligatotio</label></div>";
+                                    $_SESSION["errTit"] = null;
+                                }else{
+                                    echo "<div class='error hidden'><label class='pop hidden'></label></div>";
+                                }
+                                ?>
                             </div>
                             <div class="top">
                                 <textarea placeholder="Texto(opcional)" class="textarea" name="body"></textarea>
+                                <?php 
+                                if($errB == true){
+                                    echo "<div class='error'><label class='pop'>*Campo Obligatotio</label></div>";
+                                    $_SESSION["errBod"] = null;
+                                }else{
+                                    echo "<div class='error hidden'><label class='pop hidden'></label></div>";
+                                }
+                                ?>
                             </div>
                             <div class="top">
                                 <div class="contain_lbl-hash">
@@ -132,7 +151,12 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
 
                             <!-- ----------- -->
 
-                            <!-- <div class="drop-area">
+                            <
+                            <div  id="container">
+                                    <input type="file" class="input_file" id="row-0" name="file-0"/>
+                                </div>
+                            <!-- 
+                            div class="drop-area">
                                 <h2>Arrastra y suelta imágenes</h2>
                                 <span>o</span>
                                 <button type="button">Seleccione tus archivos</button>
@@ -140,20 +164,13 @@ $err = isset($_SESSION["errCate"]) ? $_SESSION["errCate"] : false;
 
                                 
                             </div>
-                            <div id="preview"></div> -->
-                            <div  id="container">
-                                    <input type="file" class="input_file" id="row-0" name="file-0"/>
-                                </div>
-
+                            <div id="preview"></div> 
+-->
                             <!-- ----------- -->
-
-
-                            <div class="top">
-                                <input type="checkbox" name="check"><label class="lbl_noti">Recibir notificaciones de comentarios y respuestas</label>
-                            </div>
+                             
                             <div class="contain_btn top">
                                 <div class="nel">
-
+                                    
                                 </div>
                                 <div class="contain_btn-grid">
                                     <button type="submit" name="submit" class="btn_cancel" value="back">Cancelar</button>

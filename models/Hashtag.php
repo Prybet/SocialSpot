@@ -171,7 +171,9 @@ class Hashtag {
         if($text != null){
             $texts = explode(",", $text);
             foreach ($texts as $t){
-                $list[] = Hashtag::toHashTag($t);
+                if($t != ""){
+                    $list[] = Hashtag::toHashTag($t);
+                }
             }
             return $list;
         }

@@ -34,29 +34,38 @@ if ($method == "GET") {
         $check = isset($_POST["check"]) ? $_POST["check"] : "";
         $spot = isset($_POST["spot"]) ? $_POST["spot"] : 0;
         $hash = isset($_POST["hashtags"]) ? $_POST["hashtags"] : null;
-        if ($cate != "" && $title != "") {
-            if ($cate != -1) {
-                $user = $_SESSION["user"];
-                $post = new Post();
-                $post->profID = $user->profile->id;
-                $post->title = $title;
-                $post->body = $body;
-                $post->category = new Category();
-                $post->category->id = $cate;
-                $post->spot = new Spot();
-                $post->spot->id = $spot;
-                $post->hashtags = Hashtag::makeHashtags($hash);
-                $idp = $post->setPost();
-                if (uploadFiles($idp)) {
-                    $_SESSION["post"] = Post::getPost($idp);
-                    header("Location: ../views/post.php");
+
+        if ($cate != -1) {
+            if ($title != "") {
+                if ($body != "") {
+                    $user = $_SESSION["user"];
+                    $post = new Post();
+                    $post->profID = $user->profile->id;
+                    $post->title = $title;
+                    $post->body = $body;
+                    $post->category = new Category();
+                    $post->category->id = $cate;
+                    $post->spot = new Spot();
+                    $post->spot->id = $spot;
+                    $post->hashtags = Hashtag::makeHashtags($hash);
+                    $idp = $post->setPost();
+                    if (uploadFiles($idp)) {
+                        $_SESSION["post"] = Post::getPost($idp);
+                        header("Location: ../views/post.php");
+                    } else {
+                        header("Location: ../views/index.php");
+                    }
                 } else {
-                    header("Location: ../views/index.php");
+                    $_SESSION["errBod"] = true;
+                    header("Location: ../views/newpost");
                 }
             } else {
-                $_SESSION["errCate"] = true;
-                header("Location: ../views/Newpost.php");
+                $_SESSION["errTit"] = true;
+                header("Location: ../views/newpost");
             }
+        } else {
+            $_SESSION["errCate"] = true;
+            header("Location: ../views/newpost");
         }
         //Reply For Post
     } elseif ($_POST["submit"] == "comm") {

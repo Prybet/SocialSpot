@@ -38,7 +38,6 @@ header {
 }
 .ftbanner{
     position: absolute;
-    background-image: url(../img/banner.jpg);
     width: 70%;
     height: 35rem;
     background-repeat: no-repeat;
@@ -53,7 +52,6 @@ header {
     width: 20rem;
     height: 20rem;
     background-size: cover;
-    background-image: url(../img/perfil.png);
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 10rem;
@@ -229,44 +227,11 @@ header {
     border: 1px solid var(--black);
 }
 
-/* MOST BTN */
-.post_most{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--darker);
-    border-radius: 0.5rem;
-    width: 100%;
-    padding: 1.5rem;
-}
-.most-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem; 
-}
-.most{
-    width: 95%;
-}
-.most_btn{
-    background-color: var(--black);
-    color: var(--primary);
-    border-radius: 0.5rem;
-    border: 1px solid var(--ligthgray);
-    width: 100%;
-    padding: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-.most_btn:first-of-type{
-    background-color: var(--primary);
-    color: var(--black);
-    border: 1px solid var(--black);
-} 
 /* ITEM */
 .contain_post{
     width: 75rem;
     background-color: var(--darker);
-    margin: 2rem 0;
+    margin-bottom: 2rem;
     border-radius: 0.3rem;
     padding: 1.5rem 0;
     border: 2px solid var(--darker);

@@ -161,6 +161,7 @@ class Search {
                         $sear->name = $pr->name;
                         $sear->description = $pr->description;
                         $sear->imageURL = $pr->imageURL;
+                        $sear->bannerURL = $pr->bannerURL;
                         $sear->region = $pr->region;
                         $sear->posts = $pr->posts;
                         $sear->followers = $pr->followers;
@@ -250,63 +251,64 @@ class Search {
         }
     }
 
-    public function getImages() {
-        switch ($this->context) {
+    public static function getImages($context, $imageURL, $username) {
+        switch ($context) {
             case "Profile":
-                if ($this->imageURL == "") {
+                if ($imageURL == "") {
                     return"../img/perfil.png";
                 } else {
-                    return "../../SSpotImages/UserMedia/" . $this->username . "-Folder/ProfileImages/" . $this->imageURL;
+                    return "../../SSpotImages/UserMedia/" . $username . "-Folder/ProfileImages/" . $imageURL;
                 }
             case "Category":
-                return self::buildImages($this->imageURL, "CategoryImages");
+                return self::buildImages($imageURL, "CategoryImages");
             case "Region":
-                return self::buildImages($this->imageURL, "RegionImages");
+                return self::buildImages($imageURL, "RegionImages");
             case "Province":
-                return self::buildImages($this->imageURL, "ProvinceImages");
+                return self::buildImages($imageURL, "ProvinceImages");
             case "City":
-                return self::buildImages($this->imageURL, "CityImages");
+                return self::buildImages($imageURL, "CityImages");
             default :
                 return "";
         }
     }
-    public static function buildImages($banner, $pos) {
+    public static function buildImages($banner, $place) {
         if ($banner == "") {
             return "../img/perfil.png";
         } else {
-            return "../../SSpotImages/InterestsImages/" . $pos . "/ProfileImages/" . $banner;
+            return "../../SSpotImages/InterestsImages/" . $place . "/ProfileImages/" . $banner;
         }
     }
 
-    public function getBanner() {
-        switch ($this->context) {
+    public static function getBanner($context, $bannerURL, $username) {
+        switch ($context) {
             case "Profile":
-                if ($this->bannerURL == "") {
+                if ($bannerURL == "") {
                     return "../img/banner.jpg";
                 } else {
-                    return "../../SSpotImages/UserMedia/" . $this->username . "-Folder/BannerImages/" . $this->bannerURL;
+                    return "../../SSpotImages/UserMedia/" . $username . "-Folder/BannerImages/" . $bannerURL;
                 }
             case "Category":
-                return self::buildBanner($this->bannerURL, "CategoryImages");
+                return self::buildBanner($bannerURL, "CategoryImages");
 
             case "Region":
-                return self::buildBanner($this->bannerURL, "RegionImages");
+                return self::buildBanner($bannerURL, "RegionImages");
             case "Province":
-                return self::buildBanner($this->bannerURL, "ProvinceImages");
+                return self::buildBanner($bannerURL, "ProvinceImages");
             case "City":
-                return self::buildBanner($this->bannerURL, "CityImages");
+                return self::buildBanner($bannerURL, "CityImages");
             default :
                 return "";
         }
     }
 
-    public static function buildBanner($banner, $pos) {
+    public static function buildBanner($banner, $place) {
         if ($banner == "") {
             return "../img/banner.jpg";
         } else {
-            return "../../SSpotImages/InterestsImages/" . $pos . "/BannerImages/" . $banner;
+            return "../../SSpotImages/InterestsImages/" . $place . "/BannerImages/" . $banner;
         }
     }
+    
 
     public function getNomFollowers() {
         switch ($this->context) {
@@ -398,19 +400,15 @@ class Search {
     public static function getThis($id, $context) {
         switch ($context){
             case "Province":
-                return Province::getProvince($id);
-                break;
+                return Province::getFullProvince($id);
             case "Region":
                 return Region::getFullRegion($id);
-                break;
             case "City":
                 return City::getFullCity($id);
-                break;
             case "Category":
                 return Category::getFullCategoy($id);
-                break;
             default:
-                return"";
+                return null;
         }
     }
 
