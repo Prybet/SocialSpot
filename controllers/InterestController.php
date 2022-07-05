@@ -12,17 +12,22 @@ require_once '../models/User.php';
 require_once '../models/Interests.php';
 require_once '../models/Search.php';
 session_start();
+$ip = Connection::$ip;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $POST = $_POST;
 
-    if ($POST["submit"] == "follCate") {
-        $cateID = isset($POST["cate"]) ? $POST["cate"] : "";
+    if ($POST["submit"] == "follInterest") {
+        $id = isset($POST["inte"]) ? $POST["inte"] : "";
+        $con = isset($POST["context"]) ? $POST["context"] : "";
+        if($con == ""){
+            header("Location: ../views/index");
+        }
         $inte = new Interests();
-        $inte->typeID = $cateID;
+        $inte->typeID = $id;
         $inte->profile = $_SESSION["user"]->profile->id;
-        $inte->context = "Category";
+        $inte->context = $con;
         if($inte->findInterest()){
-            header("Location: ../views/interests?id=$cateID");
+            header($ip."/SocialSpot/views/interests?id=".$id."&context=".$con);
         }else{
             echo 'fail';
         }
@@ -40,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }elseif ($POST["submit"] == "hashtag") {
         
     }elseif($POST["submit"] == "province"){
-        header("Location: ../views/search.php");
+        header("Location: ../views/search");
     }
 } else {
     header("Location: ../views/index");
