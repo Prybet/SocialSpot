@@ -18,7 +18,7 @@ class Connection {
     private $username = "root";
     private $password = "root";
     public $mysql = null;
-    public static $ip = "http://20.226.107.237";
+    public static $ip = "http://www.socialspot.cl";
     //public static $ip = "http://192.168.56.1";
             
     function __construct() {
