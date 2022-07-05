@@ -172,7 +172,9 @@ class Hashtag {
             $texts = explode(",", $text);
             foreach ($texts as $t){
                 if($t != ""){
-                    $list[] = Hashtag::toHashTag($t);
+                    $h = new Hashtag();
+                    $h->name =  Hashtag::toHashTag($t);
+                    $list[] = $h;
                 }
             }
             return $list;
