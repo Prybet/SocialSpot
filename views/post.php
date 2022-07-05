@@ -68,6 +68,7 @@ $norms = Norm::getAll();
                 document.getElementById("btn-modal-gotopost").outerHTML = "";
 
 
+
             });
 
         </script>
@@ -126,9 +127,17 @@ $norms = Norm::getAll();
                                             <form action="../controllers/PostController.php" method="post" class="frm-reply" >
                                                 <input name="comId" value="<?= $comm->id ?>" hidden>
                                                 <textarea class="input_textarea textarea_reply txt_<?= $i ?>" name="body"></textarea>
-                                                <div class="flexrigth">
-                                                    <button type="submit" name="submit" value="reply" class="btn_reply-right btn_reply-right_<?= $i ?>" id="btn_com">Comentar</button>
-                                                </div>
+                                                <?php if ($_SESSION["user"]->userType->id != 2): ?>
+                                                    <div class="flexrigth">
+                                                        <button type="submit" name="submit" value="reply" class="btn_reply-right btn_reply-right_<?= $i ?>" id="btn_com">Comentar</button>
+                                                    </div>
+                                                <?php else: ?>
+                                                    <div class="flexrigth">
+                                                        <button type="submit" name="submit" value="goLogin" class="btn_reply-right btn_reply-right_<?= $i ?>" id="btn_com">Comentar</button>
+
+                                                    </div>
+                                                <?php endif; ?>
+
                                             </form>
                                             <?php
                                             foreach ($comm->replies as $reply) :
@@ -169,7 +178,8 @@ $norms = Norm::getAll();
                                 <div class="contain_descrip">
                                     <p class="p_descrip"> <?= $post->category->description ?> </p>
                                     <div class="contain_btn-foll">
-                                        <button class="btn_foll">Seguir</button>
+                                        
+                                        <button class="btn_foll">Ver Categoría</button>
                                     </div>
                                 </div>
                             </div>         

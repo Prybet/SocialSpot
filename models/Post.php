@@ -46,7 +46,7 @@ class Post {
     private function insertHashtags($pos) {
         if ($this->hashtags != null) {
             foreach ($this->hashtags as $hash) {
-                Hashtag::findHashtag($hash, $pos);
+                Hashtag::findHashtag($hash->name, $pos);
             }
         }
     }
