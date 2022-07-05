@@ -17,7 +17,7 @@ $ip = Connection::$ip;
         <script src="../js/model.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                            
+
                 document.getElementById("modal-delete_user").outerHTML = "";
                 document.getElementById("modal-followers").outerHTML = "";
                 document.getElementById("modal-edit").outerHTML = "";
@@ -26,7 +26,7 @@ $ip = Connection::$ip;
                 document.getElementById("modal-deletePost").outerHTML = "";
                 $("#view").attr("value", "main");
             });
-            
+
         </script>
     </head>
     <body>
@@ -51,26 +51,29 @@ $ip = Connection::$ip;
                         </div>
                     </div>
                     <?php
-                        foreach ($posts as $post):
-                            include '../item.php';
-                        endforeach;
+                    foreach ($posts as $post):
+                        include '../item.php';
+                    endforeach;
                     ?>
                 </main>
                 <div class="contain_popular">
                     <div class="t">
                         <section class="contain_popular-fixed">
                             <div class="contain_pupular-content">
-                                <h2 class="descrip_h2 no-margin">Deportes populares:</h2>
-                                <div class="descrip_sport">
-                                    <div class="contain_lbl-pupular">
-                                        <label class="descrip_label"><span>1. </span>Skate</label>
+                                <h2 class="descrip_h2 no-margin">Categorias populares:</h2>
+                                <?php foreach (Category::getTop() as $i => $cate) : ?>
+
+                                    <div class="descrip_sport">
+                                        <div class="contain_lbl-pupular">
+                                            <label class="descrip_label"><span> <?= $i + 1 ?>  </span> <?= $cate->name ?></label>
+                                        </div>
+                                        <div class="flex">
+                                            <button class="btn_popular-cate">Ver mas</button>
+                                        </div>
                                     </div>
-                                    <div class="flex">
-                                        <button class="btn_popular-cate">Unirse</button>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
-                            
+
                         </section>
                         <footer class="flex-footer">
                             <div class="container_footer">
@@ -98,14 +101,14 @@ $ip = Connection::$ip;
                                     <label>Todos los derechos Reservados.</label>
                                 </div>
                             </div>
-                        </fotter>
+                            </fotter>
                     </div>
                 </div>
             </div>
         </div>
 
         <?php include_once '../modal.php'; ?>
-        
+
     </body>    
     <script src="../js/nav.js"></script>
 </html>

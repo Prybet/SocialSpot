@@ -86,7 +86,7 @@ class Category {
                 $c->status = Status::getStatu($res[5]);
                 $c->members = $c->getMembers();
                 $c->onLine = $c->getOnline();
-                  $c->norms = Norm::getAll();
+                $c->norms = Norm::getAll();
                 $conn = null;
                 return $c;
             } else {
@@ -94,7 +94,7 @@ class Category {
             }
         }
     }
-    
+
     public static function getFullCategoy($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM category WHERE id = :id AND status_id = 1");
@@ -145,8 +145,7 @@ class Category {
             return $sen->rowCount();
         }
     }
-    
-    
+
     public static function getAllNames() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT id, name FROM category WHERE status_id = 1 ORDER BY id DESC");
@@ -161,16 +160,16 @@ class Category {
             return $list;
         }
     }
-    
-    public static function getCategoryForSearch($nom){
+
+    public static function getCategoryForSearch($nom) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM category WHERE name LIKE :name AND Status_ID = 1");
-        $param = $nom."%";
+        $param = $nom . "%";
         $sen->bindParam(":name", $param);
-        if($sen->execute()){
+        if ($sen->execute()) {
             $res = $sen->fetchAll();
-            $list = array(); 
-            foreach ($res as $cate){
+            $list = array();
+            foreach ($res as $cate) {
                 $c = new Category();
                 $c->id = $cate[0];
                 $c->name = $cate[1];
@@ -182,10 +181,32 @@ class Category {
                 $c->onLine = $c->getOnline();
                 $c->status = Status::getStatu($cate[5]);
                 $list[] = $c;
-            }    
-            return $list; 
+            }
+            return $list;
         }
     }
-    
-    
+
+    public static function findPopular() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("SELECT category_id FROM post");
+        if ($sen->execute()) {
+            $res = $sen->fetchAll();
+            $list = array();
+            foreach ($res as $id) {
+                $list[] = $id[0];
+            }
+            return $list;
+        }
+    }
+
+    public static function getTop() {
+        $list = array_count_values(self::findPopular());
+        arsort($list);
+        $cates = array();
+        foreach ($list as $i => $pos) {
+            $cates[] = self::getCategoy($i);
+        }
+        return $cates;
+    }
+
 }
