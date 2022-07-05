@@ -30,7 +30,7 @@ class Interests {
     var $context;
 
     public static function reload($interests) {
-        return self::getInterests($interests->profile);
+        return self::getInterests($interests[0]->profileID);
     }
 
     public static function getInterests($idP) {

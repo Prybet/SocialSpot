@@ -16,6 +16,7 @@ require_once '../models/Status.php';
 require_once '../models/Image.php';
 require_once '../models/Video.php';
 require_once '../models/Profile.php';
+require_once '../models/Search.php';
 
 $body = file_get_contents('php://input');
 $params = json_decode($body);
@@ -36,8 +37,11 @@ if ($method == "GET") {
 
     switch ($action) {
         case "search":
-            $text = isset($ob->text) != "" ? $ob->text : "";
-            $list = Search::setSearch($text);
+            $text = isset($object->text) != "" ? $object->text : "";
+            if ($text != "") {
+                $list = Search::setSearch($text);
+                
+            }
             header("Content-Type: application/json; charset=UTF8");
             echo json_encode($list, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             break;

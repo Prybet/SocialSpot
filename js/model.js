@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var ip = "http://20.206.68.64";
+    var ip = "http://20.226.107.237";
     //var ip = "http://192.168.1.149";
     //Item
     $(".contain_post").click(function () {

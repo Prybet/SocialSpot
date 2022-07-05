@@ -5,7 +5,7 @@
  *  soulbroken
  *  Prybet
  */
-var ip = "http://20.226.8.31";
+var ip = "http://20.226.107.237";
 
 const modalU = document.querySelector(".contain_option");
 const decoU = document.querySelector(".decorate_user");
