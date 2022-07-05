@@ -40,7 +40,7 @@ $(document).ready(function () {
                 $("button[name=submit]").prop("disabled", true);
                 $(".lbl_user").prop("hidden", false);
                 $("input[name=user]").addClass("input_field_danger");
-                
+
             } else {
                 $("button[name=submit]").prop("disabled", false);
                 $(".lbl_user").prop("hidden", true);
@@ -49,5 +49,17 @@ $(document).ready(function () {
 
         });
     });
-});
 
+    $(document).on('keyup', '#email', function () {
+        document.querySelector("#email").value = document.querySelector("#email").value.replace(/\s+/g, "");
+    });
+    $(document).on('keyup', '#username', function () {
+        document.querySelector("#username").value = document.querySelector("#username").value.replace(/\s+/g, "");
+    });
+    $(document).on('keyup', '#name', function () {
+        if (document.querySelector("#name").value.startsWith(" ")) {
+            document.querySelector("#name").value = document.querySelector("#name").value.replace(/\s+/g, "");
+        }
+    });
+
+});

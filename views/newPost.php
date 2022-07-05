@@ -27,56 +27,6 @@ $errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
     <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/model.js"></script>
     <script src="../js/newpost.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("select[name=cate]").change(function () {
-                id = $("select[name=cate]").val();
-                if (id === "-1") {
-                    $("#catName").empty();
-                    $("#catDesc").empty();
-                    $("#catName").append("/Categoria");
-                    $("#catImage").attr("src", "../img/perfil.png");
-                } else {
-                    $.ajax({
-                        url: "../Controllers/AjaxController.php",
-                        type: "post",
-                        data: {"id": id, "sub": "category"},
-                        dataType: "json"
-                    }).done(function (data) {
-                        if (data !== null) {
-                            $("#catName").empty();
-                            $("#catName").append(data["name"]);
-
-                            $("#catDesc").empty();
-                            $("#catDesc").append(data["description"]);
-
-                            $("#catImage").empty();
-                            $("#catImage").attr("src", "../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/" + data["imageURL"]);
-
-                            $("#members").empty();
-                            $("#members").append(data["members"].length);
-                            
-                            $("#online").empty();
-                            $("#online").append(data["onLine"]);
-                        }
-                    });
-                }
-            });
-            var id = 0;
-            $("#row-" + id).change(function () {
-                id++;
-                clone = $("input[name=file-0]").clone();
-                $(clone).attr("name", "file-" + id);
-                $(clone).attr("id", "row-" + id);
-                $(clone).appendTo("#container");
-
-                $("input[name=file-0]").val(null);
-            });
-
-            
-            
-        });
-    </script>
 </head>
 <body> 
     <div class="a"> 
@@ -106,7 +56,7 @@ $errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
                     <div class="contain_info-post">
                         <div class="contain_post-input">
                             <div class="contain_input-title">
-                                <input type="text" placeholder="Titulo" class="input_title" name="title">
+                                <input type="text" id="title" placeholder="Titulo" class="input_title" name="title">
                                 <?php 
                                 if($errT == true){
                                     echo "<div class='error'><label class='pop'>*Campo Obligatotio</label></div>";
@@ -117,7 +67,7 @@ $errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
                                 ?>
                             </div>
                             <div class="top">
-                                <textarea placeholder="Texto(opcional)" class="textarea" name="body"></textarea>
+                                <textarea placeholder="Texto(opcional)" class="textarea" name="body" id="body"></textarea>
                                 <?php 
                                 if($errB == true){
                                     echo "<div class='error'><label class='pop'>*Campo Obligatotio</label></div>";

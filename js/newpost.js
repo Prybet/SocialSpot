@@ -1,76 +1,58 @@
 $(document).ready(function () {
-    const dropArea = document.querySelector(".drop-area");
-    const dragText = dropArea.querySelector("h2");
-    const button = dropArea.querySelector("button");
-    const input = dropArea.querySelector("#row-0");
-    let files;
     
-    button.addEventListener("click", (e) =>{
-        input.click();
-    });
-    input.addEventListener("change", (e) =>{
-        files = this.files;
-        dropArea.classList.add("active");
-        showFiles(files);
-        dropArea.classList.remove("active");
-    });
-    dropArea.addEventListener("dragover", (e) =>{
-        e.preventDefault();
-        dropArea.classList.add("active");
-        dragText.textContent = "Suelta para subir los archivos";
-    });
-    dropArea.addEventListener("dragleave", (e) =>{
-        e.preventDefault();
-        dropArea.classList.remove("active");
-        dragText.textContent = "Arrastra y suelta imágenes";
-    });
-    dropArea.addEventListener("drop", (e) =>{
-        e.preventDefault();
-        files = e.dataTransfer.files;
-        showFiles(files);
-        dropArea.classList.remove("active");
-        dragText.textContent = "Arrastra y suelta imágenes";
-    });
+    $("select[name=cate]").change(function () {
+        id = $("select[name=cate]").val();
+        if (id === "-1") {
+            $("#catName").empty();
+            $("#catDesc").empty();
+            $("#catName").append("/Categoria");
+            $("#catImage").attr("src", "../img/perfil.png");
+        } else {
+            $.ajax({
+                url: "../Controllers/AjaxController.php",
+                type: "post",
+                data: {"id": id, "sub": "category"},
+                dataType: "json"
+            }).done(function (data) {
+                if (data !== null) {
+                    $("#catName").empty();
+                    $("#catName").append(data["name"]);
 
-    function showFiles(files){
-        if(files.length === undefined){
-            processFile(files);
-        }else{
-            for(const file of files){
-                processFile(file);
-            }
-        }
-    }
-    function processFile(file){
-        const docType = file.type;
-        const validExtensions = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-        if(validExtensions.includes(docType)){
-            //archivo valido
-            const fileReader = new FileReader();
-            const id = `file-${Math.random().toString(32).substring(7)}`;
+                    $("#catDesc").empty();
+                    $("#catDesc").append(data["description"]);
 
-            fileReader.addEventListener('load', e =>{
-                const fileUrl = fileReader.result;
-                const image = `
-                    <div id="${id}" class="file-container">
-                        <img src="${fileUrl}" alt="${file.name}" width="50px">
-                        <div class="status">
-                            <span>${file.name}</span>
-                        </div>
-                    </div>
-                `;
-                const html = document.querySelector("#preview").innerHTML;
-                document.querySelector("#preview").innerHTML = image + html;
+                    $("#catImage").empty();
+                    $("#catImage").attr("src", "../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/" + data["imageURL"]);
+
+                    $("#members").empty();
+                    $("#members").append(data["members"].length);
+
+                    $("#online").empty();
+                    $("#online").append(data["onLine"]);
+                }
             });
-
-            fileReader.readAsDataURL(file);
-            uploadFile(file, id);
-        }else{
-            //no es un archivo valido
-            alert("no es un archivo valido");
         }
-        function uploadFile(file){
+    });
+    var id = 0;
+    $("#row-" + id).change(function () {
+        id++;
+        clone = $("input[name=file-0]").clone();
+        $(clone).attr("name", "file-" + id);
+        $(clone).attr("id", "row-" + id);
+        $(clone).appendTo("#container");
 
+        $("input[name=file-0]").val(null);
+    });
+
+    $(document).on('keyup', '#title', function () {
+        if (document.querySelector("#title").value.startsWith(" ")) {
+            document.querySelector("#title").value = document.querySelector("#title").value.replace(/\s+/g, "");
         }
-    }
+    });
+    $(document).on('keyup', '#body', function () {
+        if (document.querySelector("#body").value.startsWith(" ")) {
+            document.querySelector("#body").value = document.querySelector("#body").value.replace(/\s+/g, "");
+        }
+    });
+
 });
