@@ -10,7 +10,7 @@ Made by:
 session_start();
 $_SESSION["recov"] = isset($_SESSION["recov"]) ? $_SESSION["recov"] : "";
 if ($_SESSION["recov"] != "") {
-    $style = "style.css";
+    $style = "grupe1Style.css";
     ?>
     <!DOCTYPE html>
     <html>

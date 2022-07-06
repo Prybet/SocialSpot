@@ -29,6 +29,7 @@ class City {
     //Only for Interests
     var $posts;
 
+    //hace un select cambiando el estado Active retornando un objeto de City
     public static function getCity($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM city WHERE status_id = 1 AND id = :id");
@@ -48,7 +49,7 @@ class City {
             }
         }
     }
-
+    //Busca una cuidad, retornando un objeto City
     public static function getFullCity($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM city WHERE status_id = 1 AND id = :id");

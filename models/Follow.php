@@ -24,7 +24,7 @@ class Follow {
     var $date;
     var $time;
     var $status;
-
+    //Inserta el seguido retornando un true
     public function setFollow() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO follow VALUES(null, :prof, :me, :date, :time, 12)");
@@ -39,7 +39,7 @@ class Follow {
             return true;
         }
     }
-
+    //busca todos los seguidores que tiene cierto profile con el estado a Given
     public static function getFollowers($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM follow WHERE profile_ID = :id AND Status_ID = 12");
@@ -58,7 +58,7 @@ class Follow {
             return $list;
         }
     }
-
+    //busca todos los seguidos que tiene cierto profile con el estado a Given
     public static function getFollows($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM follow WHERE Follower_ID = :id AND Status_ID = 12");
@@ -77,7 +77,7 @@ class Follow {
             return $list;
         }
     }
-
+    //Hace validaciones para objetener la id del status que queramos cambiar
     public function updateFollow($follow) {
         $conn = new Connection();
         if ($follow->status->id == 12) {
@@ -93,7 +93,7 @@ class Follow {
             return true;
         }
     }
-    
+    //Busca el seguidos, si no hay se va a insertar, si no va acutalizarse, evitando crear otro nuevo dato en el objeto follow
     public function findFollow($follow) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT id, status_id FROM follow WHERE Follower_ID = :foll AND profile_ID = :prof");

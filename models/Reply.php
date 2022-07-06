@@ -57,7 +57,7 @@ class Reply {
             return true;
         }
     }
-
+    //Busca el comentario por la id, y estado a Comment, retornando la lista de Reply
     public static function getRepliesByPostId($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE post_id = :id AND status_id = 14");
@@ -80,7 +80,7 @@ class Reply {
             return $list;
         }
     }
-
+    //Busca una lista de comemtarios, en el objeto Reply que tenga el estado Reply
     public static function getRepliesByReplyId($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM reply WHERE reply_id = :id AND status_id = 15");

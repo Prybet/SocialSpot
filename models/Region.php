@@ -43,7 +43,7 @@ class Region {
             }
         }
     }
-
+    //Busca la region retornando un objeto de Region
     public static function getRegion($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM region WHERE  id = :id");

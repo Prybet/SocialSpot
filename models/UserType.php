@@ -25,7 +25,7 @@ class UserType {
         $this->type = "Guess";
         $this->status = new Status();
     }
-    
+    //Busca el tipo de usuario, retornando el objeto usertype
      public function getUserType($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM usertype WHERE id = :id");

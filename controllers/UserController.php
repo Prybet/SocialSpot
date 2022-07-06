@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $POST = $_POST;
 
     $formats = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
-    // New Account
+    // Crea una cuenta de usuario y profile
     if ($POST["submit"] == "create") {
         $email = isset($POST["email"]) ? $POST["email"] : "";
         $usern = isset($POST["user"]) ? $POST["user"] : "";
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
 
-        // Edit Account
+        //Edita ell Profile entregandole sus respectivos datos, 
     } elseif ($POST["submit"] == "edit") {
         $name = isset($_POST["name"]) ? $_POST["name"] : "";
         $check = isset($_POST["check"]) ? $_POST["check"] : false;
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             header("Location: ../views/editprofile");
         }
-        //Delete Account
+        //Elimina el usuario con el metodo delete() y cambia la session de user a null
     } elseif($POST["submit"] == "delete"){
         $user = $_SESSION["user"];
         if($user->delete()){
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../views/index");
         }
         
-        //Edit Images
+        //Editar iamgenes, solo se permite acutalizar la imagen, si se 
     } elseif ($POST["submit"] == "img") {
         $user = $_SESSION["user"];
         $user->profile->imageURL = uploadProfileImage($user->profile, $formats);
@@ -157,6 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../views/index");
 }
 
+//refime el tipo de formato del archivo
 function uploadProfileImage($prof, $formats) {
     if (in_array($_FILES["imgProf"]["type"], $formats)) {
         switch ($_FILES["imgProf"]["type"]) {

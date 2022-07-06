@@ -37,6 +37,7 @@ class Search {
     var $posts;
     var $context;
 
+    //Hace que cada valor se guarde una lista de objetos, 
     public static function setSearch($text) {
         $prof = Profile::getProfileForSearch($text);
         $cate = Category::getCategoryForSearch($text);
@@ -46,7 +47,10 @@ class Search {
         $a = self::makeListSearch($prof, $cate, $regi, $prov, $city);
         return $a;
     }
-
+    //los parametros con objetos se va en una variable de tipo Array 
+    //donde se guardaran objetos de cada objeto, finalmente en $obj 
+    //se guarda todas las litar seunidas con el metodo array_merge(), 
+    //ademas ordenarlo de orden alfabético
     public static function makeCollectList($prof, $cate, $regi, $prov, $city) {
         $listOne = array();
         $listTwo = array();
@@ -73,11 +77,9 @@ class Search {
         usort($obj, "strcmp");
         return $obj;
     }
-
-    public static function validCurrent($param) {
-        
-    }
-
+    //llama a una funcion para obtener una sola lista de varios objeto, y dependiendo 
+    //de cada objeto se va a insertar un nuevo objeto llamado Search ademas validaciones para que no se vuelva 
+    //a repetir los datos
     public static function makeListSearch($prof, $cate, $regi, $prov, $city) {
         $obj = self::makeCollectList($prof, $cate, $regi, $prov, $city);
         $list = array();
@@ -234,6 +236,7 @@ class Search {
         return $list;
     }
 
+    //dependiendo del contexto, va reportar un string
     public function getContext() {
         switch ($this->context) {
             case "Profile":
@@ -250,7 +253,7 @@ class Search {
                 return "";
         }
     }
-
+    //se crea la subdireccion de carpeta del siatema, para poder tener las imagenes en ese lugar
     public static function getImages($context, $imageURL, $username) {
         switch ($context) {
             case "Profile":
@@ -271,6 +274,7 @@ class Search {
                 return "";
         }
     }
+    //lo mismo de lo anterior, define la ubicaion de los archivos
     public static function buildImages($banner, $place) {
         if ($banner == "") {
             return "../img/perfil.png";
@@ -278,7 +282,7 @@ class Search {
             return "../../SSpotImages/InterestsImages/" . $place . "/ProfileImages/" . $banner;
         }
     }
-
+    //se crea la subdireccion de carpeta del siatema, para poder tener las imagenes banner en ese lugar
     public static function getBanner($context, $bannerURL, $username) {
         switch ($context) {
             case "Profile":
@@ -300,7 +304,7 @@ class Search {
                 return "";
         }
     }
-
+    //lo mismo de lo anterior, define la ubicaion de los archivos
     public static function buildBanner($banner, $place) {
         if ($banner == "") {
             return "../img/banner.jpg";
@@ -308,8 +312,7 @@ class Search {
             return "../../SSpotImages/InterestsImages/" . $place . "/BannerImages/" . $banner;
         }
     }
-    
-
+    //esta funcion retornar dependiendo de los seguidores van a reportar un string
     public function getNomFollowers() {
         switch ($this->context) {
             case "Profile":
@@ -335,7 +338,7 @@ class Search {
         }
     }
 
-    //lo tengo que usar
+    /
     public function ValidOfNomFollowers($foll) {
         if (count($foll) == 1) {
             return "Miembro";

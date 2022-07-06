@@ -82,7 +82,7 @@ class Post {
             }
         }
     }
-
+    //Edita el post cambiando el estado a 7, stutus_id = Editado
     public function editPost() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET title = :tit, body = :body, status_id = 7 WHERE id = :id");
@@ -90,12 +90,11 @@ class Post {
         $sen->bindParam(":body", $this->body);
         $sen->bindParam(":id", $this->id);
         if ($sen->execute()) {
-            
             return true;
         }
     }
-
     // For views/post.php
+    //Busca un post retornando un onjeto de Post
     public static function getPost($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE id = :id ");
@@ -122,7 +121,7 @@ class Post {
         return $p;
     }
 
-    //Main Posts
+    //Encuentra todos los post con el estado de Active ordenando de lo mas nuevo a lo mas viejo, retorna una lista de Post
     public static function getAllPosts() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE status_id = 1 OR status_id = 7 ORDER BY id DESC");
@@ -150,7 +149,7 @@ class Post {
         }
         return $list;
     }
-
+    //
     public static function getCustomPosts($interests) {
         $raw = array();
         foreach ($interests as $inter) {
@@ -178,6 +177,7 @@ class Post {
         return $raw;
     }
 
+    //busca el post, retornando una lista de Post
     public static function getPostsForProfile($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE profile_id = :id AND (status_id = 1 OR status_id = 7)  ORDER BY id DESC");
@@ -208,6 +208,7 @@ class Post {
         }
     }
 
+    //Actualiza el post ademas de eliminar las imagenes del post
     public function delete() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE date = :date AND time = :time ");
@@ -224,13 +225,14 @@ class Post {
         }
     }
 
+    //En el foreach donde cada vuelta que recorre, va hacer la llamada de una funcion para que haga el update
     public function deletePostImages() {
         foreach ($this->images as $i) {
             Image::delete($i);
         }
         return "true";
     }
-
+    //Actualiza el post cambiando el estado a 6, status_id = Removed, ademas actualizar los/el estado de las imagenes
     public function deleteThis() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE post SET status_id = 6 WHERE id = :id ");
@@ -275,7 +277,7 @@ class Post {
             return self::fetchPosts($sen);
         }
     }
-
+    //hacer una busqueda con inner join p
     public static function getCustomCity($context, $typeID) {
         $conn = new Connection();
         $sql = "SELECT * FROM post INNER JOIN spot ON post.spot_id = spot.id WHERE (post.status_id = 1 OR post.status_id = 7) AND ( {$context} = {$typeID}) ORDER BY post.id DESC ";

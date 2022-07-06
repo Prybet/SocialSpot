@@ -27,7 +27,7 @@ class Like {
     var $date;
     var $time;
     var $status;
-
+    //Hace la insercion like de un post
     public static function setLike($like) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO .like VALUES (null, :prof, :post, :date, :time, 12)");
@@ -42,7 +42,7 @@ class Like {
             return true;
         }
     }
-
+    //Busca una lista de like de un post
     public static function getLikes($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM .like WHERE post_id = :post AND status_id = 12");
@@ -64,7 +64,7 @@ class Like {
             return $list;
         }
     }
-
+    
     public static function getLike($idUser, $idPost) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM .like WHERE User_ID = :idUser AND Post_ID = :idPost");
@@ -80,7 +80,7 @@ class Like {
             return false;
         }
     }
-
+    //Actualiza el like de un post cambiando el estado a Removed
     public static function updateLike($idUser, $idPost) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE .like SET status_id = 6 WHERE User_ID = :idUser AND Post_ID = :idPost");
@@ -90,7 +90,7 @@ class Like {
             return true;
         }
     }
-
+    //Actualiza el like de un post cambiando el estado a Given
     public static function updateLikeGiven($idUser, $idPost) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE .like SET status_id = 12 WHERE User_ID = :idUser AND Post_ID = :idPost");
@@ -100,8 +100,8 @@ class Like {
             return true;
         }
     }
-
-    // TEST
+    //Busca el like  de un post con el usuario, si no tiene va insertar uno nuevo, si no va actualizar el like si 
+    //es llegara darle like nuevamente, no valla a crear un nuevo dato del objeto Like
     public static function findLike($idProf, $idPost) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM .like WHERE Profile_ID = :idprof AND Post_ID = :idPost");
@@ -121,18 +121,15 @@ class Like {
             return false;
         }
     }
-
+    //Actualiza el like cambiando el estado, el estado va a depender del dato entregado en el parametro de la funcion
     public static function updateLik($id, $sta) {
         $st = 1;
-        
         if ($sta == 6) {
             $st = 12;
         }
-
         if ($sta == 12) {
             $st = 6;
         }
-
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE .like SET status_id = :status WHERE id = :id");
         $sen->bindParam(":id", $id);
@@ -140,7 +137,6 @@ class Like {
         if ($sen->execute()) {
             return true;
         }
-        
     }
 
 }

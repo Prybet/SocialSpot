@@ -50,7 +50,7 @@ class Image {
             return $list;
         }
     }
-    
+    //Se actualiza la imagen entregando como parametro el objeto image, a estado = Removed
     public static function delete($image) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE image SET Status_ID = 6  WHERE id = :id");

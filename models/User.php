@@ -38,7 +38,7 @@ class User {
         $this->status = new Status();
         $this->userType = new UserType();
     }
-
+    //Hace un select de usuario, don
     public function getLogin() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT id, email, username, profile_id, status_id, usertype_id FROM user WHERE Status_ID = 1 AND username like :user OR email like :user ");

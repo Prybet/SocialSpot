@@ -24,7 +24,7 @@ class Status {
         $this->id = 1;
         $this->name = "Active";
     }
-    
+    //busca el estado con la id, retornando un objeto de estado
     public static function getStatu($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM status WHERE id = :id");

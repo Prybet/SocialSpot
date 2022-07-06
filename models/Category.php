@@ -31,6 +31,7 @@ class Category {
     var $posts;
     var $norms;
 
+    //Busca y reporta una lista de categoria con el estado Active
     public static function getListAllCategories() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 1 ORDER BY id DESC");
@@ -46,7 +47,7 @@ class Category {
             return $list;
         }
     }
-
+    //Busca todas las categorias con el estado Active, retornando el objeto Category
     public static function getAllCategories() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM category WHERE status_id = 1 ORDER BY id DESC ");
@@ -69,7 +70,7 @@ class Category {
             return $list;
         }
     }
-
+    //Busca categoria con id , retornando el objeto categoria 
     public static function getCategoy($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM category WHERE id = :id AND status_id = 1");
@@ -94,7 +95,7 @@ class Category {
             }
         }
     }
-
+    
     public static function getFullCategoy($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM category WHERE id = :id AND status_id = 1");

@@ -59,7 +59,7 @@ class Profile {
             }
         }
     }
-            
+    //hace un select para buscar el profile retornando un objeto de Profile
     public static function getProfile($id){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
@@ -92,7 +92,7 @@ class Profile {
             return $p;            
         }
     }
-        // Profile for Replies
+        //Busca el profile con la id, retornando el objeto Profile
     public static function getProfileForReplies($id){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id");
@@ -106,8 +106,7 @@ class Profile {
             return $p;               
         }
     }
-    
-        // Profile for main
+    //Busca el profile retornando un objeto de profile
     public static function getProfileForMain($id){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE id = :id ");
@@ -117,11 +116,11 @@ class Profile {
             $p = new Profile();
             $p->id = $rs[0];
             $p->username = $rs[2];
-            return $p;            
+            return $p;    
         }
     }
     
-        // Profile for search
+    // Busca una lista que contenga cierto caracter que tenga el estado a On-Line
     public static function getProfileForSearch($nom){
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM profile WHERE username LIKE :username AND Status_ID = 2");
@@ -155,7 +154,7 @@ class Profile {
             return $list; 
         }
     }
-    
+    //Actualiza profile retornando true
     public function update() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE profile SET name = :name, Profile.Check = :check ,profile.Desc = :desc, BirthDate = :birth, City_ID = :city  WHERE id = :id");
@@ -169,7 +168,7 @@ class Profile {
             return true;
         }
     }
-    
+    //Actualiza el la iagen del Profile y Banner
     public function updateImages() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE profile SET ImageURL = :img , BannerURL = :bnr WHERE id = :id");
@@ -216,7 +215,7 @@ class Profile {
             return 0;
         }
     }
-    
+    //Cambia el estado a Removed del Profile, 
     public function delete() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE profile SET  Status_ID = 6  WHERE id = :id");
@@ -228,8 +227,7 @@ class Profile {
             return true;
         }
     }
-    
-   
+    //El metodo obtiene el parametro la id del post, para poder retonar un post 
     public function getThisPost($id) {
         foreach ($this->myPosts as $post){
             if($id == $post->id ){
@@ -237,7 +235,7 @@ class Profile {
             }
         }
     } 
-    
+    //Busca de todos los seguidores el que coincida la id del Profile, retonando el objeto
      public function getThisFollow($pid) {
         foreach ($this->follows as $f){
             if($f->id == $pid){

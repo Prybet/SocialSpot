@@ -45,6 +45,7 @@ class Province {
         }
     }
 
+    //Hace un select de Province retonando un onjeto Province
     public static function getProvince($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM province WHERE  id = :id");

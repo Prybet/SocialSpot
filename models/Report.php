@@ -27,7 +27,7 @@ class Report {
     var $commentary;
     var $action;
     
-    
+    //Insercion del reporte
     public static function setReport($report) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("INSERT INTO report VALUES(null, :norm, :user, :post, :rep, :spo, :comm, 9)");
