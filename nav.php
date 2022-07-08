@@ -30,35 +30,6 @@
     </div>
 
     <div class="contain_ico flex">
-        <div class="contain_map">
-            <button>
-                <img src="../img/map.png" class="size-img" id="img_map"/>
-            </button>
-        </div>
-
-        <div class="contain_noti">
-            <button class="img_noti-ico btn-show pointer" id="btn_noti">
-                <img src="../img/notify.png" class="img-noti size-img" />
-                <div class="decorate_noti"></div>
-            </button>
-
-        </div>
-        <scroll-container-noti>
-            <div class="noti_none flex">
-                <p>Actualmente sin notificaciones</p>
-            </div>
-            <a class="noti_follow pointer">
-                <img src="../img/perfil.png" alt="usuario" class="img_noti pointer">
-                <div class="noti_follow-inf">
-                    <label class="pointer"><span>Marlene</span> comenzó a seguirte. <span class="spn_date">Hace 2 horas</span></label>
-                </div>
-                <div class="cont_noti-b">
-                    <button class="pointer">Seguir</button>
-                </div>
-            </a>
-
-        </scroll-container-noti>
-
         <form action="../controllers/UserController.php" method="post">
             <div class="contain_user btn-show flex">
                 <?php if ($_SESSION["user"]->userType->id != 2): ?>

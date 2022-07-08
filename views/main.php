@@ -25,6 +25,19 @@ $ip = Connection::$ip;
                 document.getElementById("modal-editPost").outerHTML = "";
                 document.getElementById("modal-deletePost").outerHTML = "";
                 $("#view").attr("value", "main");
+                
+                let vali = $("#btn-vali").val();
+                if(vali == 2){
+                    $(".most-grid").css({
+                        "grid-template-columns" : "1fr 1fr"
+                    });
+                }
+                
+                
+                $(".btn_popular-cate").click(function (){
+                    var id = $(this).val();
+                    window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context=Category";
+                });
             });
 
         </script>
@@ -47,9 +60,9 @@ $ip = Connection::$ip;
                     <div class="post_most">
                         <div class="most most-grid">
                             <?php if($_SESSION["user"]->userType->id != 2): ?>
-                            <button class="most_btn"><?=$_SESSION["user"]->profile->username ?>'s Feed</button>
+                            <button class="most_btn" id="btnme"><?=$_SESSION["user"]->profile->username ?>'s Feed</button>
                             <?php endif; ?>
-                            <button class="most_btn">Nuevos</button>
+                            <button class="most_btn" id="btn-vali" value="<?= ($_SESSION["user"]->userType->id) ?>">Nuevos</button>
                             <button class="most_btn">Destacados</button>
                         </div>
                     </div>
@@ -71,7 +84,7 @@ $ip = Connection::$ip;
                                             <label class="descrip_label"><span> <?= $i + 1 ?>  </span> <?= $cate->name ?></label>
                                         </div>
                                         <div class="flex">
-                                            <button class="btn_popular-cate">Ver mas</button>
+                                            <button class="btn_popular-cate"  value="<?= $cate->id ?>">Ver mas</button>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>

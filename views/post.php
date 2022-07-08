@@ -67,7 +67,10 @@ $norms = Norm::getAll();
                 document.getElementById("modal-edit").outerHTML = "";
                 document.getElementById("btn-modal-gotopost").outerHTML = "";
 
-
+                $(".btn_foll").click(function () {
+                    var id = $(this).val();
+                    window.location.href = ip + "/SocialSpot/views/interests?id=" + id + "&context=Category";
+                });
 
             });
 
@@ -178,8 +181,7 @@ $norms = Norm::getAll();
                                 <div class="contain_descrip">
                                     <p class="p_descrip"> <?= $post->category->description ?> </p>
                                     <div class="contain_btn-foll">
-                                        
-                                        <button class="btn_foll">Ver Categoría</button>
+                                        <button class="btn_foll" value="<?= $post->category->id ?>">Ver Categoría</button>
                                     </div>
                                 </div>
                             </div>         

@@ -542,7 +542,7 @@ $(document).ready(function () {
     //Btn Modal Category
     $("#btn_category").click(function (){
         let id = $(this).val();
-        window.location.href = ip +"/SocialSpot/views/interests?id=" + id;
+        window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context=Category";
     });
     
     //Item Search
@@ -554,6 +554,6 @@ $(document).ready(function () {
         }else{
             window.location.href = ip+"/SocialSpot/views/profilepublic?id=" + id;
         }
-        
     });
+    
 });

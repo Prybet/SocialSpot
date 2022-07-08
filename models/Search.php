@@ -338,7 +338,7 @@ class Search {
         }
     }
 
-    /
+    
     public function ValidOfNomFollowers($foll) {
         if (count($foll) == 1) {
             return "Miembro";

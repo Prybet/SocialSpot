@@ -145,9 +145,11 @@ if($post->userProfile->id != $_SESSION["user"]->id){
                     <label class="cont-pst"><?= isset($post->replies) ? count($post->replies): 0 ?></label>
                 </button> 
             </div>
-            <div class="flex_option">
+            <?php if($post->spot != ""):?>
+            <div class="flex_option" value="">
                 <img src="../img/map.png" class="img_option-post pointer">
             </div>
+            <?php endif; ?>
         </div>
         
     </div>

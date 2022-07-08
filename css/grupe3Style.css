@@ -410,6 +410,11 @@ hr{
     border-radius: 0.5rem;
     font-weight: bold;
 } 
+.btn_foll:hover{
+    background: var(--black);
+    color: var(--primary);
+    cursor: pointer;
+}
 
 /* VOTED DIF */
  .contain_spot{

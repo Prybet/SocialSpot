@@ -24,7 +24,7 @@ if ($context != "") {
 <html>
     <head>
 <?php include_once '../header.php'; ?>
-        <title>Intereses</title>
+        <title><?= $context ?></title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/model.js"></script>
 
@@ -45,7 +45,7 @@ if ($context != "") {
             <form action="../controllers/InterestController.php" method="post">
                 <input type="text" name="context" value="<?= $context ?>" hidden>
                 <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
-                <button type="submit" name="submit" value="follInterest" class="btn_unfollow" id="btn_editar">Dejar de ser Miembro</button>
+                <button type="submit" name="submit" value="follInterest" class="btn_follow" id="btn_editar">Ser Miembro</button>
             </form>
         </header>
         <div class="contain-info-profile">

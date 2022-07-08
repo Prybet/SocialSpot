@@ -19,32 +19,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($POST["submit"] == "follInterest") {
         $id = isset($POST["inte"]) ? $POST["inte"] : "";
         $con = isset($POST["context"]) ? $POST["context"] : "";
-        if($con == ""){
+        if ($con == "") {
             header("Location: ../views/index");
         }
         $inte = new Interests();
         $inte->typeID = $id;
         $inte->profile = $_SESSION["user"]->profile->id;
         $inte->context = $con;
-        if($inte->findInterest()){
-            header($ip."/SocialSpot/views/interests?id=".$id."&context=".$con);
-        }else{
-            echo 'fail';
+        if ($inte->findInterest()) {
+            header($ip . "/SocialSpot/views/interests?id=" . $id . "&context=" . $con);
+        } else {
+            header($ip . "/SocialSpot/views/interests?id=" . $id . "&context=" . $con);
         }
-    } elseif($POST["submit"] == "search"){
+    } elseif ($POST["submit"] == "search") {
         $nom = isset($POST["nom"]) ? $POST["nom"] : "";
-        if($nom != ""){
+        if ($nom != "") {
             header("Location: ../views/search?nom=$nom");
-        }else{
+        } else {
             header("Location: ../views/search?nom=$nom");
         }
-    } elseif($POST["submit"] == "city"){
+    } elseif ($POST["submit"] == "city") {
         
-    } elseif($POST["submit"] == "region"){
+    } elseif ($POST["submit"] == "region") {
         
-    }elseif ($POST["submit"] == "hashtag") {
+    } elseif ($POST["submit"] == "hashtag") {
         
-    }elseif($POST["submit"] == "province"){
+    } elseif ($POST["submit"] == "province") {
         header("Location: ../views/search");
     }
 } else {
