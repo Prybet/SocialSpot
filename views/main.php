@@ -67,7 +67,7 @@ $ip = Connection::$ip;
                         </div>
                     </div>
                     <?php
-                    foreach ($posts as $post):
+                    foreach ($posts as $ipts => $post):
                         include '../item.php';
                     endforeach;
                     ?>
