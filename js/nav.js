@@ -5,7 +5,6 @@
  *  soulbroken
  *  Prybet
  */
-var ip = "http://socialspot.cl";
 
 const modalU = document.querySelector(".contain_option");
 const decoU = document.querySelector(".decorate_user");
@@ -26,18 +25,6 @@ $(document).on("click", function (e) {
         }
 
     }
-    const btnN = $("#btn_noti");
-    const imgN = $(".img-noti");
-    const containerN = $("scroll-container-noti");
-    if (!containerN.is(e.target) && containerN.has(e.target).length === 0) {
-        if (btnN.is(e.target) || imgN.is(e.target)) {
-            modalN.style.visibility = "visible";
-            decoN.style.visibility = "visible";
-        } else {
-            modalN.style.visibility = "hidden";
-            decoN.style.visibility = "hidden";
-        }
-    }
     const btnU = $("#btn_user");
     const imgU = $(".img-user");
     const lblU = $(".lbluser");
@@ -51,11 +38,5 @@ $(document).on("click", function (e) {
             decoU.style.visibility = "hidden";
         }
     }
-
-
-    $("#img_map").click(() => {
-        window.location.href = ip + "/SocialSpot/views/map";
-    });
-
 });
 

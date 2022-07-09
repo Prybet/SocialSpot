@@ -76,7 +76,10 @@ $ip = Connection::$ip;
                     <div class="t">
                         <section class="contain_popular-fixed">
                             <div class="contain_pupular-content">
-                                <h2 class="descrip_h2 no-margin">Categorias populares:</h2>
+                                <div class="contain_h2-des">
+                                    <h2 class="descrip_h2 no-margin">Categorias populares:</h2>
+                                    <h2 class="lbl-hi-h2"></h2>
+                                </div>
                                 <?php foreach (Category::getTop() as $i => $cate) : ?>
 
                                     <div class="descrip_sport">
