@@ -127,6 +127,7 @@ scroll-container {
 .contain_map {
   display: flex;
   justify-content: right;
+  visibility: hidden;
 }
 
 .contain_map button {
@@ -144,6 +145,7 @@ scroll-container {
   display: flex;
   justify-content: right;
   margin-left: 3rem;
+  visibility: hidden;
 }
 .img_noti-ico {
   background-color: var(--black_nav);

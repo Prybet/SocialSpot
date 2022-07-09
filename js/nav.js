@@ -5,7 +5,7 @@
  *  soulbroken
  *  Prybet
  */
-var ip = "http://www.socialspot.cl";
+var ip = "http://socialspot.cl";
 
 const modalU = document.querySelector(".contain_option");
 const decoU = document.querySelector(".decorate_user");
