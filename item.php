@@ -12,9 +12,9 @@ if($post->userProfile->id != $_SESSION["user"]->id){
     $urlUser = $ip ."/SocialSpot/views/profile?";
 }
 if($post->spot != ""){
-    $post->spot = "Yspot";
+    $s = "Yspot";
 }else{
-    $post->spot = "sNpot";
+    $s = "sNpot";
 }
 ?>
 <div class="contain_post" id="<?= $post->id ?>" data-val="">
@@ -90,7 +90,7 @@ if($post->spot != ""){
 
     </div>
     <div class="flex_option">
-        <?php if($post->spot == "Yspot"):?>
+        <?php if($s == "Yspot"):?>
         <div class="container_option-post">
             <div class="flex_option">
                 <?php if ($_SESSION["user"]->userType->id != 2): ?>
@@ -156,7 +156,7 @@ if($post->spot != ""){
             </div>
         </div>
         <?php endif; ?>
-        <?php if($post->spot == "sNpot"):?>
+        <?php if($s == "sNpot"):?>
         <div class="container_option-postNOP">
             <div class="flex_option">
                 <?php if ($_SESSION["user"]->userType->id != 2): ?>
