@@ -24,7 +24,6 @@ $norms = Norm::getAll();
         <script src="../js/model.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-
                 $(".lbl_reply").click(function () {
                     let val = $(this).attr("value");
                     console.log(val);
@@ -67,6 +66,7 @@ $norms = Norm::getAll();
                 document.getElementById("modal-edit").outerHTML = "";
                 document.getElementById("btn-modal-gotopost").outerHTML = "";
 
+                var ip = "http://socialspot.cl";
                 $(".btn_foll").click(function () {
                     var id = $(this).val();
                     window.location.href = ip + "/SocialSpot/views/interests?id=" + id + "&context=Category";

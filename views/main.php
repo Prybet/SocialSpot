@@ -33,7 +33,7 @@ $ip = Connection::$ip;
                     });
                 }
                 
-                
+                var ip = "http://172.20.10.2";
                 $(".btn_popular-cate").click(function (){
                     var id = $(this).val();
                     window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context=Category";

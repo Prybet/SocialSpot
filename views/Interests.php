@@ -128,7 +128,7 @@ print_r($pos);
                                     </div>
                                 </div>
                                 <div class="esp">
-                                    <label>Naxhinternational Inc 2022</label>
+                                    <label>SocialSpot Inc 2022</label>
                                 </div>
                                 <div class="esp">
                                     <label>Todos los derechos Reservados.</label>
