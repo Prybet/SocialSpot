@@ -26,18 +26,18 @@ $date = date((date("Y")-14)."-m-d");
             </div> 
             <form action="../controllers/UserController.php" method="post" class="createUser">
                 <div class="field">
-                    <input type="email" name="email" id="email" class="input_field " placeholder="Correo Electronico" required>
+                    <input type="email" autocomplete="off" name="email" id="email" class="input_field " placeholder="Correo Electronico" required>
                     <label class="lbl_email" hidden>*Correo Existente</label>
                 </div>
                 <div class="field">
-                    <input type="text" name="user" id="username" class="input_field " placeholder="Nombre de usuario" required>
+                    <input type="text" autocomplete="off" name="user" id="username" class="input_field " placeholder="Nombre de usuario" required>
                     <label class="lbl_user" hidden>*Nombre Usuario Existente</label>
                 </div>
                 <div class="field">
-                    <input type="name" name="name" id="name" class="input_field" placeholder="Nombre" required>
+                    <input type="name" autocomplete="off" name="name" id="name" class="input_field" placeholder="Nombre" required>
                 </div>
                 <div class="field">
-                    <input type="password" name="pass" class="input_field" placeholder="Contraseña" required>
+                    <input type="password" autocomplete="off" name="pass" class="input_field" placeholder="Contraseña" required>
                 </div>
                 <div class="field">
                     <input type="date"  max="<?= $date ?>" name="birth" class="input_field" placeholder="Fecha Nacimiento" required>

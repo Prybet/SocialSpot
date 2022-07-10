@@ -155,7 +155,7 @@ scroll-container {
 }
 .lbluser {
   margin: 0;
-  color: var(--blue);
+  color: var(--second);
 }
 
 .decorate_user {

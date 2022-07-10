@@ -82,11 +82,11 @@ $style = "grupe6Style.css";
                 <form action="../controllers/UserController.php" method="post" class="login">
                     <h2 class="log">Inicia Sesión</h2>
                     <div class="field">
-                        <input type="text" name="user" class="input_field" placeholder="Nombre usuario o correo">
+                        <input type="text" autocomplete="off" name="user" class="input_field" placeholder="Nombre usuario o correo">
                     </div>
 
                     <div class="field">
-                        <input type="password" name="pass" class="input_field" placeholder="Contraseña">
+                        <input type="password" autocomplete="off" name="pass" class="input_field" placeholder="Contraseña">
                     </div>
                     <?php 
                     $err = isset($_SESSION["err"]) ? $_SESSION["err"] : false;

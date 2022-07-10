@@ -18,7 +18,7 @@
     <div class="contain_search flex">
         <form action="../controllers/InterestController.php" method="post" class="no-margin flex" id="frm">
             <div class="conta" id="contain_search">
-                <input type="text" id="search" name="nom" class="input_search no-margin" placeholder="Buscar" />
+                <input type="text" id="search" autocomplete="off" name="nom" class="input_search no-margin" placeholder="Buscar" />
                 <button type="submit" name="submit" value="search" class="btn_find">
                     <img src="../img/find.png" class="img_search size-img no-margin pointer" />
                 </button>

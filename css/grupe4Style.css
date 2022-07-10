@@ -370,6 +370,9 @@ body{
     color: var(--ligthgray);
     font-weight: bold;
 }
+.descrip_label span{
+    color: var(--second);
+}
 span{
     color: var(--primary);
 }
@@ -399,8 +402,8 @@ span{
     background-color: var(--darker);
     border-radius: 0.5rem;
     width: 100%;
-    border-radius: 0.5rem;
     font-size: 1.5rem;
+    padding-left: 3rem;
 }
 .container_footer a{
     text-decoration: none;
