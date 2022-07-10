@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    //var ip = "http://socialspot.cl";
-    var ip = "http://172.20.10.2";
+    var ip = "http://socialspot.cl";
+    //var ip = "http://172.20.10.2";
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");

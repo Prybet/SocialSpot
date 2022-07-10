@@ -9,6 +9,7 @@
  */
 require_once '../models/User.php';
 require_once '../models/Post.php';
+require_once '../models/Interests.php';
 require_once '../models/Image.php';
 require_once '../models/Report.php';
 require_once '../models/Hashtag.php';
@@ -92,23 +93,23 @@ if ($method == "GET") {
         }
         //Comentar Un Comentario: pregunta si el usuario no esta null, osea ha iniciado sesion, podra hacer la 
         //insercion del comentario hacia a un comentario, llevandolo a la pagina actual.
-        } elseif ($_POST["submit"] == "reply") {
-            $user = $_SESSION["user"];
-            if ($user != null) {
-                $body = isset($_POST["body"]) ? $_POST["body"] : "";
-                $id = isset($_POST["comId"]) ? $_POST["comId"] : "";
-                if ($body != "") {
-                    $rep = new Reply();
-                    $rep->post = $_SESSION["post"]->id;
-                    $rep->profile = $_SESSION["user"]->profile->id;
-                    $rep->body = $body;
-                    $rep->replies = $id;
-                    if ($rep->setReplyForReply()) {
-                        header("Location: ../views/post");
-                    }
-                } else {
+    } elseif ($_POST["submit"] == "reply") {
+        $user = $_SESSION["user"];
+        if ($user != null) {
+            $body = isset($_POST["body"]) ? $_POST["body"] : "";
+            $id = isset($_POST["comId"]) ? $_POST["comId"] : "";
+            if ($body != "") {
+                $rep = new Reply();
+                $rep->post = $_SESSION["post"]->id;
+                $rep->profile = $_SESSION["user"]->profile->id;
+                $rep->body = $body;
+                $rep->replies = $id;
+                if ($rep->setReplyForReply()) {
                     header("Location: ../views/post");
                 }
+            } else {
+                header("Location: ../views/post");
+            }
         }
         //Editar Post: cuando el titulo y la descripcion no estan vacias, en el $post se va a 
         //guardar el post del usuario en sesion y finalmente edita el post
@@ -166,12 +167,28 @@ if ($method == "GET") {
                         header("Location: ../views/interests?id=$id");
                     }
                 }
-            } 
+            }
         }
     } elseif ($_POST["submit"] == "goLogin") {
         header("Location: ../views/login.php");
+    } elseif ($_POST["submit"] == "custom") {
+        $posts = Post::getCustomPosts(Interests::reload($_SESSION["user"]->profile->interests));
+        $_SESSION["order"] = "custom";
+        $_SESSION["posts"] = $posts;
+        header("Location: ../views/main");
+    } elseif ($_POST["submit"] == "last") {
+        $posts = Post::getAllPosts();
+        $_SESSION["order"] = "last";
+        $_SESSION["posts"] = $posts;
+         header("Location: ../views/main");
+    } elseif ($_POST["submit"] == "liked") {
+        $posts = Post::getAllPosts();
+        $_SESSION["order"] = "liked";
+        $_SESSION["posts"] = $posts;
+         header("Location: ../views/main");
     }
 }
+
 //Transformacion Del Archivo File: Con el foreach, llama una funcion que retorna el tipo de formato, 
 //donde pregunta si tiene el valor de NotMedia,si es asi va enviar un mensaje de error, sino transforma la
 //direccion de carpeta donde se va a almacenar el archivo, finalmente usa una funcion donde sera

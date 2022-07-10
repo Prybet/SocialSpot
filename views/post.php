@@ -66,10 +66,10 @@ $norms = Norm::getAll();
                 document.getElementById("modal-edit").outerHTML = "";
                 document.getElementById("btn-modal-gotopost").outerHTML = "";
 
-                var ip = "http://socialspot.cl";
+              
                 $(".btn_foll").click(function () {
                     var id = $(this).val();
-                    window.location.href = ip + "/SocialSpot/views/interests?id=" + id + "&context=Category";
+                    window.location.href = "http://socialspot.cl/SocialSpot/views/interests?id=" + id + "&context=Category";
                 });
 
             });

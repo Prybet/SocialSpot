@@ -117,6 +117,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user->username = $var1;
             $_SESSION["user"] = $user->getLogin();
             $_SESSION["err"] = "";
+            $posts = Post::getCustomPosts(Interests::reload($_SESSION["user"]->profile->interests));
+            $_SESSION["order"] = "custom";
+            $_SESSION["posts"] = $posts;
             header("Location: ../views/index");
         } else {
             $_SESSION["err"] = true;

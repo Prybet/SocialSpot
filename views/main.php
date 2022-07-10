@@ -3,7 +3,14 @@
 require_once '../models/Post.php';
 require_once '../PDO/Connection.php';
 session_start();
-$posts = Post::getAllPosts();
+if (isset($_SESSION["posts"])) {
+    $posts = $_SESSION["posts"];
+} else {
+    $posts = Post::getAllPosts();
+    $_SESSION["posts"] = $posts;
+    $_SESSION["order"] = "last";
+}
+
 $norms = Norm::getAll();
 $style = "grupe4Style.css";
 $user = $_SESSION["user"]->getLogin();
@@ -25,18 +32,16 @@ $ip = Connection::$ip;
                 document.getElementById("modal-editPost").outerHTML = "";
                 document.getElementById("modal-deletePost").outerHTML = "";
                 $("#view").attr("value", "main");
-                
+
                 let vali = $("#btn-vali").val();
-                if(vali == 2){
+                if (vali == 2) {
                     $(".most-grid").css({
-                        "grid-template-columns" : "1fr 1fr"
+                        "grid-template-columns": "1fr 1fr"
                     });
                 }
-                
-                var ip = "http://172.20.10.2";
-                $(".btn_popular-cate").click(function (){
+                $(".btn_popular-cate").click(function () {
                     var id = $(this).val();
-                    window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context=Category";
+                    window.location.href = "http://socialspot.cl/SocialSpot/views/interests?id=" + id + "&context=Category";
                 });
             });
 
@@ -59,11 +64,14 @@ $ip = Connection::$ip;
                     </a>
                     <div class="post_most">
                         <div class="most most-grid">
-                            <?php if($_SESSION["user"]->userType->id != 2): ?>
-                            <button class="most_btn" id="btnme"><?=$_SESSION["user"]->profile->username ?>'s Feed</button>
-                            <?php endif; ?>
-                            <button class="most_btn" id="btn-vali" value="<?= ($_SESSION["user"]->userType->id) ?>">Nuevos</button>
-                            <button class="most_btn">Destacados</button>
+                            <form action="../controllers/PostController.php" method="post">
+                                <?php if ($_SESSION["user"]->userType->id != 2): ?>
+                                    <button type="submit" name="submit" value="custom" class="most_btn" id="btnme"><?= $_SESSION["user"]->profile->username ?>'s Feed</button>
+                                <?php endif; ?>
+                                <button type="submit" name="submit" value="last" class="most_btn" >Nuevos</button>
+                                <button type="submit" name="submit" value="liked" class="most_btn">Destacados</button>
+                                <button id="btn-vali" value="<?= ($_SESSION["user"]->userType->id) ?>" hidden ></button>
+                            </form>
                         </div>
                     </div>
                     <?php
