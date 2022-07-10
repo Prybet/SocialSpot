@@ -19,11 +19,18 @@ $context = isset($_GET["context"]) ? $_GET["context"] : "";
 if ($context != "") {
     $inte = Search::getThis($id, $context);
     $posts = $inte->posts;
+    $pos = 0;
+    foreach ($inte->members as $m){
+        if($m->me->username == $_SESSION["user"]->profile->username){
+            $pos = 1;
+        }
+    }
 }
+print_r($pos);
 ?>
 <html>
     <head>
-<?php include_once '../header.php'; ?>
+        <?php include_once '../header.php'; ?>
         <title><?= $context ?></title>
         <script lang="javascript" src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/model.js"></script>
@@ -31,7 +38,7 @@ if ($context != "") {
     </head>
     <body>
         <div class="a">
-<?php include_once '../nav.php'; ?>
+        <?php include_once '../nav.php'; ?>
         </div>
         <header>
             <div class="contain_bann " >
@@ -43,9 +50,17 @@ if ($context != "") {
 
             </div>
             <form action="../controllers/InterestController.php" method="post">
-                <input type="text" name="context" value="<?= $context ?>" hidden>
+                <?php if($pos == 0):?>
+                 <input type="text" name="context" value="<?= $context ?>" hidden>
                 <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
-                <button type="submit" name="submit" value="follInterest" class="btn_follow" id="btn_editar">Ser Miembro</button>
+                <button type="submit" name="submit" value="follInterest" class="btn_follow" id="btn_editar">Seguir</button>
+                <?php endif;?>
+                <?php if($pos == 1):?>
+                 <input type="text" name="context" value="<?= $context ?>" hidden>
+                <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
+                <button type="submit" name="submit" value="follInterest" class="btn_unfollow" id="btn_editar">Dejar de Seguir</button>
+                <?php endif;?>
+               
             </form>
         </header>
         <div class="contain-info-profile">
@@ -124,7 +139,7 @@ if ($context != "") {
                 </div>
             </div>
         </main> 
-<?php include_once '../modal.php'; ?>
+    <?php include_once '../modal.php'; ?>
     </body>
     <script src="../js/nav.js"></script>
     <script type="text/javascript">

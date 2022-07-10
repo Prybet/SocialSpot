@@ -240,3 +240,8 @@ scroll-container {
 .noti_follow-inf label{
     color: var(--second);
 }
+.size-imgg{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 5rem;
+}

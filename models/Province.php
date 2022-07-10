@@ -38,6 +38,7 @@ class Province {
                 $p->imageURL = $prov[3];
                 $p->bannerURL = $prov[4];
                 $p->posts = Post::getCustomProvince("Province_ID", $prov[0]);
+                $p->members = Interests::getMembers("Province_ID", $prov[0]);
                 $p->region = Region::getRegion($prov[5]);
                 $p->status = Status::getStatu($prov[6]);
                 return $p;

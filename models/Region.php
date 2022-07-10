@@ -38,6 +38,7 @@ class Region {
                 $r->imageURL = $reg[3];
                 $r->bannerURL = $reg[4];
                 $r->posts = Post::getCustomRegion("Region_ID", $reg[0]);
+                $r->members = Interests::getMembers("Region_ID", $reg[0]);
                 $r->status = Status::getStatu($reg[6]);
                 return $r;
             }

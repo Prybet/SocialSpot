@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    var ip = "http://socialspot.cl";
+    //var ip = "http://socialspot.cl";
+    var ip = "http://172.20.10.2";
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
@@ -290,7 +291,7 @@ $(document).ready(function () {
                                         }
                                         $("#scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
-                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].username+" <span class='spn_date'>"+data[i].name+"</span><span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
@@ -318,7 +319,7 @@ $(document).ready(function () {
                                         }
                                         $("#scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
-                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
@@ -346,7 +347,7 @@ $(document).ready(function () {
                                         }
                                         $("#scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
-                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
@@ -374,7 +375,7 @@ $(document).ready(function () {
                                         }
                                         $("#scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
-                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
@@ -402,7 +403,7 @@ $(document).ready(function () {
                                         }
                                         $("#scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
-                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer'>\n\
+                                            <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\

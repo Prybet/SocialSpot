@@ -64,6 +64,7 @@ class City {
                 $c->imageURL = $city[3];
                 $c->bannerURL = $city[4];
                 $c->posts = Post::getCustomCity("City_ID", $city[0]);
+                $c->members = Interests::getMembers("City_ID", $city[0]);
                 $c->province = Province::getProvince($city[5]);
                 $c->status = Status::getStatu($city[6]);
                 return $c;
