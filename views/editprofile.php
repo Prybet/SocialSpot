@@ -51,7 +51,13 @@ $errVrf = isset($_SESSION["errPassVrf"]) ? $_SESSION["errPassVrf"] : false;
                 $("header").css("background-image", "url('<?= $imgBanner ?>')");
                 $("#imgprofile").css("background-image", "url('<?= $imgUser ?>')");
 
-
+                
+                $("#btn_can").click(function (){
+                    $(".contain_modal-profile").css({
+                        "pointer-events": "none",
+                        "opacity": "0"
+                    });
+                });
                 $("#btn_delete").click(function () {
                     $(".contain_modal-profile").css({
                         "pointer-events": "auto",
@@ -65,6 +71,7 @@ $errVrf = isset($_SESSION["errPassVrf"]) ? $_SESSION["errPassVrf"] : false;
                         "opacity": "0"
                     });
                 });
+                
 
                 $("#btn_ubi").click(function () {
                     showSelectorRegion();

@@ -77,13 +77,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Editar iamgenes, solo se permite acutalizar la imagen, si se 
     } elseif ($POST["submit"] == "img") {
         $user = $_SESSION["user"];
-        $user->profile->imageURL = uploadProfileImage($user->profile, $formats);
-        $user->profile->bannerURL = uploadBannerImage($user->profile, $formats);
-        if ($user->profile->updateImages()) {
+        $img = uploadProfileImage($user->profile, $formats);
+        $bner = uploadBannerImage($user->profile, $formats);
+        if($user->profile->findImg($img, $bner)){
             $user = $_SESSION["user"];
             $_SESSION["user"] = $user->getLogin();
             header("Location: ../views/editprofile");
+        }else{
+            header("Location: ../views/editprofile");
         }
+        
+        echo json_encode($user->profile->findImg($img, $bner), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
         //Edit Password
     } elseif (($POST["submit"] == "change")) {
 

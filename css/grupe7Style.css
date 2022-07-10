@@ -576,8 +576,14 @@ label{
 .div-delete button:hover{
     background-color: var(--black);
     transition: 0.5s;
-    color: var(--primary);
-    border: 1px solid var(--ligthgray);
+    color: var(--red);
+    border: 1px solid var(--red);
+}
+.btn_cancel{
+    background-color: var(--black);
+    transition: 0.5s;
+    color: var(--white);
+    border: 1px solid var(--white);
 }
 /* MODAL EDIT POST */
 .div-edit{

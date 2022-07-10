@@ -44,11 +44,11 @@
 
             <div class="contain_btn-profile" onclick="">
                 <form action="../controllers/UserController.php" method="post">
-                    <button type="submit" value="delete" name="submit" class="btn pointer" id="<?= $user->profile->id?>">Aceptar</button>
+                    <button type="submit" value="delete" name="submit" class="btn pointer btnDelet" id="<?= $user->profile->id?>">Aceptar</button>
                 </form>
             </div>
             <div class="contain_btn-profile">
-                <button class="btn pointer" id="btn_cancel">Cancelar</button>
+                <button class="btn pointer btn_can" id="btn_can">Cancelar</button>
             </div>
        </div> 
     </div>

@@ -169,7 +169,7 @@ class Profile {
         }
     }
     //Actualiza el la iagen del Profile y Banner
-    public function updateImages() {
+    public function updateCompletImages() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE profile SET ImageURL = :img , BannerURL = :bnr WHERE id = :id");
         $sen->bindParam(":id", $this->id);
@@ -179,26 +179,38 @@ class Profile {
             return true;
         }
     }
-    
-    public static function updateProfImage($id, $url) {
+    public function updateImages() {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("UPDATE profile SET ImageURL = :img WHERE id = :id");
-        $sen->bindParam(":id", $id);
-        $sen->bindParam(":img", $url);
+        $sen->bindParam(":id", $this->id);
+        $sen->bindParam(":img", $this->imageURL);
+        if($sen->execute()){
+            return true;
+        }
+    }
+    public function updateBanner() {
+        $conn = new Connection();
+        $sen = $conn->mysql->prepare("UPDATE profile SET  BannerURL = :bnr WHERE id = :id");
+        $sen->bindParam(":id", $this->id);
+        $sen->bindParam(":bnr", $this->bannerURL);
         if($sen->execute()){
             return true;
         }
     }
     
-    public static function updateBannImage($id, $url) {
-        $conn = new Connection();
-        $sen = $conn->mysql->prepare("UPDATE profile SET BannerURL = :img WHERE id = :id");
-        $sen->bindParam(":id", $id);
-        $sen->bindParam(":img", $url);
-        if($sen->execute()){
-            return true;
+    public function findImg($img, $bnr) {
+        if($img != "" && $bnr != ""){
+            $this->updateCompletImages($img, $bnr);
         }
+        if($img != ""){
+            $this->updateImages($img, $bnr);
+        }
+        if($bnr != ""){
+            $this->updateBanner($img, $bnr);
+        }
+        return false;
     }
+    
     
     public function getNumFollowers(){
         if($this->followers!=null){

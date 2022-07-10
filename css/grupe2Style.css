@@ -432,6 +432,12 @@ a{
     color: var(--primary);
     border: 1px solid var(--ligthgray);
 }
+.btnDelet:hover{
+    background-color: var(--black);
+    transition: 0.5s;
+    color: var(--red);
+    border: 1px solid var(--red);
+}
 .contain_modal{
     visibility: hidden;
     display: none;
