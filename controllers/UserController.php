@@ -181,7 +181,7 @@ function uploadProfileImage($prof, $formats) {
         tryPath($prof);
         $_FILES["imgProf"]["name"] = $prof->username . "-ProfilePic" . $dot;
         move_uploaded_file($_FILES["imgProf"]["tmp_name"], "../../SSpotImages/UserMedia/".$prof->username."-Folder/ProfileImages/" . $_FILES["imgProf"]["name"]);
-        return $prof->username . "-ProfilePic" . $dot;
+        return hash(). $prof->username . "-ProfilePic" . $dot;
     }
     return false;
 }
@@ -204,7 +204,7 @@ function uploadBannerImage($prof, $formats) {
         }
         $_FILES["imgBanner"]["name"] = $prof->username . "-BannerPic" . $dot;
         move_uploaded_file($_FILES["imgBanner"]["tmp_name"], "../../SSpotImages/UserMedia/".$prof->username."-Folder/BannerImages/" . $_FILES["imgBanner"]["name"]);
-        return $prof->username . "-BannerPic" . $dot;
+        return hash(). $prof->username . "-BannerPic" . $dot;
     }
     return false;
 }

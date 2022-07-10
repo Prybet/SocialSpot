@@ -18,9 +18,8 @@ class Connection {
     private $username = "root";
     private $password = "root";
     public $mysql = null;
-    public static $ip = "http://www.socialspot.cl";
-    //public static $ip = "http://192.168.56.1";
-            
+    public static $ip = "http://socialspot.cl";
+                
     function __construct() {
         try {
             $this->mysql = new PDO($this->dsn, $this->username, $this->password);
