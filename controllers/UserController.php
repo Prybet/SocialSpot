@@ -47,15 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $check = isset($_POST["check"]) ? $_POST["check"] : false;
         $birth = isset($_POST["birth"]) ? $_POST["birth"] : "";
         $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
-        
-        $city = isset($_POST["city"]) ? $_POST["city"] : null ;
+
+        $city = isset($_POST["city"]) ? $_POST["city"] : null;
         if ($name != "" && $birth != "") {
             $user = $_SESSION["user"];
             $user->profile->name = $name;
             $user->profile->check = $check;
             $user->profile->description = $desc;
             $user->profile->birthDate = $birth;
-            if($city == -1){
+            if ($city == -1) {
                 $city = null;
             }
             $user->profile->city = $city;
@@ -67,27 +67,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../views/editprofile");
         }
         //Elimina el usuario con el metodo delete() y cambia la session de user a null
-    } elseif($POST["submit"] == "delete"){
+    } elseif ($POST["submit"] == "delete") {
         $user = $_SESSION["user"];
-        if($user->delete()){
+        if ($user->delete()) {
             $_SESSION["user"] = null;
             header("Location: ../views/index");
         }
-        
+
         //Editar iamgenes, solo se permite acutalizar la imagen, si se 
     } elseif ($POST["submit"] == "img") {
         $user = $_SESSION["user"];
-        $img = uploadProfileImage($user->profile, $formats);
-        $bner = uploadBannerImage($user->profile, $formats);
-        if($user->profile->findImg($img, $bner)){
+        $user->profile->imageURL = uploadProfileImage($user->profile, $formats);
+        $user->profile->bannerURL = uploadBannerImage($user->profile, $formats);
+        if ($user->profile->findImg()) {
             $user = $_SESSION["user"];
             $_SESSION["user"] = $user->getLogin();
             header("Location: ../views/editprofile");
-        }else{
+        } else {
             header("Location: ../views/editprofile");
         }
-        
-        echo json_encode($user->profile->findImg($img, $bner), JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
         //Edit Password
     } elseif (($POST["submit"] == "change")) {
 
@@ -97,11 +95,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($oldPass != "" && $passN != "") {
             $user = $_SESSION["user"];
             if ($user->verifyPass($user->username, $oldPass)) {
-                if($passN == $passV){
+                if ($passN == $passV) {
                     if ($user->updatePass($passN, $user->id)) {
                         header("Location: ../views/editprofile");
                     }
-                }else{
+                } else {
                     $_SESSION["errPassVrf"] = true;
                     header("Location: ../views/editprofile");
                 }
@@ -109,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["errPass"] = true;
                 header("Location: ../views/editprofile");
             }
-        } 
+        }
         // Login
     } elseif ($POST["submit"] == "login") {
         $var1 = isset($_POST["user"]) ? $_POST["user"] : "";
@@ -125,16 +123,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../views/login");
         }
         // Follow User
-    } elseif($POST["submit"] == "follow"){
+    } elseif ($POST["submit"] == "follow") {
         $profID = isset($_POST["prof"]) ? $_POST["prof"] : "";
         $follow = new Follow();
         $follow->profile = $profID;
         $follow->me = $_SESSION["user"]->profile->id;
-        if($follow->findFollow($follow)){
+        if ($follow->findFollow($follow)) {
             $user = $_SESSION["user"];
             $_SESSION["user"] = $user->getLogin();
             header("Location: ../views/profilepublic?id=$profID");
-        }else{
+        } else {
             echo 'fail';
             //header("Location: ../views/index.php");
         }
@@ -179,11 +177,15 @@ function uploadProfileImage($prof, $formats) {
                 break;
         }
         tryPath($prof);
-        $_FILES["imgProf"]["name"] = $prof->username . "-ProfilePic" . $dot;
-        move_uploaded_file($_FILES["imgProf"]["tmp_name"], "../../SSpotImages/UserMedia/".$prof->username."-Folder/ProfileImages/" . $_FILES["imgProf"]["name"]);
-        return hash(). $prof->username . "-ProfilePic" . $dot;
+        $name = bin2hex(random_bytes(10)) ."-". $prof->username . "-ProfilePic" . $dot;
+        $_FILES["imgProf"]["name"] = $name;
+        move_uploaded_file($_FILES["imgProf"]["tmp_name"], "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/ProfileImages/" . $_FILES["imgProf"]["name"]);
+        return $name;
     }
     return false;
+}
+function unlinkProfileImage($prof){
+    
 }
 
 function uploadBannerImage($prof, $formats) {
@@ -202,11 +204,16 @@ function uploadBannerImage($prof, $formats) {
                 $dot = ".png";
                 break;
         }
-        $_FILES["imgBanner"]["name"] = $prof->username . "-BannerPic" . $dot;
-        move_uploaded_file($_FILES["imgBanner"]["tmp_name"], "../../SSpotImages/UserMedia/".$prof->username."-Folder/BannerImages/" . $_FILES["imgBanner"]["name"]);
-        return hash(). $prof->username . "-BannerPic" . $dot;
+        $name = bin2hex(random_bytes(10)) ."-". $prof->username . "-BannerPic" . $dot;
+        $_FILES["imgBanner"]["name"] = $name;
+        move_uploaded_file($_FILES["imgBanner"]["tmp_name"], "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/BannerImages/" . $_FILES["imgBanner"]["name"]);
+        return $name;
     }
     return false;
+}
+
+function unlinkBannerImage($prof){
+    
 }
 
 function tryPath($prof) {

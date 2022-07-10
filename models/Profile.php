@@ -198,15 +198,15 @@ class Profile {
         }
     }
     
-    public function findImg($img, $bnr) {
-        if($img != "" && $bnr != ""){
-            $this->updateCompletImages($img, $bnr);
+    public function findImg() {
+        if($this->imageURL != "" && $this->bannerURL != ""){
+            $this->updateCompletImages();
         }
-        if($img != ""){
-            $this->updateImages($img, $bnr);
+        if($this->imageURL != ""){
+            $this->updateImages();
         }
-        if($bnr != ""){
-            $this->updateBanner($img, $bnr);
+        if($this->bannerURL != ""){
+            $this->updateBanner();
         }
         return false;
     }
