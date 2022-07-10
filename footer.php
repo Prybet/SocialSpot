@@ -30,7 +30,7 @@
         <div class="owern">
             <div>
                 <div>
-                    <label>Naxhinternational Inc 2022</label>
+                    <label>SocialSpot Inc 2022</label>
                 </div>                        
                 <div class="esp">
                     <label>Todos los derechos Reservados.</label>

@@ -226,7 +226,9 @@ header {
     margin-left: 1.5rem;
     border: 1px solid var(--black);
 }
-
+.name_user label{
+    color: var(--second);
+}
 /* ITEM */
 .contain_post{
     width: 75rem;
@@ -236,6 +238,7 @@ header {
     padding: 1.5rem 0;
     border: 2px solid var(--darker);
     overflow: hidden;
+    box-shadow: 0px 0px 30px var(--darker);
 }
 .contain_post:hover{
     border: 2px solid var(--primary);
@@ -385,6 +388,9 @@ header {
 .conta_a-user{
     text-decoration: none;
 }
+.color-lig span{
+    color: var(--second);
+}
 /* DESCRIPTION */
 .descrip_user{
     height: 10vh;
@@ -407,6 +413,7 @@ header {
     width: 41rem;
     padding: 2rem 0;
     border-radius: 0.5rem;
+    box-shadow: 0px 0px 30px var(--darker);
 }
 .h2_descrip{
     color: var(--primary);
@@ -452,6 +459,7 @@ header {
     width: 100%;
     border-radius: 0.5rem;
     font-size: 1.5rem;
+    box-shadow: 0px 0px 30px var(--darker);
 }
 .footer_grid{
     display: grid;

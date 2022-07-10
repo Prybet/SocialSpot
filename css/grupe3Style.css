@@ -44,6 +44,7 @@ html {
     padding: 1.5rem 0;
     border: 2px solid var(--darker);
     overflow: hidden;
+    box-shadow: 0px 0px 30px var(--darker);
 }
 .container_p{
     display: flex;
@@ -534,6 +535,7 @@ hr{
     width: 100%;
     border-radius: 0.5rem;
     font-size: 1.5rem;
+    box-shadow: 0px 0px 30px var(--darker);
 }
 .container_footer label{
     color: var(--primary);
