@@ -176,16 +176,21 @@ function uploadProfileImage($prof, $formats) {
                 $dot = ".png";
                 break;
         }
+        unlinkProfileImage($prof);
         tryPath($prof);
-        $name = bin2hex(random_bytes(10)) ."-". $prof->username . "-ProfilePic" . $dot;
+        $name = bin2hex(random_bytes(10)) . "-" . $prof->username . "-ProfilePic" . $dot;
         $_FILES["imgProf"]["name"] = $name;
         move_uploaded_file($_FILES["imgProf"]["tmp_name"], "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/ProfileImages/" . $_FILES["imgProf"]["name"]);
         return $name;
     }
     return false;
 }
-function unlinkProfileImage($prof){
-    
+
+function unlinkProfileImage($prof) {
+    $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/ProfileImages/" . $prof->imageURL;
+    if (file_exists($path)) {
+        unlink($path);
+    }
 }
 
 function uploadBannerImage($prof, $formats) {
@@ -204,7 +209,9 @@ function uploadBannerImage($prof, $formats) {
                 $dot = ".png";
                 break;
         }
-        $name = bin2hex(random_bytes(10)) ."-". $prof->username . "-BannerPic" . $dot;
+        unlinkBannerImage($prof);
+        tryPath($prof);
+        $name = bin2hex(random_bytes(10)) . "-" . $prof->username . "-BannerPic" . $dot;
         $_FILES["imgBanner"]["name"] = $name;
         move_uploaded_file($_FILES["imgBanner"]["tmp_name"], "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/BannerImages/" . $_FILES["imgBanner"]["name"]);
         return $name;
@@ -212,8 +219,11 @@ function uploadBannerImage($prof, $formats) {
     return false;
 }
 
-function unlinkBannerImage($prof){
-    
+function unlinkBannerImage($prof) {
+    $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/BannerImages/" . $prof->bannerURL;
+    if (file_exists($path)) {
+        unlink($path);
+    }
 }
 
 function tryPath($prof) {
