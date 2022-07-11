@@ -9,7 +9,10 @@ if (isset($_SESSION["posts"])) {
     $posts = Post::getAllPosts();
     $_SESSION["posts"] = $posts;
     $_SESSION["order"] = "last";
+    
+    
 }
+
 
 $norms = Norm::getAll();
 $style = "grupe4Style.css";
@@ -65,11 +68,23 @@ $ip = Connection::$ip;
                     <div class="post_most">
                             <form action="../controllers/PostController.php" method="post" class="most most-grid">
                                 <?php if ($_SESSION["user"]->userType->id != 2): ?>
-                                    <button type="submit" name="submit" value="custom" class="most_btn" id="btnme"><?= $_SESSION["user"]->profile->username ?>'s Feed</button>
+                                <?php if($_SESSION["order"] != "custom"){ ?>
+                                <button type="submit" name="submit" value="custom" class="most_btn" id="btnme"><?= $_SESSION["user"]->profile->username ?>'s Feed</button>
+                                <?php }else{?>
+                                <button type="submit" name="submit" value="custom" class="most_btn-select " id="btnme"><?= $_SESSION["user"]->profile->username ?>'s Feed</button>
+                                <?php }?>
                                 <?php endif; ?>
-                                <button type="submit" name="submit" value="last" class="most_btn" >Nuevos</button>
+                                <?php if($_SESSION["order"] != "last"){ ?>
+                                    <button type="submit" name="submit" value="last" class="most_btn" >Nuevos</button>
+                                <?php }else{?>
+                                    <button type="submit" name="submit" value="last" class="most_btn-select" >Nuevos</button>
+                                <?php }?>
                                 <div>
+                                    <?php if($_SESSION["order"] != "liked"){ ?>
                                     <button type="submit" name="submit" value="liked" class="most_btn">Destacados</button>
+                                    <?php }else{?>
+                                    <button type="submit" name="submit" value="liked" class="most_btn-select">Destacados</button>
+                                    <?php }?>
                                     <button id="btn-vali" value="<?= ($_SESSION["user"]->userType->id) ?>" hidden ></button>
                                 </div>
                                 </form>
