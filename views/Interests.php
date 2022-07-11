@@ -26,7 +26,6 @@ if ($context != "") {
         }
     }
 }
-print_r($pos);
 ?>
 <html>
     <head>

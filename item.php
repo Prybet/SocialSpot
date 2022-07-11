@@ -20,7 +20,7 @@ if($post->spot != ""){
 <div class="contain_post" id="<?= $post->id ?>" data-val="">
     <div class="contain_post-top">
         <div class="container_p">
-            <a href="<?= $ip ?>/SocialSpot/views/interests.php?id=<?=$post->category->id?>" class="container_p conta-p cate_<?= $post->id ?>" data-cate="<?=$post->category->id?>">
+            <a href="<?= $ip ?>/SocialSpot/views/interests.php?id=<?=$post->category->id?>&context=Category" class="container_p conta-p cate_<?= $post->id ?>" data-cate="<?=$post->category->id?>">
                 <img src="../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img-cate">
                 <div class="name-prim">
                     <span class="color-lig"><?= $post->category->name ?></span>

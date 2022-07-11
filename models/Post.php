@@ -371,7 +371,5 @@ class Post {
         
     }
     
-    public function GetTime() {
-        
-    }
+    
 }

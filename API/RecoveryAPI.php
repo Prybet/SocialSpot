@@ -998,6 +998,7 @@ if ($_SERVER["REQUEST_METHOD"] == "PUT") {
                 header("Content-Type: application/json; charset=UTF8");
                 echo json_encode(true, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
             } catch (Exception $ex) {
+                //echo json_encode($user->profile->name, JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
                 echo $ex->getTraceAsString() . $mail->ErrorInfo;
             }
         } else {

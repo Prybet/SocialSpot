@@ -4,7 +4,13 @@ require_once '../models/Post.php';
 require_once '../PDO/Connection.php';
 session_start();
 if (isset($_SESSION["posts"])) {
-    $posts = $_SESSION["posts"];
+    if (count($_SESSION["posts"]) > 1) {
+        $posts = $_SESSION["posts"];
+    } else {
+        $posts = Post::getAllPosts();
+        $_SESSION["posts"] = $posts;
+        $_SESSION["order"] = "last";
+    }
 } else {
     $posts = Post::getAllPosts();
     $_SESSION["posts"] = $posts;

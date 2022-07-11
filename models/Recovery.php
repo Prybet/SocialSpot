@@ -35,7 +35,7 @@ class Recovery {
         $mail->Host = "smtp.office365.com";
         $mail->SMTPAuth = true;
         $mail->Username = "recovery.socialspot@outlook.com";
-        $mail->Password = "skmaps88";
+        $mail->Password = "SSpot.Maps666";
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 

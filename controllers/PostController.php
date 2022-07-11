@@ -180,13 +180,21 @@ if ($method == "GET") {
         $posts = Post::getAllPosts();
         $_SESSION["order"] = "last";
         $_SESSION["posts"] = $posts;
-         header("Location: ../views/main");
+        header("Location: ../views/main");
     } elseif ($_POST["submit"] == "liked") {
         $posts = Post::getAllPosts();
+        //usort($posts, object_sorter("likes"));
         $_SESSION["order"] = "liked";
         $_SESSION["posts"] = $posts;
-         header("Location: ../views/main");
+        header("Location: ../views/main");
     }
+}
+
+function object_sorter($key, $order = null) {
+    return function ($a, $b) use ($key, $order) {
+        $result = ($order == "DESC") ? strnatcmp($b->$key, $a->$key) : strnatcmp($a->$key, $b->$key);
+        return $result;
+    };
 }
 
 //Transformacion Del Archivo File: Con el foreach, llama una funcion que retorna el tipo de formato, 

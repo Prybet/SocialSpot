@@ -26,9 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $inte->typeID = $id;
         $inte->profile = $_SESSION["user"]->profile->id;
         $inte->context = $con;
-        if ($inte->findInterest()) {
-            header("Location:" . $ip . "/SocialSpot/views/interests?id=" . $id . "&context=" . $con);
-        }
+        $inte->findInterest();
+        header("Location:" . $ip . "/SocialSpot/views/interests?id=" . $id . "&context=" . $con);
     } elseif ($POST["submit"] == "search") {
         $nom = isset($POST["nom"]) ? $POST["nom"] : "";
         if ($nom != "") {
