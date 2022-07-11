@@ -24,6 +24,8 @@ $norms = Norm::getAll();
 $style = "grupe4Style.css";
 $user = $_SESSION["user"]->getLogin();
 $ip = Connection::$ip;
+
+print_r($_SESSION["order"]);
 ?>
 <html>
     <head>
