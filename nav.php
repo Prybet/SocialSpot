@@ -11,7 +11,7 @@
     
     <div class="contain_logo flex">
         <a class="a_logo" href="<?= $ip ?>/SocialSpot/views/index.php">
-            <img src="../img/logo.png" class="img_logo pointer" />
+            <img src="../img/Social.png" class="img_logo pointer" />
         </a>
     </div>
 

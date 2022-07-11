@@ -188,8 +188,15 @@ $norms = Norm::getAll();
                         </section> 
                         <?php if ($post->spot != null): ?>
                             <div class="contain_spot">
-                                <h2 class="h2_dif">/<?= $post->spot->name ?></h2>
-                                <h2 class="h2_dif">/<?= $post->spot->description ?></h2>
+                                <div class="contain_spot-info">
+                                    <div class="con_imgSpot">
+                                        <img src="../img/perfil.png" class="imgSpot"/>
+                                    </div>
+                                    <div>
+                                        <h2 class="h2_dif">/<?= $post->spot->name ?></h2>
+                                        <h2 class="h2_dif">/<?= $post->spot->description ?></h2>
+                                    </div>
+                                </div>
                                 <div class="contain-map">
                                     <div id="map" style="height: 100%; width: 100%;">
                                         <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $post->spot->marker->LAT ?>,<?= $post->spot->marker->LNG ?>&markers=size:mid%7Ccolor:red%7C<?= $post->spot->marker->LAT ?>,<?= $post->spot->marker->LNG ?>&zoom=16&size=400x400&key=AIzaSyAoIk1JmdYKisyQO66mBl1ZTUT8B71pYIY" alt="alt"/>

@@ -33,7 +33,7 @@ $style = "grupe6Style.css";
             <div class="container-flex">
                 <div class="cont">
                     <div class="flex">
-                        <img src="../img/logo.png" class="img_logoo" />
+                        <img src="../img/Social.png" class="img_logoo" />
                     </div>
                     <p>SocialSpot es más que una red social, te ayuda a compartir
                         todos esos momento de adrenalina con todo el mundo

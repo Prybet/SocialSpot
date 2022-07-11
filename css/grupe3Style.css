@@ -429,6 +429,20 @@ hr{
     border-radius: 0.5rem;
     margin-top: 1.5rem;
 }
+.contain_spot-info{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+}
+.con_imgSpot{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.imgSpot{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 5rem;
+}
 .h2_dif{
     color: var(--primary);
     text-align: center;

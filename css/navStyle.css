@@ -64,6 +64,7 @@ nav {
 
 .img_logo {
   height: 5.5em;
+  margin-top: 0.2rem;
 }
 
 span{
@@ -155,7 +156,7 @@ scroll-container {
 }
 .lbluser {
   margin: 0;
-  color: var(--second);
+  color: var(--primary);
 }
 
 .decorate_user {

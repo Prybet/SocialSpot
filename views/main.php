@@ -63,17 +63,17 @@ $ip = Connection::$ip;
                         </div>
                     </a>
                     <div class="post_most">
-                        <div class="most most-grid">
-                            <form action="../controllers/PostController.php" method="post">
+                            <form action="../controllers/PostController.php" method="post" class="most most-grid">
                                 <?php if ($_SESSION["user"]->userType->id != 2): ?>
                                     <button type="submit" name="submit" value="custom" class="most_btn" id="btnme"><?= $_SESSION["user"]->profile->username ?>'s Feed</button>
                                 <?php endif; ?>
                                 <button type="submit" name="submit" value="last" class="most_btn" >Nuevos</button>
-                                <button type="submit" name="submit" value="liked" class="most_btn">Destacados</button>
-                                <button id="btn-vali" value="<?= ($_SESSION["user"]->userType->id) ?>" hidden ></button>
-                            </form>
+                                <div>
+                                    <button type="submit" name="submit" value="liked" class="most_btn">Destacados</button>
+                                    <button id="btn-vali" value="<?= ($_SESSION["user"]->userType->id) ?>" hidden ></button>
+                                </div>
+                                </form>
                         </div>
-                    </div>
                     <?php
                     foreach ($posts as $ipts => $post):
                         include '../item.php';
