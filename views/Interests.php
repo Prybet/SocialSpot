@@ -49,16 +49,20 @@ if ($context != "") {
 
             </div>
             <form action="../controllers/InterestController.php" method="post">
-                <?php if($pos == 0):?>
-                 <input type="text" name="context" value="<?= $context ?>" hidden>
-                <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
-                <button type="submit" name="submit" value="follInterest" class="btn_follow" id="btn_editar">Seguir</button>
-                <?php endif;?>
-                <?php if($pos == 1):?>
-                 <input type="text" name="context" value="<?= $context ?>" hidden>
-                <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
-                <button type="submit" name="submit" value="follInterest" class="btn_unfollow" id="btn_editar">Dejar de Seguir</button>
-                <?php endif;?>
+                <?php if ($_SESSION["user"]->userType->id != 2): ?>
+                    <?php if($pos == 0):?>
+                     <input type="text" name="context" value="<?= $context ?>" hidden>
+                    <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
+                    <button type="submit" name="submit" value="follInterest" class="btn_follow" id="btn_editar">Seguir</button>
+                    <?php endif;?>
+                    <?php if($pos == 1):?>
+                     <input type="text" name="context" value="<?= $context ?>" hidden>
+                    <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
+                    <button type="submit" name="submit" value="follInterest" class="btn_unfollow" id="btn_editar">Dejar de Seguir</button>
+                    <?php endif;?>
+                <?php else: ?>
+                    <button type="submit" name="submit" value="goLogin" class="btn_follow" id="btn_editar">Seguir</button>
+                <?php endif; ?>
                
             </form>
         </header>

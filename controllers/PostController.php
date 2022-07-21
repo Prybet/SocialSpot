@@ -43,27 +43,22 @@ if ($method == "GET") {
 
         if ($cate != -1) {
             if ($title != "") {
-                if ($body != "") {
-                    $user = $_SESSION["user"];
-                    $post = new Post();
-                    $post->profID = $user->profile->id;
-                    $post->title = $title;
-                    $post->body = $body;
-                    $post->category = new Category();
-                    $post->category->id = $cate;
-                    $post->spot = new Spot();
-                    $post->spot->id = $spot;
-                    $post->hashtags = Hashtag::makeHashtags($hash);
-                    $idp = $post->setPost();
-                    if (uploadFiles($idp)) {
-                        $_SESSION["post"] = Post::getPost($idp);
-                        header("Location: ../views/post");
-                    } else {
-                        header("Location: ../views/index");
-                    }
+                $user = $_SESSION["user"];
+                $post = new Post();
+                $post->profID = $user->profile->id;
+                $post->title = $title;
+                $post->body = $body;
+                $post->category = new Category();
+                $post->category->id = $cate;
+                $post->spot = new Spot();
+                $post->spot->id = $spot;
+                $post->hashtags = Hashtag::makeHashtags($hash);
+                $idp = $post->setPost();
+                if (uploadFiles($idp)) {
+                    $_SESSION["post"] = Post::getPost($idp);
+                    header("Location: ../views/post");
                 } else {
-                    $_SESSION["errBod"] = true;
-                    header("Location: ../views/newpost");
+                    header("Location: ../views/index");
                 }
             } else {
                 $_SESSION["errTit"] = true;

@@ -290,13 +290,13 @@ $(document).ready(function () {
                                             stringFollow = "Seguidores";
                                         }
                                         $("#scroll-find").append("\n\
-                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].username+" <span class='spn_date'>"+data[i].name+"</span><span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
+                                                <div class='typeSearch conte_"+i+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Usuario</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -318,13 +318,13 @@ $(document).ready(function () {
                                             stringFollow = "Miembros";
                                         }
                                         $("#scroll-find").append("\n\
-                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
+                                                <div class='typeSearch conte_"+i+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Categoría</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -346,13 +346,13 @@ $(document).ready(function () {
                                             stringFollow = "Miembros";
                                         }
                                         $("#scroll-find").append("\n\
-                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
+                                                <div class='typeSearch conte_"+i+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Region</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -374,13 +374,13 @@ $(document).ready(function () {
                                             stringFollow = "Miembros";
                                         }
                                         $("#scroll-find").append("\n\
-                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
+                                                <div class='typeSearch conte_"+i+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Provincia</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -402,13 +402,13 @@ $(document).ready(function () {
                                             stringFollow = "Miembros";
                                         }
                                         $("#scroll-find").append("\n\
-                                        <a class='search_user pointer' value="+data[i].id+" id='asd'>\n\
+                                        <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
                                                 <label class='pointer'>"+data[i].name+"<span class='spnFollows'>"+data[i].followers.length+" "+stringFollow+"</span></label>\n\
                                             </div>\n\
                                             <div>\n\
-                                                <div class='typeSearch conte_"+data[i].id+"' data-context='"+data[i].context+"'>\n\
+                                                <div class='typeSearch conte_"+i+"' data-context='"+data[i].context+"'>\n\
                                                     <span class='spn_date'>Cuidad</span>\n\
                                                 </div>\n\
                                             </div>\n\
@@ -420,7 +420,8 @@ $(document).ready(function () {
                             }
                             $(".search_user").click(function (){
                                 var id = $(this).attr("value");
-                                var con = $(".conte_"+id).attr("data-context");
+                                var pos = $(this).attr("data-pos");
+                                var con = $(".conte_"+pos).attr("data-context");
                                 if(con !== "Profile"){
                                     window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context="+con;
                                 }else{
@@ -548,7 +549,8 @@ $(document).ready(function () {
     //Item Search
     $(".conten_item").click(function (){
         var id = $(this).attr("data-value");
-        var con = $(".cont_ty"+id).attr("value");
+        var pos = $(this).attr("data-pos");
+        var con = $(".cont_ty"+pos).attr("value");
         if(con !== "Profile"){
             window.location.href = ip +"/SocialSpot/views/interests?id="+id+"&context="+con;
         }else{

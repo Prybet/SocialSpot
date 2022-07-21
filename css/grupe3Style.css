@@ -445,10 +445,10 @@ hr{
 }
 .h2_dif{
     color: var(--primary);
-    text-align: center;
     font-size: 1.7rem;
     padding: 1rem 0;
     margin: 0;
+    padding-left: 1rem;
 }
 .contain-map{
     background-color: var(--white);

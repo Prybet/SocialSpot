@@ -14,9 +14,7 @@ if (isset($_SESSION["posts"])) {
 } else {
     $posts = Post::getAllPosts();
     $_SESSION["posts"] = $posts;
-    $_SESSION["order"] = "last";
-    
-    
+    $_SESSION["order"] = "last";   
 }
 
 
@@ -25,7 +23,6 @@ $style = "grupe4Style.css";
 $user = $_SESSION["user"]->getLogin();
 $ip = Connection::$ip;
 
-print_r($_SESSION["order"]);
 ?>
 <html>
     <head>

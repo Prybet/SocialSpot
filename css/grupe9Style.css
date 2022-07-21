@@ -55,7 +55,7 @@ header {
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 10rem;
-    border: 0.5rem solid var(--primaryDark);
+    border: 0.5rem solid var(--primary);
     top: 70%;
     left: 20%;
     z-index: 50;

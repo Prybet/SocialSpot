@@ -57,7 +57,7 @@ header {
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 10rem;
-    border: 0.5rem solid var(--primaryDark);
+    border: 0.5rem solid var(--primary);
     top: 70%;
     left: 20%;
     z-index: 50;
@@ -579,12 +579,7 @@ label{
     color: var(--red);
     border: 1px solid var(--red);
 }
-.btn_cancel{
-    background-color: var(--black);
-    transition: 0.5s;
-    color: var(--white);
-    border: 1px solid var(--white);
-}
+
 /* MODAL EDIT POST */
 .div-edit{
     padding: 0 2rem;

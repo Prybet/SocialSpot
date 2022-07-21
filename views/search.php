@@ -51,8 +51,8 @@ if ($text != "") {
             <?php endif; ?>
             <?php if ($contents != null): ?>
                 <div class="contain_srch">
-                    <?php foreach ($contents as $cont):?>
-                        <div class="conten_item" data-value="<?= $cont->id ?>">
+                    <?php foreach ($contents as $i => $cont):?>
+                        <div class="conten_item" data-value="<?= $cont->id  ?>" data-pos="<?= $i ?>">
                             <div class="conten_bn">
                                 <img src="<?= $cont->getBanner($cont->context, $cont->bannerURL, $cont->username) ?>" class="img_bn">
                             </div>
@@ -65,7 +65,7 @@ if ($text != "") {
                                 <label><?= $cont->getFollow()?>-<span><?= $cont->getNomFollow()?></span></label>
                                 <?php endif;?>
                             </div>
-                            <div class="cont_ty cont_ty<?= $cont->id ?>" value="<?= $cont->context ?>">
+                            <div class="cont_ty cont_ty<?= $i ?>" value="<?= $cont->context ?>"">
                                 <span><?= $cont->getContext() ?></span>
                             </div>
                         </div>

@@ -190,7 +190,7 @@ $norms = Norm::getAll();
                             <div class="contain_spot">
                                 <div class="contain_spot-info">
                                     <div class="con_imgSpot">
-                                        <img src="../img/perfil.png" class="imgSpot"/>
+                                        <img src="<?= $post->spot->imageURL ?>" class="imgSpot"/>
                                     </div>
                                     <div>
                                         <h2 class="h2_dif">/<?= $post->spot->name ?></h2>

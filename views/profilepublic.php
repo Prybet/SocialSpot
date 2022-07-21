@@ -77,14 +77,18 @@ endforeach;
 
             </div>
             <form action="../controllers/UserController.php" method="post">
-                <?php if($pos == 0):?>
-                    <input type="text" name="prof" value="<?= $prof->id ?>" hidden>
-                    <button type="submit" name="submit" value="follow" class="btn_follow" id="btn_editar">Seguir</button>
-                <?php endif;?>
-                <?php if($pos == 1):?>
-                    <input type="text" name="prof" value="<?= $prof->id  ?>" hidden>
-                    <button type="submit" name="submit" value="follow" class="btn_unfollow" id="btn_editar">Dejar de seguir</button>
-                <?php endif;?>
+                <?php if ($_SESSION["user"]->userType->id != 2): ?>
+                    <?php if($pos == 0):?>
+                        <input type="text" name="prof" value="<?= $prof->id ?>" hidden>
+                        <button type="submit" name="submit" value="follow" class="btn_follow" id="btn_editar">Seguir</button>
+                    <?php endif;?>
+                    <?php if($pos == 1):?>
+                        <input type="text" name="prof" value="<?= $prof->id  ?>" hidden>
+                        <button type="submit" name="submit" value="follow" class="btn_unfollow" id="btn_editar">Dejar de seguir</button>
+                    <?php endif;?>
+                <?php else: ?>
+                        <button type="submit" name="submit" value="goLogin" class="btn_follow" id="btn_editar">Seguir</button>
+                <?php endif; ?>  
             </form>
         </header>
         <div class="contain-info-profile">

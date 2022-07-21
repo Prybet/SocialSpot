@@ -35,14 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             header("Location: ../views/search?nom=$nom");
         }
-    } elseif ($POST["submit"] == "city") {
-        
-    } elseif ($POST["submit"] == "region") {
-        
-    } elseif ($POST["submit"] == "hashtag") {
-        
-    } elseif ($POST["submit"] == "province") {
-        header("Location: ../views/search");
+    } elseif ($POST["submit"] == "goLogin") {
+        header("Location: ../views/login");
     }
 } else {
     header("Location: ../views/index");

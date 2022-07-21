@@ -125,12 +125,6 @@ if($profile->description == ""){
                             <div class="img img-maps"></div>
                         </div>
                     </a>
-                    <div class="post_most">
-                        <div class="most most-grid">
-                            <button class="most_btn">Mas nuevos</button>
-                            <button class="most_btn">Mas votado</button>
-                        </div>
-                    </div>
                     <?php
                     foreach ($posts as $post):
                         include '../item.php';
