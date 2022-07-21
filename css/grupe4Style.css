@@ -638,3 +638,26 @@ label{
 .lblWar{
     margin-top: 1.5rem;
 }
+
+
+
+@media(max-width: 1207px){
+    .contain_popular{
+        display: none;
+    }
+    .contain_post-grid{
+        grid-template-columns: none;
+        display: flex;
+        justify-content: center;
+    }
+    .contain_post{
+        width: 100%;
+    }
+}
+
+
+@media(max-width: 887px){
+    .container_post{
+        width: 80rem;
+    }
+}

@@ -246,3 +246,20 @@ scroll-container {
     height: 3rem;
     border-radius: 5rem;
 }
+
+@media(max-width: 1433px){
+    nav{
+        padding: 0 20rem;
+    }
+}
+
+@media(max-width: 1241px){
+    nav{
+        padding: 0 10rem;
+    }
+}
+@media(max-width: 1079px){
+  nav{
+      padding: 0;
+  }
+}

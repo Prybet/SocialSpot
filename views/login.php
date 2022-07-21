@@ -1,7 +1,6 @@
 <!--
 SocialSpot 2022
 Made by: 
- jasmet_generico1
  soulbroken
  Prybet
 -->
@@ -28,7 +27,6 @@ $style = "grupe6Style.css";
         </script>
     </head>
     <body class="no-margin container-flex">
-        <div class="aaa">
         <div class="container-grid">
             <div class="container-flex">
                 <div class="cont">
@@ -110,7 +108,5 @@ $style = "grupe6Style.css";
                 </form>
             </div>
         </div>
-        </div>
-       
     </body>
 </html>

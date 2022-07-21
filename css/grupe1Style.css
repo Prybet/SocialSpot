@@ -321,3 +321,12 @@ input[type="date"] {
 .red{
     display: none;
 }
+
+
+/* recovery */
+
+@media(max-width: 407px){
+    .btn-login{   
+        padding: 1rem 6rem;
+    }
+}

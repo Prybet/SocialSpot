@@ -10,10 +10,11 @@
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Category.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/views/main.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/css/grupe3Style.css</file>
-            <file>file:/C:/xampp/htdocs/SocialSpot/views/post.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/API/SocialApi.php</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/views/post.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/css/grupe6Style.css</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/css/grupe9Style.css</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/css/grupe1Style.css</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/js/model.js</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/css/fontColor.css</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/css/grupe7Style.css</file>
@@ -21,6 +22,7 @@
             <file>file:/C:/xampp/htdocs/SocialSpot/views/login.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/controllers/PostController.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/css/grupe4Style.css</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/img/right.png</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/nav.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Province.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/models/Search.php</file>
@@ -30,6 +32,7 @@
             <file>file:/C:/xampp/htdocs/SocialSpot/css/grupe5Style.css</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/views/Interests.php</file>
             <file>file:/C:/xampp/htdocs/SocialSpot/item.php</file>
+            <file>file:/C:/xampp/htdocs/SocialSpot/img/rectangle.png</file>
         </group>
     </open-files>
 </project-private>
