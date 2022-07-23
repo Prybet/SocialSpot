@@ -278,13 +278,11 @@ hr {
     }
     .container-grid{
         grid-template-columns: none;
+        margin-top: -5rem;
     }
     .container-flex{
         height: auto;
         justify-items: center;
-    }
-    .img_logoo{
-        margin-top: 5rem;
     }
     .slider{
         width: 40rem;
@@ -306,15 +304,16 @@ hr {
     .login{
         width: 35rem;
     }
-}
-@media(max-width: 625px){
     .img_logoo{
-        width: 45rem;
-        height: 12.3rem;
+        width: 40rem;
+        height: 11rem;
     }
     p{
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
+}
+@media(max-width: 625px){
+    
 }
 @media(max-width: 625px){
     .img_logoo{

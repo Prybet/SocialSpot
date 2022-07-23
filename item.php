@@ -28,7 +28,7 @@ if($post->spot != ""){
             </a>
             
             <div class="name-cate">
-                <label class="color-lig">Publicado Por 
+                <label class="color-lig conte_pb">Publicado Por 
                     <a href="<?= $urlUser ?>" class="conta_a-user">
                         <span><?= $post->userProfile->username ?></span>
                     </a>
