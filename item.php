@@ -16,6 +16,8 @@ if($post->spot != ""){
 }else{
     $s = "sNpot";
 }
+$allImgVid = array_merge($post->videos, $post->images);
+print_r($allImgVid);
 ?>
 <div class="contain_post" id="<?= $post->id ?>" data-val="">
     <div class="contain_post-top">
@@ -35,7 +37,7 @@ if($post->spot != ""){
                     
                 </label>
             </div>
-            <div class="name-cate">
+            <div class="name-cate pt-cate">
                 <label class="color-lig"><?= $post->getDate($post->date, $post->time) ?></label>
             </div>
             <?php if($post->status->id === 7):?>
@@ -45,12 +47,12 @@ if($post->spot != ""){
             <?php endif;?>
             <?php if ($_SESSION["user"]->userType->id != 2): ?>
                 <button class="more-post" value="<?= $post->id ?>" id="id_<?= $post->id ?>">
-                    <img src="../img/MenuPoints.png" class="pointer">
+                    <img src="../img/menu.png" class="pointer menu">
                 </button>
             <?php else: ?>
                 <form action="../controllers/PostController.php" method="post">
                     <button type="submit" name="submit" value="goLogin" class="more-post">
-                        <img src="../img/MenuPoints.png" class="pointer">
+                        <img src="../img/menu.png" class="pointer menu">
                     </button>
                 </form>
             <?php endif; ?>
@@ -65,30 +67,34 @@ if($post->spot != ""){
     </div>
 
     <div class="contain-img contain-img_<?= $post->id ?>" id="<?= $post->id ?>" data-val="0">
-        <button class="img_images-ico cont-left img_ico_<?= $post->id ?>" id="<?= $post->id ?>">
+        <button class="img_images-ico cont-left img_ico_<?= $post->id ?>" value="<?= $post->id ?>">
             <img src="../img/left.png" class="img-left img-left_<?= $post->id ?>">
         </button>
-        <button class="img_images-ico cont-right img_ico_<?= $post->id ?>" id="<?= $post->id ?>">
+        
+        
+        <button class="img_images-ico cont-right img_ico_<?= $post->id ?>" value="<?= $post->id ?>">
             <img src="../img/right.png" class="img-right img-right_<?= $post->id ?>">
         </button>
-        <?php if ($post->videos != null):foreach ($post->videos as $video): ?>
+        
+        
+        <div class="contain_img">
+            <?php if ($post->videos != null):
+            foreach ($post->videos as $i => $video): ?>
                 <div class="container_img container_img_<?= $post->id ?>">
                     <video controls class="img_post group_<?= $post->id ?>">
                         <source src="../../SSpotImages/UserMedia/<?= $video->URL ?>" type="video/mp4"/>
                     </video>
                 </div>
-                <?php
-            endforeach;
-        endif;
-        ?>
-        <?php foreach ($post->images as $i => $image): ?>
-            <div class="container_img container_img_<?= $post->id ?>">          
-                <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img_post group_<?= $post->id ?>">
-            </div>
-        <?php endforeach; ?>
-
-
+            <?php endforeach;
+            endif;?>
+            <?php foreach ($post->images as $i => $image): ?>
+                <div class="container_img container_img_<?= $post->id ?>">          
+                    <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img_post group_<?= $post->id ?>">
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
+    
     <div class="flex_option">
         <?php if($s == "Yspot"):?>
         <div class="container_option-post">

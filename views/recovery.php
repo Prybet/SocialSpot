@@ -32,13 +32,12 @@ $_SESSION["err"] = isset($_SESSION["err"]) ? $_SESSION["err"] : "ss"
                 <div class="field">
                     <input type="email" class="input_field input_reco" placeholder="Correo Electronico" name="email">
                 </div>
-                <button type="submit" value="recover" name="submit" class="btn-login">Enviar Enlace</button>  
+                <button type="submit" value="recover" name="submit" class="btn-login btn_decorate">Enviar Enlace</button>  
             </form>
             <div>
                 <p class="p_in">¿Quieres crear una cuenta?
                     <a href="singin" class="link">Crear Cuenta </a>
                 </p>
-
             </div>
         </main>
     </body>

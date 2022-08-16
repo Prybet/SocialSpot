@@ -1,3 +1,13 @@
+/*
+SocialSpot 2022
+Made by: 
+ soulbroken
+ Prybet
+*/
+/* 
+    Created on : 13-ago-2022, 13:16:46
+    Author     : nacho
+*/
 html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -93,7 +103,7 @@ label span{
     height: 80vh;
 }
 .notSearch{
-    color: var(--blue);
+    color: var(--primary);
     font-size: 3rem;
 }
 .cont_ty{

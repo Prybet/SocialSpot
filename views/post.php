@@ -69,7 +69,10 @@ $norms = Norm::getAll();
               
                 $(".btn_foll").click(function () {
                     var id = $(this).val();
-                    window.location.href = "http://socialspot.cl/SocialSpot/views/interests?id=" + id + "&context=Category";
+                        window.location.href = "http://localhost/SocialSpot/views/interests?id=" + id + "&context=Category";
+                });
+                $(".contain_post").css({
+                   "margin" : "0" 
                 });
 
             });
@@ -236,7 +239,7 @@ $norms = Norm::getAll();
                                     </div>
                                 </div>
                                 <div class="esp">
-                                    <label>Naxhinternational Inc 2022</label>
+                                    <label>SocialSpot Inc 2022</label>
                                 </div>
                                 <div class="esp">
                                     <label>Todos los derechos Reservados.</label>

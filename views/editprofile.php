@@ -373,7 +373,7 @@ $errVrf = isset($_SESSION["errPassVrf"]) ? $_SESSION["errPassVrf"] : false;
                 </form>
             </div>
         </main>
-        <?php include_once '../footer.php'; ?>
+        <?php include_once '../footer.php'; ?> 
         <?php include_once '../modal.php'; ?>
     </body>
 

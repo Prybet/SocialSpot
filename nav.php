@@ -73,12 +73,8 @@
                         </button>
                     </div>
                 <?php else: ?>
-                    <button type="submit" name="submit" value="goLogin" class="btn_user-nav pointer">
-                        <div class="img_user flex" id="btn_user" for="checkbox_menu">
-                            <img src="<?= $imgUser ?>" class="size-img img-user pointer" />
-                            <div class="lbluser pointer"><?= $username ?></div>
-                            <div class="decorate_user "></div>
-                        </div>
+                    <button type="submit" name="submit" value="goLogin" class="btn_goLogin pointer">
+                        Iniciar Sesión
                     </button>
                 <?php endif; ?>
             </div>

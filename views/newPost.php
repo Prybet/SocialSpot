@@ -181,7 +181,7 @@ $errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
                                     <div class="lbl_rule">
                                         <label><?= $i ?>-<?= $n->name ?>: </label><span class="spnNum"><?= $n->desc ?></span>
                                     </div>
-<?php } ?>
+                                <?php } ?>
                             </div>
                         </section>
                         <footer>
@@ -205,7 +205,7 @@ $errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
                                         </div>
                                     </div>
                                     <div class="esp">
-                                        <label>Naxhinternational Inc 2022</label>
+                                        <label>SocialSpot Inc 2022</label>
                                     </div>
                                     <div class="esp">
                                         <label>Todos los derechos Reservados.</label>

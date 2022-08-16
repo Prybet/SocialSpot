@@ -49,7 +49,7 @@ $ip = Connection::$ip;
                 }
                 $(".btn_popular-cate").click(function () {
                     var id = $(this).val();
-                    window.location.href = "http://socialspot.cl/SocialSpot/views/interests?id=" + id + "&context=Category";
+                    window.location.href = "http://localhost/SocialSpot/views/interests?id=" + id + "&context=Category";
                 });
             });
 

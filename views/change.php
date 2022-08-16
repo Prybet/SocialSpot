@@ -31,7 +31,7 @@ if ($_SESSION["recov"] != "") {
                     <div class="field">
                         <input type="password" name="pass" class="input_field inp_p" placeholder="Contraseña">
                     </div>
-                    <button type="submit" value="verify" name="submit" class="btn-login ">Guardar</button>
+                    <button type="submit" value="verify" name="submit" class="btn-login btn_decorate">Guardar</button>
                 </form>
             </main>
         </body>

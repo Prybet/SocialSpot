@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    var ip = "http://socialspot.cl";
-    //var ip = "http://172.20.10.2";
+    //var ip = "http://socialspot.cl";
+    var ip = "http://localhost";
     //Item
     $(".contain_post").click(function () {
         let id = $(this).prop("id");
@@ -90,9 +90,11 @@ $(document).ready(function () {
     //Icon For Images Post
     var a = $(".contain-img");
     for (var i=0; i < a.length; i++) {
+        
         var id = a[i].getAttribute('id');
         var contI = $(".container_img_" + id);
-        if(contI.length>1){
+        console.log(contI.length);
+        if(contI.length > 1){
             $(".img-left_" + id).css({
                 "visibility" : "visible"
             });
@@ -104,28 +106,7 @@ $(document).ready(function () {
             });
         }
     }
-    $(".cont-right").click(function () {
-        var position = 0;
-        var sum = 0;
-        let idP = $(this).prop("id");
-        var idI = $(".contain-img_" + idP);
-        var img = idI.attr("data-val");
-        var conI = $(".container_img_" + idP);
-
-        for (var i=0; i <= img; i++) {
-            if(conI.length-1 == img){
-
-            }else{
-                position++;
-                sum+= 150;
-                idI.attr("data-val", position);
-                $(".group_" + idP).css({
-                    "margin-right" : sum +"rem"
-                }); 
-            }
-        }
-    });
-    $(".cont-left").click(function () {
+    /* $(".cont-left").click(function () {
         var position = 0;
         var sum = 0;
         let idP = $(this).prop("id");
@@ -151,6 +132,40 @@ $(document).ready(function () {
                 });
             }
         }
+    });
+    $(".cont-right").click(function () {
+        var position = 0;
+        var sum = 0;
+        let idP = $(this).prop("id");
+        var idI = $(".contain-img_" + idP);
+        var img = idI.attr("data-val");
+        var conI = $(".container_img_" + idP);
+
+        for (var i=0; i <= img; i++) {
+            if(conI.length-1 == img){
+
+            }else{
+                position++;
+                sum+= 150;
+                idI.attr("data-val", position);
+                $(".group_" + idP).css({
+                    "margin-right" : sum +"rem"
+                }); 
+            }
+        }
+    })*/
+    $(".cont-right").click(function () {
+        var position = 0;
+        let idP = $(this).prop("value");
+        console.log(idP);
+        console.log("hola");
+    });
+    $(".cont-left").click(function () {
+        var position = 0;
+        let idP = $(this).val();
+        console.log(idP);
+        console.log("hola");
+        
     });
     
     //Icon Comentary For Post

@@ -182,6 +182,8 @@ if ($method == "GET") {
         $_SESSION["order"] = "liked";
         $_SESSION["posts"] = $posts;
         header("Location: ../views/main");
+    } elseif($_POST["submit"] == "back"){
+        header("Location: ../views/index");
     }
 }
 
@@ -202,7 +204,7 @@ function uploadFiles($idp) {
     foreach ($_FILES as $file) {
         $dot = getDot($file);
         if ($dot == "NotMedia") {
-            $_SESSION["err"] = "Archivo no soportado: " . $file["name"];
+            $_SESSION["errFile"] = "Archivo no soportado: " . $file["name"];
         } else {
             tryPath($prof, $idp);
             $path = "../../SSpotImages/UserMedia/" . $prof->username . "-Folder/Post-" . $idp . "Folder";

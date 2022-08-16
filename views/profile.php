@@ -114,6 +114,7 @@ if($profile->description == ""){
                 </div>
             </div>
         </div>
+        <!-- 
         <main class="contain_main">
             <div class="container-post-field">
                 <div class="contain_public">
@@ -173,6 +174,8 @@ if($profile->description == ""){
                 </div>
             </div>
         </main> 
+        -->
+        
         <?php include_once '../modal.php'; ?>
     </body>
     <script src="../js/nav.js"></script>

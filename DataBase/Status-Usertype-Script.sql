@@ -28,7 +28,7 @@ INSERT INTO usertype VALUES(null, "Admin",1);
 INSERT INTO category VALUES (null, "Skateboarding", "El skateboarding es un deporte que se basa en la propulsión con un skate –elemento compuesto por una tabla de madera, ejes, rodamientos y ruedas- a la vez que se realizan distintos trucos o maniobras", "Skate-ProfilePic.jpg", "Skate-BannerPic.jpg",1);
 INSERT INTO category VALUES (null, "Ciclismo", "El ciclismo es un deporte en el que se utiliza una bicicleta​ para recorrer circuitos al aire libre o en pista cubierta y que engloba diferentes especialidades.", "Ciclism-ProfilePic.jpg", "Ciclism-BannerPic.jpg",1);
 INSERT INTO category VALUES (null, "Mountain Bike", "La bicicleta de montaña es un tipo de bicicleta diseñada para viajes por la montaña o el campo. Se caracteriza por componentes más resistentes a los impactos del terreno ", "Mountainbike-ProfilePic.jpg", "Mountainbike-BannerPic.jpg",1);
-INSERT INTO category VALUES (null, "Downhill Longboard", "El downhill es la modalidad más peligrosa de longboard. Consiste en bajar una cuesta, normalmente una carretera de curvas, a toda velocidad con tu tabla de longboard", "Downhill-ProfilePic.jpg", "Downhill-BannerPic.jpg",1);
+INSERT INTO category VALUES (null, "Downhill Longboard", "El downhill es la modalidad más peligrosa de longboard. Consiste en bajar una cuesta, normalmente una carretera de curvas, a toda velocidad con tu tabla de longboard", "Downhill-ProfilePic.jpg", "Downhill-BannerPic.png",1);
 INSERT INTO category VALUES (null, "Inline Downhill", "Esta categoría es una  prueba de patinaje en descenso, se caracteriza por patines de velocidad, bajando en línea recta a toda velocidad", "Inlinedownhill-ProfilePic.jpg", "Inlinedownhill-BannerPic.jpg",1);
 INSERT INTO category VALUES (null, "Bmx", "La categoría se hace a travez de una bicicleta ligera, que permite sostenerlas en el aire, haciendo diferentes trucos o freestyle", "BMX-ProfilePic.jpg", "BMX-BannerPic.jpg",1);
 INSERT INTO category VALUES (null, "Scooter", "Scooter tambien llamado monopatín, consiste en una plataforma alargada sobre dos ruedas en línea y una barra de dirección, con la que se deslizan los patinadores tras impulsarse con un pie contra el suelo", "Scooter-ProfilePic.jpg", "Scooter-BannerPic.jpg",1); 
@@ -89,7 +89,7 @@ INSERT INTO province VALUES (NULL, "Choapa", "La provincia de Choapa es la más 
 
 INSERT INTO province VALUES (NULL, "Isla de Pascua", "tiene una superficie de 163,6 km² y posee una población de 5761 habitantes. Su capital es Hanga Roa.","","",5,1),
 							(NULL, "Los Andes", "Está ubicada en el sector este de la Región de Valparaíso y cuenta con una superficie de 3054 km². Posee una población de 110.602 habitantes y su capital provincial es la ciudad de Los Andes","","",5,1),
-							(NULL, "Marga Marga", "La Provincia de Marga-Marga está conformada por las comunas de Quilpué, Villa Alemana, Limache y Olmué, con una superficie total de 1179,4 km² y una población de 330.814 habitantes (preliminar Censo 2012). Los límites comunales no fueron alterados.",5,1),
+							(NULL, "Marga Marga", "La Provincia de Marga-Marga está conformada por las comunas de Quilpué, Villa Alemana, Limache y Olmué, con una superficie total de 1179,4 km² y una población de 330.814 habitantes (preliminar Censo 2012). Los límites comunales no fueron alterados.","","",5,1),
 							(NULL, "Petorca", "Posee una superficie de 4588,9 km² y posee una población de 78 299 habitantes. Su capital provincial es la ciudad de La Ligua.","","",5,1);
 
 INSERT INTO province VALUES (NULL, "Cachapoal", "Se encuentra ubicada al sur de la Región Metropolitana de Santiago y su superficie es de 7516,7 km². Cuenta con una población de cerca de 646 133 habitantes, que se concentran en su capital, Rancagua, y en otras ciudades como Rengo, San Vicente y Graneros.","","",6,1),
@@ -174,18 +174,18 @@ INSERT INTO city VALUES
 (NULL, "Rancagua", "Debido a la gran expansión de la ciudad durante los últimos años, ha llegado a formar junto a Machalí y Gultro la llamada Conurbación Rancagua, que es la octava aglomeración urbana más poblada del país.","","",16,1),
 (NULL, "La Estrella", "La comuna de La Estrella abarca una superficie de 435 km² y una población de 3.041 habitantes (Censo INE Año 2017), correspondientes a un 0,54 % de la población total de la región y una densidad de 9,70 hab/km². Del total de la población, 1.537 son mujeres y 3.007 son hombres. Un 51,09 % corresponde a población rural y un 48,91 % a población urbana.","","",17,1),
 (NULL, "Pichilemu", "La playa de Pichilemu es una zona de práctica de surf, específicamente el sector de Punta de Lobos, donde por sus break points se han desarrollado campeonatos con participación y relevancia internacional que han provocado que Pichilemu sea conocida como la capital chilena del surf.","","",17,1),
-(NULL, "San Fernando", "Es capital de la actual provincia de Colchagua. Entre 1826 y 1976 fue capital de la Provincia de Colchagua y del departamento de San Fernando.",18,1);
+(NULL, "San Fernando", "Es capital de la actual provincia de Colchagua. Entre 1826 y 1976 fue capital de la Provincia de Colchagua y del departamento de San Fernando.","","",18,1);
 
 INSERT INTO city VALUES 
 (NULL, "Cauquenes", "Se ubica a 355 kilómetros (221 mi) de Santiago y limita al norte con las comunas de Empedrado y San Javier al sur con Cobquecura, Quirihue, Ninhue y San Carlos, al oeste con Chanco y Pelluhue, y al este con Parral y Retiro.","","",18,1),
 (NULL, "Curicó", "El área de la ciudad de Curicó alcanza a 1.000 km². Son productos característicos de la ciudad las tortas, frutas, cemento, azúcar, salsa de tomates y vinos de exportación de calidad internacional. Es uno de los centros de servicios más importantes de la zona central y está considerada como la capital agroindustrial de Chile debido a su constante crecimiento económico.","","",19,1),
 (NULL, "Linares", "La ciudad de Linares recibe su nombre de don Francisco Espinoza Muñoz de la Mata Linares, quien se desempeñaba como Intendente de Concepción al momento de fundarse la villa.","","",20,1),
-(NULL, "Talca", "Se encuentra 255 kilómetros al sur de la capital Santiago. La ciudad es el corazón de la zona agrícola chilena por excelencia.",21,1);
+(NULL, "Talca", "Se encuentra 255 kilómetros al sur de la capital Santiago. La ciudad es el corazón de la zona agrícola chilena por excelencia.","","",21,1);
 
 INSERT INTO city VALUES 
 (NULL, "Arauco", "Es una ciudad y comuna de la zona sur de Chile, ubicada en la provincia homónima en la región del Biobío, a 70 km al sur de Concepción. Su geografía se caracteriza por emplazarse sobre la cuenca del río Carampangue hasta su desembocadura con el océano Pacífico, al costado norponiente de la cordillera de Nahuelbuta.","","",22,1),
 (NULL, "Los Ángeles", "Los Ángeles es una comuna y ciudad de la zona central de Chile, capital de la provincia de Biobío, en la región homónima. Se encuentra ubicada a 510 kilómetros de Santiago, la capital del país, y a 127 kilómetros de Concepción, la capital regional.","","",23,1),
-(NULL, "Concepción", "El núcleo urbano de Concepción ejerce un significativo impacto en el comercio nacional al ser parte de la región con más industrialización del país.",24,1),
+(NULL, "Concepción", "El núcleo urbano de Concepción ejerce un significativo impacto en el comercio nacional al ser parte de la región con más industrialización del país.","","",24,1),
 (NULL, "Chiguayante", "Su nombre proviene de la toponimia del lugar, conocida por los mapuches como Chiwayantü, palabra en lengua mapuche o mapudungun compuesta de las palabras chiway y antü, cuyo significado es sol entre neblina.","","",24,1);
 
 INSERT INTO city VALUES 

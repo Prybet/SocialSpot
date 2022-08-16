@@ -9,7 +9,6 @@ Made by:
 <?php
 session_start();
 $style = "grupe1Style.css";
-
 $date = date((date("Y")-14)."-m-d");
 ?>
 <html>
@@ -46,7 +45,7 @@ $date = date((date("Y")-14)."-m-d");
                     Al registrarte Aceptas nuesta condiciones, la Politica de Moderacion y Politica de Privacidad      
                 </p>
                 <label></label>
-                <button type="submit" value="create" name="submit" class="btn-login">Registrarse</button>  
+                <button type="submit" value="create" name="submit" class="btn-login btn_decorate">Registrarse</button>  
             </form>
             <div>
                 <p class="p_in">¿Tienes Cuenta?

@@ -94,7 +94,7 @@ class Post {
         }
     }
     // For views/post.php
-    //Busca un post retornando un onjeto de Post
+    //Busca un post retornando un objeto de Post
     public static function getPost($id) {
         $conn = new Connection();
         $sen = $conn->mysql->prepare("SELECT * FROM post WHERE id = :id ");

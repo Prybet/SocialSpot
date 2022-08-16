@@ -1,10 +1,18 @@
-
+/*
+SocialSpot 2022
+Made by: 
+ soulbroken
+ Prybet
+*/
+/* 
+    Created on : 13-ago-2022, 13:16:46
+    Author     : nacho
+*/
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    background-color: var(--darkgray);
+    background-color: var(--darkgraymodern);
 }
-
 *,
 *:before,
 *:after {
@@ -79,7 +87,7 @@ hr {
     border-bottom: 1px solid var(--primary);
     background-color: rgba(169, 169, 169, 0);
     outline: none;
-    color: var(--white);
+    color: var(--second);
 }
 
 .input_field_danger{
@@ -94,12 +102,10 @@ hr {
     margin: 0 auto;
     font-size: 1.5rem;
 }
-
-.btn-login {
+.btn_decorate{
     display: block;
     /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
     font-family: var(--fuenteParrafos);
-    color: var(--primary);
     text-align: center;
     padding: 1rem 9rem;
     font-size: 1.5rem;
@@ -108,26 +114,17 @@ hr {
     margin: 0 auto;
     border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--dark);
     cursor: pointer;
+}
+.btn-login {
+    color: var(--primary);
+    background-color: var(--dark);
 }
 
 .btn-singIn {
-    display: block;
-    /** Esto permite que el boton ocupe todo el ancho de la pantalla **/
-    font-family: var(--fuenteParrafos);
-    color: var(--white);
-    text-align: center;
-    padding: 1rem 9rem;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: 0 auto;
-    border-color: var(--primary);
-    border-radius: 0.6rem;
+    color: var(--second);
     background-color: var(--primary);
     color: var(--darkgray);
-    cursor: pointer;
 }
 
 .log-in,
@@ -179,7 +176,6 @@ hr {
 @media (max-width: 934px) {
     .container {
         max-width: 60%;
-        width: 120;
         margin: 0 auto;
     }
 }
@@ -187,7 +183,6 @@ hr {
 @media (max-width: 632px) {
     .container {
         max-width: 85%;
-        width: 120;
         margin: 0 auto;
     }
 }
@@ -265,7 +260,7 @@ input[type="date"] {
 .btn-pass{
     display: block;
     font-family: var(--fuenteParrafos);
-    color: var(--white);
+    color: var(--second);
     text-align: center;
     padding: 1rem 9rem;
     font-size: 1.5rem;
@@ -274,7 +269,7 @@ input[type="date"] {
     margin: 0 auto;
     border-color: var(--primary);
     border-radius: 0.6rem;
-    background-color: var(--primary);
+    background-color: var(--red);
     color: var(--darkgray);
     cursor: pointer;
     margin-top: 2rem;

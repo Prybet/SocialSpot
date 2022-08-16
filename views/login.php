@@ -26,9 +26,9 @@ $style = "grupe6Style.css";
             
         </script>
     </head>
-    <body class="no-margin container-flex">
+    <body class="no-margin container-flex flex">
         <div class="container-grid">
-            <div class="container-flex">
+            <div class="container-flex flex">
                 <div class="cont">
                     <div class="flex">
                         <img src="../img/Social.png" class="img_logoo" />
@@ -36,7 +36,7 @@ $style = "grupe6Style.css";
                     <p>SocialSpot es más que una red social, te ayuda a compartir
                         todos esos momento de adrenalina con todo el mundo
                     </p>
-                    <div class="contain_slide">
+                    <div class="contain_slide flex">
                         <div class="slider">
                             <div class="slides">
                                 <input type="radio" name="radio-btn" id="radio1">
@@ -76,7 +76,7 @@ $style = "grupe6Style.css";
                 </div>
             </div>
             <hr>
-            <div class="no-margin  container-form">
+            <div class="no-margin container-form flex">
                 <form action="../controllers/UserController.php" method="post" class="login">
                     <h2 class="log">Inicia Sesión</h2>
                     <div class="field">

@@ -1,3 +1,13 @@
+/*
+SocialSpot 2022
+Made by: 
+ soulbroken
+ Prybet
+*/
+/* 
+    Created on : 13-ago-2022, 13:16:46
+    Author     : nacho
+*/
 html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -13,16 +23,17 @@ body{
 .no-margin {
     margin: 0 auto;
 }
-
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* ------- body ------ */
 .container-grid{
     display: grid;
     grid-template-columns: 1.5fr 0fr 1fr;
 }
 .container-flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 .cont{
@@ -42,16 +53,10 @@ p{
     text-align: center;
     font-weight: bold;
 }
-.flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .img_logoo{
     width: 60rem;
     height: 16.5em;
 }
-
 hr {
     margin: 12rem 1rem;
     padding: 0.1rem;
@@ -60,13 +65,8 @@ hr {
     border: 1px solid var(--black);
     border-radius: 5rem;
 }
-
-
 .container-form{
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .login{
     background-color: var(--black);
@@ -93,13 +93,12 @@ hr {
     outline: none;
     padding-bottom: 0.3rem;
     font-size: 1.5rem;
-    color: var(--white);
+    color: var(--second);
 }
 .error{
     display: flex;
     justify-content: center;
     width: 100%;
-    
 }
 .hidden{
     display: none;
@@ -161,12 +160,8 @@ hr {
     transition: background-color .8s ease;
 }
 
-
 /* slider */
 .contain_slide{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
 }
 .slider{
