@@ -1,7 +1,7 @@
 # SocialSpot
 SocialSpot es una red social para conectar a las personas que les gustan los deportes extremos.
-[![kehj] (https://parzibyte.me/blog/wp-content/uploads/2019/01/Imagen-dentro-del-repositorio.png)
-#Post
+![map](https://raw.githubusercontent.com/Prybet/SocialSpot/main/img/map.png?token=GHSAT0AAAAAABXYFISUQZA2PGA4FJJRIUVEYX5OXTQ)
+# Post
 El usuario pude compartir fotos o vidos relacionados a los intereses que sigua
 
 
