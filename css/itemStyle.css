@@ -8,7 +8,6 @@ Made by:
     Created on : 13-ago-2022, 13:16:46
     Author     : nacho
 */
-/* ITEM */
 .contain_post{
     width: 100%;
     background-color: var(--darker);
@@ -86,7 +85,7 @@ Made by:
     width: 75rem;
     max-height: 50vh;
     position: absolute;
-    
+    visibility: hidden;
 }
 .img_post{
     /* min-width: 75rem; */

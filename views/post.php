@@ -173,7 +173,7 @@ $norms = Norm::getAll();
                     <div class="contain_right">
                         <section class="details_cate">
                             <div class="contai">
-                                <div class="contain_img">
+                                <div class="contain_img-post">
                                     <img id="catImage" src="../../SSpotImages/InterestsImages/CategoryImages/ProfileImages/<?= $post->category->imageURL ?>" class="img_cate" alt="Imagen de Perfil"/>
                                 </div>
                                 <div>

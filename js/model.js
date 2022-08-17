@@ -90,10 +90,13 @@ $(document).ready(function () {
     //Icon For Images Post
     var a = $(".contain-img");
     for (var i=0; i < a.length; i++) {
-        
         var id = a[i].getAttribute('id');
+        var p = $(".post_" + id + "_0");
+        $(".post_" + id + "_0").css({
+            "visibility" : "visible"
+        });
         var contI = $(".container_img_" + id);
-        console.log(contI.length);
+        
         if(contI.length > 1){
             $(".img-left_" + id).css({
                 "visibility" : "visible"
@@ -155,17 +158,43 @@ $(document).ready(function () {
         }
     })*/
     $(".cont-right").click(function () {
-        var position = 0;
         let idP = $(this).prop("value");
-        console.log(idP);
-        console.log("hola");
+        var idI = $(".contain-img_" + idP);
+        var position = idI.attr("data-val");
+        var imgPos = $(".post_" + idP + "_" + position);
+        
+        if(idI.length > position){
+            imgPos.css({
+               "visibility" : "hidden"
+            });
+            position++;
+            var imgPos = $(".post_" + idP + "_" + position);
+            imgPos.css({
+               "visibility" : "visible"
+            });
+            idI.attr("data-val", position);
+        }
+        
     });
     $(".cont-left").click(function () {
-        var position = 0;
-        let idP = $(this).val();
-        console.log(idP);
-        console.log("hola");
-        
+        let idP = $(this).prop("value");
+        var idI = $(".contain-img_" + idP);
+        var position = idI.attr("data-val");
+        var imgPos = $(".post_" + idP + "_" + position);
+        console.log(idI.length);
+        console.log(position);
+        if(idI.length <= position){
+            imgPos.css({
+               "visibility" : "hidden"
+            });
+            
+            position--;
+            var imgPos = $(".post_" + idP + "_" + position);
+            imgPos.css({
+               "visibility" : "visible"
+            });
+            idI.attr("data-val", position);
+        }
     });
     
     //Icon Comentary For Post

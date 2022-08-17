@@ -74,6 +74,9 @@ span{
 .contain_search {
   border-radius: 0.1rem;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .conta {
   border: 0.5px solid var(--ligthgray);
@@ -85,7 +88,7 @@ span{
   background-color: var(--black);
   border: none;
   padding: 1rem 1rem;
-  color: var(--white);
+  color: var(--second);
 }
 .btn_find {
   background-color: var(--black_nav);
@@ -132,6 +135,7 @@ scroll-container {
   font-size: 1.3rem;
   margin-left: 3rem;
   align-items: center;
+  
 }
 .contain_user-ft{
     background-size: cover;
@@ -167,6 +171,7 @@ scroll-container {
   background-color: var(--black);
   margin-top: 5.5rem;
   visibility: hidden;
+  border: 1px solid var(--ligthgray);
 }
 
 .contain_option {
@@ -178,6 +183,7 @@ scroll-container {
   position: absolute;
   border-radius: 0.5rem;
   visibility: hidden;
+  border: 1px solid var(--ligthgray);
 }
 
 .contain_option button {
@@ -253,14 +259,11 @@ scroll-container {
     font-weight: bold;
     text-transform: uppercase;
 }
-
-@media(max-width: 1433px){
-    nav{
-        padding: 0 20rem;
-    }
+.x_search{
+    display: none;
+    color: white;
 }
-
-@media(max-width: 1241px){
+@media(max-width: 1480px){
     nav{
         padding: 0 10rem;
     }
@@ -270,8 +273,35 @@ scroll-container {
       padding: 0;
   }
 }
-@media(max-width: 994px){
-    .contain_search{
-        display: none!important;
+@media(max-width: 880px){
+    .conta{
+        width: 25rem;
     }
+    .img_logo {
+        height: 3.5rem;
+    }
+    .btn_goLogin{
+        padding: 0.8rem;
+    }
+}
+@media(max-width: 674px){
+    .contain_search{
+        display: none;
+    }
+    .x_search{
+        display: flex!important;
+    }
+    .contain_user{
+        margin-left: -7rem;
+    }
+    .contain_logo {
+        margin-left: -4rem;
+    }
+}
+@media(max-width: 420px){
+    .most-grid{
+        grid-template-columns: 2fr 1fr 1fr!important;
+    }
+    
+  
 }

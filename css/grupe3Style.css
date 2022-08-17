@@ -39,7 +39,7 @@ html {
     width: 100%;
 }
 .contain_post-grid{
-    width: 65%;
+    width: 113rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
 }
@@ -49,7 +49,7 @@ html {
 
 /* REPLY */
 .container_reply{
-    width: 75rem;
+    width: 68rem;
     background-color: var(--darker);
     margin: 2rem 0;
     display: flex;
@@ -176,7 +176,6 @@ hr{
     border: none;
     color: var(--black);
     font-weight: bold;
-    width: 13%;
     margin-bottom: 0.5rem;
     cursor: pointer;
     text-align: right;
@@ -220,7 +219,7 @@ hr{
     display: grid;
     grid-template-columns: 1fr 1.8fr;
 }
-.contain_img{
+.contain_img-post{
     width: 100%;
     display: flex;
     justify-content: right;
@@ -630,4 +629,35 @@ label{
 }
 .lblWar{
     margin-top: 1.5rem;
+}
+
+@media(max-width: 1196px){
+    .details_cate, .container_mode{
+        display: none;
+    }
+    .contain_post-grid{
+        grid-template-columns: 1fr;
+        width: 75rem;
+    }
+    .contain_post-general{
+        width: 100%;
+    }
+    .container_reply{
+        width: 100%;
+    }
+    .flex-footer{
+        margin-top: 0rem;
+    }
+}
+@media(max-width: 796px){
+    .contain_post-grid{
+        display: flex;
+        flex-direction: column;
+        width: 43rem;
+    }
+}
+@media(max-width: 796px){
+    .contain_post-grid{
+        width: 95%;
+    }
 }

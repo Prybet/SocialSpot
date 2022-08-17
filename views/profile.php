@@ -114,7 +114,7 @@ if($profile->description == ""){
                 </div>
             </div>
         </div>
-        <!-- 
+         
         <main class="contain_main">
             <div class="container-post-field">
                 <div class="contain_public">
@@ -169,12 +169,12 @@ if($profile->description == ""){
                                     <label>Todos los derechos Reservados.</label>
                                 </div>
                             </div>
-                            </fotter>
+                        </fotter>
                     </div>  
                 </div>
             </div>
         </main> 
-        -->
+        
         
         <?php include_once '../modal.php'; ?>
     </body>

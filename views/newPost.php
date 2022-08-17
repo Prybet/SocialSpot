@@ -136,7 +136,7 @@ $errB = isset($_SESSION["errBod"]) ? $_SESSION["errBod"] : false;
                         <section class="details_cate">
                             <div class="cont_de">
                                 <div class="contai">
-                                    <div class="contain_img">
+                                    <div class="contain_img-cate">
                                         <img id="catImage" src="../img/perfil.png" class="img_cate" alt="Imagen de Perfil"/>
                                     </div>
                                     <div>

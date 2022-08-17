@@ -8,14 +8,16 @@
     }
     $username = isset($profile->username) ? $profile->username : "Usuario";
     ?>
-    
+    <div class="x_search">
+        X
+    </div>
     <div class="contain_logo flex">
         <a class="a_logo" href="<?= $ip ?>/SocialSpot/views/index.php">
             <img src="../img/Social.png" class="img_logo pointer" />
         </a>
     </div>
 
-    <div class="contain_search flex">
+    <div class="contain_search">
         <form action="../controllers/InterestController.php" method="post" class="no-margin flex" id="frm">
             <div class="conta" id="contain_search">
                 <input type="text" id="search" autocomplete="off" name="nom" class="input_search no-margin" placeholder="Buscar" />

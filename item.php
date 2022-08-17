@@ -1,4 +1,5 @@
 <?php
+require_once '../models/Media.php';
 $veri = 0;
 foreach($post->likes as $like):
     if($like->profID == $_SESSION["user"]->id){
@@ -16,8 +17,7 @@ if($post->spot != ""){
 }else{
     $s = "sNpot";
 }
-$allImgVid = array_merge($post->videos, $post->images);
-print_r($allImgVid);
+$media = Media::toMedia($post->images, $post->videos);
 ?>
 <div class="contain_post" id="<?= $post->id ?>" data-val="">
     <div class="contain_post-top">
@@ -78,20 +78,21 @@ print_r($allImgVid);
         
         
         <div class="contain_img">
-            <?php if ($post->videos != null):
-            foreach ($post->videos as $i => $video): ?>
-                <div class="container_img container_img_<?= $post->id ?>">
-                    <video controls class="img_post group_<?= $post->id ?>">
-                        <source src="../../SSpotImages/UserMedia/<?= $video->URL ?>" type="video/mp4"/>
-                    </video>
-                </div>
-            <?php endforeach;
+            <?php if ($media != null):
+                foreach ($media as $i => $m): 
+                    if($m->context == "video"){?>
+                    <div class="container_img container_img_<?= $post->id ?> post_<?= $post->id ?>_<?= $i ?>">
+                        <video controls class="img_post">
+                            <source src="../../SSpotImages/UserMedia/<?= $m->URL ?>" type="video/mp4"/>
+                        </video>
+                    </div>
+                    <?php }else{ ?>
+                     <div class="container_img container_img_<?= $post->id ?> post_<?= $post->id ?>_<?= $i ?>">          
+                        <img src="../../SSpotImages/UserMedia/<?= $m->URL ?>" class="img_post">
+                    </div>
+                    <?php } ?>
+                <?php endforeach;
             endif;?>
-            <?php foreach ($post->images as $i => $image): ?>
-                <div class="container_img container_img_<?= $post->id ?>">          
-                    <img src="../../SSpotImages/UserMedia/<?= $image->URL ?>" class="img_post group_<?= $post->id ?>">
-                </div>
-            <?php endforeach; ?>
         </div>
     </div>
     
@@ -217,4 +218,3 @@ print_r($allImgVid);
         <?php endif; ?>
     </div>
 </div>
-

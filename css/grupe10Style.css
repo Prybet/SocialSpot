@@ -32,7 +32,7 @@ main{
     justify-content: center;
 }
 .contain_srch{
-    width: 60%;
+    width: 100rem;
     height: 30rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -114,4 +114,25 @@ label span{
     position: absolute;
     right: 0;
     margin-right: 0.5rem;
+}
+@media(max-width: 1070px){
+    .contain_srch{
+        grid-template-columns: 1fr 1fr;
+    }
+    .contain_srch {
+        width: 75rem;
+    }
+}
+@media(max-width: 821px){
+    .contain_srch{
+        grid-template-columns: 1fr;
+    }
+    .contain_srch {
+        width: 35rem;
+    }
+}
+@media(max-width: 427px){
+    .notSearch{
+        font-size: 2rem;
+    }
 }
