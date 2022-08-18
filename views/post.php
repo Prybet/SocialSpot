@@ -201,7 +201,7 @@ $norms = Norm::getAll();
                                     </div>
                                 </div>
                                 <div class="contain-map">
-                                    <div id="map" style="height: 100%; width: 100%;">
+                                    <div id="map" class="maps" style="height: 100%; width: 100%;">
                                         <img src="https://maps.googleapis.com/maps/api/staticmap?center=<?= $post->spot->marker->LAT ?>,<?= $post->spot->marker->LNG ?>&markers=size:mid%7Ccolor:red%7C<?= $post->spot->marker->LAT ?>,<?= $post->spot->marker->LNG ?>&zoom=16&size=400x400&key=AIzaSyAoIk1JmdYKisyQO66mBl1ZTUT8B71pYIY" alt="alt"/>
                                     </div> 
                                 </div>

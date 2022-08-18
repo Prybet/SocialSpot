@@ -51,7 +51,7 @@ nav {
   height: 6rem;
   padding: 0 30rem;
   border-bottom: 1px solid var(--ligthgray);
-  z-index: 10;
+  z-index: 200;
 }
 
 
@@ -175,11 +175,19 @@ scroll-container {
   visibility: hidden;
   border: 1px solid var(--ligthgray);
 }
+.decorate_son{
+    height: 1.9rem;
+    width: 1.9rem;
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: var(--black);
+    margin-top: 5.5rem;
+}
 
 .contain_option {
   width: 15rem;
-  height: 170px;
-  margin-top: 22rem;
+  height: 137px;
+  margin-top: 18rem;
   background-color: var(--black);
   color: var(--white);
   position: absolute;

@@ -482,7 +482,7 @@ $(document).ready(function () {
                     
                     }
                 }else{
-                    $("#scroll-find").empty();
+                    $(".scroll-find").empty();
                 }
             },
             error: function (data) {

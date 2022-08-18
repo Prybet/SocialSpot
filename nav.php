@@ -46,7 +46,9 @@
                                 </div>
 
                                 <div class="lbluser pointer"><?= $username ?></div>
-                                <div class="decorate_user "></div>
+                                <div class="decorate_user ">
+                                    <div class="decorate_son"></div>
+                                </div>
                             </div>
                         </button>
 
@@ -56,13 +58,6 @@
                                     <img src="<?= $imgUser ?>" class="separation size-img ">
                                     <span>Ver Perfil</span>
                                 </div>
-                            </button>
-                            <button  class="option flex">
-                                <label class="content-input">
-                                    <div class="op flex">
-                                        <input type="checkbox">Conectado<i></i>
-                                    </div>
-                                </label>
                             </button>
                             <button type="submit" name="submit" value="goEdit" class="option flex pointer">
                                 <div class="xx op flex">

@@ -649,6 +649,14 @@ label{
     .flex-footer{
         margin-top: 0rem;
     }
+    .maps{
+        display: flex;
+        justify-content: center;
+    }
+    .contain_spot{
+        margin-bottom: 2rem;
+        margin-top: -0.5rem;
+    }
 }
 @media(max-width: 796px){
     .contain_post-grid{
