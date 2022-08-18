@@ -153,7 +153,7 @@ $ip = Connection::$ip;
                 </div>
             </div>
         </div>
-
+        
         <?php include_once '../modal.php'; ?>
 
     </body>    

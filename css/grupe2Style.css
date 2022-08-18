@@ -23,9 +23,10 @@ body{
     box-sizing: inherit;
 }
 /* NAV */
-.nav{
+.a{
     position: fixed;
     z-index: 100;
+    width: 100%;
 }
 /* BANNER AND PROFILE */
 .contain_images{
@@ -479,6 +480,9 @@ a{
     }
     hr{
         display: none;
+    }
+    .black-search{
+        margin-top: 5rem;
     }
 }
 @media (max-width: 949px) {

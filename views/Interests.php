@@ -12,7 +12,7 @@ require_once '../models/Search.php';
 require_once '../models/Norm.php';
 session_start();
 $ip = Connection::$ip;
-$style = "grupe9Style.css";
+$style = "grupe7Style.css";
 $norms = Norm::getAll();
 $id = isset($_GET["id"]) ? $_GET["id"] : 1;
 $context = isset($_GET["context"]) ? $_GET["context"] : "";
@@ -37,10 +37,10 @@ if ($context != "") {
     </head>
     <body>
         <div class="a">
-        <?php include_once '../nav.php'; ?>
-        </div>
+            <?php include_once '../nav.php'; ?>
+        </div>  
         <header>
-            <div class="contain_bann " >
+            <div class="contain_bann" >
                 <div class="ftbanner">
                 </div>
             </div>
@@ -53,15 +53,15 @@ if ($context != "") {
                     <?php if($pos == 0):?>
                      <input type="text" name="context" value="<?= $context ?>" hidden>
                     <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
-                    <button type="submit" name="submit" value="follInterest" class="btn_follow" id="btn_editar">Seguir</button>
+                    <button type="submit" name="submit" value="follInterest" class="btn_editar btnres" id="btn_editar">Seguir</button>
                     <?php endif;?>
                     <?php if($pos == 1):?>
                      <input type="text" name="context" value="<?= $context ?>" hidden>
                     <input type="text" name="inte" value="<?= $inte->id ?>" hidden>
-                    <button type="submit" name="submit" value="follInterest" class="btn_unfollow" id="btn_editar">Dejar de Seguir</button>
+                    <button type="submit" name="submit" value="follInterest" class="btn_editar btnres" id="btn_editar">Dejar de Seguir</button>
                     <?php endif;?>
                 <?php else: ?>
-                    <button type="submit" name="submit" value="goLogin" class="btn_follow" id="btn_editar">Seguir</button>
+                    <button type="submit" name="submit" value="goLogin" class="btn_editar btnres" id="btn_editar">Seguir</button>
                 <?php endif; ?>
                
             </form>
@@ -70,14 +70,14 @@ if ($context != "") {
             <div class="name_user">
                 <label><?= $inte->name ?></label> 
             </div> 
-            <div class="follow">
+            <div class="follow follres">
                 <div class="contain-cont-prym">
                     <label class="cont"><?= isset($inte->posts) ? count($inte->posts) : 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Publicaciones</label>
                 </div>
                 <div class="contain-contt">
-                    <label class="cont"><?= isset($inte->members) ? count($inte->members) : 0 ?></label>
+                    <label class="cont  cont-inte"><?= isset($inte->members) ? count($inte->members) : 0 ?></label>
                     <label class="lbl-ligthgray">-</label>
                     <label class="lbl-ligthgray">Miembros</label>
                 </div>

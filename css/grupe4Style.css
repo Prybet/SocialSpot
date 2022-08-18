@@ -35,6 +35,7 @@ body{
 .a{
     position: fixed;
     z-index: 100;
+    width: 100%;
 }
 .pointer{
     cursor: pointer;
@@ -493,7 +494,12 @@ label{
         width: 100%;
     }
 }
-
+@media(max-width: 420px){
+    .contain_mod, .contain_report{
+        width: 35rem;
+        left: 56%;
+    }
+}
 
 @media(max-width: 678px){
     .contain_post-grid{

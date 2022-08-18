@@ -26,9 +26,10 @@ html {
 }
 
 /* NAV */
-.nav{
+.a{
     position: fixed;
     z-index: 100;
+    width: 100%;
 }
 
 /* POST */
@@ -659,5 +660,11 @@ label{
 @media(max-width: 796px){
     .contain_post-grid{
         width: 95%;
+    }
+}
+@media(max-width: 420px){
+    .contain_mod, .contain_report{
+        width: 35rem;
+        left: 56%;
     }
 }

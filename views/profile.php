@@ -78,7 +78,7 @@ if($profile->description == ""){
             <?php include_once '../nav.php'; ?>
         </div>
         <header>
-            <div class="contain_bann " >
+            <div class="contain_bann" >
                 <div class="ftbanner">
                 </div>
             </div>

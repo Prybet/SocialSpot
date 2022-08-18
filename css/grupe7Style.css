@@ -29,6 +29,7 @@ body{
 .a{
     position: fixed;
     z-index: 100;
+    width: 100%;
 }
 /* edit banner and profile */
 header {
@@ -628,6 +629,95 @@ label{
     border-radius: 0.2rem;
     border: 1px solid var(--niga);
 }
+.cont-inte{
+    margin-left: 1rem;
+}
+/* MODAL REPORT */
+.contain_report{
+    width: 40rem;
+    height: 40rem;
+    font-size: 2rem;
+    position: relative;
+    background-color: var(--darker);
+    top: 50%;
+    margin-top: -20rem;
+    left: 50%;
+    margin-left: -20rem;
+    border-radius: 0.5rem;
+    display: flex;
+    border: 1px solid var(--primary);
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 2rem 0;
+}
+
+.question{
+    color: var(--primary);
+    font-size: 2.5rem;
+}
+.contain-form{
+    padding: 1rem 3rem;
+    color: var(--ligthgray);
+}
+.lbl-ques{
+    text-align: left;
+    color: var(--primary);
+    font-size: 2rem;
+}
+.conta_rep{
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+    margin: 1rem 0;
+}
+.second-div{
+    margin: 1rem;
+}
+.center{
+    text-align: center;
+    margin: 0;
+}
+.input_report{
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+.btn{
+    width: 60%;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: var(--black);
+    font-weight: bold;
+    border: 1px solid var(--primary);
+}
+.btn:hover{
+    background-color: var(--black);
+    transition: 0.5s;
+    color: var(--primary);
+    border: 1px solid var(--ligthgray);
+}
+.contain_btn-profile{
+    display: flex;
+    justify-content: center;
+}
+.contain_modal-profile{
+    visibility: hidden;
+    display: none;
+}
+.upload__fiel-input{
+    width: 100%;
+    margin: 0 auto;
+    border: none;
+    background-color: var(--black);
+    outline: none;
+    border-radius: 0.3rem;
+    color: var(--white);
+    font-size: 1.3rem;
+    padding-left: 1rem;
+}
 /* Hashtag */
 #cont-hash{
     display: flex;
@@ -651,6 +741,7 @@ label{
         width: 15rem;
         height: 15rem;
         left: 19%;
+        
     }
     .name_user{
         left: 45%;
@@ -684,7 +775,9 @@ label{
     .contain_public{
         margin-top: 12rem;
     }
-    
+    .flex-footer{
+        display: none;
+    }
 }
 
 @media(max-width: 698px){
@@ -703,9 +796,21 @@ label{
         top: 75%;
     }
 }
+@media(max-width: 420px){
+    .contain_mod, .contain_report{
+        width: 35rem;
+        left: 56%;
+    }
+}
 @media(max-width: 398px){
     .follow{
         font-size: 1.5rem;
         left: 63%;
+    }
+    .btnres{
+        width: 37%;
+    }
+    .follres{
+        left: 68%;
     }
 }

@@ -51,7 +51,9 @@ nav {
   height: 6rem;
   padding: 0 30rem;
   border-bottom: 1px solid var(--ligthgray);
+  z-index: 10;
 }
+
 
 /* logo */
 .contain_logo {
@@ -263,6 +265,26 @@ scroll-container {
     display: none;
     color: white;
 }
+imgX{
+    display: none;
+}
+.contain_nav{
+    display: flex;
+    flex-direction: column;
+}
+.black-search{
+    display: none;
+    background: var(--darker);
+    width: 100%;
+    margin-top: -2rem;
+    height: 32rem;
+    position: absolute;
+    top: -33rem;
+}
+.search-black{
+    display: flex!important;
+    margin-top: 2rem!important;
+}
 @media(max-width: 1480px){
     nav{
         padding: 0 10rem;
@@ -275,10 +297,11 @@ scroll-container {
 }
 @media(max-width: 880px){
     .conta{
-        width: 25rem;
+        width: 35rem;
     }
     .img_logo {
         height: 3.5rem;
+        margin-top: 0.5rem;
     }
     .btn_goLogin{
         padding: 0.8rem;
@@ -287,9 +310,12 @@ scroll-container {
 @media(max-width: 674px){
     .contain_search{
         display: none;
+        margin-top: 10rem;
     }
     .x_search{
         display: flex!important;
+        justify-content: center;
+        align-items: center;
     }
     .contain_user{
         margin-left: -7rem;
@@ -297,11 +323,24 @@ scroll-container {
     .contain_logo {
         margin-left: -4rem;
     }
+    .imgX{
+        height: 2rem;
+        display: none;
+    }
+    .imgMenu{
+        height: 3rem;
+    }
+    scroll-container {
+        width: 100%;
+        display: flex;
+    }
+    .searchRes{
+        margin-top: -23rem!important;
+    }
 }
-@media(max-width: 420px){
+    
+@media(max-width: 446px){
     .most-grid{
         grid-template-columns: 2fr 1fr 1fr!important;
     }
-    
-  
 }

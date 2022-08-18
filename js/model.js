@@ -299,7 +299,7 @@ $(document).ready(function () {
     });
     
     //Find User
-    $(document).on('keyup', '#search', function (){
+    $(document).on('keyup', '.input_search', function (){
         var r = $(this).val();
         $.ajax({
             url: "../Controllers/AjaxController.php",
@@ -307,7 +307,7 @@ $(document).ready(function () {
             data: {"id": r, "sub": "search"},
             success: function (data) {
                 if (data) {
-                    $("#scroll-find").empty();
+                    $(".scroll-find").empty();
                     if(data !== null){
                         if(data.length > 0){
                             console.log(data);
@@ -333,7 +333,7 @@ $(document).ready(function () {
                                         }else{
                                             stringFollow = "Seguidores";
                                         }
-                                        $("#scroll-find").append("\n\
+                                        $(".scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
@@ -361,7 +361,7 @@ $(document).ready(function () {
                                         }else{
                                             stringFollow = "Miembros";
                                         }
-                                        $("#scroll-find").append("\n\
+                                        $(".scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
@@ -389,7 +389,7 @@ $(document).ready(function () {
                                         }else{
                                             stringFollow = "Miembros";
                                         }
-                                        $("#scroll-find").append("\n\
+                                        $(".scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
@@ -417,7 +417,7 @@ $(document).ready(function () {
                                         }else{
                                             stringFollow = "Miembros";
                                         }
-                                        $("#scroll-find").append("\n\
+                                        $(".scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
@@ -445,7 +445,7 @@ $(document).ready(function () {
                                         }else{
                                             stringFollow = "Miembros";
                                         }
-                                        $("#scroll-find").append("\n\
+                                        $(".scroll-find").append("\n\
                                         <a class='search_user pointer' value="+data[i].id+" id='asd' data-pos="+i+">\n\
                                             <img src="+data[i].imageURL+" alt='usuario' class='img_noti pointer size-imgg'>\n\
                                             <div class='noti_follow-inf'>\n\
@@ -473,7 +473,7 @@ $(document).ready(function () {
                                 }
                             });
                         }else{
-                            $("#scroll-find").append("\n\
+                            $(".scroll-find").append("\n\
                                 <div class='noFound-user'>\n\
                                     <h2>Busqueda no encontrada</h2>\n\
                                 </div>\n\
@@ -602,4 +602,49 @@ $(document).ready(function () {
         }
     });
     
+    $(".imgMenu").click(function(){
+        ChangImgNav();
+    });
+    $(".imgX").click(function(){
+        ChangImgNav();
+    });
+    function ChangImgNav(){
+        var s = $(".x_search").attr("data-pos");
+        if(s == 0){
+            $(".x_search").attr("data-pos", 1);
+            $(".imgMenu").css({
+                "display" : "none"
+            });
+            $(".imgX").css({
+                "display" : "flex"
+            });
+            $(".black-search").css({
+                "display": "flex"
+            });
+            $("nav").css({
+                "border-bottom": "none"
+            });
+            $(".black-search").css({
+                "display": "flex",
+                "top" : 0,
+                "transition" : "4s ease-in-out all",
+                "z-index" : "100"
+            });
+            console.log("if");
+        }else{
+            $(".x_search").attr("data-pos", 0);
+            $(".imgMenu").css({
+                "display" : "flex"
+            });
+            $(".imgX").css({
+                "display" : "none"
+            });
+            $(".black-search").css({
+                "display": "none",
+                "top" : "-33rem",
+                "transition" : "4s ease-in-out all"
+            });
+            console.log("else");
+        }
+    }
 });
