@@ -1,6 +1,6 @@
 # SocialSpot 
 SocialSpot es una red social para conectar a las personas que les gustan los deportes extremos. Permitiendo compartir contenido de categorias de deporte / lugares. 
-
+![front]()
 Además de publicar y seguir intereses como las categorías de deportes o ciudades / lugares
 
 # Usuario
@@ -23,5 +23,5 @@ El usuario pude segur ubicaciones y tambien subir pulicaciones
 
 SocialSpot 2022
 Made by:
- soulbroken
- Prybet
+ soulbroken( Pedro Martinez), 
+ Prybet ( Benjamin Leal )
